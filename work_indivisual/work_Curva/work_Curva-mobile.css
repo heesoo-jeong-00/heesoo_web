@@ -268,10 +268,19 @@ main {
 .images {
   width: 100vw;
   height: 56.25vw;
+
+  background-repeat: no-repeat;
+  background-position: center center;
+  /* background-size:contain; */
+  background-size: 100%;
+
   position: relative;
   /* background-color: rgb(255, 255, 255); */
   overflow: hidden;
   /* border:rgb(0, 72, 255) solid 1px; */
+  margin:0;
+  padding:0;
+  margin-bottom: 0.35vw;
 }
 
 

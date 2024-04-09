@@ -256,11 +256,57 @@ img{
 
 .images {
   width: 100vw;
+  /* height: 64.7vw; */
   height: 56.25vw;
+
+  background-repeat: no-repeat;
+  background-position: center center;
+  /* background-size:contain; */
+  background-size: 100%;
+
+
   position: relative;
   /* background-color: rgb(255, 255, 255); */
   overflow: hidden;
-  border:rgb(0, 72, 255) solid 1px;
+  /* border:rgb(0, 72, 255) solid 1px; */
+  margin:0;
+  padding:0;
+  margin-bottom: 0.35vw;
+}
+
+
+#img1{
+  background-image: url(../../files/curva/curva5.jpg);
+}
+
+#img2{
+  background-image: url(../../files/curva/curva.jpg);
+}
+
+#img3{
+  background-image: url(../../files/curva/curva2.jpg);
+}
+
+#img4{
+  background-image: url(../../files/curva/curva3.jpg);
+}
+
+#img5{
+  background-image: url(../../files/curva/curva4.jpg);
+}
+
+#img6{
+  background-image: url(../../files/curva/curva6-1.jpg);
+}
+
+#img7{
+  background-image: url(../../files/curva/curva7.jpg);
+}
+
+#img8{
+  background-image: url(../../files/curva/curva8.jpg);
+
+  margin-bottom: 0vw;
 }
 
 
