@@ -224,6 +224,8 @@ main {
   margin: 0vw 1vw 2vw 1vw;
 }
 
+
+
 .blackboxes {
   position: absolute;
   top:0;
@@ -231,26 +233,37 @@ main {
   width: 100%;
   height: 100%;
   padding: 15px;
-  /* font-style: normal; */
+
   background-color: rgba(0, 0, 0, 0.6);
   opacity: 0;
   transition: all 0.3s ease-in-out;
-  /* border: rgb(0, 0, 255) solid 1px; */
-  /* margin: 0px 16px 36px 16px; */
 
-  display: flex;
-  /* flex 컨테이너로 설정 */
-  /* flex-wrap: wrap; */
   flex-direction: column;
   justify-content:left;
-  /* 가로 방향으로 중앙 정렬 */
+
    align-items:start;
-  /* 세로 방향으로 중앙 정렬 */
+
   text-align: left;
-  /* 텍스트를 중앙으로 정렬 */
+
   border-radius: 3vw;
+
+  display: flex;
 }
 
+
+/* 
+.boxes:hover .blackboxes {
+  opacity: 1;
+} */
+
+
+
+@media (max-width: 767px) {
+  .blackboxes {
+    pointer-events: none;
+    display: none;
+  }
+}
 
 
 
@@ -372,10 +385,6 @@ main {
 }
 
 
-
-.boxes:hover .blackboxes {
-  opacity: 1;
-}
 
 /* footer */
 

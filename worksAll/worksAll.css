@@ -234,6 +234,24 @@ main {
   border-radius: 3vw;
 }
 
+
+.boxes:hover .blackboxes {
+  opacity: 1;
+}
+
+
+@media (max-width: 1024px) {
+  .blackboxes {
+    pointer-events: none;
+    display: none;
+  }
+  .boxes:hover .blackboxes {
+    opacity: 0;
+  }
+}
+
+
+
 .title {
   font-size: 2.1vw;
   margin-bottom: -0.07vw;
@@ -345,11 +363,6 @@ main {
   background-size: cover;
 }
 
-
-
-.boxes:hover .blackboxes {
-  opacity: 1;
-}
 
 
 /* footer */

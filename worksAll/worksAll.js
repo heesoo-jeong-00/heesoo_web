@@ -65,6 +65,15 @@ function mousemove(e) {
       break
 
 
+      case 'main4':
+        if (stage === 'main4') return
+        scale = 2;
+        stage = 'main4'
+        console.log('main4')
+        break
+
+
+        
 
     case 'bottomItem1':
       if (stage === 'bottomItem1') return
@@ -136,10 +145,35 @@ document.addEventListener('DOMContentLoaded', function() {
 
 //블랙박스 클릭시 다른 페이지로 이동
 
-document.addEventListener('DOMContentLoaded', function() {
-  var blackBox1 = document.getElementById('blackbox1'); // blackbox1의 ID를 가져옵니다.
+// document.addEventListener('DOMContentLoaded', function() {
+//   var blackBox1 = document.getElementById('blackbox1'); // blackbox1의 ID를 가져옵니다.
 
-  blackBox1.addEventListener('click', function() {
-    window.location.href = '../work_indivisual/work_Curva/work_Curva.html'; // 클릭 시 지정된 URL로 이동합니다.
-  });
+//   blackBox1.addEventListener('click', function() {
+//     window.location.href = '../work_indivisual/work_Curva/work_Curva.html'; // 클릭 시 지정된 URL로 이동합니다.
+//   });
+// });
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  var box1 = document.getElementById('box1');
+  var blackBox1 = document.getElementById('blackbox1');
+
+  if (window.innerWidth > 1024) { // 데스크톱 환경에서만 blackBox1에 이벤트 리스너를 추가
+    if (blackBox1) {
+      blackBox1.addEventListener('click', function() {
+        window.location.href = '../work_indivisual/work_Curva/work_Curva.html';
+      });
+    }
+  } else { // 모바일 환경에서는 box1에 이벤트 리스너를 추가
+    if (box1) {
+      box1.addEventListener('click', function() {
+        window.location.href = '../work_indivisual/work_Curva/work_Curva.html';
+      });
+    }
+  }
 });
+
+

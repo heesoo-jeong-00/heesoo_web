@@ -174,9 +174,8 @@ img{
 
 #section1 {
   width: 100vw;
-  /* height: 56.25vw; */
-   /* height: 47vw; */
-   height: calc(100vh - 96px);
+  height: 56.25vw;
+   /* height: calc(100vh - 96px); */
   position: relative;
   /* background-color: rgb(255, 255, 255); */
   /* border:rgb(0, 72, 255) solid 1px; */
