@@ -60,46 +60,59 @@ header {
 
 #headerBox {
   display: flex;
-  justify-content: center; /* 가로 방향 중앙 정렬 */
-  align-items: center; /* 세로 방향 중앙 정렬 */
+  justify-content: center;
+  /* 가로 방향 중앙 정렬 */
+  align-items: center;
+  /* 세로 방향 중앙 정렬 */
   position: fixed;
   top: 28px;
   left: 50%;
   transform: translateX(-50%);
-  width: 434px; /* 초기 너비 설정 */
-  height: 44px; /* 초기 높이 설정 */
+  width: 434px;
+  /* 초기 너비 설정 */
+  height: 44px;
+  /* 초기 높이 설정 */
   background-color: white;
   border: 1px solid rgba(191, 191, 191, 0.4);
   box-shadow: 0px 13px 26px -5px rgba(15, 147, 255, 0.4);
   border-radius: 30px;
 
-  z-index: 10; /* 필요한 경우 z-index 유지 */
-  transition: width 0.3s ease-out; /* 사이즈 조정 애니메이션 유지 */
-  
+  z-index: 10;
+  /* 필요한 경우 z-index 유지 */
+  transition: width 0.3s ease-out;
+  /* 사이즈 조정 애니메이션 유지 */
+
 }
 
 #headerBox.scrolled {
   display: flex;
   justify-content: center;
-  width: 120px; /* 또는 다른 적절한 값 */
+  width: 120px;
+  /* 또는 다른 적절한 값 */
   left: 50%;
   transform: translateX(-50%);
-  position: fixed; /* 또는 absolute, 상황에 따라 다름 */
+  position: fixed;
+  /* 또는 absolute, 상황에 따라 다름 */
   top: 28px;
 }
 
 .topBox.scrolled {
   opacity: 0;
   visibility: hidden;
-  position: absolute; /* Remove the boxes from the normal document flow */
-  width: 0; /* Eliminate the width */
-  height: 0; /* Eliminate the height */
-  overflow: hidden; /* Make sure no content spills out */
-  transition: visibility 0s 0.7s, opacity 0.7s ease, width 0s 0.7s, height 0s 0.7s; /* Transition for a smooth disappearance */
+  position: absolute;
+  /* Remove the boxes from the normal document flow */
+  width: 0;
+  /* Eliminate the width */
+  height: 0;
+  /* Eliminate the height */
+  overflow: hidden;
+  /* Make sure no content spills out */
+  transition: visibility 0s 0.7s, opacity 0.7s ease, width 0s 0.7s, height 0s 0.7s;
+  /* Transition for a smooth disappearance */
 }
 
 #topBoxes.scrolled {
-margin: 10px 0px;
+  margin: 10px 0px;
 }
 
 
@@ -116,7 +129,7 @@ margin: 10px 0px;
 
 .topBox {
   font-size: 16px;
- font-family: "Prompt", sans-serif;
+  font-family: "Prompt", sans-serif;
   font-weight: 300;
   font-style: normal;
 
@@ -141,7 +154,7 @@ margin: 10px 0px;
   color: black;
   text-decoration: none;
   text-align: left;
-  transition: transform 0.8s ease-in 0.4s; 
+  transition: transform 0.8s ease-in 0.4s;
   /* border:rgb(0, 255, 128) solid 1px; */
 }
 
@@ -164,7 +177,7 @@ main {
 
 
 /* section1 */
-img{
+img {
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -174,9 +187,10 @@ img{
 
 #section1 {
   width: 100vw;
-  height: 56.25vw;
-   /* height: calc(100vh - 96px); */
+  /* height: 56.25vw; */
+  height: 90vh;
   position: relative;
+  top: -96px;
   /* background-color: rgb(255, 255, 255); */
   /* border:rgb(0, 72, 255) solid 1px; */
   background-image: url(../../files/curva-main.jpg);
@@ -184,9 +198,16 @@ img{
   background-position: center center;
   background-size: cover;
   overflow: hidden;
+  /* border-radius: 60px; */
+  border-bottom-left-radius: 3vw;
+  border-bottom-right-radius: 3vw;
+  margin: 0px;
+  /* margin-bottom: 0vw; */
 }
 
 #section2 {
+  margin: 0px;
+  margin-top: -96px; 
   width: 100vw;
   height: 40vw;
   position: relative;
@@ -204,8 +225,8 @@ img{
   line-height: 1.25;
 
 
-  justify-content: center; 
-  align-items: center; 
+  justify-content: center;
+  align-items: center;
   color: black;
   padding: 0vw 24vw;
   /* border:rgb(255, 0, 0) solid 1px; */
@@ -216,7 +237,8 @@ img{
   font-family: "Prompt", sans-serif;
   /* font-weight: 300; */
   font-style: normal;
-  white-space: normal; /* 줄바꿈을 정상적으로 처리하도록 설정합니다 */
+  white-space: normal;
+  /* 줄바꿈을 정상적으로 처리하도록 설정합니다 */
 }
 
 #title {
@@ -224,11 +246,11 @@ img{
   font-weight: 500;
   font-style: normal;
   font-size: 4vw;
-  
+
   /* font-size: 2.8vw; */
   /* font-weight: 400; */
-  margin-bottom: 0.55em; 
-  word-wrap: break-word; 
+  margin-bottom: 0.55em;
+  word-wrap: break-word;
 }
 
 #subtitle {
@@ -237,21 +259,27 @@ img{
   font-weight: 400;
 
   font-size: 1.4vw;
-  margin-bottom: 1.6em; 
-  word-wrap: break-word; 
+  margin-bottom: 1.6em;
+  word-wrap: break-word;
 }
 
 #texts {
   font-size: 1.2vw;
   font-weight: 300;
-  margin-bottom: 1em; 
-  word-wrap: break-word; 
+  margin-bottom: 1em;
+  word-wrap: break-word;
 }
 
 
-/* #section3{
+#section3{
   height:auto;
-} */
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: flex-start;
+}
 
 .images {
   width: 100vw;
@@ -268,44 +296,74 @@ img{
   /* background-color: rgb(255, 255, 255); */
   overflow: hidden;
   /* border:rgb(0, 72, 255) solid 1px; */
-  margin:0;
-  padding:0;
-  margin-bottom: 0.35vw;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 0.7vw;
+  border-radius: 3vw;
 }
 
 
-#img1{
+#img1 {
   background-image: url(../../files/curva/curva5.jpg);
+  width: 100vw;
+
 }
 
-#img2{
+#img2 {
   background-image: url(../../files/curva/curva.jpg);
+  width: 100vw;
 }
 
-#img3{
+#img3 {
   background-image: url(../../files/curva/curva2.jpg);
+  width: 100vw;
 }
 
-#img4{
+#img4 {
   background-image: url(../../files/curva/curva3.jpg);
+  width: 100vw;
 }
 
-#img5{
+#img5 {
   background-image: url(../../files/curva/curva4.jpg);
+  width: 100vw;
 }
 
-#img6{
+#img6-1 {
   background-image: url(../../files/curva/curva6-1.jpg);
+  width: calc(50vw - 0.35vw);
+  margin-right: 0.35vw;
+  background-size: cover;
 }
 
-#img7{
+#img6-2 {
+  background-image: url(../../files/curva/curva6-2.jpg);
+  width: calc(50vw - 0.35vw);
+  margin-left: 0.35vw;
+  background-size: cover;
+}
+
+#img7 {
   background-image: url(../../files/curva/curva7.jpg);
+  width: 100vw;
 }
 
-#img8{
-  background-image: url(../../files/curva/curva8.jpg);
+#img8-1 {
+  background-image: url(../../files/curva/curva8-1.jpg);
 
   margin-bottom: 0vw;
+  width: calc(50vw - 0.35vw);
+  margin-right: 0.35vw;
+  background-size: cover;
+}
+
+#img8-2 {
+  background-image: url(../../files/curva/curva8-2.jpg);
+
+  margin-bottom: 0vw;
+  width: calc(50vw - 0.53vw);
+  margin-left: 0.35vw;
+  background-size: cover;
 }
 
 
@@ -346,7 +404,7 @@ footer {
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-between;
-  
+
   font-size: 16px;
   font-weight: 300;
   font-style: normal;
@@ -435,10 +493,14 @@ footer {
 .topBox.scrolled {
   opacity: 0;
   visibility: hidden;
-  position: absolute; /* Remove the boxes from the normal document flow */
-  width: 0; /* Eliminate the width */
-  height: 0; /* Eliminate the height */
-  overflow: hidden; /* Make sure no content spills out */
-  transition: visibility 0s 0.7s, opacity 0.7s ease, width 0s 0.7s, height 0s 0.7s; /* Transition for a smooth disappearance */
+  position: absolute;
+  /* Remove the boxes from the normal document flow */
+  width: 0;
+  /* Eliminate the width */
+  height: 0;
+  /* Eliminate the height */
+  overflow: hidden;
+  /* Make sure no content spills out */
+  transition: visibility 0s 0.7s, opacity 0.7s ease, width 0s 0.7s, height 0s 0.7s;
+  /* Transition for a smooth disappearance */
 }
-

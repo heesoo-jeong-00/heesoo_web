@@ -83,7 +83,8 @@ header {
   border-radius: 30px;
 
   /* padding: 0px; */
-  z-index: 10; /* 필요한 경우 z-index 유지 */
+  z-index: 10;
+  /* 필요한 경우 z-index 유지 */
   transition: width 0.3s ease-out;
   /* scale: 0.8; */
 }
@@ -115,7 +116,7 @@ header {
 
 #topBoxes.scrolled {
   margin: 10px 0px;
-  }  
+}
 
 #topBoxes {
   display: flex;
@@ -184,13 +185,16 @@ main {
 
 #section1 {
   width: 100vw;
-  height: 56.25vw;
+  height: 75vw;
+
   /* height: calc(100vh - 96px); */
   position: relative;
+
+  background-image: url(../../files/curva-main3.jpg);
   /* background-color: rgb(255, 255, 255); */
   /* border:rgb(0, 72, 255) solid 1px; */
-  background-image: url(../../files/curva-main.jpg);
   background-repeat: no-repeat;
+  /* background-position: center 10px; */
   background-position: center center;
   background-size: cover;
   overflow: hidden;
@@ -200,7 +204,7 @@ main {
   width: 100vw;
   height: auto;
   position: relative;
-  /* background-color: rgb(255, 255, 255); */
+  background-color: rgb(255, 255, 255);
   overflow: hidden;
 
   display: flex;
@@ -214,8 +218,8 @@ main {
   line-height: 1.25;
 
 
-  justify-content: center; 
-  align-items: center; 
+  justify-content: center;
+  align-items: center;
   color: black;
   padding: 10%;
   /* border:rgb(255, 0, 0) solid 1px; */
@@ -226,7 +230,8 @@ main {
   font-family: "Prompt", sans-serif;
   /* font-weight: 300; */
   font-style: normal;
-  white-space: normal; /* 줄바꿈을 정상적으로 처리하도록 설정합니다 */
+  white-space: normal;
+  /* 줄바꿈을 정상적으로 처리하도록 설정합니다 */
 }
 
 #title {
@@ -234,11 +239,11 @@ main {
   font-weight: 600;
   font-style: normal;
   font-size: 36px;
-  
+
   /* font-size: 2.8vw; */
   /* font-weight: 400; */
-  margin-bottom: 0.4em; 
-  word-wrap: break-word; 
+  margin-bottom: 0.4em;
+  word-wrap: break-word;
 }
 
 #subtitle {
@@ -248,15 +253,15 @@ main {
 
   font-size: 17px;
   width: 80%;
-  margin-bottom: 1.6em; 
-  word-wrap: break-word; 
+  margin-bottom: 1.6em;
+  word-wrap: break-word;
 }
 
 #texts {
   font-size: 13px;
   font-weight: 300;
-  margin-bottom: 1em; 
-  word-wrap: break-word; 
+  margin-bottom: 1em;
+  word-wrap: break-word;
   width: 100%;
 }
 
@@ -278,9 +283,32 @@ main {
   /* background-color: rgb(255, 255, 255); */
   overflow: hidden;
   /* border:rgb(0, 72, 255) solid 1px; */
-  margin:0;
-  padding:0;
-  margin-bottom: 0.35vw;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 1.4vw;
+}
+
+
+
+
+#img6-1 {
+  width: calc(50vw - 0.7vw);
+  margin-right: 0.7vw;
+}
+
+#img6-2 {
+  width: calc(50vw - 0.7vw);
+  margin-left: 0.7vw;
+}
+
+#img8-1 {
+  width: calc(50vw - 0.7vw);
+  margin-right: 0.7vw;
+}
+
+#img8-2 {
+  width: calc(50vw - 0.7vw);
+  margin-left: 0.7vw;
 }
 
 
@@ -416,10 +444,14 @@ footer {
 .topBox.scrolled {
   opacity: 0;
   visibility: hidden;
-  position: absolute; /* Remove the boxes from the normal document flow */
-  width: 0; /* Eliminate the width */
-  height: 0; /* Eliminate the height */
-  overflow: hidden; /* Make sure no content spills out */
-  transition: visibility 0s 0.7s, opacity 0.7s ease, width 0s 0.7s, height 0s 0.7s; /* Transition for a smooth disappearance */
+  position: absolute;
+  /* Remove the boxes from the normal document flow */
+  width: 0;
+  /* Eliminate the width */
+  height: 0;
+  /* Eliminate the height */
+  overflow: hidden;
+  /* Make sure no content spills out */
+  transition: visibility 0s 0.7s, opacity 0.7s ease, width 0s 0.7s, height 0s 0.7s;
+  /* Transition for a smooth disappearance */
 }
-
