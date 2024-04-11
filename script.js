@@ -221,7 +221,6 @@ window.addEventListener('scroll', function () {
     logo.style.pointerEvents = 'none';  // 로고 클릭 이벤트 비활성화
     headerBox.dataset.isExpanded = 'false';  // 확대 상태를 false로 재설정
   }
-});
 
 
 
