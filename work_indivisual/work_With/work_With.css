@@ -282,26 +282,22 @@ img {
   align-content: flex-start;
 }
 
-.images {
+/* .images {
   width: 100vw;
-  /* height: 64.7vw; */
   height: 56.25vw;
 
   background-repeat: no-repeat;
   background-position: center center;
-  /* background-size:contain; */
   background-size: 100%;
 
 
   position: relative;
-  /* background-color: rgb(255, 255, 255); */
   overflow: hidden;
-  /* border:rgb(0, 72, 255) solid 1px; */
   margin: 0;
   padding: 0;
   margin-bottom: 0.7vw;
   border-radius: 3vw;
-}
+} */
 
 .videos{
   width: 100vw;
@@ -325,61 +321,6 @@ img {
   opacity: 0; 
   transition: opacity 0.4s; 
 } */
-
-
-
-
-#img3 {
-  background-image: url(../../files/curva/curva2.jpg);
-  width: 100vw;
-}
-
-#img4 {
-  background-image: url(../../files/curva/curva3.jpg);
-  width: 100vw;
-}
-
-#img5 {
-  background-image: url(../../files/curva/curva4.jpg);
-  width: 100vw;
-}
-
-#img6-1 {
-  background-image: url(../../files/curva/curva6-1.jpg);
-  width: calc(50vw - 0.35vw);
-  margin-right: 0.35vw;
-  background-size: cover;
-}
-
-#img6-2 {
-  background-image: url(../../files/curva/curva6-2.jpg);
-  width: calc(50vw - 0.35vw);
-  margin-left: 0.35vw;
-  background-size: cover;
-}
-
-#img7 {
-  background-image: url(../../files/curva/curva7.jpg);
-  width: 100vw;
-}
-
-#img8-1 {
-  background-image: url(../../files/curva/curva8-1.jpg);
-
-  margin-bottom: 0vw;
-  width: calc(50vw - 0.35vw);
-  margin-right: 0.35vw;
-  background-size: cover;
-}
-
-#img8-2 {
-  background-image: url(../../files/curva/curva8-2.jpg);
-
-  margin-bottom: 0vw;
-  width: calc(50vw - 0.53vw);
-  margin-left: 0.35vw;
-  background-size: cover;
-}
 
 
 /* footer */
