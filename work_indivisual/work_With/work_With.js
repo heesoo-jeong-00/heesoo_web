@@ -66,6 +66,52 @@ const logo = document.getElementById('logo');
 
 
 
+// 스크롤 이벤트 리스너 추가
+window.addEventListener('scroll', function () {
+  // 스크롤 위치가 50px 이상이고, headerBox가 확대된 상태가 아닐 경우
+  if (window.scrollY > 50) {
+    // 확대된 상태가 아니면 축소 스타일 적용
+    if (!headerBox.dataset.isExpanded) {
+      headerBox.classList.add('scrolled');
+      topBoxes.classList.add('scrolled');
+      topBox.forEach(box => box.classList.add('scrolled'));
+      logo.style.pointerEvents = 'none';  // 로고 클릭 이벤트 비활성화
+    }
+  } else {
+    // 스크롤 위치가 50px 이하인 경우, 모든 스타일을 제거하고, 확대 상태로 설정
+    headerBox.classList.remove('scrolled');
+    topBoxes.classList.remove('scrolled');
+    topBox.forEach(box => box.classList.remove('scrolled'));
+    logo.style.pointerEvents = 'auto';  // 로고 클릭 이벤트 활성화
+    headerBox.dataset.isExpanded = 'true';  // 확대 상태를 true로 설정
+  }
+});
+
+// 클릭 이벤트 리스너 추가
+headerBox.addEventListener('click', function () {
+  // headerBox가 이미 축소된 상태인 경우
+  if (this.classList.contains('scrolled')) {
+    this.classList.remove('scrolled');
+    topBoxes.classList.remove('scrolled');
+    topBox.forEach(box => box.classList.remove('scrolled'));
+    logo.style.pointerEvents = 'auto';  // 로고 클릭 이벤트 활성화
+    headerBox.dataset.isExpanded = 'true';  // 확대 상태를 true로 설정
+  }
+});
+
+// 스크롤 이벤트에서 확대된 상태를 해제하고 다시 축소되도록 처리
+window.addEventListener('scroll', function () {
+  if (window.scrollY > 50 && headerBox.dataset.isExpanded === 'true') {
+    headerBox.classList.add('scrolled');
+    topBoxes.classList.add('scrolled');
+    topBox.forEach(box => box.classList.add('scrolled'));
+    logo.style.pointerEvents = 'none';  // 로고 클릭 이벤트 비활성화
+    headerBox.dataset.isExpanded = 'false';  // 확대 상태를 false로 재설정
+  }
+});
+
+
+
 
 // 비디오 요소들을 배열에 담음
 const videos = [
@@ -149,5 +195,12 @@ window.addEventListener('scroll', function () {
 
 // 배속 조정 설정
 videos.forEach(video => {
-  video.playbackRate = 1.5; // 모든 비디오의 재생 속도를 1.5배로 설정
+  if (video.getAttribute('id') === 'video1') {
+    video.playbackRate = 2.3; 
+  } else if (video.getAttribute('id') === 'video2') {
+    video.playbackRate = 2.3; 
+  } else {
+    video.playbackRate = 1.5;
+  }
 });
+
