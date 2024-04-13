@@ -383,7 +383,8 @@ window.addEventListener('scroll', function () {
     logo.style.pointerEvents = 'none';  // 로고 클릭 이벤트 비활성화
     headerBox.dataset.isExpanded = 'false';  // 확대 상태를 false로 재설정
   }
-});
+
+
 // window.addEventListener('scroll', function () {
 //   console.log(window.scrollY); // 스크롤 위치 출력
 //   const headerBox = document.getElementById('headerBox');
@@ -421,6 +422,15 @@ window.addEventListener('scroll', function () {
     });
   }
 
+});
+
+//페이지 로드 시 main 투명도 조절
+document.addEventListener('DOMContentLoaded', function() {
+  // "boxes" 클래스를 가진 모든 요소를 선택합니다.
+  const boxes = document.querySelectorAll('.boxes'); // 클래스 선택자를 사용합니다.
+  boxes.forEach(el => {
+    el.style.opacity = 1;
+  });
 });
 
 //하단 버튼 위치 최대값 설정

@@ -215,3 +215,22 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
+
+document.addEventListener('DOMContentLoaded', function() {
+  var box3 = document.getElementById('box3');
+  var blackBox3 = document.getElementById('blackbox3');
+
+  if (window.innerWidth > 1024) { 
+    if (blackBox3) {
+      blackBox3.addEventListener('click', function() {
+        window.location.href = '../work_indivisual/work_Nebula/work_Nebula.html';
+      });
+    }
+  } else { 
+    if (box3) {
+      box3.addEventListener('click', function() {
+        window.location.href = '../work_indivisual/work_Nebula/work_Nebula.html';
+      });
+    }
+  }
+});

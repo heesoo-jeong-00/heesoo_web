@@ -190,7 +190,7 @@ main {
   /* height: calc(100vh - 96px); */
   position: relative;
 
-  background-image: url(../../files/with3-main.jpg);
+  background-image: url(../../files/nebula-main.jpg);
   /* background-color: rgb(255, 255, 255); */
   /* border:rgb(0, 72, 255) solid 1px; */
   background-repeat: no-repeat;
@@ -289,6 +289,27 @@ main {
 }
 
 
+
+
+#img6-1 {
+  width: calc(50vw - 0.7vw);
+  margin-right: 0.7vw;
+}
+
+#img6-2 {
+  width: calc(50vw - 0.7vw);
+  margin-left: 0.7vw;
+}
+
+#img8-1 {
+  width: calc(50vw - 0.7vw);
+  margin-right: 0.7vw;
+}
+
+#img8-2 {
+  width: calc(50vw - 0.7vw);
+  margin-left: 0.7vw;
+}
 
 
 /* footer */
