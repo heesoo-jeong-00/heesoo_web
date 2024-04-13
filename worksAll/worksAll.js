@@ -209,3 +209,22 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+document.addEventListener('DOMContentLoaded', function() {
+  var box2 = document.getElementById('box2');
+  var blackBox2 = document.getElementById('blackbox2');
+
+  if (window.innerWidth > 1024) { 
+    if (blackBox2) {
+      blackBox2.addEventListener('click', function() {
+        window.location.href = '../work_indivisual/work_With/work_With.html';
+      });
+    }
+  } else { 
+    if (box2) {
+      box2.addEventListener('click', function() {
+        window.location.href = '../work_indivisual/work_With/work_With.html';
+      });
+    }
+  }
+});
+
