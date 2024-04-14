@@ -122,46 +122,47 @@ const videos = [
   document.getElementById('video5'),
   document.getElementById('video6'),
   document.getElementById('video7'),
-  document.getElementById('video8')
+  document.getElementById('video8'),
+  document.getElementById('video9')
 ];
 
 // 각 비디오에 대한 초기 설정 및 특정 비디오에 loop 설정
 videos.forEach(video => {
   video.style.opacity = 0; // 초기 투명도를 0으로 설정
   const videoId = video.getAttribute('id');
-  if (videoId === 'video3' || videoId === 'video4' || videoId === 'video5' || videoId === 'video6' || videoId === 'video7') {
+  if (videoId === 'video2' || videoId === 'video4' || videoId === 'video5' || videoId === 'video6' || videoId === 'video7'|| videoId === 'video8'|| videoId === 'video9') {
     video.loop = true;  // loop 속성 추가
   }
 });
 
 
 
-// // 비디오 반복 재생 설정 함수 수정
+// // // 비디오 반복 재생 설정 함수 수정
 
-function setupVideoRepeat(video, repeatStartTime) {
-  let initialSetupDone = false; // 초기 설정 완료 여부 플래그
+// function setupVideoRepeat(video, repeatStartTime) {
+//   let initialSetupDone = false; // 초기 설정 완료 여부 플래그
 
-  // 비디오 메타데이터가 로드되었을 때 초기 설정 실행
-  video.onloadedmetadata = function() {
-    if (!initialSetupDone) {
-      video.currentTime = repeatStartTime;  // 최초 로딩 시, 반복 시작 지점으로 이동
-      initialSetupDone = true;
-    }
-  };
+//   // 비디오 메타데이터가 로드되었을 때 초기 설정 실행
+//   video.onloadedmetadata = function() {
+//     if (!initialSetupDone) {
+//       video.currentTime = repeatStartTime;  // 최초 로딩 시, 반복 시작 지점으로 이동
+//       initialSetupDone = true;
+//     }
+//   };
 
-  // 비디오가 지정된 시간을 넘어서면 지정된 시작 지점으로 돌아가도록 설정
-  video.addEventListener('timeupdate', function() {
-    if (video.currentTime >= video.duration - 0.5) {
-      video.currentTime = repeatStartTime;
-      video.play().catch(e => console.error(`Error replaying video ${video.id}:`, e));
-    }
-  });
-}
+//   // 비디오가 지정된 시간을 넘어서면 지정된 시작 지점으로 돌아가도록 설정
+//   video.addEventListener('timeupdate', function() {
+//     if (video.currentTime >= video.duration - 0.5) {
+//       video.currentTime = repeatStartTime;
+//       video.play().catch(e => console.error(`Error replaying video ${video.id}:`, e));
+//     }
+//   });
+// }
 
-// 비디오 요소에 대한 반복 설정 코드
-setupVideoRepeat(document.getElementById('video5'), 2.3);
-setupVideoRepeat(document.getElementById('video6'), 4.3);
-setupVideoRepeat(document.getElementById('video7'), 4.7);
+// // 비디오 요소에 대한 반복 설정 코드
+// setupVideoRepeat(document.getElementById('video5'), 2.3);
+// setupVideoRepeat(document.getElementById('video6'), 4.3);
+// setupVideoRepeat(document.getElementById('video7'), 4.7);
 
 
 
@@ -207,20 +208,21 @@ window.addEventListener('scroll', function () {
   lastScrollTop = currentScroll;
 });
 
-// 배속 조정 설정
-videos.forEach(video => {
-  if (video.getAttribute('id') === 'video1') {
-    video.playbackRate = 2.3; 
-  } else if (video.getAttribute('id') === 'video2') {
-    video.playbackRate = 2.3; 
-  } else if (video.getAttribute('id') === 'video6') {
-    video.playbackRate = 1.8; 
-  } else if (video.getAttribute('id') === 'video7') {
-    video.playbackRate = 1.75; 
-  } 
+
+// // 배속 조정 설정
+// videos.forEach(video => {
+//   if (video.getAttribute('id') === 'video1') {
+//     video.playbackRate = 2.3; 
+//   } else if (video.getAttribute('id') === 'video2') {
+//     video.playbackRate = 2.3; 
+//   } else if (video.getAttribute('id') === 'video6') {
+//     video.playbackRate = 1.8; 
+//   } else if (video.getAttribute('id') === 'video7') {
+//     video.playbackRate = 1.75; 
+//   } 
   
-  else {
-    video.playbackRate = 1.5;
-  }
-});
+//   else {
+//     video.playbackRate = 1.5;
+//   }
+// });
 

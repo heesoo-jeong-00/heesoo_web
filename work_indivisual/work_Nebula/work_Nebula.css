@@ -283,7 +283,7 @@ img {
   align-content: flex-start;
 }
 
-/* .images {
+.images {
   width: 100vw;
   height: 56.25vw;
 
@@ -298,7 +298,17 @@ img {
   padding: 0;
   margin-bottom: 0.7vw;
   border-radius: 3vw;
-} */
+}
+
+#img1{
+  background-image: url(../../files/nebula/nebula-last2.jpg);
+  border: #000000 1.5px solid;
+}
+
+#img2{
+  background-image: url(../../files/nebula/nebula-last1.jpg);
+  margin-bottom: 0vw;
+}
 
 .videos{
   width: 100vw;
