@@ -209,20 +209,14 @@ window.addEventListener('scroll', function () {
 });
 
 
-// // 배속 조정 설정
-// videos.forEach(video => {
-//   if (video.getAttribute('id') === 'video1') {
-//     video.playbackRate = 2.3; 
-//   } else if (video.getAttribute('id') === 'video2') {
-//     video.playbackRate = 2.3; 
-//   } else if (video.getAttribute('id') === 'video6') {
-//     video.playbackRate = 1.8; 
-//   } else if (video.getAttribute('id') === 'video7') {
-//     video.playbackRate = 1.75; 
-//   } 
-  
-//   else {
-//     video.playbackRate = 1.5;
-//   }
-// });
+
+// 배속 조정 설정
+videos.forEach(video => {
+  if (video.getAttribute('id') === 'video1') {
+    video.playbackRate = 1.2; 
+  }
+  else {
+    video.playbackRate = 1.0;
+  }
+});
 
