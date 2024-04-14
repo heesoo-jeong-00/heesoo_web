@@ -134,24 +134,38 @@ videos.forEach(video => {
   }
 });
 
-// 비디오 반복 재생 설정 함수
-function setupVideoRepeat(video, repeatStartTime, intervalCheck = 500) {
-  video.addEventListener('play', function setupRepeat() {
-    const checkInterval = setInterval(() => {
-      if (video.currentTime >= video.duration - 0.5) {
-        video.currentTime = repeatStartTime;
-        video.play().catch(e => console.error(`Error replaying video ${video.id}:`, e));
-      }
-    }, intervalCheck);
-    video.addEventListener('pause', () => clearInterval(checkInterval));
-    video.addEventListener('ended', () => clearInterval(checkInterval));
+
+
+// // 비디오 반복 재생 설정 함수 수정
+
+function setupVideoRepeat(video, repeatStartTime) {
+  let initialSetupDone = false; // 초기 설정 완료 여부 플래그
+
+  // 비디오 메타데이터가 로드되었을 때 초기 설정 실행
+  video.onloadedmetadata = function() {
+    if (!initialSetupDone) {
+      video.currentTime = repeatStartTime;  // 최초 로딩 시, 반복 시작 지점으로 이동
+      initialSetupDone = true;
+    }
+  };
+
+  // 비디오가 지정된 시간을 넘어서면 지정된 시작 지점으로 돌아가도록 설정
+  video.addEventListener('timeupdate', function() {
+    if (video.currentTime >= video.duration - 0.5) {
+      video.currentTime = repeatStartTime;
+      video.play().catch(e => console.error(`Error replaying video ${video.id}:`, e));
+    }
   });
 }
 
-// 비디오 5, 6, 7에 대한 반복 재생 설정 적용
-setupVideoRepeat(document.getElementById('video5'), 2);
-setupVideoRepeat(document.getElementById('video6'), 3);
-setupVideoRepeat(document.getElementById('video7'), 1.78);
+// 비디오 요소에 대한 반복 설정 코드
+setupVideoRepeat(document.getElementById('video5'), 2.3);
+setupVideoRepeat(document.getElementById('video6'), 4.3);
+setupVideoRepeat(document.getElementById('video7'), 4.7);
+
+
+
+
 
 let lastScrollTop = 0; // 마지막 스크롤 위치 저장
 let lastDirection = ''; // 마지막 스크롤 방향 저장
@@ -199,7 +213,13 @@ videos.forEach(video => {
     video.playbackRate = 2.3; 
   } else if (video.getAttribute('id') === 'video2') {
     video.playbackRate = 2.3; 
-  } else {
+  } else if (video.getAttribute('id') === 'video6') {
+    video.playbackRate = 1.8; 
+  } else if (video.getAttribute('id') === 'video7') {
+    video.playbackRate = 1.75; 
+  } 
+  
+  else {
     video.playbackRate = 1.5;
   }
 });
