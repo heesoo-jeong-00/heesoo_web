@@ -210,7 +210,7 @@ window.addEventListener('scroll', function () {
 // 배속 조정 설정
 videos.forEach(video => {
   if (video.getAttribute('id') === 'video1') {
-    video.playbackRate = 2.3; 
+    video.playbackRate = 2.1; 
   } else if (video.getAttribute('id') === 'video2') {
     video.playbackRate = 2.3; 
   } else if (video.getAttribute('id') === 'video6') {

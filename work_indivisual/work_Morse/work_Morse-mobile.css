@@ -44,77 +44,79 @@ body {
 
 /* header */
 
+
+
 header {
   width: 100vw;
   height: 96px;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+  /* position: fixed; */
   position: relative;
   justify-content: center;
   align-items: center;
+  /* left: 50%;
+  transform: translateX(-50%); */
   top: 0px;
   z-index: 10;
-  /* border: 1px solid rgb(0, 204, 255); */
+  /* border: 1px solid rgb(17, 255, 0); */
+  /* scale: 0.8; */
 }
 
 #headerBox {
   display: flex;
   justify-content: center;
-  /* 가로 방향 중앙 정렬 */
   align-items: center;
-  /* 세로 방향 중앙 정렬 */
+  /* position: absolute; */
+  /* top: 48px; */
   position: fixed;
-  top: 28px;
+  top: 26px;
   left: 50%;
+  /* transform: translateX(-50%) translateY(-50%); */
   transform: translateX(-50%);
-  width: 434px;
-  /* 초기 너비 설정 */
-  height: 44px;
-  /* 초기 높이 설정 */
+  width: 320px;
+  height: 42px;
   background-color: white;
   border: 1px solid rgba(191, 191, 191, 0.4);
-  box-shadow: 0px 13px 26px -5px rgba(15, 147, 255, 0.4);
+  box-shadow: 0px 14px 26px -7px rgba(15, 147, 255, 0.4);
   border-radius: 30px;
 
+  /* padding: 0px; */
   z-index: 10;
   /* 필요한 경우 z-index 유지 */
   transition: width 0.3s ease-out;
-  /* 사이즈 조정 애니메이션 유지 */
-
+  /* scale: 0.8; */
 }
 
 #headerBox.scrolled {
   display: flex;
   justify-content: center;
-  width: 120px;
+  width: 105px;
+  /* width: 120px; */
   /* 또는 다른 적절한 값 */
+  /* padding: 0px 0px 0px 13px; */
+  /* margin: 0 auto; */
   left: 50%;
   transform: translateX(-50%);
   position: fixed;
   /* 또는 absolute, 상황에 따라 다름 */
-  top: 28px;
+  top: 26px;
 }
 
 .topBox.scrolled {
   opacity: 0;
   visibility: hidden;
   position: absolute;
-  /* Remove the boxes from the normal document flow */
   width: 0;
-  /* Eliminate the width */
   height: 0;
-  /* Eliminate the height */
   overflow: hidden;
-  /* Make sure no content spills out */
   transition: visibility 0s 0.7s, opacity 0.7s ease, width 0s 0.7s, height 0s 0.7s;
-  /* Transition for a smooth disappearance */
 }
 
 #topBoxes.scrolled {
   margin: 10px 0px;
 }
-
 
 #topBoxes {
   display: flex;
@@ -122,13 +124,14 @@ header {
   flex-wrap: nowrap;
   align-items: center;
   justify-content: space-around;
-  margin: 10px 0px 10px 45px;
+  /* margin: 10px 20px 10px 12px; */
+  margin: 10px 0px 10px 14px;
   width: auto;
   /* border:rgb(255, 0, 0) solid 1px; */
 }
 
 .topBox {
-  font-size: 16px;
+  font-size: 14px;
   font-family: "Prompt", sans-serif;
   font-weight: 300;
   font-style: normal;
@@ -136,26 +139,28 @@ header {
   color: #484848;
   flex-grow: 1;
   text-align: center;
-  margin: 0px 0px;
-  padding: 0px 0px 0px 32px;
+  /* margin: 0px 4px 0px 2px; */
+  margin: 0px;
+  padding: 0px 0px 0px 20px;
   flex: 1;
   opacity: 1;
   transition: opacity 0.5s ease-in 0.1s, transform 0.1s ease-in;
-  /* border:rgb(51, 0, 255) solid 1px; */
+  /* border:rgb(30, 0, 255) solid 1px; */
 }
 
 #logo {
-  font-size: 20px;
+  font-size: 16px;
   font-family: "Prompt", sans-serif;
   font-weight: 400;
   font-style: normal;
 
-
   color: black;
   text-decoration: none;
-  text-align: left;
-  transition: transform 0.8s ease-in 0.4s;
-  /* border:rgb(0, 255, 128) solid 1px; */
+  text-align: center;
+  /* margin: 10px 0px 10px 20px;
+  padding: 2px 0px; */
+  /* transition: transform 0.8s ease-in 0.4s; */
+  /* border:rgb(255, 0, 0) solid 1px; */
 }
 
 
@@ -177,42 +182,29 @@ main {
 
 
 /* section1 */
-img {
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  overflow: hidden;
-}
-
 
 #section1 {
   width: 100vw;
-  /* height: 56.25vw; */
-  height: 90vh;
+  height: 75vw;
+
+  /* height: calc(100vh - 96px); */
   position: relative;
-  top: -96px;
+
+  background-image: url(../../files/curva-main3.jpg);
   /* background-color: rgb(255, 255, 255); */
   /* border:rgb(0, 72, 255) solid 1px; */
-  background-image: url(../../files/nebula-main.jpg);
-  
   background-repeat: no-repeat;
+  /* background-position: center 10px; */
   background-position: center center;
   background-size: cover;
   overflow: hidden;
-  /* border-radius: 60px; */
-  border-bottom-left-radius: 3vw;
-  border-bottom-right-radius: 3vw;
-  margin: 0px;
-  /* margin-bottom: 0vw; */
 }
 
 #section2 {
-  margin: 0px;
-  margin-top: -96px; 
   width: 100vw;
-  height: 40vw;
+  height: auto;
   position: relative;
-  /* background-color: rgb(255, 255, 255); */
+  background-color: rgb(255, 255, 255);
   overflow: hidden;
 
   display: flex;
@@ -229,8 +221,7 @@ img {
   justify-content: center;
   align-items: center;
   color: black;
-  /* padding: 0vw 24vw; */
-  padding: 0vw 24vw;
+  padding: 10%;
   /* border:rgb(255, 0, 0) solid 1px; */
 }
 
@@ -245,13 +236,13 @@ img {
 
 #title {
   font-family: "Jura", sans-serif;
-  font-weight: 500;
+  font-weight: 600;
   font-style: normal;
-  font-size: 4vw;
+  font-size: 36px;
 
   /* font-size: 2.8vw; */
   /* font-weight: 400; */
-  margin-bottom: 0.55em;
+  margin-bottom: 0.4em;
   word-wrap: break-word;
 }
 
@@ -260,28 +251,24 @@ img {
   font-weight: 700; */
   font-weight: 400;
 
-  font-size: 1.4vw;
+  font-size: 17px;
+  width: 80%;
   margin-bottom: 1.6em;
   word-wrap: break-word;
 }
 
 #texts {
-  font-size: 1.2vw;
+  font-size: 13px;
   font-weight: 300;
   margin-bottom: 1em;
   word-wrap: break-word;
+  width: 100%;
 }
 
 
-#section3{
+/* #section3{
   height:auto;
-  overflow: hidden;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-content: flex-start;
-}
+} */
 
 .images {
   width: 100vw;
@@ -289,58 +276,40 @@ img {
 
   background-repeat: no-repeat;
   background-position: center center;
+  /* background-size:contain; */
   background-size: 100%;
 
-
   position: relative;
+  /* background-color: rgb(255, 255, 255); */
   overflow: hidden;
+  /* border:rgb(0, 72, 255) solid 1px; */
   margin: 0;
   padding: 0;
-  margin-bottom: 0.7vw;
-  border-radius: 3vw;
-}
-
-#img0{
-  background-image: url(../../files/nebula/nebula3-1img.jpg);
-  /* border: #000000 1.5px solid; */
-  width: 95%;
-
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-}
-
-#img1{
-  background-image: url(../../files/nebula/nebula-last2.jpg);
-  border: #000000 1.5px solid;
-}
-
-#img2{
-  background-image: url(../../files/nebula/nebula-last1.jpg);
-  margin-bottom: 0vw;
-}
-
-.videos{
-  width: 100vw;
-  height: 56.25vw;
-  position: relative;
-  overflow: hidden;
-  margin: 0;
-  padding: 0;
-  margin-bottom: 0.7vw;
-  border-radius: 3vw;
-  width: 100%; 
-  height: auto; 
-  opacity: 0; 
-  transition: opacity 0.4s; 
+  margin-bottom: 1.4vw;
 }
 
 
-/* #video1 {
-  width: 100%; 
-  height: auto; 
-  opacity: 0; 
-  transition: opacity 0.4s; 
-} */
+
+
+#img6-1 {
+  width: calc(50vw - 0.7vw);
+  margin-right: 0.7vw;
+}
+
+#img6-2 {
+  width: calc(50vw - 0.7vw);
+  margin-left: 0.7vw;
+}
+
+#img8-1 {
+  width: calc(50vw - 0.7vw);
+  margin-right: 0.7vw;
+}
+
+#img8-2 {
+  width: calc(50vw - 0.7vw);
+  margin-left: 0.7vw;
+}
 
 
 /* footer */
@@ -367,9 +336,11 @@ footer {
 }
 
 #bottomLogo {
-  font-size: 16px;
+  font-size: 14px;
+  font-family: "Prompt", sans-serif;
   font-weight: 400;
   font-style: normal;
+
   text-align: center;
   margin-left: 30px;
   /* border: rgb(0, 159, 37) solid 1px; */
@@ -380,22 +351,25 @@ footer {
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-between;
-
-  font-size: 16px;
+  font-size: 14px;
+  font-family: "Prompt", sans-serif;
   font-weight: 300;
   font-style: normal;
 
+
   text-align: center;
   align-items: center;
-  margin-right: 20px;
+  padding: 0;
+  margin-right: 30px;
   /* border: rgb(0, 76, 207) solid 1px; */
 }
 
 .bottomBox {
-  margin: 0px 10px;
+  /* margin: 0px 10px; */
+  margin: 0px 0px 0px 28px;
   /* border: rgb(207, 0, 7) solid 1px; */
   align-items: center;
-  /* padding: 0 5px; */
+  width: auto;
 }
 
 
@@ -403,6 +377,7 @@ footer {
 /* 마우스 인터렉션 */
 
 #mouse-cursor {
+  opacity: 0;
   position: absolute;
   top: 0;
   left: 0;

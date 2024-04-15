@@ -193,8 +193,7 @@ img {
   top: -96px;
   /* background-color: rgb(255, 255, 255); */
   /* border:rgb(0, 72, 255) solid 1px; */
-  background-image: url(../../files/nebula-main.jpg);
-  
+  background-image: url(../../files/shinola2-main.jpg);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -229,7 +228,6 @@ img {
   justify-content: center;
   align-items: center;
   color: black;
-  /* padding: 0vw 24vw; */
   padding: 0vw 24vw;
   /* border:rgb(255, 0, 0) solid 1px; */
 }
@@ -285,62 +283,68 @@ img {
 
 .images {
   width: 100vw;
+  /* height: 64.7vw; */
   height: 56.25vw;
 
   background-repeat: no-repeat;
   background-position: center center;
+  /* background-size:contain; */
   background-size: 100%;
 
 
   position: relative;
+  /* background-color: rgb(255, 255, 255); */
   overflow: hidden;
+  /* border:rgb(0, 72, 255) solid 1px; */
   margin: 0;
   padding: 0;
   margin-bottom: 0.7vw;
   border-radius: 3vw;
 }
 
-#img0{
-  background-image: url(../../files/nebula/nebula3-1img.jpg);
-  /* border: #000000 1.5px solid; */
-  width: 95%;
 
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-}
-
-#img1{
-  background-image: url(../../files/nebula/nebula-last2.jpg);
-  border: #000000 1.5px solid;
-}
-
-#img2{
-  background-image: url(../../files/nebula/nebula-last1.jpg);
-  margin-bottom: 0vw;
-}
-
-.videos{
+#img1 {
+  background-image: url(../../files//morse/morse.jpg);
   width: 100vw;
-  height: 56.25vw;
-  position: relative;
-  overflow: hidden;
-  margin: 0;
-  padding: 0;
-  margin-bottom: 0.7vw;
-  border-radius: 3vw;
-  width: 100%; 
-  height: auto; 
-  opacity: 0; 
-  transition: opacity 0.4s; 
+  scale: 1.03;
+
+
 }
 
+#img2 {
+  background-image: url(../../files/morse/morse2.jpg);
+  width: 100vw;
+  scale: 1.03;
 
-/* #video1 {
-  width: 100%; 
-  height: auto; 
-  opacity: 0; 
-  transition: opacity 0.4s; 
-} */
+}
+
+#img3 {
+  background-image: url(../../files/morse/morse3.jpg);
+  width: 100vw;
+  scale: 1.03;
+
+}
+
+#img4 {
+  background-image: url(../../files/morse/morse4.jpg);
+  width: 100vw;
+  scale: 1.03;
+
+}
+
+#img5 {
+  background-image: url(../../files/morse/morse5.jpg);
+  width: 100vw;
+  scale: 1.03;
+
+}
+
+#img6 {
+  background-image: url(../../files/morse/morse6.jpg);
+  width: 100vw;
+  scale: 1.03;
+
+}
 
 
 /* footer */

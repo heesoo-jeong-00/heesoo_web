@@ -248,3 +248,23 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+document.addEventListener('DOMContentLoaded', function() {
+  var box4 = document.getElementById('box4');
+  var blackBox4 = document.getElementById('blackbox4');
+
+  if (window.innerWidth > 1024) { 
+    if (blackBox4) {
+      blackBox4.addEventListener('click', function() {
+        window.location.href = '../work_indivisual/work_Morse/work_Morse.html';
+      });
+    }
+  } else { 
+    if (box4) {
+      box4.addEventListener('click', function() {
+        window.location.href = '../work_indivisual/work_Morse/work_Morse.html';
+      });
+    }
+  }
+});
+
+

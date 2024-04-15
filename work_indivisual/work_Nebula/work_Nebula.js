@@ -117,7 +117,6 @@ window.addEventListener('scroll', function () {
 const videos = [
   document.getElementById('video1'),
   document.getElementById('video2'),
-  document.getElementById('video3'),
   document.getElementById('video4'),
   document.getElementById('video5'),
   document.getElementById('video6'),
@@ -163,8 +162,6 @@ videos.forEach(video => {
 // setupVideoRepeat(document.getElementById('video5'), 2.3);
 // setupVideoRepeat(document.getElementById('video6'), 4.3);
 // setupVideoRepeat(document.getElementById('video7'), 4.7);
-
-
 
 
 
@@ -220,3 +217,16 @@ videos.forEach(video => {
   }
 });
 
+
+window.addEventListener('scroll', function() {
+  var img = document.getElementById('img0');
+  var scrollPosition = window.scrollY;
+  var imgPosition = img.getBoundingClientRect().top + window.scrollY;
+  var windowHeight = window.innerHeight;
+
+  if (scrollPosition >= imgPosition - windowHeight && scrollPosition <= imgPosition + img.clientHeight) {
+    img.style.opacity = 1;
+  } else {
+    img.style.opacity = 0;
+  }
+});
