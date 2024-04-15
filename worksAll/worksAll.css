@@ -310,7 +310,6 @@ main {
 
 #box4 {
   width: calc(50vw - 5vw);
-    /* background-image: url(../files/shinola-main.png); */
     background-image: url(../files/shinola2-main.jpg);
     background-repeat: no-repeat;
     background-position: center center;
