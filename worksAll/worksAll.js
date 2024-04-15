@@ -268,3 +268,21 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+document.addEventListener('DOMContentLoaded', function() {
+  var box5 = document.getElementById('box5');
+  var blackBox5 = document.getElementById('blackbox5');
+
+  if (window.innerWidth > 1024) { 
+    if (blackBox5) {
+      blackBox5.addEventListener('click', function() {
+        window.location.href = '../work_indivisual/work_TheNewArchitecture/work_TheNewArchitecture.html';
+      });
+    }
+  } else { 
+    if (box5) {
+      box5.addEventListener('click', function() {
+        window.location.href = '../work_indivisual/work_TheNewArchitecture/work_TheNewArchitecture.html';
+      });
+    }
+  }
+});
