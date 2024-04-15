@@ -314,6 +314,9 @@ img {
   transition: opacity 0.4s; 
 }
 
+#video3 {
+  scale: 103%;
+}
 
 /* #video1 {
   width: 100%; 
