@@ -193,7 +193,7 @@ img {
   top: -96px;
   /* background-color: rgb(255, 255, 255); */
   /* border:rgb(0, 72, 255) solid 1px; */
-  background-image: url(../../files/curva-main.jpg);
+  background-image: url(../../files/beam-main.jpg);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -351,7 +351,7 @@ img {
 #img8-1 {
   background-image: url(../../files/curva/curva8-1.jpg);
 
-  margin-bottom: 0vw;
+  /* margin-bottom: 0vw; */
   width: calc(50vw - 0.35vw);
   margin-right: 0.35vw;
   background-size: cover;
@@ -360,7 +360,7 @@ img {
 #img8-2 {
   background-image: url(../../files/curva/curva8-2.jpg);
 
-  margin-bottom: 0vw;
+  /* margin-bottom: 0vw; */
   width: calc(50vw - 0.53vw);
   margin-left: 0.35vw;
   background-size: cover;

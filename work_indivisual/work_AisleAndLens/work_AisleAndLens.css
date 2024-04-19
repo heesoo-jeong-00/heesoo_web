@@ -409,7 +409,7 @@ img {
 #img16-1 {
   background-image: url(../../files/ANL/2pg8.jpg);
 
-  margin-bottom: 0vw;
+  /* margin-bottom: 0vw; */
   width: calc(50vw - 0.35vw);
   margin-right: 0.35vw;
   background-size: cover;
@@ -418,7 +418,7 @@ img {
 #img16-2 {
   background-image: url(../../files/ANL/2pg9.jpg);
 
-  margin-bottom: 0vw;
+  /* margin-bottom: 0vw; */
   width: calc(50vw - 0.53vw);
   margin-left: 0.35vw;
   background-size: cover;

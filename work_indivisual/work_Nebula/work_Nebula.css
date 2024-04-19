@@ -316,7 +316,7 @@ img {
 
 #img2{
   background-image: url(../../files/nebula/nebula-last1.jpg);
-  margin-bottom: 0vw;
+  /* margin-bottom: 0vw; */
 }
 
 .videos{
