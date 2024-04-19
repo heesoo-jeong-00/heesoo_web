@@ -304,65 +304,65 @@ img {
 
 
 #img1 {
-  background-image: url(../../files/beam/beam.jpg);
+  background-image: url(../../files/beam/b1.jpg);
   width: 100vw;
 
 }
 
 #img2 {
-  background-image: url(../../files/beam/beam2.jpg);
+  background-image: url(../../files/beam/b2.jpg);
   width: 100vw;
 }
 
 #img3 {
-  background-image: url(../../files/beam/beam3.jpg);
+  background-image: url(../../files/beam/b3.jpg);
   width: 100vw;
 }
 
 #img4 {
-  background-image: url(../../files/beam/beam4.jpg);
+  background-image: url(../../files/beam/b4.jpg);
   width: 100vw;
 }
 
 #img5 {
-  background-image: url(../../files/beam/beam5.jpg);
+  background-image: url(../../files/beam/b5.jpg);
   width: 100vw;
 }
 
 #img6 {
-  background-image: url(../../files/beam/beam66.jpg);
+  background-image: url(../../files/beam/b6.jpg);
   width: 100vw;
 }
 
 #img7 {
-  background-image: url(../../files/beam/beam77.jpg);
+  background-image: url(../../files/beam/b7.jpg);
   width: 100vw;
 }
 
 #img8 {
-  background-image: url(../../files/beam/beam88.jpg);
+  background-image: url(../../files/beam/b8.jpg);
   width: 100vw;
 }
 
 #img9 {
-  background-image: url(../../files/beam/beam99.jpg);
+  background-image: url(../../files/beam/b9.jpg);
   width: 100vw;
 }
 
 #img10 {
-  background-image: url(../../files/beam/beam1010.jpg);
+  background-image: url(../../files/beam/b10.jpg);
   width: 100vw;
 }
 
 #img11-1 {
-  background-image: url(../../files/beam/beam11-1.jpg);
+  background-image: url(../../files/beam/b11-1.jpg);
   width: calc(50vw - 0.35vw);
   margin-right: 0.35vw;
   background-size: cover;
 }
 
 #img11-2 {
-  background-image: url(../../files/beam/beam11-2.jpg);
+  background-image: url(../../files/beam/b11-2.jpg);
   width: calc(50vw - 0.35vw);
   margin-left: 0.35vw;
   background-size: cover;
@@ -374,7 +374,7 @@ img {
 } */
 
 #img12 {
-  background-image: url(../../files/beam/beam1212.jpg);
+  background-image: url(../../files/beam/b12.jpg);
   width: 100vw;
 }
 
