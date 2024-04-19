@@ -274,3 +274,22 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+  var box6 = document.getElementById('box6');
+  var blackBox6 = document.getElementById('blackbox6');
+
+  if (window.innerWidth > 1024) { 
+    if (blackBox6) {
+      blackBox6.addEventListener('click', function() {
+        window.location.href = '../work_indivisual/work_AandL/work_AandL.html';
+      });
+    }
+  } else { 
+    if (box6) {
+      box6.addEventListener('click', function() {
+        window.location.href = '../work_indivisual/work_AandL/work_AandLe.html';
+      });
+    }
+  }
+});
