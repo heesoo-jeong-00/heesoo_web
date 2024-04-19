@@ -304,68 +304,79 @@ img {
 
 
 #img1 {
-  background-image: url(../../files/curva/curva5.jpg);
+  background-image: url(../../files/beam/beam.jpg);
   width: 100vw;
 
 }
 
 #img2 {
-  background-image: url(../../files/curva/curva.jpg);
+  background-image: url(../../files/beam/beam2.jpg);
   width: 100vw;
 }
 
 #img3 {
-  background-image: url(../../files/curva/curva2.jpg);
+  background-image: url(../../files/beam/beam3.jpg);
   width: 100vw;
 }
 
 #img4 {
-  background-image: url(../../files/curva/curva3.jpg);
+  background-image: url(../../files/beam/beam4.jpg);
   width: 100vw;
 }
 
 #img5 {
-  background-image: url(../../files/curva/curva4.jpg);
+  background-image: url(../../files/beam/beam5.jpg);
   width: 100vw;
 }
 
-#img6-1 {
-  background-image: url(../../files/curva/curva6-1.jpg);
-  width: calc(50vw - 0.35vw);
-  margin-right: 0.35vw;
-  background-size: cover;
-}
-
-#img6-2 {
-  background-image: url(../../files/curva/curva6-2.jpg);
-  width: calc(50vw - 0.35vw);
-  margin-left: 0.35vw;
-  background-size: cover;
+#img6 {
+  background-image: url(../../files/beam/beam66.jpg);
+  width: 100vw;
 }
 
 #img7 {
-  background-image: url(../../files/curva/curva7.jpg);
+  background-image: url(../../files/beam/beam77.jpg);
   width: 100vw;
 }
 
-#img8-1 {
-  background-image: url(../../files/curva/curva8-1.jpg);
+#img8 {
+  background-image: url(../../files/beam/beam88.jpg);
+  width: 100vw;
+}
 
-  /* margin-bottom: 0vw; */
+#img9 {
+  background-image: url(../../files/beam/beam99.jpg);
+  width: 100vw;
+}
+
+#img10 {
+  background-image: url(../../files/beam/beam1010.jpg);
+  width: 100vw;
+}
+
+#img11-1 {
+  background-image: url(../../files/beam/beam11-1.jpg);
   width: calc(50vw - 0.35vw);
   margin-right: 0.35vw;
   background-size: cover;
 }
 
-#img8-2 {
-  background-image: url(../../files/curva/curva8-2.jpg);
-
-  /* margin-bottom: 0vw; */
-  width: calc(50vw - 0.53vw);
+#img11-2 {
+  background-image: url(../../files/beam/beam11-2.jpg);
+  width: calc(50vw - 0.35vw);
   margin-left: 0.35vw;
   background-size: cover;
 }
 
+/* #img11 {
+  background-image: url(../../files/beam/beam11.jpg);
+  width: 100vw;
+} */
+
+#img12 {
+  background-image: url(../../files/beam/beam1212.jpg);
+  width: 100vw;
+}
 
 /* footer */
 

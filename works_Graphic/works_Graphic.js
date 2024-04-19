@@ -190,7 +190,7 @@ document.addEventListener("DOMContentLoaded", function() {
       's2img': '../work_indivisual/work_Morse/work_Morse.html',
       's3img': '../work_indivisual/work_TheNewArchitecture/work_TheNewArchitecture.html',
       's4img': '../work_indivisual/work_AisleAndLens/work_AisleAndLens.html',
-      's5img': '../work_indivisual/work_Beam/Beam.html',
+      's5img': '../work_indivisual/work_Beam/work_Beam.html',
       's6img': '../work_indivisual/work_HangItAll/HangItAll.html'
   };
 
