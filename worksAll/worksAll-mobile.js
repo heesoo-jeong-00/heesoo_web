@@ -282,13 +282,13 @@ document.addEventListener('DOMContentLoaded', function() {
   if (window.innerWidth > 1024) { 
     if (blackBox6) {
       blackBox6.addEventListener('click', function() {
-        window.location.href = '../work_indivisual/work_AandL/work_AandL.html';
+        window.location.href = '../work_indivisual/work_AisleAndLens/work_AisleAndLens.html';
       });
     }
   } else { 
     if (box6) {
       box6.addEventListener('click', function() {
-        window.location.href = '../work_indivisual/work_AandL/work_AandLe.html';
+        window.location.href = '../work_indivisual/work_AisleAndLens/work_AisleAndLens.html';
       });
     }
   }
