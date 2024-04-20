@@ -65,20 +65,6 @@ function mousemove(e) {
       break
 
 
-      case 'pro0':
-        if (stage === 'pro0') return
-        scale = 1;
-        stage = 'pro0'
-        console.log('pro0')
-        break
-
-    case 'pro1':
-      if (stage === 'pro1') return
-      scale = 2;
-      stage = 'pro1'
-      console.log('pro1')
-      break
-
 
     case 'bottomItem1':
       if (stage === 'bottomItem1') return
@@ -118,7 +104,6 @@ function mouseup(e) {
 
 
 //애니메이션 추가
-
 // HTML 요소에 대한 참조 변수를 설정
 const headerBox = document.getElementById('headerBox');
 const topBoxes = document.getElementById('topBoxes');
@@ -170,75 +155,21 @@ window.addEventListener('scroll', function () {
 });
 
 
-//페이지 로드 시 main(section) 투명도 조절
-
-document.addEventListener('DOMContentLoaded', function () {
-  const section = document.querySelectorAll('.section');
-  section.forEach(el => {
-    el.style.opacity = 1;
-  });
-});
 
 
 
-//모바일 image 클릭시 인터렉션
+// window.addEventListener('resize', adjustSectionHeight);
+// window.addEventListener('DOMContentLoaded', adjustSectionHeight);  // 페이지 로드 시에도 함수 호출
 
-document.addEventListener("DOMContentLoaded", function() {
-  // 각 ID에 따른 HTML 파일 경로 매핑
-  var paths = {
-      's1img': '../work_indivisual/work_Curva/work_Curva.html',
-      's2img': '../work_indivisual/work_Morse/work_Morse.html',
-      's3img': '../work_indivisual/work_TheNewArchitecture/work_TheNewArchitecture.html',
-      's4img': '../work_indivisual/work_AisleAndLens/work_AisleAndLens.html',
-      's5img': '../work_indivisual/work_Beam/work_Beam.html',
-      's6img': '../work_indivisual/work_HangItAll/work_HangItAll.html'
-  };
-
-  function redirectToPage(event) {
-      var targetId = event.currentTarget.id;
-      if (paths[targetId]) {
-          window.location.href = paths[targetId]; // 매핑된 HTML 경로로 리다이렉트
-      }
-  }
-
-  function addEventListeners() {
-      var imgDivs = document.querySelectorAll('#s1img, #s2img, #s3img, #s4img, #s5img, #s6img'); // 모든 대상 이미지 선택
-      imgDivs.forEach(function(div) {
-          div.addEventListener('click', redirectToPage);
-      });
-  }
-
-  function removeEventListeners() {
-      var imgDivs = document.querySelectorAll('#s1img, #s2img, #s3img, #s4img, #s5img, #s6img');
-      imgDivs.forEach(function(div) {
-          div.removeEventListener('click', redirectToPage);
-      });
-  }
-
-  function checkWidth() {
-      if (window.innerWidth <= 767) {
-          addEventListeners();
-      } else {
-          removeEventListeners();
-      }
-  }
-
-  // 화면 크기가 변경될 때마다 이벤트 리스너를 조정
-  window.addEventListener('resize', checkWidth);
-  // 초기 로드 시에도 실행
-  checkWidth();
-});
-
-
-
-// document.addEventListener('DOMContentLoaded', function() {
-//   var img1 = document.getElementsByID('#s1img');
-
-//   if (window.innerWidth < 768) { 
-//     if (img1) {
-//       img1.addEventListener('click', function() {
-//         window.location.href = '../work_Curva/work_Curva.html';
-//       });
-//     }
+// function adjustSectionHeight() {
+//   if (window.innerWidth > 767) {  // 화면 너비가 767px 초과일 경우에만 실행
+//     var headerHeight = document.querySelector('header') ? document.querySelector('header').offsetHeight : 0;
+//     var footerHeight = document.querySelector('footer') ? document.querySelector('footer').offsetHeight : 0;
+//     var availableHeight = window.innerHeight - 96;  // 96px 만큼 추가로 빼줍니다.
+//     document.getElementById('section1').style.height = availableHeight + 'px';
+//   } else {
+//     document.getElementById('section1').style.height = '70vw';  // 767px 이하에서는 높이를 'auto'로 설정
 //   }
-// });
+// }
+
+// adjustSectionHeight();  // 초기 높이를 설정합니다.

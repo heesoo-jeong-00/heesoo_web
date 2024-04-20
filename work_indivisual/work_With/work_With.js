@@ -218,6 +218,9 @@ videos.forEach(video => {
   } else if (video.getAttribute('id') === 'video7') {
     video.playbackRate = 1.75; 
   } 
+  else if (video.getAttribute('id') === 'video4') {
+    video.playbackRate = 1.2; 
+  } 
   
   else {
     video.playbackRate = 1.5;

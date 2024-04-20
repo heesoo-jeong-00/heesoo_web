@@ -326,3 +326,22 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+  var box9 = document.getElementById('box9');
+  var blackBox9 = document.getElementById('blackbox9');
+
+  if (window.innerWidth > 1024) { 
+    if (blackBox9) {
+      blackBox9.addEventListener('click', function() {
+        window.location.href = '../work_indivisual/work_HangItAll/work_HangItAll.html';
+      });
+    }
+  } else { 
+    if (box9) {
+      box9.addEventListener('click', function() {
+        window.location.href = '../work_indivisual/work_HangItAll/work_HangItAll.html';
+      });
+    }
+  }
+});
