@@ -255,6 +255,13 @@ img {
   border: 1.7px solid black;
 }
 
+#mainbutton:hover {
+  transition: all 0.2s ease-in-out;
+  background-color: black;
+  color: white;
+  /* transform: scale(1.2); */
+}
+
 .content {
   text-align: center;
   font-family: "Prompt", sans-serif;
