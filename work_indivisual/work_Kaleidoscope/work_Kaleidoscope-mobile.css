@@ -199,6 +199,7 @@ main {
   overflow: hidden;
 }
 
+
 #section2 {
   width: 100vw;
   height: auto;
@@ -210,7 +211,7 @@ main {
   flex-direction: column;
   position: relative;
   text-align: center;
-
+ justify-content: center;
   font-family: "Prompt", sans-serif;
   /* font-weight: 300; */
   font-style: normal;
@@ -220,9 +221,29 @@ main {
   justify-content: center;
   align-items: center;
   color: black;
-  padding: 10%;
+  padding: 10% 10% 15% 10%;
   /* border:rgb(255, 0, 0) solid 1px; */
 }
+
+
+#mainbutton{
+  top: 2vw;
+  position: relative;
+  white-space: nowrap;
+  background-color: rgb(255, 255, 255);
+  color: black;
+  border-radius: 30px;
+  z-index: 10;
+  font-size: 16px;
+
+  font-family: "Prompt", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  padding: 2.5px 20px;
+  border: 1.7px solid black;
+}
+
+
 
 .content {
   text-align: center;
@@ -287,28 +308,6 @@ main {
   margin-bottom: 1.4vw;
 }
 
-
-
-
-#img6-1 {
-  width: calc(50vw - 0.7vw);
-  margin-right: 0.7vw;
-}
-
-#img6-2 {
-  width: calc(50vw - 0.7vw);
-  margin-left: 0.7vw;
-}
-
-#img8-1 {
-  width: calc(50vw - 0.7vw);
-  margin-right: 0.7vw;
-}
-
-#img8-2 {
-  width: calc(50vw - 0.7vw);
-  margin-left: 0.7vw;
-}
 
 
 /* footer */

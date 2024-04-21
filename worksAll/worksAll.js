@@ -328,6 +328,25 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
+  var box8 = document.getElementById('box8');
+  var blackBox8 = document.getElementById('blackbox8');
+
+  if (window.innerWidth > 1024) { 
+    if (blackBox8) {
+      blackBox8.addEventListener('click', function() {
+        window.location.href = '../work_indivisual/work_Kaleidoscope/work_Kaleidoscope.html';
+      });
+    }
+  } else { 
+    if (box8) {
+      box8.addEventListener('click', function() {
+        window.location.href = '../work_indivisual/work_Kaleidoscope/work_Kaleidoscope.html';
+      });
+    }
+  }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
   var box9 = document.getElementById('box9');
   var blackBox9 = document.getElementById('blackbox9');
 

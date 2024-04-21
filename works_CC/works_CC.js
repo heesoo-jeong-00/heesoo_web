@@ -186,9 +186,9 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener("DOMContentLoaded", function() {
   // 각 ID에 따른 HTML 파일 경로 매핑
   var paths = {
-      's1img': '../work_indivisual/work_TypeDesigner/work_TypeDesigner.html',
+      's1img': '../work_indivisual/work_TypePlay/work_TypePlay.html',
       's2img': '../work_indivisual/work_Kaleidoscope/work_Kaleidoscope.html',
-      's3img': '../work_indivisual/',
+      's3img': '../work_indivisual/work_Heesoo/work_Heesoo.html',
       's4img': '../work_indivisual/',
       's5img': '../work_indivisual/',
       's6img': '../work_indivisual/'
