@@ -293,3 +293,61 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 });
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  var box7 = document.getElementById('box7');
+  var blackBox7 = document.getElementById('blackbox7');
+
+  if (window.innerWidth > 1024) { 
+    if (blackBox7) {
+      blackBox7.addEventListener('click', function() {
+        window.location.href = '../work_indivisual/work_Beam/work_Beam.html';
+      });
+    }
+  } else { 
+    if (box7) {
+      box7.addEventListener('click', function() {
+        window.location.href = '../work_indivisual/work_Beam/work_Beam.html';
+      });
+    }
+  }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  var box8 = document.getElementById('box8');
+  var blackBox8 = document.getElementById('blackbox8');
+
+  if (window.innerWidth > 1024) { 
+    if (blackBox8) {
+      blackBox8.addEventListener('click', function() {
+        window.location.href = '../work_indivisual/work_Kaleidoscope/work_Kaleidoscope.html';
+      });
+    }
+  } else { 
+    if (box8) {
+      box8.addEventListener('click', function() {
+        window.location.href = '../work_indivisual/work_Kaleidoscope/work_Kaleidoscope.html';
+      });
+    }
+  }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  var box9 = document.getElementById('box9');
+  var blackBox9 = document.getElementById('blackbox9');
+
+  if (window.innerWidth > 1024) { 
+    if (blackBox9) {
+      blackBox9.addEventListener('click', function() {
+        window.location.href = '../work_indivisual/work_HangItAll/work_HangItAll.html';
+      });
+    }
+  } else { 
+    if (box9) {
+      box9.addEventListener('click', function() {
+        window.location.href = '../work_indivisual/work_HangItAll/work_HangItAll.html';
+      });
+    }
+  }
+});
