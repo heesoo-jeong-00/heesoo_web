@@ -326,6 +326,27 @@ main {
   background-size: cover;
 }
 
+
+
+#box10 {
+  width: calc(25vw - 5vw);
+  background-image: url(../files/bodega/bodega1.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+#box11 {
+  width: calc(75vw - 5vw);
+    background-image: url(../files/type/type-main.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+
+
+
 #box6 {
   width: calc(25vw - 5vw);
   background-image: url(../files/AL-main.jpg);

@@ -193,7 +193,7 @@ img {
   top: -96px;
   /* background-color: rgb(255, 255, 255); */
   /* border:rgb(0, 72, 255) solid 1px; */
-  background-image: url(../../files/flower/Flower3-main.jpg);
+  background-image: url(../../files/type/type-main1.jpg);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -333,10 +333,27 @@ img {
 
 
 #img1 {
-  background-image: url(../../files/flower/flowervideo.gif);
+  background-image: url(../../files/type/type2.jpg);
   width: 100vw;
-
 }
+
+
+
+
+.videos{
+  width: 100vw;
+  height: 50.78vw;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 0.7vw;
+  border-radius: 3vw;
+  width: 100%; 
+  height: auto; 
+}
+
+
 
 
 

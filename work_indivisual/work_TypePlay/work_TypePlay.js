@@ -158,18 +158,76 @@ window.addEventListener('scroll', function () {
 
 
 
-// window.addEventListener('resize', adjustSectionHeight);
-// window.addEventListener('DOMContentLoaded', adjustSectionHeight);  // 페이지 로드 시에도 함수 호출
+// var played = false; // 비디오 재생 여부를 추적하는 변수
 
-// function adjustSectionHeight() {
-//   if (window.innerWidth > 767) {  // 화면 너비가 767px 초과일 경우에만 실행
-//     var headerHeight = document.querySelector('header') ? document.querySelector('header').offsetHeight : 0;
-//     var footerHeight = document.querySelector('footer') ? document.querySelector('footer').offsetHeight : 0;
-//     var availableHeight = window.innerHeight - 96;  // 96px 만큼 추가로 빼줍니다.
-//     document.getElementById('section1').style.height = availableHeight + 'px';
-//   } else {
-//     document.getElementById('section1').style.height = '70vw';  // 767px 이하에서는 높이를 'auto'로 설정
+// window.addEventListener('scroll', function() {
+//   var video = document.getElementById('video1');
+//   var videoHeight = video.clientHeight;
+//   var videoPosition = video.getBoundingClientRect().top + window.scrollY;
+//   var screenPosition = window.innerHeight + window.scrollY;
+
+//   // 비디오 중간이 화면에 보일 때만 재생
+//   if (screenPosition > videoPosition + videoHeight / 2) {
+//     if (!played) { // 비디오가 아직 재생되지 않았다면
+//       video.play();
+//       played = true; // 비디오를 재생했다고 표시
+//     }
 //   }
-// }
+// });
 
-// adjustSectionHeight();  // 초기 높이를 설정합니다.
+
+// 비디오 요소들을 배열에 담음
+const videos = [
+  document.getElementById('video1')
+];
+
+// 각 비디오에 대한 초기 설정 및 특정 비디오에 loop 설정
+videos.forEach(video => {
+  video.style.opacity = 0; // 초기 투명도를 0으로 설정
+  const videoId = video.getAttribute('id');
+  if (videoId === 'video1') {
+    video.loop = true;  // loop 속성 추가
+  }
+});
+
+
+
+let lastScrollTop = 0; // 마지막 스크롤 위치 저장
+let lastDirection = ''; // 마지막 스크롤 방향 저장
+
+// Intersection Observer 생성
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    const video = entry.target;
+    const isScrollingDown = lastDirection === 'down';
+
+    if (entry.isIntersecting) { // 비디오가 화면에 보이는 경우
+      video.style.opacity = 1; // 투명도를 1로 설정
+      if (isScrollingDown) {
+        video.currentTime = 0;
+      }
+      video.play();
+    } else { // 비디오가 화면에서 벗어날 때
+      if (!isScrollingDown) { // 스크롤 업일 때만 투명도를 0으로 설정
+        video.style.opacity = 1;
+        video.pause();
+      }
+    }
+  });
+}, { threshold: 0.5 });
+
+// 각 비디오 요소를 관찰 대상으로 추가
+videos.forEach(video => {
+  observer.observe(video);
+});
+
+// 스크롤 이벤트 리스너 추가
+window.addEventListener('scroll', function () {
+  const currentScroll = window.scrollY;
+  if (currentScroll > lastScrollTop) {
+    lastDirection = 'down';
+  } else {
+    lastDirection = 'up';
+  }
+  lastScrollTop = currentScroll;
+});

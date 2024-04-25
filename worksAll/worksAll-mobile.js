@@ -351,3 +351,42 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+  var box10 = document.getElementById('box10');
+  var blackBox10 = document.getElementById('blackbox10');
+
+  if (window.innerWidth > 1024) { 
+    if (blackBox10) {
+      blackBox10.addEventListener('click', function() {
+        window.location.href = '../work_indivisual/work_Bodega/work_Bodega.html';
+      });
+    }
+  } else { 
+    if (box10) {
+      box10.addEventListener('click', function() {
+        window.location.href = '../work_indivisual/work_Bodega/work_Bodega.html';
+      });
+    }
+  }
+});
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  var box11 = document.getElementById('box11');
+  var blackBox11 = document.getElementById('blackbox11');
+
+  if (window.innerWidth > 1024) { 
+    if (blackBox11) {
+      blackBox11.addEventListener('click', function() {
+        window.location.href = '../work_indivisual/work_TypePlay/work_TypePlay.html';
+      });
+    }
+  } else { 
+    if (box11) {
+      box11.addEventListener('click', function() {
+        window.location.href = '../work_indivisual/work_TypePlay/work_TypePlay.html';
+      });
+    }
+  }
+})

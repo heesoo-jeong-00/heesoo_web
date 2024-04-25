@@ -193,9 +193,9 @@ main {
   /* background-color: rgb(255, 255, 255); */
   /* border:rgb(0, 72, 255) solid 1px; */
   background-repeat: no-repeat;
+  background-image: url(../../files/bodega/bodega1-mobile.jpg);
   /* background-position: center 10px; */
   background-position: center center;
-  background-size: cover;
   overflow: hidden;
 }
 
@@ -271,12 +271,9 @@ main {
 
 .images {
   width: 100vw;
-  height: 56.25vw;
-
+  /* height: 56.25vw; */
   background-repeat: no-repeat;
   background-position: center center;
-  /* background-size:contain; */
-  background-size: 100%;
 
   position: relative;
   /* background-color: rgb(255, 255, 255); */
@@ -284,32 +281,50 @@ main {
   /* border:rgb(0, 72, 255) solid 1px; */
   margin: 0;
   padding: 0;
-  margin-bottom: 1.4vw;
+  /* margin-bottom: 1.4vw; */
+}
+
+#img1{
+  background-size: 95%;
+}
+
+#img2{
+  background-size: 95%;
+}
+
+#img3{
+  background-size: 95%;
+}
+
+#img4{
+  background-size: 95%;
+}
+
+#img5{
+  background-size: 95%;
 }
 
 
-
-
-#img6-1 {
-  width: calc(50vw - 0.7vw);
-  margin-right: 0.7vw;
+#img6{
+  background-size: 95%;
 }
 
-#img6-2 {
-  width: calc(50vw - 0.7vw);
-  margin-left: 0.7vw;
+#img7{
+  background-size: 95%;
 }
 
-#img8-1 {
-  width: calc(50vw - 0.7vw);
-  margin-right: 0.7vw;
+#img8{
+  background-size: 95%;
 }
 
-#img8-2 {
-  width: calc(50vw - 0.7vw);
-  margin-left: 0.7vw;
+#img9{
+  background-size: 95%;
 }
 
+#img10{
+  background-size: 95%;
+  margin-bottom: 4vw;
+}
 
 /* footer */
 

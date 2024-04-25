@@ -193,7 +193,7 @@ img {
   top: -96px;
   /* background-color: rgb(255, 255, 255); */
   /* border:rgb(0, 72, 255) solid 1px; */
-  background-image: url(../../files/beam-main.jpg);
+  background-image: url(../../files/bodega/bodega1.jpg);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -298,79 +298,79 @@ img {
   /* border:rgb(0, 72, 255) solid 1px; */
   margin: 0;
   padding: 0;
-  margin-bottom: 0.7vw;
+  /* margin-bottom: 0.7vw; */
   border-radius: 3vw;
 }
 
 
 #img1 {
-  background-image: url(../../files/Beam/b1.jpg);
+  background-image: url(../../files/bodega/bodega2.jpg);
   width: 100vw;
-
+  background-size: 92%;
+  margin-bottom: 4vw;
 }
 
 #img2 {
-  background-image: url(../../files/Beam/b2.jpg);
+  background-image: url(../../files/bodega/bodega3.jpg);
   width: 100vw;
+  background-size: 92%;
+  margin-bottom: 4vw;
 }
 
 #img3 {
-  background-image: url(../../files/Beam/b3.jpg);
+  background-image: url(../../files/bodega/bodega4.jpg);
   width: 100vw;
+  background-size: 92%;
+  margin-bottom: 4vw;
 }
 
 #img4 {
-  background-image: url(../../files/Beam/b4.jpg);
+  background-image: url(../../files/bodega/bodega5.jpg);
   width: 100vw;
+  background-size: 92%;
+  margin-bottom: 2vw;
 }
 
 #img5 {
-  background-image: url(../../files/Beam/b5.jpg);
+  background-image: url(../../files/bodega/bodega6.jpg);
   width: 100vw;
+  background-size: 92%;
+  margin-bottom: 4vw;
 }
 
 #img6 {
-  background-image: url(../../files/Beam/b6.jpg);
+  background-image: url(../../files/bodega/bodega7.jpg);
   width: 100vw;
+  background-size: 92%;
+  margin-bottom: 4vw;
 }
 
 #img7 {
-  background-image: url(../../files/Beam/b7.jpg);
+  background-image: url(../../files/bodega/bodega8.jpg);
   width: 100vw;
+  background-size: 92%;
+  margin-bottom: 4vw;
 }
 
 #img8 {
-  background-image: url(../../files/Beam/b8.jpg);
+  background-image: url(../../files/bodega/bodega9.jpg);
   width: 100vw;
+  background-size: 92%;
+  margin-bottom: 4vw;
 }
 
 #img9 {
-  background-image: url(../../files/Beam/b9.jpg);
+  background-image: url(../../files/bodega/bodega10.jpg);
   width: 100vw;
+  background-size: 92%;
+  margin-bottom: 4vw;
 }
 
 #img10 {
-  background-image: url(../../files/Beam/b10.jpg);
+  background-image: url(../../files/bodega/bodega11.jpg);
   width: 100vw;
-}
-
-#img11-1 {
-  background-image: url(../../files/Beam/b11-1.jpg);
-  width: calc(50vw - 0.35vw);
-  margin-right: 0.35vw;
-  background-size: cover;
-}
-
-#img11-2 {
-  background-image: url(../../files/Beam/b11-2.jpg);
-  width: calc(50vw - 0.35vw);
-  margin-left: 0.35vw;
-  background-size: cover;
-}
-
-#img12 {
-  background-image: url(../../files/Beam/b12.jpg);
-  width: 100vw;
+  background-size: 92%;
+  margin-bottom: 3vw;
 }
 
 /* footer */

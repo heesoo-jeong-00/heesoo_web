@@ -189,6 +189,7 @@ document.addEventListener("DOMContentLoaded", function() {
       's1img': '../work_indivisual/work_Curva/work_Curva.html',
       's2img': '../work_indivisual/work_Morse/work_Morse.html',
       's3img': '../work_indivisual/work_TheNewArchitecture/work_TheNewArchitecture.html',
+      's3-1img': '../work_indivisual/work_Bodega/work_Bodega.html',
       's4img': '../work_indivisual/work_AisleAndLens/work_AisleAndLens.html',
       's5img': '../work_indivisual/work_Beam/work_Beam.html',
       's6img': '../work_indivisual/work_HangItAll/work_HangItAll.html'
@@ -202,7 +203,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   function addEventListeners() {
-      var imgDivs = document.querySelectorAll('#s1img, #s2img, #s3img, #s4img, #s5img, #s6img'); // 모든 대상 이미지 선택
+      var imgDivs = document.querySelectorAll('#s1img, #s2img, #s3img,#s3-1img, #s4img, #s5img, #s6img'); // 모든 대상 이미지 선택
       imgDivs.forEach(function(div) {
           div.addEventListener('click', redirectToPage);
       });
