@@ -187,22 +187,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-
-
 document.addEventListener('DOMContentLoaded', function() {
   var box1 = document.getElementById('box1');
   var blackBox1 = document.getElementById('blackbox1');
 
-  if (window.innerWidth > 1024) { // 데스크톱 환경에서만 blackBox1에 이벤트 리스너를 추가
+  if (window.innerWidth > 1200) { // 데스크톱 환경에서만 blackBox1에 이벤트 리스너를 추가
     if (blackBox1) {
       blackBox1.addEventListener('click', function() {
-        window.location.href = '../work_indivisual/work_Curva/work_Curva.html';
+        window.location.href = '../work_Curva/work_Curva.html';
       });
     }
   } else { // 모바일 환경에서는 box1에 이벤트 리스너를 추가
     if (box1) {
       box1.addEventListener('click', function() {
-        window.location.href = '../work_indivisual/work_Curva/work_Curva.html';
+        window.location.href = '../work_Curva/work_Curva.html';
       });
     }
   }
@@ -213,7 +211,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var box2 = document.getElementById('box2');
   var blackBox2 = document.getElementById('blackbox2');
 
-  if (window.innerWidth > 1024) { 
+  if (window.innerWidth > 1200) { 
     if (blackBox2) {
       blackBox2.addEventListener('click', function() {
         window.location.href = '../work_indivisual/work_With/work_With.html';
@@ -228,11 +226,12 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
+
 document.addEventListener('DOMContentLoaded', function() {
   var box3 = document.getElementById('box3');
   var blackBox3 = document.getElementById('blackbox3');
 
-  if (window.innerWidth > 1024) { 
+  if (window.innerWidth > 1200) { 
     if (blackBox3) {
       blackBox3.addEventListener('click', function() {
         window.location.href = '../work_indivisual/work_Nebula/work_Nebula.html';
@@ -252,7 +251,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var box4 = document.getElementById('box4');
   var blackBox4 = document.getElementById('blackbox4');
 
-  if (window.innerWidth > 1024) { 
+  if (window.innerWidth > 1200) { 
     if (blackBox4) {
       blackBox4.addEventListener('click', function() {
         window.location.href = '../work_indivisual/work_Morse/work_Morse.html';
@@ -272,7 +271,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var box5 = document.getElementById('box5');
   var blackBox5 = document.getElementById('blackbox5');
 
-  if (window.innerWidth > 1024) { 
+  if (window.innerWidth > 1200) { 
     if (blackBox5) {
       blackBox5.addEventListener('click', function() {
         window.location.href = '../work_indivisual/work_TheNewArchitecture/work_TheNewArchitecture.html';
@@ -287,13 +286,11 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-
-
 document.addEventListener('DOMContentLoaded', function() {
   var box6 = document.getElementById('box6');
   var blackBox6 = document.getElementById('blackbox6');
 
-  if (window.innerWidth > 1024) { 
+  if (window.innerWidth > 1200) { 
     if (blackBox6) {
       blackBox6.addEventListener('click', function() {
         window.location.href = '../work_indivisual/work_AisleAndLens/work_AisleAndLens.html';
@@ -308,11 +305,12 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
+
 document.addEventListener('DOMContentLoaded', function() {
   var box7 = document.getElementById('box7');
   var blackBox7 = document.getElementById('blackbox7');
 
-  if (window.innerWidth > 1024) { 
+  if (window.innerWidth > 1200) { 
     if (blackBox7) {
       blackBox7.addEventListener('click', function() {
         window.location.href = '../work_indivisual/work_Beam/work_Beam.html';
@@ -331,7 +329,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var box8 = document.getElementById('box8');
   var blackBox8 = document.getElementById('blackbox8');
 
-  if (window.innerWidth > 1024) { 
+  if (window.innerWidth > 1200) { 
     if (blackBox8) {
       blackBox8.addEventListener('click', function() {
         window.location.href = '../work_indivisual/work_Kaleidoscope/work_Kaleidoscope.html';
@@ -350,7 +348,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var box9 = document.getElementById('box9');
   var blackBox9 = document.getElementById('blackbox9');
 
-  if (window.innerWidth > 1024) { 
+  if (window.innerWidth > 1200) { 
     if (blackBox9) {
       blackBox9.addEventListener('click', function() {
         window.location.href = '../work_indivisual/work_HangItAll/work_HangItAll.html';
@@ -364,13 +362,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 });
- 
 
 document.addEventListener('DOMContentLoaded', function() {
   var box10 = document.getElementById('box10');
   var blackBox10 = document.getElementById('blackbox10');
 
-  if (window.innerWidth > 1024) { 
+  if (window.innerWidth > 1200) { 
     if (blackBox10) {
       blackBox10.addEventListener('click', function() {
         window.location.href = '../work_indivisual/work_Bodega/work_Bodega.html';
@@ -390,7 +387,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var box11 = document.getElementById('box11');
   var blackBox11 = document.getElementById('blackbox11');
 
-  if (window.innerWidth > 1024) { 
+  if (window.innerWidth > 1200) { 
     if (blackBox11) {
       blackBox11.addEventListener('click', function() {
         window.location.href = '../work_indivisual/work_TypePlay/work_TypePlay.html';
