@@ -193,7 +193,7 @@ img {
   top: -96px;
   /* background-color: rgb(255, 255, 255); */
   /* border:rgb(0, 72, 255) solid 1px; */
-  background-image: url(../../files/AltiAir/AltiAir-main.jpg);
+  background-image: url(../../files/AltiAir/AltiAir-main2.jpg);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -354,6 +354,12 @@ img {
   height: 50vw;
 }
 
+#img8 {
+  background-image: url(../../files/AltiAir/AltiAir-main.jpg);
+  width: 100vw;
+  background-size: cover;
+    height: 56.25vw;
+}
 
 
 /* footer */

@@ -366,6 +366,23 @@ main {
     background-size: cover;
 }
 
+#box12 {
+  width: calc(50vw - 5vw);
+    background-image: url(../files/AltiAir/AltiAir-main2.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    /* background-size: contain; */
+    background-size: cover;
+}
+
+#box13 {
+  width: calc(50vw - 5vw);
+  background-image: url(../files/heesoo-main.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  /* background-size: contain; */
+  background-size: cover;
+}
 
 
 #box6 {

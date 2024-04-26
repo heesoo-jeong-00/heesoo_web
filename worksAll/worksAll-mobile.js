@@ -394,3 +394,43 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 })
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  var box12 = document.getElementById('box12');
+  var blackBox12 = document.getElementById('blackbox12');
+
+  if (window.innerWidth > 1024) { 
+    if (blackBox12) {
+      blackBox12.addEventListener('click', function() {
+        window.location.href = '../work_indivisual/work_AltiAir/work_AltiAir.html';
+      });
+    }
+  } else { 
+    if (box12) {
+      box12.addEventListener('click', function() {
+        window.location.href = '../work_indivisual/work_AltiAir/work_AltiAir.html';
+      });
+    }
+  }
+})
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  var box13 = document.getElementById('box13');
+  var blackBox13 = document.getElementById('blackbox13');
+
+  if (window.innerWidth > 1024) { 
+    if (blackBox13) {
+      blackBox13.addEventListener('click', function() {
+        window.location.href = '../work_indivisual/work_Heesoo/work_Heesoo.html';
+      });
+    }
+  } else { 
+    if (box13) {
+      box13.addEventListener('click', function() {
+        window.location.href = '../work_indivisual/work_Heesoo/work_Heesoo.html';
+      });
+    }
+  }
+})
