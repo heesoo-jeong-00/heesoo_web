@@ -206,7 +206,11 @@ img {
   /* margin-bottom: 0vw; */
 }
 
-
+@media only screen and (min-device-width : 768px) and (max-device-width : 1200px)  and (orientation : portrait){
+  #section1 {
+    height: 75vw;
+  }
+}
 
 
 
