@@ -122,51 +122,50 @@ const videos = [
   document.getElementById('video5'),
   document.getElementById('video6'),
   document.getElementById('video7'),
-  document.getElementById('video8'),
+  document.getElementById('video8')
 ];
 
 // 각 비디오에 대한 초기 설정 및 특정 비디오에 loop 설정
 videos.forEach(video => {
   video.style.opacity = 0; // 초기 투명도를 0으로 설정
   const videoId = video.getAttribute('id');
-  if (videoId === 'video1' ||videoId === 'video2' ||videoId === 'video3' || videoId === 'video4' || videoId === 'video5' || videoId === 'video6' || videoId === 'video7'|| videoId === 'video8') {
+  if (videoId === 'video1' || videoId === 'video2' || videoId === 'video3' || videoId === 'video4' || videoId === 'video5' || videoId === 'video6' || videoId === 'video7'|| videoId === 'video8') {
     video.loop = true;  // loop 속성 추가
   }
 });
 
 
 
-// // 비디오 반복 재생 설정 함수 수정
+// // // 비디오 반복 재생 설정 함수 수정
 
-function setupVideoRepeat(video, repeatStartTime) {
-  let initialSetupDone = false; // 초기 설정 완료 여부 플래그
+// function setupVideoRepeat(video, repeatStartTime) {
+//   let initialSetupDone = false; // 초기 설정 완료 여부 플래그
 
-  // 비디오 메타데이터가 로드되었을 때 초기 설정 실행
-  video.onloadedmetadata = function() {
-    if (!initialSetupDone) {
-      video.currentTime = repeatStartTime;  // 최초 로딩 시, 반복 시작 지점으로 이동
-      initialSetupDone = true;
-    }
-  };
+//   // 비디오 메타데이터가 로드되었을 때 초기 설정 실행
+//   video.onloadedmetadata = function() {
+//     if (!initialSetupDone) {
+//       video.currentTime = repeatStartTime;  // 최초 로딩 시, 반복 시작 지점으로 이동
+//       initialSetupDone = true;
+//     }
+//   };
 
-  // 비디오가 지정된 시간을 넘어서면 지정된 시작 지점으로 돌아가도록 설정
-  video.addEventListener('timeupdate', function() {
-    if (video.currentTime >= video.duration - 0.5) {
-      video.currentTime = repeatStartTime;
-      video.play().catch(e => console.error(`Error replaying video ${video.id}:`, e));
-    }
-  });
-}
+//   // 비디오가 지정된 시간을 넘어서면 지정된 시작 지점으로 돌아가도록 설정
+//   video.addEventListener('timeupdate', function() {
+//     if (video.currentTime >= video.duration - 0.5) {
+//       video.currentTime = repeatStartTime;
+//       video.play().catch(e => console.error(`Error replaying video ${video.id}:`, e));
+//     }
+//   });
+// }
 
 // 비디오 요소에 대한 반복 설정 코드
-// setupVideoRepeat(document.getElementById('video1'), 2);
-setupVideoRepeat(document.getElementById('video2'), 1.7);
-setupVideoRepeat(document.getElementById('video3'), 1.7);
-setupVideoRepeat(document.getElementById('video4'), 1.7);
-setupVideoRepeat(document.getElementById('video5'), 1.7);
-setupVideoRepeat(document.getElementById('video6'), 1.4);
-setupVideoRepeat(document.getElementById('video7'), 0.3);
-setupVideoRepeat(document.getElementById('video8'), 0.7);
+// setupVideoRepeat(document.getElementById('video2'), 1.7);
+// setupVideoRepeat(document.getElementById('video3'), 1.7);
+// setupVideoRepeat(document.getElementById('video4'), 1.7);
+// setupVideoRepeat(document.getElementById('video5'), 1.7);
+// setupVideoRepeat(document.getElementById('video6'), 1.4);
+// setupVideoRepeat(document.getElementById('video7'), 0.3);
+// setupVideoRepeat(document.getElementById('video8'), 0.7);
 
 
 
@@ -188,9 +187,10 @@ const observer = new IntersectionObserver(entries => {
       }
       video.play();
     } else { // 비디오가 화면에서 벗어날 때
+      video.pause();
       if (!isScrollingDown) { // 스크롤 업일 때만 투명도를 0으로 설정
         video.style.opacity = 0;
-        video.pause();
+        // video.pause();
       }
     }
   });
@@ -211,4 +211,5 @@ window.addEventListener('scroll', function () {
   }
   lastScrollTop = currentScroll;
 });
+
 

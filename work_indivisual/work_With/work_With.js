@@ -183,9 +183,10 @@ const observer = new IntersectionObserver(entries => {
       }
       video.play();
     } else { // 비디오가 화면에서 벗어날 때
+      video.pause();
       if (!isScrollingDown) { // 스크롤 업일 때만 투명도를 0으로 설정
         video.style.opacity = 0;
-        video.pause();
+        // video.pause();
       }
     }
   });
