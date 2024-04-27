@@ -189,7 +189,7 @@ document.addEventListener("DOMContentLoaded", function() {
   var paths = {
       's1img': '../work_indivisual/work_With/work_With.html',
       's2img': '../work_indivisual/work_Nebula/work_Nebula.html',
-      's3img': '../work_indivisual/',
+      's3img': '../work_indivisual/work_Heesoo/work_Heesoo.html',
       's4img': '../work_indivisual/',
       's5img': '../work_indivisual/',
       's6img': '../work_indivisual/'

@@ -267,6 +267,12 @@ main {
   background-image: url(../files/nebula-main.jpg);
 }
 
+#s3img{
+  background-image: url(../files/heesoo-main.jpg);
+  background-size: 120%
+}
+
+
 /* .img img {
   height: 100%;  
   width: 100%; 

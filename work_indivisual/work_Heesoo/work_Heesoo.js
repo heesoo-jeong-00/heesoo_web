@@ -121,14 +121,15 @@ const videos = [
   document.getElementById('video4'),
   document.getElementById('video5'),
   document.getElementById('video6'),
-  document.getElementById('video7')
+  document.getElementById('video7'),
+  document.getElementById('video8'),
 ];
 
 // 각 비디오에 대한 초기 설정 및 특정 비디오에 loop 설정
 videos.forEach(video => {
   video.style.opacity = 0; // 초기 투명도를 0으로 설정
   const videoId = video.getAttribute('id');
-  if (videoId === 'video1' ||videoId === 'video2' ||videoId === 'video3' || videoId === 'video4' || videoId === 'video5' || videoId === 'video6' || videoId === 'video7') {
+  if (videoId === 'video1' ||videoId === 'video2' ||videoId === 'video3' || videoId === 'video4' || videoId === 'video5' || videoId === 'video6' || videoId === 'video7'|| videoId === 'video8') {
     video.loop = true;  // loop 속성 추가
   }
 });
@@ -165,6 +166,7 @@ setupVideoRepeat(document.getElementById('video4'), 1.7);
 setupVideoRepeat(document.getElementById('video5'), 1.7);
 setupVideoRepeat(document.getElementById('video6'), 1.4);
 setupVideoRepeat(document.getElementById('video7'), 0.3);
+setupVideoRepeat(document.getElementById('video8'), 0.7);
 
 
 
@@ -209,24 +211,4 @@ window.addEventListener('scroll', function () {
   }
   lastScrollTop = currentScroll;
 });
-
-// // 배속 조정 설정
-// videos.forEach(video => {
-//   if (video.getAttribute('id') === 'video1') {
-//     video.playbackRate = 2.1; 
-//   } else if (video.getAttribute('id') === 'video2') {
-//     video.playbackRate = 2.3; 
-//   } else if (video.getAttribute('id') === 'video6') {
-//     video.playbackRate = 1.8; 
-//   } else if (video.getAttribute('id') === 'video7') {
-//     video.playbackRate = 1.75; 
-//   } 
-//   else if (video.getAttribute('id') === 'video4') {
-//     video.playbackRate = 1.2; 
-//   } 
-  
-//   else {
-//     video.playbackRate = 1.5;
-//   }
-// });
 

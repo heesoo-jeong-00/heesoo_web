@@ -345,7 +345,7 @@ img {
   padding: 0;
   margin-bottom: 0.7vw;
   border-radius: 3vw;
-  width: 100%; 
+  width: 125%; 
   height: auto; 
   opacity: 0; 
   transition: opacity 0.4s; 
