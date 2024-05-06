@@ -209,7 +209,6 @@ main {
   transition: opacity 0.7s ease-in-out;
   align-items: flex-start; 
   justify-content: flex-start;
-  /* 애니메이션 지속 시간과 타입을 조정할 수 있습니다. */
 }
 
 
@@ -514,7 +513,6 @@ footer {
 /* 애니메이션 추가 */
 
 
-/* 모바일 환경을 위한 스타일 */
 @media (max-width: 767px) {
 
   /* 767px 미만에서만 적용될 스타일 */
@@ -522,20 +520,20 @@ footer {
   #section4,
   #section6 {
     flex-direction: column;
-    /* 모바일 화면에서는 요소들을 세로로 나열 */
+    /* 모바일 화면에서는 세로나열 */
   }
 
   #textandbotton2,
   #textandbotton4,
   #textandbotton6 {
     order: 2;
-    /* 모바일에서는 텍스트 박스가 두 번째 */
+    /* 텍스트 박스가 두 번째 */
   }
 
   #s2img,
   #s4img,
   #s6img {
     order: 1;
-    /* 모바일에서는 이미지가 첫 번째 */
+    /* 이미지가 첫 번째 */
   }
 }

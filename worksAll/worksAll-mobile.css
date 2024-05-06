@@ -350,6 +350,14 @@ main {
   background-size: cover;
 }
 
+#box14 {
+  width: calc(100vw - 8vw);
+  background-image: url(../files/Kineticpose/KineticPose_main2.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
 #box10 {
   width: calc(25vw - 5vw);
   background-image: url(../files/bodega/bodega1.jpg);
@@ -360,7 +368,7 @@ main {
 
 #box11 {
   width: calc(75vw - 5vw);
-    background-image: url(../files/type/type-main.jpg);
+    background-image: url(../files/type/type-main-s.jpg);
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;

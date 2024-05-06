@@ -259,8 +259,12 @@ main {
   overflow: hidden;
 }
 
+#s0img{
+  background-image: url(../files/Kineticpose/KineticPose_main.jpg);
+}
+
 #s1img{
-  background-image: url(../files/type/type-main.jpg);
+  background-image: url(../files/type/type-main-s.jpg);
 }
 
 #s2img{

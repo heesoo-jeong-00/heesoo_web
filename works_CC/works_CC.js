@@ -65,12 +65,12 @@ function mousemove(e) {
       break
 
 
-      case 'pro0':
-        if (stage === 'pro0') return
-        scale = 1;
-        stage = 'pro0'
-        console.log('pro0')
-        break
+    case 'pro0':
+      if (stage === 'pro0') return
+      scale = 1;
+      stage = 'pro0'
+      console.log('pro0')
+      break
 
     case 'pro1':
       if (stage === 'pro1') return
@@ -183,44 +183,45 @@ document.addEventListener('DOMContentLoaded', function () {
 
 //모바일 image 클릭시 인터렉션
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   // 각 ID에 따른 HTML 파일 경로 매핑
   var paths = {
-      's1img': '../work_indivisual/work_TypePlay/work_TypePlay.html',
-      's2img': '../work_indivisual/work_Kaleidoscope/work_Kaleidoscope.html',
-      's3img': '../work_indivisual/work_Heesoo/work_Heesoo.html',
-      's4img': '../work_indivisual/',
-      's5img': '../work_indivisual/',
-      's6img': '../work_indivisual/'
+    's0img': '../work_indivisual/work_KineticPose/work_KineticPose.html',
+    's1img': '../work_indivisual/work_TypePlay/work_TypePlay.html',
+    's2img': '../work_indivisual/work_Kaleidoscope/work_Kaleidoscope.html',
+    's3img': '../work_indivisual/work_Heesoo/work_Heesoo.html',
+    's4img': '../work_indivisual/',
+    's5img': '../work_indivisual/',
+    's6img': '../work_indivisual/'
   };
 
   function redirectToPage(event) {
-      var targetId = event.currentTarget.id;
-      if (paths[targetId]) {
-          window.location.href = paths[targetId]; // 매핑된 HTML 경로로 리다이렉트
-      }
+    var targetId = event.currentTarget.id;
+    if (paths[targetId]) {
+      window.location.href = paths[targetId]; // 매핑된 HTML 경로로 리다이렉트
+    }
   }
 
   function addEventListeners() {
-      var imgDivs = document.querySelectorAll('#s1img, #s2img, #s3img, #s4img, #s5img, #s6img'); // 모든 대상 이미지 선택
-      imgDivs.forEach(function(div) {
-          div.addEventListener('click', redirectToPage);
-      });
+    var imgDivs = document.querySelectorAll('#s0img, #s1img, #s2img, #s3img, #s4img, #s5img, #s6img'); // 모든 대상 이미지 선택
+    imgDivs.forEach(function (div) {
+      div.addEventListener('click', redirectToPage);
+    });
   }
 
   function removeEventListeners() {
-      var imgDivs = document.querySelectorAll('#s1img, #s2img, #s3img, #s4img, #s5img, #s6img');
-      imgDivs.forEach(function(div) {
-          div.removeEventListener('click', redirectToPage);
-      });
+    var imgDivs = document.querySelectorAll('#s0img, #s1img, #s2img, #s3img, #s4img, #s5img, #s6img');
+    imgDivs.forEach(function (div) {
+      div.removeEventListener('click', redirectToPage);
+    });
   }
 
   function checkWidth() {
-      if (window.innerWidth <= 767) {
-          addEventListeners();
-      } else {
-          removeEventListeners();
-      }
+    if (window.innerWidth <= 767) {
+      addEventListeners();
+    } else {
+      removeEventListeners();
+    }
   }
 
   // 화면 크기가 변경될 때마다 이벤트 리스너를 조정

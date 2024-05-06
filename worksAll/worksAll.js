@@ -445,3 +445,22 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 })
+
+document.addEventListener('DOMContentLoaded', function() {
+  var box14 = document.getElementById('box14');
+  var blackBox14 = document.getElementById('blackbox14');
+
+  if (window.innerWidth > 1024) { 
+    if (blackBox14) {
+      blackBox14.addEventListener('click', function() {
+        window.location.href = '../work_indivisual/work_KineticPose/work_KineticPose.html';
+      });
+    }
+  } else { 
+    if (box14) {
+      box14.addEventListener('click', function() {
+        window.location.href = '../work_indivisual/work_KineticPose/work_KineticPose.html';
+      });
+    }
+  }
+})
