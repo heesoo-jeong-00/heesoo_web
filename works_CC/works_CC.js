@@ -195,6 +195,7 @@ document.addEventListener("DOMContentLoaded", function () {
     's6img': '../work_indivisual/'
   };
 
+
   function redirectToPage(event) {
     var targetId = event.currentTarget.id;
     if (paths[targetId]) {
