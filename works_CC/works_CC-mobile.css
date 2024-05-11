@@ -516,6 +516,7 @@ footer {
 @media (max-width: 767px) {
 
   /* 767px 미만에서만 적용될 스타일 */
+  #section0,
   #section2,
   #section4,
   #section6 {
@@ -523,6 +524,7 @@ footer {
     /* 모바일 화면에서는 세로나열 */
   }
 
+  #textandbotton0,
   #textandbotton2,
   #textandbotton4,
   #textandbotton6 {
@@ -530,6 +532,7 @@ footer {
     /* 텍스트 박스가 두 번째 */
   }
 
+  #s0img,
   #s2img,
   #s4img,
   #s6img {
