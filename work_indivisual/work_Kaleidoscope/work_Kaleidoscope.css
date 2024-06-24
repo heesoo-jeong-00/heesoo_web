@@ -1,3 +1,36 @@
+#mainbutton {
+  width:15.2vw;
+position: absolute;
+
+  background-color: white;
+  color: black;
+  border-radius: 10vw;
+  z-index: 10;
+
+  left: 4.7%;
+  transform: translateX(-4.7%);
+  top: 106vh;
+
+  font-family: "Prompt", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 1vw;
+
+
+  padding: 0.1vw 0vw;
+  border: 1px solid black;
+}
+
+#mainbutton:hover {
+  transition: all 0.2s ease-in-out;
+  background-color: black;
+  color: white;
+
+}
+
+
+
+
 /* general */
 
 * {
@@ -44,6 +77,8 @@ body {
 
 /* header */
 
+
+/* 
 header {
   width: 100vw;
   height: 96px;
@@ -55,32 +90,52 @@ header {
   align-items: center;
   top: 0px;
   z-index: 10;
-  /* border: 1px solid rgb(0, 204, 255); */
+
+} */
+
+header {
+  width: 100vw;
+  height: 96px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  position: fixed;
+  /* header를 고정 */
+  top: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
 }
 
 #headerBox {
   display: flex;
   justify-content: center;
-  /* 가로 방향 중앙 정렬 */
+
   align-items: center;
-  /* 세로 방향 중앙 정렬 */
+
   position: fixed;
   top: 28px;
   left: 50%;
   transform: translateX(-50%);
   width: 434px;
-  /* 초기 너비 설정 */
+
   height: 44px;
-  /* 초기 높이 설정 */
+
   background-color: white;
   border: 1px solid rgba(191, 191, 191, 0.4);
-  box-shadow: 0px 13px 26px -5px rgba(15, 147, 255, 0.4);
+  /* box-shadow: 0px 13px 26px -5px rgba(15, 147, 255, 0.4); */
   border-radius: 30px;
 
   z-index: 10;
   /* 필요한 경우 z-index 유지 */
   transition: width 0.3s ease-out;
   /* 사이즈 조정 애니메이션 유지 */
+
+
+  box-shadow: 0vw 0.5vw 0.8vw -0.05vw rgba(15, 147, 255, 0.25);
+  /* top: 1.5vw;
+  width: 23vw; */
 
 }
 
@@ -94,6 +149,9 @@ header {
   position: fixed;
   /* 또는 absolute, 상황에 따라 다름 */
   top: 28px;
+
+
+
 }
 
 .topBox.scrolled {
@@ -186,15 +244,18 @@ img {
 
 
 #section1 {
+  /* left: 50%;
+  transform: translateX(-50%); */
   width: 100vw;
-  height: 50vw;
+  height: 74vh;
   /* height: 56.25vw; */
   /* height: 90vh; */
   position: relative;
-  top: -96px;
+  /* top: -96px; */
   /* background-color: rgb(255, 255, 255); */
   /* border:rgb(0, 72, 255) solid 1px; */
   background-image: url(../../files/flower/Flower3-main.jpg);
+
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -206,70 +267,74 @@ img {
   /* margin-bottom: 0vw; */
 }
 
-@media only screen and (min-device-width : 768px) and (max-device-width : 1200px)  and (orientation : portrait){
-  #section1 {
-    height: 75vw;
-  }
-}
-
-
 
 
 #section2 {
-  margin: 0px;
-  margin-top: -96px;
-  width: 100vw;
-  height: 40vw;
-  height: auto;
-  position: relative;
-  /* background-color: rgb(255, 255, 255); */
-  overflow: hidden;
 
+  height: 25vh;
   display: flex;
-  flex-direction: column;
-  position: relative;
-  text-align: center;
+  flex-direction: row;
+  /* padding-bottom: 0; */
+  /* margin-bottom: 0px;
+  margin-top: 0; */
+  /* border:rgb(255, 0, 0) solid 1px; */
+  /* top: 0px; */
+  margin-bottom: 1%;
+  /* padding-bottom: 0; */
+  /* margin: 2% 0%; */
+  /* align-items: flex-start; */
+}
 
+#section2-1,
+#section2-2 {
+  /* border:rgb(0, 255, 4) solid 1px; */
+  width: 50%;
+  height: auto;
+  margin: 0px;
+  overflow: hidden;
+  position: relative;
+  text-align: left;
   font-family: "Prompt", sans-serif;
-  /* font-weight: 300; */
   font-style: normal;
   line-height: 1.25;
 
-
-  justify-content: center;
-  align-items: center;
+  align-items: left;
   color: black;
-  padding:8vw 24vw 10vw 24vw;
-  /* border:rgb(255, 0, 0) solid 1px; */
+
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  /* left: 7%; */
+  /* width: 78%;  */
+  align-items: flex-end;
+  padding: 3% 4% 3% 4%;
+  /* margin-top: 0; */
 }
 
-#mainbutton {
 
-  position: relative;
-  top: 10px;
-  background-color: white;
-  color: black;
-  border-radius: 30px;
-  z-index: 10;
-  /* font-size: 20px; */
-  font-size: 1.4vw;
-
-  font-family: "Prompt", sans-serif;
+#texts {
+  color: #000000;
+  width: 100%;
+  /* font-size: 18px; */
+  font-size: 1vw;
   font-weight: 300;
-  font-style: normal;
-  padding: 3px 20px;
-  border: 1.7px solid black;
+
+  word-wrap: break-word;
+  /* margin-left: 18vw; */
+  /* left: 70%;
+  transform: translateX(-70%); */
+
+  height: auto;
+  /* border:rgb(255, 0, 0) solid 1px; */
+
 }
 
-#mainbutton:hover {
-  transition: all 0.2s ease-in-out;
-  background-color: black;
-  color: white;
-  /* transform: scale(1.2); */
-}
 
 .content {
-  text-align: center;
+  width: auto;
+  /* border:rgb(255, 0, 0) solid 1px; */
+  /* width: 90%; */
+  text-align: left;
   font-family: "Prompt", sans-serif;
   /* font-weight: 300; */
   font-style: normal;
@@ -277,34 +342,170 @@ img {
   /* 줄바꿈을 정상적으로 처리하도록 설정합니다 */
 }
 
-#title {
-  font-family: "Jura", sans-serif;
-  font-weight: 500;
-  font-style: normal;
-  font-size: 4vw;
+#tc {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  /* border: rgb(0, 81, 255) solid 1px; */
+}
 
-  /* font-size: 2.8vw; */
-  /* font-weight: 400; */
-  margin-bottom: 0.55em;
+
+#title {
+  /* font-family: "Jura", sans-serif;
+  font-weight: 500; */
+
+  font-family: "Prompt", sans-serif;
+  font-weight: 300;
+
+
+  font-style: normal;
+  font-size: 3.4vw;
+  /* font-size: 50px; */
+
+  padding: 0;
+  margin: 0;
+
   word-wrap: break-word;
+  /* border: rgb(255, 0, 0) solid 1px; */
+}
+
+#captions {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 0.85vw;
+  padding-left: 0.9vw;
+
+  white-space: nowrap;
+  /* 줄 바꿈 금지 */
+  overflow: hidden;
+  /* 넘치는 부분 숨김 */
+  text-overflow: ellipsis;
+  /* opacity: 60%; */
+  /* border: rgb(255, 0, 0) solid 1px; */
+}
+
+.caption {
+  padding: 0.2vw 0.7vw;
+  margin-right: 0.25vw;
+  color: rgba(91, 91, 91, 0.8);
+  background-color: rgba(225, 241, 255, 0.9);
+  border: 1px solid rgba(191, 191, 191, 0.2);
+  /* box-shadow: 0px 0.2vw 0.4vw  -0vw rgba(15, 147, 255, 0.4); */
+  border-radius: 1vw;
+
+  font-weight: 400;
+  /* font-size: 14px; */
+  font-size: 0.85vw;
 }
 
 #subtitle {
   /* font-family: "Jura", sans-serif;
   font-weight: 700; */
-  font-weight: 400;
-
-  font-size: 1.4vw;
-  margin-bottom: 1.6em;
+  font-weight: 00;
+  /* opacity: 48%; */
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 1vw;
+  /* margin-bottom: 16em; */
   word-wrap: break-word;
+  /* border:rgb(255, 0, 0) solid 1px; */
+
 }
 
-#texts {
-  font-size: 1.2vw;
-  font-weight: 300;
-  margin-bottom: 1em;
-  word-wrap: break-word;
+/* and (orientation: portrait)  */
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1200px) {
+  /* #tc {
+    flex-direction: column;
+    align-items: flex-start; 
+    margin: 0;
+  } */
+
+  #title {
+    margin: 0;
+    /* font-size: 46px; */
+    font-size: 3.8vw;
+  }
+
+  /* #captions {
+    padding-left: 0px;
+    margin-top: 4px;
+    margin-bottom: 6px;
+  } */
+
+  .caption {
+    padding: 0.3vw 0.9vw;
+    margin-right: 0.4vw;
+    /* box-shadow: 0px 0.2vw 0.4vw  -0vw rgba(15, 147, 255, 0.4); */
+    border-radius: 10vw;
+
+    font-weight: 400;
+    /* font-size: 14px; */
+    font-size: 1vw;
+  }
+
+  #subtitle {
+    width: 100%;
+    font-size: 1.3vw;
+  }
+
+  #texts {
+    font-size: 1.3vw;
+    margin-bottom: 0;
+    width: 97%;
+  }
+
+
+  #section2-1 {
+    padding: 2% 4% 3% 4%;
+
+  }
+
+  #section2-2 {
+    padding: 2% 4% 3% 4%;
+  }
+
+  #section1 {
+    height: 65vh;
+
+  }
+
+  #section2 {
+    margin: 1vh;
+    height: 25vh;
+  }
+
+  #mainbutton {
+    top: 96vh;
+  }
+
 }
+
+
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1200px) and (orientation: portrait) {
+  #section1 {
+    height: 78vh;
+
+  }
+
+  #section2 {
+    margin: 1vh;
+    margin-bottom: 6%;
+    height: 12vh;
+  }
+
+  #section2-1 {
+    padding: 15% 4% 1% 4%;
+
+  }
+
+  #section2-2 {
+    padding: 15% 4% 1% 4%;
+  }
+
+
+}
+
 
 
 #section3 {

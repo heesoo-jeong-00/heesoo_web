@@ -209,7 +209,7 @@ main {
   z-index: 5;
   /* 초기 위치 조정을 위한 변형 추가 */
   top: 120px;
-  font-size: 26px;
+
   text-align: center;
 
 
@@ -221,35 +221,35 @@ main {
   color: black;
   opacity: 0;
 
-  left: 50%;
+  left: 54%;
   transform: translate(-50%, 40px);
   transition: opacity 0.8s ease, transform 0.8s ease;
   /* border: rgb(115, 255, 0) solid 1px; */
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: left;
   box-sizing: border-box;
 }
 
 #s2text1 {
 
-  width: 90%;
+  width: 88%;
   max-width: 500px;
   height: auto;
   white-space: normal;
   /* margin: 10vw; */
   padding: 0px;
   margin: 0px;
-  font-size: 26px;
+  font-size: 22.5px;
 
   font-family: "Prompt", sans-serif;
   font-weight: 200;
   font-style: normal;
-  line-height: 1.25;
+  line-height: 1.28;
 
   color: black;
-  text-align: center;
+  text-align: left;
   /* border: rgb(255, 0, 0) solid 1px; */
 }
 
@@ -261,20 +261,21 @@ main {
 #project1 {
   /* left: 50%;
   transform: translateX(-50%); */
-
+  width: 280px;
   position: relative;
   white-space: nowrap;
-  top: 20px;
+  top: 24px;
   background-color: white;
   color: black;
   border-radius: 30px;
   z-index: 10;
-  font-size: 18px;
+  font-size: 17.5px;
+  left: 0px;
 
   font-family: "Prompt", sans-serif;
   font-weight: 300;
   font-style: normal;
-  padding: 2.5px 20px;
+  padding: 2.5px 4px;
   border: 1.7px solid black;
 }
 
@@ -343,9 +344,9 @@ main {
   padding: 0vw 5vw 0vw 5vw;
   /* overflow-x: hidden; */
   position: relative;
-  top: 510px;
+  top: 520px;
   z-index: 5;
-  font-size: 26px;
+
   text-align: center;
 
 
@@ -358,37 +359,36 @@ main {
   opacity: 0;
 
   /* border: rgb(255, 0, 212) solid 1px; */
-  left: 50%;
+  left: 54%;
   transform: translate(-50%, 40px);
   transition: opacity 0.8s ease, transform 0.8s ease;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: left;
   box-sizing: border-box;
 }
 
 
 #s2text2 {
-  width: 90%;
+  width: 88%;
   max-width: 500px;
-
   height: auto;
   white-space: normal;
+  /* margin: 10vw; */
   padding: 0px;
   margin: 0px;
-  font-size: 26px;
+  font-size: 22.5px;
 
   font-family: "Prompt", sans-serif;
   font-weight: 200;
   font-style: normal;
-  line-height: 1.25;
-
+  line-height: 1.28;
 
   color: black;
-  text-align: center;
-  /* border: rgb(255, 0, 212) solid 1px; */
+  text-align: left;
+  /* border: rgb(255, 0, 0) solid 1px; */
 }
 
 #s2text2 strong {
@@ -397,22 +397,23 @@ main {
 }
 
 #project2 {
-  /* left: 50%;
+ /* left: 50%;
   transform: translateX(-50%); */
-
+  width: 264px;
   position: relative;
   white-space: nowrap;
-  top: 20px;
+  top: 24px;
   background-color: white;
   color: black;
-  border-radius: 28px;
+  border-radius: 30px;
   z-index: 10;
-  font-size: 18px;
+  font-size: 17.5px;
+  left: 0px;
 
   font-family: "Prompt", sans-serif;
   font-weight: 300;
   font-style: normal;
-  padding: 2.5px 20px;
+  padding: 2.5px 4px;
   border: 1.7px solid black;
 
 }
@@ -426,7 +427,7 @@ main {
 }
 
 #triForS2c2 {
-  scale: 0.8;
+  scale: 0.7;
   position: absolute;
   top: 540px;
   left: 10vw;
@@ -476,7 +477,6 @@ main {
   position: relative;
   z-index: 5;
   top: 880px;
-  font-size: 26px;
   text-align: center;
 
   font-family: "Prompt", sans-serif;
@@ -488,36 +488,36 @@ main {
   color: black;
   opacity: 0;
 
-  left: 50%;
+  left: 54%;
   transform: translate(-50%, 40px);
   transition: opacity 0.8s ease, transform 0.8s ease;
   /* border: rgb(115, 255, 0) solid 1px; */
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: left;
   box-sizing: border-box;
 }
 
 #s2text3 {
-  width: 90%;
-  max-width: 500px;
 
+  width: 88%;
+  max-width: 500px;
   height: auto;
   white-space: normal;
-  margin: 0px;
+  /* margin: 10vw; */
   padding: 0px;
-  font-size: 26px;
+  margin: 0px;
+  font-size: 22.5px;
 
   font-family: "Prompt", sans-serif;
   font-weight: 200;
   font-style: normal;
-  line-height: 1.25;
-
+  line-height: 1.28;
 
   color: black;
-  text-align: center;
-  /* border: rgb(255, 0, 212) solid 1px; */
+  text-align: left;
+  /* border: rgb(255, 0, 0) solid 1px; */
 }
 
 #s2text3 strong {
@@ -528,27 +528,28 @@ main {
 #project3 {
   /* left: 50%;
   transform: translateX(-50%); */
-
   position: relative;
   white-space: nowrap;
-  top: 20px;
+  top: 24px;
   background-color: white;
   color: black;
-  border-radius: 28px;
+  border-radius: 30px;
   z-index: 10;
-  font-size: 18px;
+  font-size: 17.5px;
+  left: 0px;
 
   font-family: "Prompt", sans-serif;
   font-weight: 300;
   font-style: normal;
-  padding: 2.5px 20px;
+  padding: 2.5px 0px;
   border: 1.7px solid black;
+  width: 259px;
 }
 
 #recForS2c3 {
   scale: 0.85;
   position: absolute;
-  top: 1050px;
+  top: 1100px;
   left: -200px;
   /* overflow: hidden; */
 }
@@ -557,7 +558,7 @@ main {
 #circleForS2c3 {
   scale: 0.8;
   position: absolute;
-  top: 1250px;
+  top: 1295px;
   /* left: 20%; */
   left: 50px;
   z-index: 1;
@@ -566,7 +567,7 @@ main {
 #linesForS2c3 {
   scale: 0.6;
   position: absolute;
-  top: 1470px;
+  top: 1520px;
   left: -30px;
   z-index: 2;
 }
@@ -702,7 +703,7 @@ main {
   white-space: normal;
   margin: 0px;
   padding: 0px;
-  font-size: 26px;
+  font-size: 22px;
 
   font-family: "Prompt", sans-serif;
   font-weight: 200;
@@ -722,7 +723,7 @@ main {
   margin-left: auto;
   margin-right: auto;
   white-space: nowrap;
-  top: 115%; /* 이 값은 JavaScript에 의해 동적으로 조정될 수 있음 */
+  top: 125%; /* 이 값은 JavaScript에 의해 동적으로 조정될 수 있음 */
   background-color: white;
   color: black;
   border-radius: 30px;
@@ -732,7 +733,7 @@ main {
   font-family: "Prompt", sans-serif;
   font-weight: 300;
   font-style: normal;
-  padding: 3px 20px;
+  padding: 3px 18px;
   border: 1.7px solid black;
 }
 

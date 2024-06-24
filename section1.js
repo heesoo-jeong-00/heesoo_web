@@ -1,9 +1,8 @@
-
-
-
-let fullText = `Hi:) I'm Heesoo,
-a multidisciplinary 
-designer living in NY.`;
+let fullText = `Hi :) I'm Heesoo, an interaction
+and visual designer based in NYC.
+    
+I'm passionate about connecting
+with diverse users through equitable design.`;
 
 let lines; // 전체 텍스트를 줄별로 분리한 배열
 let index = 0; // 현재까지 출력된 문자의 인덱스
@@ -33,7 +32,7 @@ function resetSketch() {
   canvas.parent('section1');
 
   textFont('Jura');
-  textSize(68);
+  adjustTextSize(); // 텍스트 크기 조정
   textAlign(CENTER, CENTER);
   // textStyle(BOLD);
 
@@ -89,7 +88,7 @@ function drawHighlight(info, idx) {
     noStroke();
     rectMode(CORNER);
     push();
-    translate(x, y - textAscent() / 5);
+    translate(x, y - textAscent() / 3);
     rotate(radians(-4)); // 사각형을 살짝 기울임
     blendMode(DARKEST); // 블렌딩 모드 설정
     fill(info.color);
@@ -105,37 +104,27 @@ function drawHighlight(info, idx) {
 }
 
 function getLineY(lineIndex, totalLines) {
-  let lineHeight = textAscent() + textDescent() + 13;
+  let lineHeight = textAscent() + textDescent() + 6;
   return (height / 2) - (lineHeight * (totalLines - 1) / 2) + (lineHeight * lineIndex);
 }
 
-
-// // 창 크기 변경 시 호출될 함수
-// function windowResized() {
-//   resetSketch(); // 스케치를 재설정하여 요소들을 처음부터 다시 로드
-// }
-
+function adjustTextSize() {
+  if (windowWidth >= 1600) {
+    textSize(46);
+  } else if (windowWidth >= 1024) {
+    textSize(36);
+  } else {
+    textSize(28);
+  }
+}
 
 let previousWidth = window.innerWidth;  // 초기 너비를 저장하는 변수
 
 function windowResized() {
   let currentWidth = window.innerWidth;  // 현재 너비를 얻음
   if (currentWidth !== previousWidth) {  // 이전 너비와 현재 너비가 다른 경우에만 리셋
+    adjustTextSize(); // 텍스트 크기 조정
     resetSketch();
     previousWidth = currentWidth;  // 현재 너비를 이전 너비로 업데이트
   }
 }
-
-
-// function windowResized() {
-//   // header의 높이를 얻음
-//   let headerHeight = document.querySelector('#header').offsetHeight;
-
-//   // 윈도우의 높이에서 header의 높이를 빼서 새로운 canvas 높이를 계산
-//   let canvasHeight = windowHeight - headerHeight;
-
-//   // 새로운 캔버스 크기로 캔버스를 조정. 이 때, windowWidth와 새로 계산된 canvasHeight를 사용
-//   resizeCanvas(windowWidth, canvasHeight);
-
-//   // 필요한 경우, 다른 스케치 설정을 재조정할 수 있습니다.
-// }

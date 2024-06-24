@@ -358,3 +358,20 @@ window.addEventListener('scroll', function () {
     linesForS2c3.style.transform = 'translateX(-600px)';
   }
 });
+
+
+
+// function adjustFontSize() {
+//   const element = document.getElementById('s2text1');
+//   if (window.innerWidth >= 1600) {
+//     element.style.fontSize = '36px';
+//   } else {
+//     element.style.fontSize = '26px';
+//   }
+// }
+
+// // 초기 로드 시 폰트 크기 조정
+// adjustFontSize();
+
+// // 창 크기 변경 시 폰트 크기 조정
+// window.addEventListener('resize', adjustFontSize);

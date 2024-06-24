@@ -1,9 +1,10 @@
-
-
-
-let fullText = `Hi:) I'm Heesoo,
-a multidisciplinary 
-designer living in NY.`;
+let fullText = `Hi :) I'm Heesoo,
+an interaction and visual
+designer based in NYC.
+    
+I'm passionate about
+connecting with diverse users
+through equitable design.`;
 let lines; // 전체 텍스트를 줄별로 분리한 배열
 let index = 0; // 현재까지 출력된 문자의 인덱스
 let maxFrameCount = 3; // 각 글자 사이의 프레임 간격
@@ -22,14 +23,22 @@ function setup() {
 function resetSketch() {
   // 창 너비에 따른 fullText 값 설정
   if (windowWidth <= 370) {
-    fullText = `Hi:) I'm Heesoo,
-a multidisciplinary 
-designer 
-living in NY.`;
+    fullText = `Hi :) I'm Heesoo, an
+interaction and visual
+designer based in NYC.
+
+I'm passionate about
+connecting with
+diverse users through
+equitable design.`;
   } else {
-    fullText = `Hi:) I'm Heesoo,
-a multidisciplinary 
-designer living in NY.`;
+    fullText = `Hi :) I'm Heesoo,
+an interaction and visual
+designer based in NYC.
+    
+I'm passionate about
+connecting with diverse users
+through equitable design.`;
   }
  
   // header의 높이를 얻음
@@ -43,7 +52,7 @@ designer living in NY.`;
   canvas.parent('section1');
   
   textFont('Jura');
-  textSize(34);
+  textSize(23.5);
   textAlign(CENTER, CENTER);
   lines = fullText.split('\n');
   index = 0; // 인덱스를 다시 0으로 초기화
@@ -73,15 +82,6 @@ function draw() {
     text(tempLines[i], width / 2, getLineY(i, tempLines.length));
   }
 
-  // // 하이라이트 그리기
-  // if (finishedTyping) {
-  //   highlightInfo.forEach((info, idx) => {
-  //     if (info.startFrame === null) {
-  //       info.startFrame = frameCount + (info.word === "creative" ? creativeDelay : 0);
-  //     }
-  //     drawHighlight(info, idx);
-  //   });
-  // }
 }
 
 function drawHighlight(info, idx) {
@@ -115,7 +115,7 @@ function drawHighlight(info, idx) {
 }
 
 function getLineY(lineIndex, totalLines) {
-  let lineHeight = textAscent() + textDescent() + 7;
+  let lineHeight = textAscent() + textDescent() + 4;
   return (height / 2) - (lineHeight * (totalLines - 1) / 2) + (lineHeight * lineIndex);
 }
 
