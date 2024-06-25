@@ -208,7 +208,7 @@ main {
   margin-top: 1%;
   margin-bottom: 1%;
   padding: 20px 4%;
-  width: 94%;
+  width: 100%;
 }
 
 
@@ -224,8 +224,6 @@ main {
   font-family: "Prompt", sans-serif;
   font-style: normal;
   line-height: 1.25;
-
-  align-items: left;
   color: black;
 
   display: flex;
@@ -238,6 +236,9 @@ main {
   /* margin-top: 0; */
 }
 
+#tcs{
+  width: 100%;
+}
 
 
 
@@ -313,12 +314,13 @@ main {
   width: 100%;
   /* font-family: "Jura", sans-serif;
   font-weight: 700; */
-  font-weight: 00;
+
   /* opacity: 48%; */
-  font-size: 14px;
+  font-size: 13px;
   margin-bottom: 26px;
   word-wrap: break-word;
   /* border:rgb(255, 0, 0) solid 1px; */
+  padding-right:1%
 
 }
 
@@ -350,7 +352,7 @@ main {
 
 
 
-@media only screen and (max-device-width: 350px) {
+@media only screen and (max-device-width: 368px) {
 
   #title {
     font-size: 26px;
@@ -358,7 +360,7 @@ main {
 
   #subtitle {
     width: 100%;
-    font-size: 12px;
+    font-size: 11px;
   }
 
   .caption {
