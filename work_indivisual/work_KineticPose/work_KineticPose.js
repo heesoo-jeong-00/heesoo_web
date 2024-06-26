@@ -173,3 +173,26 @@ window.addEventListener('scroll', function () {
 // }
 
 // adjustSectionHeight();  // 초기 높이를 설정합니다.
+
+
+window.addEventListener('DOMContentLoaded', function() {
+  const button = document.getElementById('mainbutton');
+  const v2 = document.getElementById('v2');
+  const v3 = document.getElementById('v3');
+
+  function moveButtonForMobile() {
+    if (window.innerWidth <= 767) {
+      // 현재 위치에서 버튼을 제거하고 v2의 자식으로 추가
+      v2.appendChild(button);
+    } else {
+      // v3의 첫 번째 자식으로 버튼을 추가 (맨 앞에 추가)
+      v3.insertBefore(button, v3.firstChild);
+    }
+  }
+
+  // 페이지 로드시 한 번 호출
+  moveButtonForMobile();
+
+  // 윈도우 사이즈가 변경될 때마다 호출
+  window.addEventListener('resize', moveButtonForMobile);
+});

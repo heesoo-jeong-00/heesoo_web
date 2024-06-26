@@ -122,7 +122,8 @@ const videos = [
   document.getElementById('video5'),
   document.getElementById('video6'),
   document.getElementById('video7'),
-  document.getElementById('video8')
+  document.getElementById('video8'),
+  document.getElementById('detail')
 ];
 
 // 각 비디오에 대한 초기 설정 및 특정 비디오에 loop 설정
@@ -228,3 +229,27 @@ videos.forEach(video => {
   }
 });
 
+
+
+
+window.addEventListener('DOMContentLoaded', function() {
+  const button = document.getElementById('detail');
+  const v2 = document.getElementById('v2');
+  const v3 = document.getElementById('v3');
+
+  function moveButtonForMobile() {
+    if (window.innerWidth <= 767) {
+      // 현재 위치에서 버튼을 제거하고 v2의 자식으로 추가
+      v2.appendChild(button);
+    } else {
+      // v3의 첫 번째 자식으로 버튼을 추가 (맨 앞에 추가)
+      v3.insertBefore(button, v3.firstChild);
+    }
+  }
+
+  // 페이지 로드시 한 번 호출
+  moveButtonForMobile();
+
+  // 윈도우 사이즈가 변경될 때마다 호출
+  window.addEventListener('resize', moveButtonForMobile);
+});
