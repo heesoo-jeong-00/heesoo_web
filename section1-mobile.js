@@ -1,15 +1,15 @@
 let fullText = `Hi :) I'm Heesoo,
-an interaction and visual
-designer based in NYC.
+a product designer based in NYC.
     
 I'm passionate about
 connecting with diverse users
 through equitable design.`;
 let lines; // 전체 텍스트를 줄별로 분리한 배열
 let index = 0; // 현재까지 출력된 문자의 인덱스
-let maxFrameCount = 3; // 각 글자 사이의 프레임 간격
+let maxFrameCount = 50; // 각 글자 사이의 밀리초 간격
 let finishedTyping = false; // 타이핑 효과 완료 여부
 let highlightInfo = []; // 하이라이트 정보를 저장하는 배열
+let startTime; // 타이핑 시작 시간
 
 // creative의 시작을 늦추기 위한 변수
 let creativeDelay = 4;
@@ -18,22 +18,19 @@ function setup() {
   resetSketch();
 }
 
-
-
 function resetSketch() {
   // 창 너비에 따른 fullText 값 설정
   if (windowWidth <= 370) {
-    fullText = `Hi :) I'm Heesoo, an
-interaction and visual
-designer based in NYC.
+    fullText = `Hi :) I'm Heesoo,
+a product designer
+based in NYC.
 
 I'm passionate about
 connecting with
 diverse users through
 equitable design.`;
   } else {
-    fullText = `Hi :) I'm Heesoo,
-an interaction and visual
+    fullText = `Hi :) I'm Heesoo, a product
 designer based in NYC.
     
 I'm passionate about
@@ -60,20 +57,16 @@ through equitable design.`;
   highlightInfo = []; // 하이라이트 정보를 초기화
   highlightInfo.push({word: "Heesoo", color: [255, 214, 0], lineIndex: 1, startFrame: null, currentWidth: 0});
   highlightInfo.push({word: "creative", color: [114, 175, 255], lineIndex: 2, startFrame: null, currentWidth: 0});
+
+  startTime = millis(); // 타이핑 시작 시간 초기화
 }
-
-
 
 function draw() {
   background(255);
 
-  if (index < fullText.length) {
-    if (frameCount % maxFrameCount === 0) {
-      index++;
-    }
-  } else {
-    finishedTyping = true;
-  }
+  // 현재 시간과 타이핑 시작 시간의 차이를 계산하여 인덱스를 업데이트
+  let elapsedTime = millis() - startTime;
+  index = min(floor(elapsedTime / maxFrameCount), fullText.length);
 
   fill(0); // 텍스트 색상을 검정으로 설정
   let tempText = fullText.substring(0, index);
@@ -81,7 +74,6 @@ function draw() {
   for (let i = 0; i < tempLines.length; i++) {
     text(tempLines[i], width / 2, getLineY(i, tempLines.length));
   }
-
 }
 
 function drawHighlight(info, idx) {
@@ -119,12 +111,6 @@ function getLineY(lineIndex, totalLines) {
   return (height / 2) - (lineHeight * (totalLines - 1) / 2) + (lineHeight * lineIndex);
 }
 
-// // 창 크기 변경 시 호출될 함수
-// function windowResized() {
-//   resetSketch(); // 스케치를 재설정하여 요소들을 처음부터 다시 로드
-// }
-
-
 let previousWidth = window.innerWidth;  // 초기 너비를 저장하는 변수
 
 function windowResized() {
@@ -134,5 +120,3 @@ function windowResized() {
     previousWidth = currentWidth;  // 현재 너비를 이전 너비로 업데이트
   }
 }
-
-

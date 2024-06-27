@@ -1,14 +1,15 @@
-let fullText = `Hi :) I'm Heesoo, an interaction
-and visual designer based in NYC.
+let fullText = `Hi :) I'm Heesoo,
+a product designer based in NYC.
     
 I'm passionate about connecting
 with diverse users through equitable design.`;
 
 let lines; // 전체 텍스트를 줄별로 분리한 배열
 let index = 0; // 현재까지 출력된 문자의 인덱스
-let maxFrameCount = 3; // 각 글자 사이의 프레임 간격
+let maxFrameCount = 50; // 각 글자 사이의 밀리초 간격
 let finishedTyping = false; // 타이핑 효과 완료 여부
 let highlightInfo = []; // 하이라이트 정보를 저장하는 배열
+let startTime; // 타이핑 시작 시간
 
 // creative의 시작을 늦추기 위한 변수
 let creativeDelay = 4;
@@ -20,7 +21,6 @@ function setup() {
 }
 
 function resetSketch() {
-
   // header의 높이를 얻음
   let headerHeight = document.querySelector('#header').offsetHeight;
 
@@ -42,18 +42,16 @@ function resetSketch() {
   highlightInfo = [];
   highlightInfo.push({ word: "Heesoo", color: [255, 214, 0], lineIndex: 1, startFrame: null, currentWidth: 0 });
   highlightInfo.push({ word: "multidisciplinary", color: [114, 175, 255], lineIndex: 2, startFrame: null, currentWidth: 0 });
+
+  startTime = millis(); // 타이핑 시작 시간 초기화
 }
 
 function draw() {
   background(255);
 
-  if (index < fullText.length) {
-    if (frameCount % maxFrameCount === 0) {
-      index++;
-    }
-  } else {
-    finishedTyping = true;
-  }
+  // 현재 시간과 타이핑 시작 시간의 차이를 계산하여 인덱스를 업데이트
+  let elapsedTime = millis() - startTime;
+  index = min(floor(elapsedTime / maxFrameCount), fullText.length);
 
   fill(0); // 텍스트 색상을 검정으로 설정
   let tempText = fullText.substring(0, index);
