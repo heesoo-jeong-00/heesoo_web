@@ -217,3 +217,27 @@ window.addEventListener('resize', removeBrOnMobile);
 
 
 
+
+function adjustTitleLineHeight() {
+  const title = document.getElementById("title");
+
+  if (title) {
+    // 현재 줄 개수 확인
+    const lineHeight = parseFloat(window.getComputedStyle(title).lineHeight);
+    const height = title.clientHeight;
+    const lines = Math.round(height / lineHeight);
+
+    if (lines >= 2) {
+      title.style.lineHeight = "34px"; // 두 줄 이상이면 적용
+    } else {
+      title.style.lineHeight = ""; // 한 줄이면 기본값 유지
+    }
+  }
+}
+
+// ✅ 페이지 로드 시 실행
+window.addEventListener("DOMContentLoaded", adjustTitleLineHeight);
+
+// ✅ 창 크기 변경 시 다시 체크
+window.addEventListener("resize", adjustTitleLineHeight);
+ㄹ

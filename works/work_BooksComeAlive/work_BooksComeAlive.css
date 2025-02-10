@@ -694,6 +694,8 @@ footer {
     margin: 0;
   } */
 
+
+
   #title {
     margin: 0;
     /* font-size: 46px; */
@@ -794,6 +796,14 @@ footer {
 
   }
 
+  #video0 {
+
+    top: 63.5%;
+
+  }
+
+
+
 
   #section2 {
     margin: 1vh;
@@ -811,7 +821,15 @@ footer {
 @media only screen and (min-device-width: 768px) and (max-device-width: 1200px) and (orientation: portrait) {
   #section1 {
     height: 78vh;
+    border: rgb(255, 42, 0) solid 1px;
+  }
 
+  #video0 {
+    max-width: 95%;
+    max-height: 78%;
+
+    top: 55%;
+        border: rgb(0, 255, 4) solid 1px;
   }
 
 

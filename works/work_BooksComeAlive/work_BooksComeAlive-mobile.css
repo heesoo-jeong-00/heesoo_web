@@ -202,7 +202,7 @@ main {
   object-fit: cover;
   position: absolute;
   left: 50%;
-  top: 68%;
+  top: 58%;
   transform: translate(-50%, -50%) scale(1.8);
   /* 2배 확대 */
 }
