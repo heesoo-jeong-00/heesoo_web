@@ -183,27 +183,39 @@ main {
 
 
 /* section1 */
-
 #section1 {
   width: 100vw;
-  height: 66vh;
-
-
-  /* height: calc(100vh - 96px); */
+  height: 70vh;
   position: relative;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #video0 {
-  top:32vh;
-  scale: 1.7;
+  width: clamp(120vw, 160vw, 2000px);
+  /* 기존의 2배 크기 */
+  height: auto;
+  max-height: 200%;
+  border-radius: 3vw;
+  object-fit: cover;
+  position: absolute;
+  left: 50%;
+  top: 68%;
+  transform: translate(-50%, -50%) scale(1.8);
+  /* 2배 확대 */
 }
 
 
 
 #section2 {
+  min-height: 54.8vh;
+  overflow: visible;
+  height: auto;
 
-  height: 54.8vh;
+
+  /* height: 54.8vh; */
   display: flex;
   flex-direction: column;
   margin-top: 1%;
@@ -211,7 +223,6 @@ main {
   padding: 20px 4% 8% 4%;
   width: 100%;
 }
-
 
 
 #section2-1,
@@ -257,7 +268,8 @@ main {
   display: flex;
   flex-direction: column;
   align-items: baseline;
-  /* border: rgb(0, 81, 255) solid 1px; */
+  /* margin-bottom: 2vw; */
+
 }
 
 
@@ -267,9 +279,7 @@ main {
   font-style: normal;
   font-size: 36px;
   /* font-size: 50px; */
-
-  padding: 0;
-  margin: 0;
+  margin-bottom: 12px;
 
   word-wrap: break-word;
   /* border: rgb(255, 0, 0) solid 1px; */

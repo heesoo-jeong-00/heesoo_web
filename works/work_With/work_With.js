@@ -143,7 +143,7 @@ function setupVideoRepeat(video, repeatStartTime) {
   let initialSetupDone = false; // 초기 설정 완료 여부 플래그
 
   // 비디오 메타데이터가 로드되었을 때 초기 설정 실행
-  video.onloadedmetadata = function() {
+  video.onloadedmetadata = function () {
     if (!initialSetupDone) {
       video.currentTime = repeatStartTime;  // 최초 로딩 시, 반복 시작 지점으로 이동
       initialSetupDone = true;
@@ -151,7 +151,7 @@ function setupVideoRepeat(video, repeatStartTime) {
   };
 
   // 비디오가 지정된 시간을 넘어서면 지정된 시작 지점으로 돌아가도록 설정
-  video.addEventListener('timeupdate', function() {
+  video.addEventListener('timeupdate', function () {
     if (video.currentTime >= video.duration - 0.5) {
       video.currentTime = repeatStartTime;
       video.play().catch(e => console.error(`Error replaying video ${video.id}:`, e));
@@ -212,18 +212,18 @@ window.addEventListener('scroll', function () {
 // 배속 조정 설정
 videos.forEach(video => {
   if (video.getAttribute('id') === 'video1') {
-    video.playbackRate = 2.1; 
+    video.playbackRate = 2.1;
   } else if (video.getAttribute('id') === 'video2') {
-    video.playbackRate = 2.3; 
+    video.playbackRate = 2.3;
   } else if (video.getAttribute('id') === 'video6') {
-    video.playbackRate = 1.8; 
+    video.playbackRate = 1.8;
   } else if (video.getAttribute('id') === 'video7') {
-    video.playbackRate = 1.75; 
-  } 
+    video.playbackRate = 1.75;
+  }
   else if (video.getAttribute('id') === 'video4') {
-    video.playbackRate = 1.2; 
-  } 
-  
+    video.playbackRate = 1.2;
+  }
+
   else {
     video.playbackRate = 1.5;
   }
@@ -232,7 +232,7 @@ videos.forEach(video => {
 
 
 
-window.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('DOMContentLoaded', function () {
   const button = document.getElementById('detail');
   const v2 = document.getElementById('v2');
   const v3 = document.getElementById('v3');
@@ -254,15 +254,40 @@ window.addEventListener('DOMContentLoaded', function() {
   window.addEventListener('resize', moveButtonForMobile);
 });
 
+// 원래 <br> 태그의 위치를 저장하는 배열
+let storedBrs = [];
 
 function removeBrOnMobile() {
-  if (window.innerWidth <= 767) { // 👈 모바일 화면 너비 기준 (767px 이하)
-    document.querySelectorAll('br').forEach(br => br.remove());
+  if (window.innerWidth <= 767) {
+    document.querySelectorAll('br').forEach((br, index) => {
+      // <br>의 부모와 다음 요소를 저장
+      storedBrs.push({ parent: br.parentNode, nextSibling: br.nextSibling });
+      br.remove();
+    });
+  } else {
+    restoreBrOnDesktop();
+  }
+}
+
+function restoreBrOnDesktop() {
+  if (storedBrs.length > 0) {
+    storedBrs.forEach(({ parent, nextSibling }) => {
+      if (parent) {
+        const newBr = document.createElement('br');
+        if (nextSibling) {
+          parent.insertBefore(newBr, nextSibling);
+        } else {
+          parent.appendChild(newBr);
+        }
+      }
+    });
+    // 저장된 배열 초기화 (중복 추가 방지)
+    storedBrs = [];
   }
 }
 
 // ✅ 페이지 로드 시 한 번 실행
 window.addEventListener('DOMContentLoaded', removeBrOnMobile);
 
-// ✅ 화면 크기 변경될 때 다시 확인 (예: 창 크기 조정)
+// ✅ 화면 크기 변경될 때 다시 확인
 window.addEventListener('resize', removeBrOnMobile);

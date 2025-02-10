@@ -465,18 +465,18 @@ document.addEventListener('DOMContentLoaded', function () {
       });
 
       // ✅ 마우스가 올라가면 비디오 일시정지
-      blackBox15.addEventListener('mouseenter', function () {
-        if (video) {
-          video.pause();
-        }
-      });
-
       // ✅ 마우스가 벗어나면 다시 재생
-      blackBox15.addEventListener('mouseleave', function () {
-        if (video) {
-          video.play();
-        }
-      });
+      // blackBox15.addEventListener('mouseenter', function () {
+      //   if (video) {
+      //     video.pause();
+      //   }
+      // });
+
+      // blackBox15.addEventListener('mouseleave', function () {
+      //   if (video) {
+      //     video.play();
+      //   }
+      // });
     }
   } else {
     if (box15) {
@@ -500,18 +500,18 @@ document.addEventListener('DOMContentLoaded', function () {
       });
 
       // ✅ 마우스가 올라가면 비디오 일시정지
-      blackBox16.addEventListener('mouseenter', function () {
-        if (video) {
-          video.pause();
-        }
-      });
-
       // ✅ 마우스가 벗어나면 다시 재생
-      blackBox16.addEventListener('mouseleave', function () {
-        if (video) {
-          video.play();
-        }
-      });
+      // blackBox16.addEventListener('mouseenter', function () {
+      //   if (video) {
+      //     video.pause();
+      //   }
+      // });
+
+      // blackBox16.addEventListener('mouseleave', function () {
+      //   if (video) {
+      //     video.play();
+      //   }
+      // });
     }
   } else {
     if (box16) {
@@ -525,15 +525,63 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
+const videos = [
+  document.getElementById('video_box15'),
+  document.getElementById('video_box16')
+];
+
+// 배속 조정 설정
+videos.forEach(video => {
+  if (video.getAttribute('id') === 'video_box15') {
+    video.playbackRate = 1.4;
+  } else if (video.getAttribute('id') === 'video_box16') {
+    video.playbackRate = 1.4;
+  }
+  else {
+    video.playbackRate = 1.0;
+  }
+});
+
+
+
+// 원래 <br> 태그의 위치를 저장하는 배열
+let storedBrs = [];
 
 function removeBrOnMobile() {
-  if (window.innerWidth <= 767) { // 👈 모바일 화면 너비 기준 (767px 이하)
-    document.querySelectorAll('br').forEach(br => br.remove());
+  if (window.innerWidth <= 767) {
+    document.querySelectorAll('br').forEach((br, index) => {
+      // <br>의 부모와 다음 요소를 저장
+      storedBrs.push({ parent: br.parentNode, nextSibling: br.nextSibling });
+      br.remove();
+    });
+  } else {
+    restoreBrOnDesktop();
+  }
+}
+
+function restoreBrOnDesktop() {
+  if (storedBrs.length > 0) {
+    storedBrs.forEach(({ parent, nextSibling }) => {
+      if (parent) {
+        const newBr = document.createElement('br');
+        if (nextSibling) {
+          parent.insertBefore(newBr, nextSibling);
+        } else {
+          parent.appendChild(newBr);
+        }
+      }
+    });
+    // 저장된 배열 초기화 (중복 추가 방지)
+    storedBrs = [];
   }
 }
 
 // ✅ 페이지 로드 시 한 번 실행
 window.addEventListener('DOMContentLoaded', removeBrOnMobile);
 
-// ✅ 화면 크기 변경될 때 다시 확인 (예: 창 크기 조정)
+// ✅ 화면 크기 변경될 때 다시 확인
 window.addEventListener('resize', removeBrOnMobile);
+
+
+
+

@@ -178,26 +178,23 @@ main {
 
 #section1 {
   width: 100vw;
-  height: 66vh;
-
-
-  /* height: calc(100vh - 96px); */
+  height: 70vh;
   position: relative;
-
-  /* background-color: rgb(255, 255, 255); */
-  /* border:rgb(0, 72, 255) solid 1px; */
-  background-repeat: no-repeat;
-  /* background-position: center 10px; */
-  background-position: center center;
-  background-size: cover;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 
 
 
 #section2 {
 
-  height: 54.8vh;
+  min-height: 54.8vh;
+  overflow: visible;
+  height: auto;
+
   display: flex;
   flex-direction: column;
   margin-top: 1%;
@@ -261,9 +258,7 @@ main {
   font-style: normal;
   font-size: 36px;
   /* font-size: 50px; */
-
-  padding: 0;
-  margin: 0;
+  margin-bottom: 12px;
 
   word-wrap: break-word;
   /* border: rgb(255, 0, 0) solid 1px; */

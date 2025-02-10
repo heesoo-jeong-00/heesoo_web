@@ -221,7 +221,7 @@ img {
   /* left: 50%;
   transform: translateX(-50%); */
   width: 100vw;
-  height: 74vh;
+  height: 76vh;
   /* height: 56.25vw; */
   /* height: 90vh; */
   position: relative;
@@ -244,52 +244,42 @@ img {
 
 
 #section2 {
-
-  height: 25vh;
+  padding-top: 5.55vh;
+  min-height: 15vh;
+  /* 최소 높이 보장 */
+  height: auto;
+  /* 내용이 많아지면 자동 확장 */
   display: flex;
   flex-direction: row;
-  /* padding-bottom: 0; */
-  /* margin-bottom: 0px;
-  margin-top: 0; */
-  /* border:rgb(255, 0, 0) solid 1px; */
-  /* top: 0px; */
-  margin-bottom: 1%;
-  /* padding-bottom: 0; */
-  /* margin: 2% 0%; */
-  /* align-items: flex-start; */
+  /* border: rgb(255, 0, 0) solid 1px; */
+  /* margin-bottom: 1%; */
+  overflow: visible;
+  /* 내용이 잘리지 않도록 설정 */
+  align-items: flex-end;
+  /* 하단 정렬 */
 }
 
 #section2-1,
 #section2-2 {
-  /* border: rgb(0, 255, 4) solid 1px; */
   width: 50%;
   height: auto;
   margin: 0px;
-  overflow: hidden;
+  overflow: visible;
+  /* 내용이 많아도 보이도록 */
   position: relative;
   text-align: left;
-  /* font-family: "Prompt", sans-serif;
-  font-style: normal; */
-
   font-family: "Nunito", serif;
   font-optical-sizing: auto;
   font-style: normal;
-
   line-height: 1.25;
-
-  align-items: left;
   color: black;
-
   display: flex;
-  flex-direction: row;
-  justify-content: left;
-  /* left: 7%; */
-  /* width: 78%;  */
-  align-items: flex-end;
+  flex-direction: column;
+  /* 내부 요소가 세로 정렬될 수 있도록 변경 */
+  justify-content: flex-end;
+  /* 하단 정렬 유지 */
   padding: 3% 4% 3% 4%;
-  /* margin-top: 0; */
 }
-
 
 #texts {
   color: #000000;
@@ -330,6 +320,7 @@ img {
   flex-direction: row;
   align-items: flex-end;
   /* border: rgb(0, 81, 255) solid 1px; */
+  margin-bottom: 0.8vw;
 }
 
 
@@ -342,9 +333,10 @@ img {
   font-style: normal;
 
   font-weight: 350;
+  line-height: 3.5vw;
 
 
-  font-style: normal;
+
   font-size: 3.4vw;
   /* font-size: 50px; */
 
@@ -355,10 +347,12 @@ img {
   /* border: rgb(255, 0, 0) solid 1px; */
 }
 
+
+
 #captions {
   display: flex;
   flex-direction: row;
-  margin-bottom: 0.85vw;
+  margin-bottom: 0.4vw;
   padding-left: 0.9vw;
 
   white-space: nowrap;

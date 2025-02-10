@@ -4,7 +4,8 @@
 
 #mainbutton {
   width: 27vw;
-  position: relative; /* 상대 위치 설정 제거 */
+  position: relative;
+  /* 상대 위치 설정 제거 */
   background-color: white;
   color: black;
   border-radius: 10vw;
@@ -210,27 +211,22 @@ main {
 
 #section1 {
   width: 100vw;
-  height: 66vh;
-
-  /* background-image: url(../../files/type/type-main-ss.jpg); */
-  /* height: calc(100vh - 96px); */
+  height: 70vh;
   position: relative;
-
-  /* background-color: rgb(255, 255, 255); */
-  /* border:rgb(0, 72, 255) solid 1px; */
-  background-repeat: no-repeat;
-  /* background-position: center 10px; */
-  background-position: center center;
-  background-size: cover;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
 
 
 
 #section2 {
 
-  height: 54.8vh;
+  min-height: 54.8vh;
+  overflow: visible;
+  height: auto;
+
   display: flex;
   flex-direction: column;
   margin-top: 1%;
@@ -265,7 +261,7 @@ main {
 }
 
 
-#tcs{
+#tcs {
   width: 100%;
 }
 
@@ -284,9 +280,10 @@ main {
 #tc {
   display: flex;
   flex-direction: column;
-  align-items:baseline;
+  align-items: baseline;
   /* border: rgb(0, 81, 255) solid 1px; */
 }
+
 
 
 #title {
@@ -295,9 +292,7 @@ main {
   font-style: normal;
   font-size: 36px;
   /* font-size: 50px; */
-
-  padding: 0;
-  margin: 0;
+  margin-bottom: 12px;
 
   word-wrap: break-word;
   /* border: rgb(255, 0, 0) solid 1px; */
