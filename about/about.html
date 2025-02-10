@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HEESOO</title>
+  <!-- 모든 디바이스를 위한 기본 스타일 -->
+  <link rel="stylesheet" href="styleAbout.css">
+
+  <!-- 화면 너비가 767px 이하일 때 적용될 모바일 스타일 -->
+  <link rel="stylesheet" href="styleAbout-mobile.css" media="(max-width: 767px)">
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Hind&family=Inter:wght@100..900&family=Nanum+Gothic&family=Noto+Sans+KR&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://use.typekit.net/tco1lpn.css">
+
+  <link rel="stylesheet" href="https://use.typekit.net/uhj1ims.css">
+
+  <!-- prompt font -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+
+  <!-- nunito font -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/matter-js@0.14.2/build/matter.min.js"></script>
+
+</head>
+
+
+<body data-cursor="maincontainer">
+
+  <div id="entireMainPage">
+    <header data-cursor="topcontainer">
+      <div id="headerBox">
+        <nav id="logo"><a href="../index.html">
+            Heesoo
+          </a></nav>
+        <ul id="topBoxes">
+          <li class="topBox" id="topBox1" data-cursor="top1"><a href="../about/about.html">About</a></li>
+          <li class="topBox" id="topBox2" data-cursor="top2"><a href="../worksAll/worksAll.html">Works</a></li>
+          <li class="topBox" id="topBox3" data-cursor="top3"><a href="../files/Resume-Jeong_Heesoo.pdf">Resume</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <main id="aboutContainer">
+
+      <!-- <div id="textContents" data-cursor="main1">
+        <p class="texts" id="texts1">I'm <b id="colorBold1">Heesoo,</b> a New York-based designer with a deep passion
+          for interaction design, creative coding, and branding. Inspired by the captivating moments of daily life, I
+          craft unique experiences filled with joy and empathy prioritizing the concept of <b
+            id="colorBold2">"interaction."</b></p>
+        <p class="texts" id="texts2">Aiming to engage a diverse audience, my work is driven by the desire to create <b
+            id="colorBold2">memorable and joyful</b> experiences. Each of them is designed to be as enriching and
+          enjoyable for the audience as it is for me, the creator.</p>
+      </div> -->
+
+
+      <div id="textContents" data-cursor="main1">
+        <p class="texts">Hi !</p>
+        <p class="texts" id="texts1">I'm <b id="colorBold1">Heesoo,</b> a New York-based designer passionate about
+          crafting meaningful
+          experiences that bring comfort and joy to users. Guided by <b id="colorBold2">an equity-focused mindset,</b> I
+          strive to create intuitive and accessible designs that address the challenges faced by marginalized groups
+          with empathy.</p>
+        <p></p>
+
+        <p class="texts" id="texts2">I believe <b id="colorBold2">thoughtful design bridges gaps and fosters deeper
+            connections.</b> With a user-centered approach, I design simple, inclusive, and engaging experiences for
+          diverse audiences.</p>
+        <p></p>
+        <!-- <p class="texts" id="texts4">Thank you!</p> -->
+      </div>
+
+
+    </main>
+
+    <footer data-cursor="main1">
+      <!-- <nav> -->
+
+      <div id="bottomLogo">Heesoo</div>
+
+      <ul id="bottomBoxes">
+
+        <li class="bottomBox"><a href="../files/Resume-Jeong_Heesoo.pdf" class="b" id="b2"
+            data-cursor="bottomItem2">resume</a></li>
+        <li class="bottomBox"><a href="mailto: heesooj1012@gmail.com?" class="b" id="b1"
+            data-cursor="bottomItem1">email</a></li>
+        <li class="bottomBox"><a href="https://www.linkedin.com/in/heesoojeong/" class="b" id="b3"
+            data-cursor="bottomItem3">linkedIn</a></li>
+      </ul>
+
+      <!-- </nav> -->
+    </footer>
+  </div>
+
+
+  <div id="mouse-cursor">
+    <div></div>
+  </div>
+
+
+  <script>
+    // 화면 너비를 기준으로 조건부로 스크립트 로드
+    function loadScript(scriptPath) {
+      const script = document.createElement('script');
+      script.src = scriptPath;
+      document.body.appendChild(script);
+    }
+
+    if (window.innerWidth <= 767) {
+      // 모바일 버전 스크립트 로드
+      loadScript('scriptAbout-mobile.js');
+      loadScript('matter2-mobile.js');
+    } else {
+      // 기본 웹 버전 스크립트 로드
+      loadScript('scriptAbout.js');
+      loadScript('matter2.js');
+
+      // 다른 필요한 스크립트가 있다면 여기에 추가
+    }
+  </script>
+  <!-- <script src="sketch.js"></script> -->
+
+</body>
+
+</html>

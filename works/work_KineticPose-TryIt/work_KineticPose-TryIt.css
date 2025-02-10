@@ -1,0 +1,355 @@
+/* general */
+
+* {
+  top: 0px;
+  left: 0px;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  text-decoration: none;
+  /* font-family: "Inter", sans-serif;
+  font-style: normal; */
+  text-align: center;
+  /* z-index: 0; */
+  max-width: 100vw;
+  cursor: none;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+body {
+  background-color: white;
+}
+
+
+#entireMainPage {
+  width: 1fr;
+  height: 100vh;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  /* padding: auto; */
+  /* height: 2000px; */
+}
+
+
+/* header */
+
+header {
+  width: 100vw;
+  height: 96px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  top: 0px;
+  z-index: 10;
+  /* border: 1px solid rgb(0, 204, 255); */
+}
+
+#headerBox {
+  display: flex;
+  justify-content: center;
+
+  align-items: center;
+
+  position: fixed;
+  top: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 432px;
+
+  height: 44px;
+
+  background-color: white;
+  border: 1px solid rgba(191, 191, 191, 0.4);
+  /* box-shadow: 0px 13px 26px -5px rgba(15, 147, 255, 0.4); */
+  border-radius: 30px;
+
+  z-index: 10;
+  /* 필요한 경우 z-index 유지 */
+  transition: width 0.3s ease-out;
+  /* 사이즈 조정 애니메이션 유지 */
+
+
+  box-shadow: 0vw 0.5vw 0.8vw -0.05vw rgba(15, 147, 255, 0.25);
+  /* top: 1.5vw;
+  width: 23vw; */
+
+}
+
+#headerBox.scrolled {
+  display: flex;
+  justify-content: center;
+  width: 120px;
+  /* 또는 다른 적절한 값 */
+  left: 50%;
+  transform: translateX(-50%);
+  position: fixed;
+  /* 또는 absolute, 상황에 따라 다름 */
+  top: 28px;
+}
+
+.topBox.scrolled {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  /* Remove the boxes from the normal document flow */
+  width: 0;
+  /* Eliminate the width */
+  height: 0;
+  /* Eliminate the height */
+  overflow: hidden;
+  /* Make sure no content spills out */
+  transition: visibility 0s 0.7s, opacity 0.7s ease, width 0s 0.7s, height 0s 0.7s;
+  /* Transition for a smooth disappearance */
+}
+
+#topBoxes.scrolled {
+  margin: 10px 0px;
+}
+
+
+
+#topBoxes {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-around;
+  margin: 10px 0px 8.5px 45px;
+  width: auto;
+  /* border:rgb(255, 0, 0) solid 1px; */
+}
+
+.topBox {
+  font-size: 16.5px;
+  font-family: "Nunito", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 400;
+  font-style: normal;
+
+  color: #484848;
+  flex-grow: 1;
+  text-align: center;
+  margin: 0px 0px;
+  padding: 0px 0px 0px 32px;
+  flex: 1;
+  opacity: 1;
+  transition: opacity 0.5s ease-in 0.1s, transform 0.1s ease-in;
+  /* border:rgb(51, 0, 255) solid 1px; */
+}
+
+#logo {
+  font-size: 21px;
+  margin-bottom: -1px;
+  /* font-family: "Prompt", sans-serif; */
+  font-family: "Nunito", serif;
+  font-optical-sizing: auto;
+
+  font-weight: 600;
+  font-style: normal;
+
+
+  color: black;
+  text-decoration: none;
+  text-align: left;
+  transition: transform 0.8s ease-in 0.4s;
+  /* border:rgb(0, 255, 128) solid 1px; */
+}
+
+
+
+/* main */
+
+main {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  /* margin: 0px;
+  padding: 0px; */
+  /* top: 96px; */
+  /* flex-wrap: nowrap; */
+  position: relative;
+  /* z-index: 1; */
+  /* border:black solid 2px; */
+  /* padding-bottom: 64px; */
+}
+
+
+
+#video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: scaleX(-1);
+  z-index: -1;
+}
+
+#matter-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+
+
+/* footer */
+
+footer {
+  font-family: "Nunito", serif;
+  font-optical-sizing: auto;
+
+
+  font-style: normal;
+
+  width: 100vw;
+  background-color: white;
+  border-top: black solid 1.4px;
+  height: 64px;
+  position: relative;
+  bottom: 0px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0px;
+  /* border-radius: */
+  /* border: rgb(255, 0, 212) solid 1px; */
+}
+
+#bottomLogo {
+  font-size: 17.5px;
+  font-weight: 600;
+  font-style: normal;
+  text-align: center;
+  margin-left: 30px;
+  margin-bottom: -1px;
+  /* border: rgb(0, 159, 37) solid 1px; */
+}
+
+#bottomBoxes {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+
+  font-size: 17px;
+  font-weight: 370;
+  font-style: normal;
+
+  text-align: center;
+  align-items: center;
+  margin-right: 20px;
+  margin-bottom: -1px;
+  /* border: rgb(0, 76, 207) solid 1px; */
+}
+
+.bottomBox {
+  margin: 0px 10px;
+  /* border: rgb(207, 0, 7) solid 1px; */
+  align-items: center;
+  /* padding: 0 5px; */
+}
+
+
+
+/* 마우스 인터렉션 */
+
+#mouse-cursor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  will-change: transform;
+  transform: translate3d(-100%, -100%, 0);
+  pointer-events: none;
+  z-index: 50;
+  color: #000000;
+  mix-blend-mode: difference;
+}
+
+#mouse-cursor>div {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  background-color: #ffffff;
+  font-size: 10px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  --cursur-scale: 1;
+  transform: scale3d(var(--cursor-scale), var(--cursor-scale), 1);
+  will-change: transform;
+  transition: transform 150ms ease-in-out,
+    background-color 150ms ease-in-out;
+}
+
+#mouse-cursor>div::after {
+  content: attr(data-name);
+  position: absolute;
+  /* color: #fff; */
+  transform: scale(0.45);
+  white-space: nowrap;
+}
+
+
+.topBox:hover {
+  transition: scale 0.2s ease-in-out;
+  transform: scale(1.2);
+  /* font-size: 20px;
+  font-weight: 600; */
+  /* padding: 5px; */
+}
+
+#bottomBoxes li a {
+  display: inline-block;
+  transition: transform 0.2s ease-in-out;
+  /* padding: 2px 0;  */
+}
+
+#bottomBoxes li a:hover {
+  /* font-size: 18px;
+  font-weight: 600;
+  padding: 0px 0;  */
+  transition: all 0.2s ease-in-out;
+  transform: scale(1.3);
+  /* 원하는 크기로 조정 */
+}
+
+
+/* 애니메이션 추가 */
+
+.topBox.scrolled {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  /* Remove the boxes from the normal document flow */
+  width: 0;
+  /* Eliminate the width */
+  height: 0;
+  /* Eliminate the height */
+  overflow: hidden;
+  /* Make sure no content spills out */
+  transition: visibility 0s 0.7s, opacity 0.7s ease, width 0s 0.7s, height 0s 0.7s;
+  /* Transition for a smooth disappearance */
+}
