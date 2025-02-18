@@ -498,25 +498,32 @@ document.addEventListener('DOMContentLoaded', function () {
       blackBox16.addEventListener('click', function () {
         window.location.href = '../works/work_BooksComeAlive/work_BooksComeAlive.html';
       });
-
-      // ✅ 마우스가 올라가면 비디오 일시정지
-      // ✅ 마우스가 벗어나면 다시 재생
-      // blackBox16.addEventListener('mouseenter', function () {
-      //   if (video) {
-      //     video.pause();
-      //   }
-      // });
-
-      // blackBox16.addEventListener('mouseleave', function () {
-      //   if (video) {
-      //     video.play();
-      //   }
-      // });
     }
   } else {
     if (box16) {
       box16.addEventListener('click', function () {
         window.location.href = '../works/work_BooksComeAlive/work_BooksComeAlive.html';
+      });
+    }
+  }
+});
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  var box17 = document.getElementById('box17');
+  var blackBox17 = document.getElementById('blackbox17');
+  var video = document.getElementById('video_box17'); // 비디오 요소 가져오기
+
+  if (window.innerWidth > 1024) {
+    if (blackBox17) {
+      blackBox17.addEventListener('click', function () {
+        window.location.href = '../works/work_Podscribe/work_Podscribe.html';
+      });
+    }
+  } else {
+    if (box17) {
+      box17.addEventListener('click', function () {
+        window.location.href = '../works/work_Podscribe/work_Podscribe.html';
       });
     }
   }

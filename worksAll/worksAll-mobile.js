@@ -221,6 +221,27 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+document.addEventListener('DOMContentLoaded', function () {
+  var box17 = document.getElementById('box17');
+  var blackBox17 = document.getElementById('blackbox17');
+  var video = document.getElementById('video_box17'); // 비디오 요소 가져오기
+
+  if (window.innerWidth > 1024) {
+    if (blackBox17) {
+      blackBox17.addEventListener('click', function () {
+        window.location.href = '../works/work_Podscribe/work_Podscribe.html';
+      });
+    }
+  } else {
+    if (box17) {
+      box17.addEventListener('click', function () {
+        window.location.href = '../works/work_Podscribe/work_Podscribe.html';
+      });
+    }
+  }
+});
+
+
 
 
 
@@ -497,6 +518,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 })
+
+
 
 
 
