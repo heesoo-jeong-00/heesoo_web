@@ -1,0 +1,675 @@
+/* general */
+
+* {
+  top: 0px;
+  left: 0px;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  text-decoration: none;
+  /* font-family: "Inter", sans-serif;
+  font-style: normal; */
+  text-align: center;
+  /* z-index: 0; */
+  max-width: 100vw;
+  cursor: none;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+body {
+  background-color: white;
+}
+
+
+#entireMainPage {
+  width: 1fr;
+  height: 100vh;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  /* padding: auto; */
+  /* height: 2000px; */
+}
+
+
+/* header */
+
+
+/* 
+header {
+  width: 100vw;
+  height: 96px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  top: 0px;
+  z-index: 10;
+
+} */
+
+header {
+  width: 100vw;
+  height: 96px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  position: fixed;
+  /* header를 고정 */
+  top: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+#headerBox {
+  display: flex;
+  justify-content: center;
+
+  align-items: center;
+
+  position: fixed;
+  top: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 432px;
+
+  height: 44px;
+
+  background-color: white;
+  border: 1px solid rgba(191, 191, 191, 0.4);
+  /* box-shadow: 0px 13px 26px -5px rgba(15, 147, 255, 0.4); */
+  border-radius: 30px;
+
+  z-index: 10;
+  /* 필요한 경우 z-index 유지 */
+  transition: width 0.3s ease-out;
+  /* 사이즈 조정 애니메이션 유지 */
+
+
+  box-shadow: 0vw 0.5vw 0.8vw -0.05vw rgba(15, 147, 255, 0.25);
+  /* top: 1.5vw;
+  width: 23vw; */
+
+}
+
+#headerBox.scrolled {
+  display: flex;
+  justify-content: center;
+  width: 120px;
+  /* 또는 다른 적절한 값 */
+  left: 50%;
+  transform: translateX(-50%);
+  position: fixed;
+  /* 또는 absolute, 상황에 따라 다름 */
+  top: 28px;
+
+
+
+}
+
+.topBox.scrolled {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  /* Remove the boxes from the normal document flow */
+  width: 0;
+  /* Eliminate the width */
+  height: 0;
+  /* Eliminate the height */
+  overflow: hidden;
+  /* Make sure no content spills out */
+  transition: visibility 0s 0.7s, opacity 0.7s ease, width 0s 0.7s, height 0s 0.7s;
+  /* Transition for a smooth disappearance */
+}
+
+#topBoxes.scrolled {
+  margin: 10px 0px;
+}
+
+#topBoxes {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-around;
+  margin: 10px 0px 8.5px 45px;
+  width: auto;
+  /* border:rgb(255, 0, 0) solid 1px; */
+}
+
+.topBox {
+  font-size: 16.5px;
+  font-family: "Nunito", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 400;
+  font-style: normal;
+
+  color: #484848;
+  flex-grow: 1;
+  text-align: center;
+  margin: 0px 0px;
+  padding: 0px 0px 0px 32px;
+  flex: 1;
+  opacity: 1;
+  transition: opacity 0.5s ease-in 0.1s, transform 0.1s ease-in;
+  /* border:rgb(51, 0, 255) solid 1px; */
+}
+
+#logo {
+  font-size: 21px;
+  margin-bottom: -1px;
+  /* font-family: "Prompt", sans-serif; */
+  font-family: "Nunito", serif;
+  font-optical-sizing: auto;
+
+  font-weight: 600;
+  font-style: normal;
+
+
+  color: black;
+  text-decoration: none;
+  text-align: left;
+  transition: transform 0.8s ease-in 0.4s;
+  /* border:rgb(0, 255, 128) solid 1px; */
+}
+
+
+/* main */
+
+main {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  /* margin: 0px;
+  padding: 0px; */
+  /* top: 96px; */
+  /* flex-wrap: nowrap; */
+  position: relative;
+  /* z-index: 1; */
+  /* border:black solid 2px; */
+}
+
+
+/* section1 */
+img {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  overflow: hidden;
+}
+
+
+#section1 {
+  /* left: 50%;
+  transform: translateX(-50%); */
+  width: 100vw;
+  height: 76vh;
+  /* height: 56.25vw; */
+  /* height: 90vh; */
+  position: relative;
+  /* top: -96px; */
+  /* background-color: rgb(255, 255, 255); */
+  /* border:rgb(0, 72, 255) solid 1px; */
+  background-image: url(../../files/bodega/bodega1.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  overflow: hidden;
+  /* border-radius: 60px; */
+  border-bottom-left-radius: 3vw;
+  border-bottom-right-radius: 3vw;
+  margin: 0px;
+  /* margin-bottom: 0vw; */
+}
+
+
+
+#section2 {
+  padding-top: 5.55vh;
+  min-height: 15vh;
+  /* 최소 높이 보장 */
+  height: auto;
+  /* 내용이 많아지면 자동 확장 */
+  display: flex;
+  flex-direction: row;
+  /* border: rgb(255, 0, 0) solid 1px; */
+  /* margin-bottom: 1%; */
+  overflow: visible;
+  /* 내용이 잘리지 않도록 설정 */
+  align-items: flex-end;
+  /* 하단 정렬 */
+}
+
+#section2-1,
+#section2-2 {
+  width: 50%;
+  height: auto;
+  margin: 0px;
+  overflow: visible;
+  /* 내용이 많아도 보이도록 */
+  position: relative;
+  text-align: left;
+  font-family: "Nunito", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  line-height: 1.25;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  /* 내부 요소가 세로 정렬될 수 있도록 변경 */
+  justify-content: flex-end;
+  /* 하단 정렬 유지 */
+  padding: 3% 4% 3% 4%;
+}
+
+
+
+#texts {
+  color: #000000;
+  width: 100%;
+  /* font-size: 18px; */
+  font-size: 1vw;
+  font-weight: 300;
+
+  word-wrap: break-word;
+  /* margin-left: 18vw; */
+  /* left: 70%;
+  transform: translateX(-70%); */
+
+  height: auto;
+  /* border:rgb(255, 0, 0) solid 1px; */
+
+}
+
+
+.content {
+  width: auto;
+  /* border:rgb(255, 0, 0) solid 1px; */
+  /* width: 90%; */
+  text-align: left;
+  font-family: "Nunito", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+
+  /* font-weight: 300; */
+
+  white-space: normal;
+  /* 줄바꿈을 정상적으로 처리하도록 설정합니다 */
+}
+
+#tc {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  /* border: rgb(0, 81, 255) solid 1px; */
+  margin-bottom: 0.8vw;
+}
+
+
+#title {
+  /* font-family: "Jura", sans-serif;
+  font-weight: 500; */
+
+  font-family: "Nunito", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+
+  font-weight: 350;
+  line-height: 3.5vw;
+
+
+
+  font-size: 3.4vw;
+  /* font-size: 50px; */
+
+  padding: 0;
+  margin: 0;
+
+  word-wrap: break-word;
+  /* border: rgb(255, 0, 0) solid 1px; */
+}
+
+
+
+#captions {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 0.4vw;
+  padding-left: 0.9vw;
+
+  white-space: nowrap;
+  /* 줄 바꿈 금지 */
+  overflow: hidden;
+  /* 넘치는 부분 숨김 */
+  text-overflow: ellipsis;
+  /* opacity: 60%; */
+  /* border: rgb(255, 0, 0) solid 1px; */
+}
+
+.caption {
+  padding: 0.2vw 0.7vw;
+  margin-right: 0.25vw;
+  color: rgba(91, 91, 91, 0.8);
+  background-color: rgba(225, 241, 255, 0.9);
+  border: 1px solid rgba(191, 191, 191, 0.2);
+  /* box-shadow: 0px 0.2vw 0.4vw  -0vw rgba(15, 147, 255, 0.4); */
+  border-radius: 1vw;
+
+  font-weight: 400;
+  /* font-size: 14px; */
+  font-size: 0.85vw;
+}
+
+#subtitle {
+  /* font-family: "Jura", sans-serif;
+  font-weight: 700; */
+  font-weight: 560;
+  /* opacity: 48%; */
+  color: rgba(53, 53, 53, 0.5);
+  font-size: 1vw;
+  /* margin-bottom: 16em; */
+  word-wrap: break-word;
+  /* border:rgb(255, 0, 0) solid 1px; */
+
+}
+
+
+
+#section3 {
+  height: auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: flex-start;
+}
+
+.images {
+  width: 100vw;
+  /* height: 64.7vw; */
+  height: 93.75vw;
+
+  background-repeat: no-repeat;
+  background-position: center center;
+  /* background-size:contain; */
+  background-size: 100%;
+
+
+  position: relative;
+  /* background-color: rgb(255, 255, 255); */
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 0.7vw;
+  border-radius: 3vw;
+}
+
+
+
+#img1 {
+  background-image: url(../files/About2/Slide\ 16_9\ -\ 1.jpg);
+  width: 100vw;
+  background-size: 100%;
+  margin-top: 6vw;
+  margin-bottom: 0vw;
+}
+
+
+/* footer */
+
+footer {
+  font-family: "Nunito", serif;
+  font-optical-sizing: auto;
+
+
+  font-style: normal;
+
+  width: 100vw;
+  background-color: white;
+  border-top: black solid 1.4px;
+  height: 64px;
+  position: relative;
+  bottom: 0px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0px;
+  /* border-radius: */
+  /* border: rgb(255, 0, 212) solid 1px; */
+}
+
+#bottomLogo {
+  font-size: 17.5px;
+  font-weight: 600;
+  font-style: normal;
+  text-align: center;
+  margin-left: 30px;
+  margin-bottom: -1px;
+  /* border: rgb(0, 159, 37) solid 1px; */
+}
+
+#bottomBoxes {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+
+  font-size: 17px;
+  font-weight: 370;
+  font-style: normal;
+
+  text-align: center;
+  align-items: center;
+  margin-right: 20px;
+  margin-bottom: -1px;
+  /* border: rgb(0, 76, 207) solid 1px; */
+}
+
+.bottomBox {
+  margin: 0px 10px;
+  /* border: rgb(207, 0, 7) solid 1px; */
+  align-items: center;
+  /* padding: 0 5px; */
+}
+
+
+
+/* and (orientation: portrait)  */
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1200px) {
+  /* #tc {
+    flex-direction: column;
+    align-items: flex-start; 
+    margin: 0;
+  } */
+
+  #title {
+    margin: 0;
+    /* font-size: 46px; */
+    font-size: 3.8vw;
+  }
+
+  /* #captions {
+    padding-left: 0px;
+    margin-top: 4px;
+    margin-bottom: 6px;
+  } */
+
+  .caption {
+    padding: 0.3vw 0.9vw;
+    margin-right: 0.4vw;
+    /* box-shadow: 0px 0.2vw 0.4vw  -0vw rgba(15, 147, 255, 0.4); */
+    border-radius: 10vw;
+
+    font-weight: 400;
+    /* font-size: 14px; */
+    font-size: 1vw;
+  }
+
+  #subtitle {
+    width: 100%;
+    font-size: 1.3vw;
+  }
+
+  #texts {
+    font-size: 1.3vw;
+    margin-bottom: 0;
+    width: 97%;
+  }
+
+
+  #section2-1 {
+    padding: 1vw 4vw 3.2vw 4vw;
+    /* border: rgb(0, 255, 4) solid 1px; */
+
+  }
+
+  #section2-2 {
+    padding: 1vw 4vw 3.2vw 4vw;
+    /* border: rgb(0, 255, 4) solid 1px; */
+  }
+
+
+  #section1 {
+    height: 65vh;
+
+  }
+
+  #section2 {
+    margin: 1vh;
+    height: 25vh;
+  }
+
+  footer {
+    border-top: black solid 1px;
+  }
+}
+
+
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1200px) and (orientation: portrait) {
+  #section1 {
+    height: 78vh;
+
+  }
+
+  #section2 {
+    /* margin: 1vh; */
+    margin-bottom: 6%;
+    height: 12vh;
+  }
+
+  #section2-1 {
+    padding: 1% 4% 1% 4%;
+
+  }
+
+  #section2-2 {
+    padding: 1% 4% 1% 4%;
+  }
+
+
+}
+
+
+
+
+/* 마우스 인터렉션 */
+
+#mouse-cursor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  will-change: transform;
+  transform: translate3d(-100%, -100%, 0);
+  pointer-events: none;
+  z-index: 50;
+  color: #000000;
+  mix-blend-mode: difference;
+}
+
+#mouse-cursor>div {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  background-color: #ffffff;
+  font-size: 10px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  --cursur-scale: 1;
+  transform: scale3d(var(--cursor-scale), var(--cursor-scale), 1);
+  will-change: transform;
+  transition: transform 150ms ease-in-out,
+    background-color 150ms ease-in-out;
+}
+
+#mouse-cursor>div::after {
+  content: attr(data-name);
+  position: absolute;
+  /* color: #fff; */
+  transform: scale(0.45);
+  white-space: nowrap;
+}
+
+
+.topBox:hover {
+  transition: scale 0.2s ease-in-out;
+  transform: scale(1.2);
+  /* font-size: 20px;
+  font-weight: 600; */
+  /* padding: 5px; */
+}
+
+#bottomBoxes li a {
+  display: inline-block;
+  transition: transform 0.2s ease-in-out;
+  /* padding: 2px 0;  */
+}
+
+#bottomBoxes li a:hover {
+  /* font-size: 18px;
+  font-weight: 600;
+  padding: 0px 0;  */
+  transition: all 0.2s ease-in-out;
+  transform: scale(1.3);
+  /* 원하는 크기로 조정 */
+}
+
+
+/* 애니메이션 추가 */
+
+.topBox.scrolled {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  /* Remove the boxes from the normal document flow */
+  width: 0;
+  /* Eliminate the width */
+  height: 0;
+  /* Eliminate the height */
+  overflow: hidden;
+  /* Make sure no content spills out */
+  transition: visibility 0s 0.7s, opacity 0.7s ease, width 0s 0.7s, height 0s 0.7s;
+  /* Transition for a smooth disappearance */
+}
