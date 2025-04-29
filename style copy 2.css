@@ -1,28 +1,3 @@
-/* 
-// <uniquifier>: Use a unique and descriptive class name
-// <weight>: Use a value from 100 to 900
-
-.inter-<uniquifier> {
-  font-family: "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: <weight>;
-  font-style: normal;
-  font-variation-settings:
-    "slnt" 0;
-} */
-
-/* // <uniquifier>: Use a unique and descriptive class name
-// <weight>: Use a value from 300 to 700
-
-.jura-<uniquifier> {
-  font-family: "Jura", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: <weight>;
-  font-style: normal;
-} */
-
-
-/* general */
 @font-face {
   font-family: 'Lineal';
   src: url('../files/fonts/LinealVF.woff2') format('woff2');
@@ -104,7 +79,7 @@ header {
   /* box-shadow: 0px 13px 26px -5px rgba(15, 147, 255, 0.4); */
   border-radius: 30px;
 
-  z-index: 10;
+  z-index: 20;
   /* 필요한 경우 z-index 유지 */
   transition: width 0.3s ease-out;
   /* 사이즈 조정 애니메이션 유지 */
@@ -198,13 +173,13 @@ header {
 }
 
 
-
 main {
 
   width: 100%;
   height: auto;
   display: flex;
   flex-direction: column;
+  /* min-height: 550vh; */
   /* margin: 0px;
   padding: 0px; */
   /* top: 96px; */
@@ -219,453 +194,86 @@ main {
 
 /* section2 */
 
+
+
+
 #section2 {
   /* border: 1px solid rgb(0, 204, 255); */
   width: 100%;
-  height: 2190px;
+  height: 62vh;
   position: relative;
   /* background-color: rgb(255, 255, 255); */
   overflow: hidden;
   /* border:rgb(255, 0, 0) solid 1px; */
 }
 
-/* section2-part1 */
-#s2.s2c1 {
-  /* overflow-x: hidden; */
-  white-space: nowrap;
-  margin: 0px;
-  padding: 0px;
-  position: absolute;
-  left: 80%;
-  z-index: 5;
-  /* 초기 위치 조정을 위한 변형 추가 */
-  top: 200px;
-
-  font-style: normal;
-  line-height: 1.25;
-
-  color: black;
-  opacity: 0;
-  /* 초기 투명도 설정 */
-  transform: translate(-80%, 40px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-#s2text1 {
-  white-space: nowrap;
-  margin: 0px;
-  padding: 0px;
-  font-size: 34px;
-
-  font-family: "Prompt", sans-serif;
-  font-weight: 200;
-  /* font-family: "Jura", sans-serif;
-  font-weight: 400; */
-  font-style: normal;
-  line-height: 1.27;
-
-
-  color: black;
-  text-align: left;
-}
-
-#s2text1 strong {
-  color: #3587ff;
-  font-weight: 400;
-}
-
-#project1 {
-  position: absolute;
-  top: 154px;
-  background-color: white;
-  color: black;
-  border-radius: 30px;
-  z-index: 10;
-  font-size: 20px;
-
-  font-family: "Prompt", sans-serif;
-  font-weight: 300;
-  /* font-family: "Jura", sans-serif;
-  font-weight: 500; */
-  font-style: normal;
-  padding: 3px 20px;
-  border: 1.7px solid black;
-}
-
-#circleForS2c1,
-#recForS2c1,
-#linesForS2c1 {
-  /* overflow-x: hidden; */
-  position: absolute;
-  opacity: 0;
-  /* 초기 투명도 설정 */
-  transform: translateX(-640px);
-  /* 초기 위치 설정 */
-}
-
-#circleForS2c1 {
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-#recForS2c1 {
-  transition: opacity 0.8s ease, transform 0.8s ease 0.2s;
-  /* 0.1초 지연 */
-}
-
-#linesForS2c1 {
-  transition: opacity 0.8s ease, transform 0.8s ease 0.4s;
-  /* 0.2초 지연 */
-}
-
-#circleForS2c1 {
-  top: 75px;
-  left: -1%;
-  scale: 1.3;
-}
-
-#recForS2c1 {
-  top: 229px;
-  left: 30%;
-  scale: 1.3;
-}
-
-#linesForS2c1 {
-  top: 576px;
-  left: 13%;
-  height: 90px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  /* scale: 1.1 */
-  scale: 1.0;
-  ;
-}
-
-.line {
-  margin: 0;
-}
-
-
-/* section2-part2 */
-
-#s2.s2c2 {
-  white-space: nowrap;
-  margin: 0px;
-  padding: 0px;
-  /* overflow-x: hidden; */
-  position: absolute;
-  top: 850px;
-  z-index: 5;
-  font-size: 32px;
-
-  /* font-family: "Prompt", sans-serif; */
-  /* font-weight: 300; */
-  font-family: "Jura", sans-serif;
-  font-weight: 400;
-
-  font-style: normal;
-  line-height: 1.25;
-
-
-  color: black;
-  /* border: rgb(255, 0, 212) solid 1px; */
-  left: 12%;
-  transform: translateX(-12%) translateY(40px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-  opacity: 0;
-}
-
-
-#s2text2 {
-  white-space: nowrap;
-  margin: 0px;
-  padding: 0px;
-  font-size: 34px;
-
-  font-family: "Prompt", sans-serif;
-  font-weight: 200;
-  /* font-family: "Jura", sans-serif;
-  font-weight: 400; */
-  font-style: normal;
-  line-height: 1.27;
-
-
-  color: black;
-  text-align: left;
-}
-
-#s2text2 strong {
-  color: #ff3d00;
-  font-weight: 400;
-}
-
-#project2 {
-  position: absolute;
-  top: 154px;
-  background-color: white;
-  color: black;
-  border-radius: 30px;
-  z-index: 10;
-  font-size: 20px;
-
-  font-family: "Prompt", sans-serif;
-  font-weight: 300;
-  /* font-family: "Jura", sans-serif;
-  font-weight: 500; */
-  font-style: normal;
-  padding: 3px 20px;
-  border: 1.7px solid black;
-}
-
-#circleForS2c2 {
-  position: absolute;
-  top: 723px;
-  left: 81%;
-  /* overflow: hidden; */
-  scale: 1.4;
-}
-
-#triForS2c2 {
-  position: absolute;
-  top: 576px;
-  left: 65.5%;
-  /* scale: 1.1; */
-  scale: 1.0;
-
-}
-
-#linesForS2c2 {
-  position: absolute;
-  top: 1100px;
-  /* left: 88%; */
-  left: 93%;
-  scale: 1.0;
-}
-
-#circleForS2c2,
-#triForS2c2,
-#linesForS2c2 {
-  /* overflow-x: hidden; */
-  opacity: 0;
-  transform: translateX(660px);
-  transition: opacity 0.8s, transform 0.8s;
-}
-
-#circleForS2c2 {
-  transition-delay: 0s;
-}
-
-#triForS2c2 {
-  transition-delay: 0.2s;
-}
-
-#linesForS2c2 {
-  transition-delay: 0.4s;
-}
-
-
-/* section2-part3 */
-
-#s2.s2c3 {
-  /* overflow-x: hidden; */
-  white-space: nowrap;
-  margin: 0px;
-  padding: 0px;
-  position: absolute;
-  top: 1360px;
-  z-index: 5;
-  font-size: 32px;
-
-  /* font-family: "Prompt", sans-serif; */
-  /* font-weight: 200; */
-  font-style: normal;
-  line-height: 1.25;
-
-
-  color: black;
-  /* border: rgb(255, 0, 212) solid 1px; */
-  opacity: 0;
-  /* 좌우 정렬을 유지하면서, 초기에는 아래로 40px 이동 */
-  transform: translate(-80%, 40px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-  left: 80%;
-}
-
-#s2text3 {
-  white-space: nowrap;
-  margin: 0px;
-  padding: 0px;
-  font-size: 34px;
-
-  font-family: "Prompt", sans-serif;
-  font-weight: 200;
-  /* font-family: "Jura", sans-serif;
-  font-weight: 400; */
-  font-style: normal;
-  line-height: 1.27;
-
-
-  color: black;
-  text-align: left;
-}
-
-#s2text3 strong {
-  color: #FFC700;
-  font-weight: 400;
-}
-
-#project3 {
-  position: absolute;
-  top: 154px;
-  background-color: white;
-  color: black;
-  border-radius: 30px;
-  z-index: 10;
-  font-size: 20px;
-
-  font-family: "Prompt", sans-serif;
-  font-weight: 300;
-  /* font-family: "Jura", sans-serif;
-  font-weight: 500; */
-  font-style: normal;
-  padding: 3px 20px;
-  border: 1.7px solid black;
-}
-
-#recForS2c3 {
-  position: absolute;
-  top: 1250px;
-  left: 0%;
-  /* overflow: hidden; */
-  scale: 1.1;
-}
-
-#circleForS2c3 {
-  position: absolute;
-  top: 1265px;
-  left: 21%;
-  scale: 1.0;
-}
-
-#linesForS2c3 {
-  position: absolute;
-  top: 1735px;
-  left: 5%;
-  scale: 1.0;
-}
-
-#recForS2c3,
-#circleForS2c3,
-#linesForS2c3 {
-  opacity: 0;
-  transform: translateX(-600px);
-  transition: opacity 0.8s, transform 0.8s;
-  /* overflow-x: hidden; */
-}
-
-#recForS2c3 {
-  transition-delay: 0s;
-  /* 딜레이 없음 */
-}
-
-#circleForS2c3 {
-  transition-delay: 0.2s;
-  /* 0.2초 지연 */
-}
-
-#linesForS2c3 {
-  transition-delay: 0.4s;
-  /* 0.4초 지연 */
-}
-
-
-
 /* section3 */
 
 
-/* #section3 {
-  width: 100%;
-  height: 450px;
-  position: relative;
-  background-color: rgb(255, 255, 255);
-  margin: 0px;
-  padding: 0px;
 
-  border: 1px black solid;
-  overflow: hidden;
-} */
+#s2.s2c4 {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
 
 #circleForS3 {
   position: absolute;
-  top: 1700px;
+  top: 2%;
   left: 50%;
-  /* 왼쪽에서 50% 위치에 배치 */
+  transform: translate(-50%, 30px);
   opacity: 0;
-  /* transform: translateX(-50%); */
-  transform: translateX(-50%) translateY(100%);
-  transition: opacity 1s ease, transform 1.2s ease;
-  /* margin: 0px;
-  padding: 0px; */
-  /* bottom: 0px; */
-  /* overflow: hidden; */
-  width: 1688px;
-  height: 1688px;
+  width: 2000px;
+  height: 2000px;
+  z-index: 1;
 }
-
-
 
 #s3text,
 #viewAllProjects {
-  opacity: 0;
-  /* 초기 투명도 */
-  transition: opacity 1.4s ease-in-out, transform 0.9s ease-in-out 0.2s;
   position: absolute;
   left: 50%;
-  transform: translate(-50%, 30px);
-  z-index: 5;
+  transform: translateX(-50%) translateY(0px);
+  /* ✅ 기본 살짝 아래 */
+  opacity: 0;
+  transition: opacity 1.2s ease, transform 0.8s ease;
+  z-index: 10;
+  /* ✅ svg보다 위로 */
 }
 
 #s3text {
-  white-space: nowrap;
-  top: 1918px;
-  color: black;
-
-  font-size: 34px;
-
+  top: 10%;
+  /* ✅ 25% 지점에 배치 */
+  font-size: 32px;
   font-family: "Prompt", sans-serif;
   font-weight: 200;
-
-  font-style: normal;
-  line-height: 1.3;
-
-  text-align: center;
+  color: black;
 }
 
 #viewAllProjects {
-  /* top: calc(262px + 30px); */
-  top: 1995px;
+  top: 18%;
+  /* ✅ 버튼은 더 아래 */
   background-color: white;
   color: black;
-
   border-radius: 30px;
-  z-index: 10;
-  font-size: 20px;
-
-  font-style: normal;
-  padding: 3px 20px;
-  border: 1.7px solid black;
-
-
+  font-size: 16px;
   font-family: "Prompt", sans-serif;
   font-weight: 300;
-
+  padding: 10px 20px;
+  border: 1.5px solid black;
 }
+
 
 
 .visible {
   opacity: 1;
   transform: translateX(-50%) translateY(0);
 }
+
 
 /* footer */
 
@@ -726,6 +334,12 @@ footer {
   /* padding: 0 5px; */
 }
 
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1200px) {
+  footer {
+    border-top: black solid 1px;
+  }
+}
 
 
 /* 마우스 인터렉션 */
@@ -842,3 +456,172 @@ footer {
 
 
 /* 애니메이션 추가 */
+
+
+
+
+/* 
+
+#earthContainer {
+  position: absolute;
+  top: 550px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 450px; 
+  height: 450px;
+  pointer-events: none;
+  z-index: 1;
+} */
+
+/* #earth {
+  width: 100%;
+  height: 100%;
+  transform-origin: center center;
+
+} */
+
+
+
+#earth {
+  position: absolute;
+  top: 550px;
+  left: 50%;
+  transform: translateX(-50%) rotate(0deg);
+  width: 350px;
+  /* 크기 조절하고 싶으면 여기 수정 */
+  height: auto;
+  pointer-events: none;
+  z-index: 1;
+  /* 필요시 조정 */
+}
+
+#circleHeading {
+  font-family: "Nunito", sans-serif;
+  font-weight: 350;
+  font-size: 32px;
+  margin-top: 0vh; /* ✅ 화면 위쪽에서 여유 있게 */
+  margin-bottom: 40px;
+  color: #000000;
+  text-align: center;
+  /* z-index: -1; */
+  position: relative;
+  padding-top: 5vh;
+}
+
+#projectCircle {
+  position: relative; /* ✅ 반드시 있어야 .gradient-mask 가 bottom 0에 붙음 */
+  overflow: hidden;
+  width: 100vw;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 40vh;
+}
+
+.gradient-mask {
+  position: absolute;
+  top: 80vh; /* 화면 전체의 하단 10% 지점 */
+  left: 0;
+  width: 100%;
+  height: 10vh;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #ffffff);
+  pointer-events: none;
+  z-index: 20;
+}
+
+
+
+#projectCircle.bg-active {
+  background-color: #ffffff; /* ✅ 원하는 배경색 */
+  transition: background-color 1.2s ease;
+}
+
+
+#circleWrapper {
+  position: relative;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 100vh; /* ✅ circleContainer는 아래로 내려오게 */
+  box-sizing: border-box;
+}
+
+
+#circleContainer {
+  position: relative;
+  width: 1600px;
+  height: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+    z-index: 0;
+}
+
+
+.circleCard {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 260px;
+  height: 260px;
+  transform: translate(-50%, -50%);
+  transition: all 0.6s ease, opacity 0.8s ease; /* ✅ opacity도 부드럽게 */
+
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0vw 0.5vw 0.8vw -0.05vw rgba(15, 147, 255, 0.25);
+  cursor: pointer;
+
+}
+
+
+
+
+
+
+.circleCard img, .circleCard video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#projectInfo {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 0;
+  pointer-events: none;
+}
+
+
+
+#projectTitle {
+  font-family: "Nunito", sans-serif;
+  font-weight: 450;
+  font-size: 32px;
+  margin-bottom: -2px;
+  color: #000000;
+}
+
+#projectSubtitle {
+  font-family: "Nunito", sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  color: #000000;
+}
+
+#projectTitle,
+#projectSubtitle {
+  opacity: 1;
+  transition: opacity 0.4s ease-in-out; /* ✅ 시간 늘려줘야해 */
+  will-change: opacity;
+}

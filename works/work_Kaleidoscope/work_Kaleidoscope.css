@@ -96,6 +96,7 @@ header {
 
 } */
 
+
 header {
   width: 100vw;
   height: 96px;
@@ -111,7 +112,6 @@ header {
   z-index: 10;
 }
 
-
 #headerBox {
   display: flex;
   justify-content: center;
@@ -122,7 +122,7 @@ header {
   top: 28px;
   left: 50%;
   transform: translateX(-50%);
-  width: 432px;
+  width: 396px;
 
   height: 44px;
 
@@ -143,6 +143,7 @@ header {
 
 }
 
+
 #headerBox.scrolled {
   display: flex;
   justify-content: center;
@@ -153,9 +154,6 @@ header {
   position: fixed;
   /* 또는 absolute, 상황에 따라 다름 */
   top: 28px;
-
-
-
 }
 
 .topBox.scrolled {
@@ -178,14 +176,13 @@ header {
 }
 
 
-
 #topBoxes {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: center;
   justify-content: space-around;
-  margin: 10px 0px 8.5px 45px;
+  margin: 10px 0px 8.5px 12px;
   width: auto;
   /* border:rgb(255, 0, 0) solid 1px; */
 }
@@ -202,7 +199,7 @@ header {
   flex-grow: 1;
   text-align: center;
   margin: 0px 0px;
-  padding: 0px 0px 0px 32px;
+  padding: 0px 0px 0px 24px;
   flex: 1;
   opacity: 1;
   transition: opacity 0.5s ease-in 0.1s, transform 0.1s ease-in;
@@ -226,6 +223,11 @@ header {
   transition: transform 0.8s ease-in 0.4s;
   /* border:rgb(0, 255, 128) solid 1px; */
 }
+
+#topBox3 {
+  font-weight: 625;
+}
+
 
 /* main */
 

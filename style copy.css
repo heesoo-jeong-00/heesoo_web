@@ -1,28 +1,3 @@
-/* 
-// <uniquifier>: Use a unique and descriptive class name
-// <weight>: Use a value from 100 to 900
-
-.inter-<uniquifier> {
-  font-family: "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: <weight>;
-  font-style: normal;
-  font-variation-settings:
-    "slnt" 0;
-} */
-
-/* // <uniquifier>: Use a unique and descriptive class name
-// <weight>: Use a value from 300 to 700
-
-.jura-<uniquifier> {
-  font-family: "Jura", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: <weight>;
-  font-style: normal;
-} */
-
-
-/* general */
 @font-face {
   font-family: 'Lineal';
   src: url('../files/fonts/LinealVF.woff2') format('woff2');
@@ -198,7 +173,6 @@ header {
 }
 
 
-
 main {
 
   width: 100%;
@@ -255,14 +229,14 @@ main {
   white-space: nowrap;
   margin: 0px;
   padding: 0px;
-  font-size: 34px;
+  font-size: 26px;
 
   font-family: "Prompt", sans-serif;
   font-weight: 200;
   /* font-family: "Jura", sans-serif;
   font-weight: 400; */
   font-style: normal;
-  line-height: 1.27;
+  line-height: 1.3;
 
 
   color: black;
@@ -276,12 +250,12 @@ main {
 
 #project1 {
   position: absolute;
-  top: 154px;
+  top: 122px;
   background-color: white;
   color: black;
   border-radius: 30px;
   z-index: 10;
-  font-size: 20px;
+  font-size: 16px;
 
   font-family: "Prompt", sans-serif;
   font-weight: 300;
@@ -289,7 +263,7 @@ main {
   font-weight: 500; */
   font-style: normal;
   padding: 3px 20px;
-  border: 1.7px solid black;
+  border: 1.5px solid black;
 }
 
 #circleForS2c1,
@@ -318,27 +292,25 @@ main {
 }
 
 #circleForS2c1 {
-  top: 75px;
-  left: -1%;
-  scale: 1.3;
+  top: 57px;
+  left: -5%;
+  scale: 1.0;
 }
 
 #recForS2c1 {
-  top: 229px;
+  top: 259px;
   left: 30%;
-  scale: 1.3;
+  scale: 1.0;
 }
 
 #linesForS2c1 {
   top: 576px;
-  left: 13%;
+  left: 15%;
   height: 90px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* scale: 1.1 */
-  scale: 1.0;
-  ;
+  scale: 0.7;
 }
 
 .line {
@@ -354,7 +326,7 @@ main {
   padding: 0px;
   /* overflow-x: hidden; */
   position: absolute;
-  top: 850px;
+  top: 830px;
   z-index: 5;
   font-size: 32px;
 
@@ -380,14 +352,14 @@ main {
   white-space: nowrap;
   margin: 0px;
   padding: 0px;
-  font-size: 34px;
+  font-size: 26px;
 
   font-family: "Prompt", sans-serif;
   font-weight: 200;
   /* font-family: "Jura", sans-serif;
   font-weight: 400; */
   font-style: normal;
-  line-height: 1.27;
+  line-height: 1.3;
 
 
   color: black;
@@ -401,12 +373,12 @@ main {
 
 #project2 {
   position: absolute;
-  top: 154px;
+  top: 122px;
   background-color: white;
   color: black;
   border-radius: 30px;
   z-index: 10;
-  font-size: 20px;
+  font-size: 16px;
 
   font-family: "Prompt", sans-serif;
   font-weight: 300;
@@ -414,32 +386,30 @@ main {
   font-weight: 500; */
   font-style: normal;
   padding: 3px 20px;
-  border: 1.7px solid black;
+  border: 1.5px solid black;
 }
 
 #circleForS2c2 {
   position: absolute;
   top: 723px;
-  left: 81%;
+  left: 76%;
   /* overflow: hidden; */
-  scale: 1.4;
+  scale: 1.0;
 }
 
 #triForS2c2 {
   position: absolute;
-  top: 576px;
-  left: 65.5%;
-  /* scale: 1.1; */
+  top: 596px;
+  left: 58%;
   scale: 1.0;
-
 }
 
 #linesForS2c2 {
   position: absolute;
-  top: 1100px;
+  top: 965px;
   /* left: 88%; */
-  left: 93%;
-  scale: 1.0;
+  left: 90%;
+  scale: 0.7;
 }
 
 #circleForS2c2,
@@ -495,14 +465,14 @@ main {
   white-space: nowrap;
   margin: 0px;
   padding: 0px;
-  font-size: 34px;
+  font-size: 26px;
 
   font-family: "Prompt", sans-serif;
   font-weight: 200;
   /* font-family: "Jura", sans-serif;
   font-weight: 400; */
   font-style: normal;
-  line-height: 1.27;
+  line-height: 1.3;
 
 
   color: black;
@@ -516,12 +486,12 @@ main {
 
 #project3 {
   position: absolute;
-  top: 154px;
+  top: 122px;
   background-color: white;
   color: black;
   border-radius: 30px;
   z-index: 10;
-  font-size: 20px;
+  font-size: 16px;
 
   font-family: "Prompt", sans-serif;
   font-weight: 300;
@@ -529,29 +499,29 @@ main {
   font-weight: 500; */
   font-style: normal;
   padding: 3px 20px;
-  border: 1.7px solid black;
+  border: 1.5px solid black;
 }
 
 #recForS2c3 {
   position: absolute;
-  top: 1250px;
+  top: 1152px;
   left: 0%;
   /* overflow: hidden; */
-  scale: 1.1;
+  scale: 1.0;
 }
 
 #circleForS2c3 {
   position: absolute;
-  top: 1265px;
-  left: 21%;
+  top: 1411px;
+  left: 20%;
   scale: 1.0;
 }
 
 #linesForS2c3 {
   position: absolute;
-  top: 1735px;
+  top: 1625px;
   left: 5%;
-  scale: 1.0;
+  scale: 0.7;
 }
 
 #recForS2c3,
@@ -616,6 +586,7 @@ main {
 
 #s3text,
 #viewAllProjects {
+  text-align: center;
   opacity: 0;
   /* 초기 투명도 */
   transition: opacity 1.4s ease-in-out, transform 0.9s ease-in-out 0.2s;
@@ -627,10 +598,10 @@ main {
 
 #s3text {
   white-space: nowrap;
-  top: 1918px;
-  color: black;
-
-  font-size: 34px;
+  /* top: calc(196px + 30px); */
+  top: 1952px;
+  /* z-index: 5; */
+  font-size: 32px;
 
   font-family: "Prompt", sans-serif;
   font-weight: 200;
@@ -638,26 +609,28 @@ main {
   font-style: normal;
   line-height: 1.3;
 
+
+  color: black;
   text-align: center;
 }
 
 #viewAllProjects {
   /* top: calc(262px + 30px); */
-  top: 1995px;
+  top: 2022px;
   background-color: white;
   color: black;
 
   border-radius: 30px;
   z-index: 10;
-  font-size: 20px;
-
-  font-style: normal;
-  padding: 3px 20px;
-  border: 1.7px solid black;
-
+  font-size: 16px;
 
   font-family: "Prompt", sans-serif;
   font-weight: 300;
+  /* font-family: "Jura", sans-serif;
+  font-weight: 500; */
+  font-style: normal;
+  padding: 3px 20px;
+  border: 1.5px solid black;
 
 }
 
@@ -666,6 +639,7 @@ main {
   opacity: 1;
   transform: translateX(-50%) translateY(0);
 }
+
 
 /* footer */
 
@@ -726,6 +700,12 @@ footer {
   /* padding: 0 5px; */
 }
 
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1200px) {
+  footer {
+    border-top: black solid 1px;
+  }
+}
 
 
 /* 마우스 인터렉션 */

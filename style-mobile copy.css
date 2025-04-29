@@ -1,27 +1,3 @@
-/* 
-// <uniquifier>: Use a unique and descriptive class name
-// <weight>: Use a value from 100 to 900
-
-.inter-<uniquifier> {
-  font-family: "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: <weight>;
-  font-style: normal;
-  font-variation-settings:
-    "slnt" 0;
-} */
-
-/* // <uniquifier>: Use a unique and descriptive class name
-// <weight>: Use a value from 300 to 700
-
-.jura-<uniquifier> {
-  font-family: "Jura", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: <weight>;
-  font-style: normal;
-} */
-
-
 /* general */
 @font-face {
   font-family: 'Lineal';
@@ -42,7 +18,6 @@
   /* z-index: 0; */
   max-width: 100vw;
   cursor: none;
-
 }
 
 ul {
@@ -77,77 +52,71 @@ header {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+  /* position: fixed; */
   position: relative;
   justify-content: center;
   align-items: center;
+  /* left: 50%;
+  transform: translateX(-50%); */
   top: 0px;
   z-index: 10;
-  /* border: 1px solid rgb(0, 204, 255); */
+  /* border: 1px solid rgb(17, 255, 0); */
+  /* scale: 0.8; */
 }
 
 #headerBox {
   display: flex;
   justify-content: center;
-
   align-items: center;
-
+  /* position: absolute; */
+  /* top: 48px; */
   position: fixed;
-  top: 28px;
+  top: 26px;
   left: 50%;
+  /* transform: translateX(-50%) translateY(-50%); */
   transform: translateX(-50%);
-  width: 396px;
-
-  height: 44px;
-
+  width: 316px;
+  height: 42px;
   background-color: white;
   border: 1px solid rgba(191, 191, 191, 0.4);
-  /* box-shadow: 0px 13px 26px -5px rgba(15, 147, 255, 0.4); */
+  box-shadow: 0px 14px 26px -7px rgba(15, 147, 255, 0.4);
   border-radius: 30px;
 
+  /* padding: 0px; */
   z-index: 10;
   /* 필요한 경우 z-index 유지 */
   transition: width 0.3s ease-out;
-  /* 사이즈 조정 애니메이션 유지 */
-
-
-  box-shadow: 0vw 0.5vw 0.8vw -0.05vw rgba(15, 147, 255, 0.25);
-  /* top: 1.5vw;
-  width: 23vw; */
-
+  /* scale: 0.8; */
 }
-
 
 #headerBox.scrolled {
   display: flex;
   justify-content: center;
-  width: 120px;
+  width: 105px;
+  /* width: 120px; */
   /* 또는 다른 적절한 값 */
+  /* padding: 0px 0px 0px 13px; */
+  /* margin: 0 auto; */
   left: 50%;
   transform: translateX(-50%);
   position: fixed;
   /* 또는 absolute, 상황에 따라 다름 */
-  top: 28px;
+  top: 26px;
 }
 
 .topBox.scrolled {
   opacity: 0;
   visibility: hidden;
   position: absolute;
-  /* Remove the boxes from the normal document flow */
   width: 0;
-  /* Eliminate the width */
   height: 0;
-  /* Eliminate the height */
   overflow: hidden;
-  /* Make sure no content spills out */
   transition: visibility 0s 0.7s, opacity 0.7s ease, width 0s 0.7s, height 0s 0.7s;
-  /* Transition for a smooth disappearance */
 }
 
 #topBoxes.scrolled {
   margin: 10px 0px;
 }
-
 
 #topBoxes {
   display: flex;
@@ -155,52 +124,42 @@ header {
   flex-wrap: nowrap;
   align-items: center;
   justify-content: space-around;
-  margin: 10px 0px 8.5px 12px;
+  /* margin: 10px 20px 10px 12px; */
+  margin: 10px 0px 9.2px 14px;
   width: auto;
   /* border:rgb(255, 0, 0) solid 1px; */
 }
 
 .topBox {
-  font-size: 16.5px;
-  font-family: "Nunito", serif;
-  font-optical-sizing: auto;
-  font-style: normal;
-  font-weight: 400;
-  font-style: normal;
+  font-size: 14.5px;
+
 
   color: #484848;
   flex-grow: 1;
   text-align: center;
-  margin: 0px 0px;
-  padding: 0px 0px 0px 24px;
+  /* margin: 0px 4px 0px 2px; */
+  margin: 0px;
+  padding: 0px 0px 0px 20px;
   flex: 1;
   opacity: 1;
   transition: opacity 0.5s ease-in 0.1s, transform 0.1s ease-in;
-  /* border:rgb(51, 0, 255) solid 1px; */
+  /* border:rgb(30, 0, 255) solid 1px; */
 }
 
 #logo {
-  font-size: 21px;
-  margin-bottom: -1px;
-  /* font-family: "Prompt", sans-serif; */
-  font-family: "Nunito", serif;
-  font-optical-sizing: auto;
-
-  font-weight: 600;
-  font-style: normal;
-
-
+  font-size: 16.5px;
+  margin-bottom: -0.1px;
+  font-weight: 640;
   color: black;
   text-decoration: none;
-  text-align: left;
-  transition: transform 0.8s ease-in 0.4s;
-  /* border:rgb(0, 255, 128) solid 1px; */
+  text-align: center;
+  /* margin: 10px 0px 10px 20px;
+  padding: 2px 0px; */
+  /* transition: transform 0.8s ease-in 0.4s; */
+  /* border:rgb(255, 0, 0) solid 1px; */
 }
 
-
-
 main {
-
   width: 100%;
   height: auto;
   display: flex;
@@ -220,53 +179,75 @@ main {
 /* section2 */
 
 #section2 {
-  /* border: 1px solid rgb(0, 204, 255); */
   width: 100%;
-  height: 2190px;
+  height: 1880px;
   position: relative;
   /* background-color: rgb(255, 255, 255); */
+  /* left: 50%;
+  transform: translateX(-50%); */
   overflow: hidden;
-  /* border:rgb(255, 0, 0) solid 1px; */
+  /* border: rgb(255, 0, 0) solid 1px; */
+
+
+}
+
+#s2.s2c1 br {
+  display: none;
+  /* <br> 태그 숨김 */
 }
 
 /* section2-part1 */
 #s2.s2c1 {
-  /* overflow-x: hidden; */
-  white-space: nowrap;
+  white-space: normal;
   margin: 0px;
-  padding: 0px;
-  position: absolute;
-  left: 80%;
+  padding: 0vw 5vw 0vw 5vw;
+  position: relative;
+  /* left: 80%; */
   z-index: 5;
   /* 초기 위치 조정을 위한 변형 추가 */
-  top: 200px;
+  top: 120px;
 
+  text-align: center;
+
+
+  font-family: "Prompt", sans-serif;
+  /* font-weight: 300; */
   font-style: normal;
   line-height: 1.25;
 
   color: black;
   opacity: 0;
-  /* 초기 투명도 설정 */
-  transform: translate(-80%, 40px);
+
+  left: 54%;
+  transform: translate(-50%, 40px);
   transition: opacity 0.8s ease, transform 0.8s ease;
+  /* border: rgb(115, 255, 0) solid 1px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  box-sizing: border-box;
 }
 
 #s2text1 {
-  white-space: nowrap;
-  margin: 0px;
+
+  width: 88%;
+  max-width: 500px;
+  height: auto;
+  white-space: normal;
+  /* margin: 10vw; */
   padding: 0px;
-  font-size: 34px;
+  margin: 0px;
+  font-size: 22.5px;
 
   font-family: "Prompt", sans-serif;
   font-weight: 200;
-  /* font-family: "Jura", sans-serif;
-  font-weight: 400; */
   font-style: normal;
-  line-height: 1.27;
-
+  line-height: 1.28;
 
   color: black;
   text-align: left;
+  /* border: rgb(255, 0, 0) solid 1px; */
 }
 
 #s2text1 strong {
@@ -275,26 +256,30 @@ main {
 }
 
 #project1 {
-  position: absolute;
-  top: 154px;
+  /* left: 50%;
+  transform: translateX(-50%); */
+  width: 280px;
+  position: relative;
+  white-space: nowrap;
+  top: 24px;
   background-color: white;
   color: black;
   border-radius: 30px;
   z-index: 10;
-  font-size: 20px;
+  font-size: 17.5px;
+  left: 0px;
 
   font-family: "Prompt", sans-serif;
   font-weight: 300;
-  /* font-family: "Jura", sans-serif;
-  font-weight: 500; */
   font-style: normal;
-  padding: 3px 20px;
+  padding: 2.5px 4px;
   border: 1.7px solid black;
 }
 
 #circleForS2c1,
 #recForS2c1,
 #linesForS2c1 {
+  /* scale: 0.8; */
   /* overflow-x: hidden; */
   position: absolute;
   opacity: 0;
@@ -318,80 +303,89 @@ main {
 }
 
 #circleForS2c1 {
-  top: 75px;
-  left: -1%;
-  scale: 1.3;
+  scale: 1;
+  top: 0px;
+  left: -25%;
 }
 
 #recForS2c1 {
-  top: 229px;
-  left: 30%;
-  scale: 1.3;
+  scale: 0.8;
+  top: 155px;
+  left: 10%;
 }
 
 #linesForS2c1 {
-  top: 576px;
-  left: 13%;
+  scale: 0.6;
+  top: 400px;
+  left: -5%;
   height: 90px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* scale: 1.1 */
-  scale: 1.0;
-  ;
 }
 
 .line {
   margin: 0;
 }
 
-
 /* section2-part2 */
 
+#s2.s2c2 br {
+  display: none;
+  /* <br> 태그 숨김 */
+}
+
 #s2.s2c2 {
-  white-space: nowrap;
+  white-space: normal;
   margin: 0px;
-  padding: 0px;
+  padding: 0vw 5vw 0vw 5vw;
   /* overflow-x: hidden; */
-  position: absolute;
-  top: 850px;
+  position: relative;
+  top: 520px;
   z-index: 5;
-  font-size: 32px;
 
-  /* font-family: "Prompt", sans-serif; */
+  text-align: center;
+
+
+  font-family: "Prompt", sans-serif;
   /* font-weight: 300; */
-  font-family: "Jura", sans-serif;
-  font-weight: 400;
-
   font-style: normal;
   line-height: 1.25;
 
-
   color: black;
-  /* border: rgb(255, 0, 212) solid 1px; */
-  left: 12%;
-  transform: translateX(-12%) translateY(40px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
   opacity: 0;
+
+  /* border: rgb(255, 0, 212) solid 1px; */
+  left: 54%;
+  transform: translate(-50%, 40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  box-sizing: border-box;
 }
 
 
 #s2text2 {
-  white-space: nowrap;
-  margin: 0px;
+  width: 88%;
+  max-width: 500px;
+  height: auto;
+  white-space: normal;
+  /* margin: 10vw; */
   padding: 0px;
-  font-size: 34px;
+  margin: 0px;
+  font-size: 22.5px;
 
   font-family: "Prompt", sans-serif;
   font-weight: 200;
-  /* font-family: "Jura", sans-serif;
-  font-weight: 400; */
   font-style: normal;
-  line-height: 1.27;
-
+  line-height: 1.28;
 
   color: black;
   text-align: left;
+  /* border: rgb(255, 0, 0) solid 1px; */
 }
 
 #s2text2 strong {
@@ -400,46 +394,48 @@ main {
 }
 
 #project2 {
-  position: absolute;
-  top: 154px;
+  /* left: 50%;
+  transform: translateX(-50%); */
+  width: 264px;
+  position: relative;
+  white-space: nowrap;
+  top: 24px;
   background-color: white;
   color: black;
   border-radius: 30px;
   z-index: 10;
-  font-size: 20px;
+  font-size: 17.5px;
+  left: 0px;
 
   font-family: "Prompt", sans-serif;
   font-weight: 300;
-  /* font-family: "Jura", sans-serif;
-  font-weight: 500; */
   font-style: normal;
-  padding: 3px 20px;
+  padding: 2.5px 4px;
   border: 1.7px solid black;
+
 }
 
 #circleForS2c2 {
+  scale: 1;
   position: absolute;
-  top: 723px;
-  left: 81%;
+  top: 667px;
+  left: 48vw;
   /* overflow: hidden; */
-  scale: 1.4;
 }
 
 #triForS2c2 {
+  scale: 0.7;
   position: absolute;
-  top: 576px;
-  left: 65.5%;
-  /* scale: 1.1; */
-  scale: 1.0;
-
+  top: 540px;
+  left: 10vw;
 }
 
 #linesForS2c2 {
+  scale: 0.6;
   position: absolute;
-  top: 1100px;
+  top: 909px;
   /* left: 88%; */
-  left: 93%;
-  scale: 1.0;
+  left: 65vw;
 }
 
 #circleForS2c2,
@@ -466,47 +462,59 @@ main {
 
 /* section2-part3 */
 
-#s2.s2c3 {
-  /* overflow-x: hidden; */
-  white-space: nowrap;
-  margin: 0px;
-  padding: 0px;
-  position: absolute;
-  top: 1360px;
-  z-index: 5;
-  font-size: 32px;
+#s2.s2c3 br {
+  display: none;
+  /* <br> 태그 숨김 */
+}
 
-  /* font-family: "Prompt", sans-serif; */
-  /* font-weight: 200; */
+#s2.s2c3 {
+  white-space: normal;
+  margin: 0px;
+  padding: 0vw 5vw 0vw 5vw;
+  position: relative;
+  z-index: 5;
+  top: 880px;
+  text-align: center;
+
+  font-family: "Prompt", sans-serif;
+  /* font-weight: 300; */
   font-style: normal;
   line-height: 1.25;
 
 
   color: black;
-  /* border: rgb(255, 0, 212) solid 1px; */
   opacity: 0;
-  /* 좌우 정렬을 유지하면서, 초기에는 아래로 40px 이동 */
-  transform: translate(-80%, 40px);
+
+  left: 54%;
+  transform: translate(-50%, 40px);
   transition: opacity 0.8s ease, transform 0.8s ease;
-  left: 80%;
+  /* border: rgb(115, 255, 0) solid 1px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  box-sizing: border-box;
 }
 
 #s2text3 {
-  white-space: nowrap;
-  margin: 0px;
+
+  width: 88%;
+  max-width: 500px;
+  height: auto;
+  white-space: normal;
+  /* margin: 10vw; */
   padding: 0px;
-  font-size: 34px;
+  margin: 0px;
+  font-size: 22.5px;
 
   font-family: "Prompt", sans-serif;
   font-weight: 200;
-  /* font-family: "Jura", sans-serif;
-  font-weight: 400; */
   font-style: normal;
-  line-height: 1.27;
-
+  line-height: 1.28;
 
   color: black;
   text-align: left;
+  /* border: rgb(255, 0, 0) solid 1px; */
 }
 
 #s2text3 strong {
@@ -515,43 +523,50 @@ main {
 }
 
 #project3 {
-  position: absolute;
-  top: 154px;
+  /* left: 50%;
+  transform: translateX(-50%); */
+  position: relative;
+  white-space: nowrap;
+  top: 24px;
   background-color: white;
   color: black;
   border-radius: 30px;
   z-index: 10;
-  font-size: 20px;
+  font-size: 17.5px;
+  left: 0px;
 
   font-family: "Prompt", sans-serif;
   font-weight: 300;
-  /* font-family: "Jura", sans-serif;
-  font-weight: 500; */
   font-style: normal;
-  padding: 3px 20px;
+  padding: 2.5px 0px;
   border: 1.7px solid black;
+  width: 259px;
 }
 
 #recForS2c3 {
+  scale: 0.85;
   position: absolute;
-  top: 1250px;
-  left: 0%;
+  top: 1100px;
+  left: -200px;
   /* overflow: hidden; */
-  scale: 1.1;
 }
 
+
 #circleForS2c3 {
+  scale: 0.8;
   position: absolute;
-  top: 1265px;
-  left: 21%;
-  scale: 1.0;
+  top: 1295px;
+  /* left: 20%; */
+  left: 50px;
+  z-index: 1;
 }
 
 #linesForS2c3 {
+  scale: 0.6;
   position: absolute;
-  top: 1735px;
-  left: 5%;
-  scale: 1.0;
+  top: 1520px;
+  left: -30px;
+  z-index: 2;
 }
 
 #recForS2c3,
@@ -595,70 +610,130 @@ main {
   overflow: hidden;
 } */
 
-#circleForS3 {
-  position: absolute;
-  top: 1700px;
+
+/* #s2.s2c4 {
+  white-space: normal;
+  margin: 0px;
+  padding: 0vw 5vw 0vw 5vw;
+
+  position: relative;
+  top: 1750px;
+  z-index: 10;
+  font-size: 26px;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: black;
+  opacity: 1;
+
+
   left: 50%;
-  /* 왼쪽에서 50% 위치에 배치 */
-  opacity: 0;
-  /* transform: translateX(-50%); */
-  transform: translateX(-50%) translateY(100%);
-  transition: opacity 1s ease, transform 1.2s ease;
+  transform: translate(-50%, 40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+} */
+
+.s2c4 {
+  white-space: normal;
   /* margin: 0px;
-  padding: 0px; */
-  /* bottom: 0px; */
-  /* overflow: hidden; */
-  width: 1688px;
-  height: 1688px;
-}
-
-
-
-#s3text,
-#viewAllProjects {
-  opacity: 0;
-  /* 초기 투명도 */
-  transition: opacity 1.4s ease-in-out, transform 0.9s ease-in-out 0.2s;
+  padding: 0vw 5vw 0vw 5vw; */
+  padding: 0;
   position: absolute;
-  left: 50%;
-  transform: translate(-50%, 30px);
   z-index: 5;
+  /* top: 0px; */
+  font-size: 26px;
+  text-align: center;
+
+  font-family: "Prompt", sans-serif;
+  /* font-weight: 300; */
+  font-style: normal;
+  line-height: 1.25;
+
+  color: rgb(0, 0, 0);
+  opacity: 1;
+  width: 75vw;
+  top: 1680px;
+  height: auto;
+
+  left: 50%;
+  transform: translate(-50%, 40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  /* border: rgb(115, 255, 0) solid 1px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  box-sizing: border-box;
 }
+
+
+
+
+
 
 #s3text {
+  display: block;
+  /* 버튼을 블록 레벨 요소로 만듦 */
+  width: fit-content;
+  /* 내용에 맞게 너비를 조절 */
+  margin-left: auto;
+  /* 왼쪽 마진을 auto로 설정하여 중앙 정렬 */
+  margin-right: auto;
+  /* 오른쪽 마진도 auto로 설정 */
   white-space: nowrap;
-  top: 1918px;
-  color: black;
+  position: relative;
+  top: 0px;
+  /* width: 100%; */
 
-  font-size: 34px;
+  width: 90%;
+  max-width: 500px;
+
+
+  opacity: 1;
+  height: auto;
+  white-space: normal;
+  margin: 0px;
+  padding: 0px;
+  font-size: 22px;
 
   font-family: "Prompt", sans-serif;
   font-weight: 200;
-
   font-style: normal;
-  line-height: 1.3;
+  line-height: 1.25;
 
+  color: black;
   text-align: center;
+  /* border: rgb(255, 0, 212) solid 1px; */
+  z-index: 5;
 }
 
 #viewAllProjects {
-  /* top: calc(262px + 30px); */
-  top: 1995px;
+  position: absolute;
+  /* 이 부분을 수정 */
+  display: block;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  white-space: nowrap;
+  top: 125%;
+  /* 이 값은 JavaScript에 의해 동적으로 조정될 수 있음 */
   background-color: white;
   color: black;
-
   border-radius: 30px;
   z-index: 10;
-  font-size: 20px;
-
-  font-style: normal;
-  padding: 3px 20px;
-  border: 1.7px solid black;
-
-
+  font-size: 18px;
+  text-align: center;
   font-family: "Prompt", sans-serif;
   font-weight: 300;
-
+  font-style: normal;
+  padding: 3px 18px;
+  border: 1.7px solid black;
 }
 
 
@@ -667,19 +742,34 @@ main {
   transform: translateX(-50%) translateY(0);
 }
 
+
+#circleForS3 {
+  scale: 1.05;
+  position: absolute;
+  /* scale: 1.2; */
+  top: 1010px;
+  left: 0%;
+  /* 왼쪽에서 50% 위치에 배치 */
+  opacity: 0;
+  transform: translate(0, 40px);
+  transition: opacity 1.4s ease, transform 0.8s ease;
+  /* margin: 0px;
+  padding: 0px; */
+  /* bottom: 0px; */
+  overflow: hidden;
+  /* width: 1688px;
+  height: 1688px; */
+  z-index: 0;
+}
+
 /* footer */
 
 footer {
-  font-family: "Nunito", serif;
-  font-optical-sizing: auto;
 
-
-  font-style: normal;
 
   width: 100vw;
   background-color: white;
-  border-top: black solid 1.4px;
-  height: 64px;
+  border-top: black solid 0.95px;
   position: relative;
   bottom: 0px;
   display: flex;
@@ -693,9 +783,10 @@ footer {
 }
 
 #bottomLogo {
-  font-size: 17.5px;
-  font-weight: 600;
+  font-size: 15.3px;
+  font-weight: 630;
   font-style: normal;
+
   text-align: center;
   margin-left: 30px;
   margin-bottom: -1px;
@@ -707,30 +798,35 @@ footer {
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-between;
+  font-size: 14.8px;
 
-  font-size: 17px;
-  font-weight: 370;
+  font-weight: 350;
   font-style: normal;
+
 
   text-align: center;
   align-items: center;
-  margin-right: 20px;
+  padding: 0;
+  margin-right: 30px;
   margin-bottom: -1px;
   /* border: rgb(0, 76, 207) solid 1px; */
 }
 
 .bottomBox {
-  margin: 0px 10px;
+  /* margin: 0px 10px; */
+  margin: 0px 0px 0px 24px;
   /* border: rgb(207, 0, 7) solid 1px; */
   align-items: center;
-  /* padding: 0 5px; */
+  width: auto;
 }
+
 
 
 
 /* 마우스 인터렉션 */
 
 #mouse-cursor {
+  opacity: 0;
   position: absolute;
   top: 0;
   left: 0;

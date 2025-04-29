@@ -236,25 +236,3 @@ bgObserver.observe(projectCircle);
 
 
 
-
-
-const eyes = document.querySelectorAll('.eye');
-
-document.addEventListener('mousemove', (e) => {
-  eyes.forEach(eye => {
-    const pupil = eye.querySelector('.pupil');
-    const rect = eye.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-
-    const dx = e.clientX - centerX;
-    const dy = e.clientY - centerY;
-    const angle = Math.atan2(dy, dx);
-
-    const maxDistance = 15; // 눈동자가 움직일 최대 거리
-    const x = Math.cos(angle) * maxDistance;
-    const y = Math.sin(angle) * maxDistance;
-
-    pupil.style.transform = `translate(${x}px, ${y}px)`;
-  });
-});

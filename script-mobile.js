@@ -145,172 +145,233 @@ function mouseup(e) {
 }
 
 
-
-// 부모 요소인 #circleForS3에 대한 이벤트 리스너
-document.getElementById('circleForS3').addEventListener('mouseover', function () {
-  // 여기서 scale을 1로 재설정합니다.
+// (2) 서클 관련 scale 조정
+document.getElementById('circleForS3').addEventListener('mouseover', () => {
   scale = 1;
 });
-
-
-// 자식 요소인 버튼에 대한 이벤트 리스너
-document.getElementById('viewAllProjects').addEventListener('mouseover', function (event) {
-  // 커서 scale을 변경하고, 이벤트 버블링을 막습니다.
+document.getElementById('viewAllProjects').addEventListener('mouseover', (event) => {
   scale = 2;
   event.stopPropagation();
 });
 
-
-
-// const aboutBox = document.querySelector("#aboutBox");
-
-// aboutBox.onclick = () => {
-//   document.querySelector('#descBox').classList.toggle("go");
-// };
-
-
-
-
-
-const s2c1 = document.querySelector('#s2.s2c1');
-const circleForS2c1 = document.getElementById('circleForS2c1');
-const recForS2c1 = document.getElementById('recForS2c1');
-const linesForS2c1 = document.getElementById('linesForS2c1');
+// (3) 헤더 축소/확대
+const headerBox = document.getElementById('headerBox');
+const topBoxes = document.getElementById('topBoxes');
+const topBox = document.querySelectorAll('.topBox');
+const logo = document.getElementById('logo');
 
 window.addEventListener('scroll', function () {
-  // 스크롤 위치 확인
-  if (window.scrollY > 90) {
-    // 스크롤 위치가 400px 이상일 때, 투명도와 위치를 원래대로 복귀
-    s2c1.style.opacity = '1';
-    s2c1.style.transform = 'translate(-50%, 0)';
-
-    circleForS2c1.style.opacity = '1';
-    circleForS2c1.style.transform = 'translateX(0)';
-
-    recForS2c1.style.opacity = '1';
-    recForS2c1.style.transform = 'translateX(0)';
-
-    linesForS2c1.style.opacity = '1';
-    linesForS2c1.style.transform = 'translateX(0)';
+  if (window.scrollY > 50) {
+    if (!headerBox.dataset.isExpanded) {
+      headerBox.classList.add('scrolled');
+      topBoxes.classList.add('scrolled');
+      topBox.forEach(box => box.classList.add('scrolled'));
+      logo.style.pointerEvents = 'none';
+    }
   } else {
-    // 스크롤 위치가 400px 미만일 때, 초기 설정으로 되돌림
-    s2c1.style.opacity = '0';
-    // 좌우 중앙 정렬을 유지하며 좌측으로 400px 이동시킴
-    s2c1.style.transform = 'translate(-50%, 40px)'; // 초기 설정 위치로
-
-    circleForS2c1.style.opacity = '0';
-    circleForS2c1.style.transform = 'translateX(-640px)';
-
-    recForS2c1.style.opacity = '0';
-    recForS2c1.style.transform = 'translateX(-640px)';
-
-    linesForS2c1.style.opacity = '0';
-    linesForS2c1.style.transform = 'translateX(-640px)';
+    headerBox.classList.remove('scrolled');
+    topBoxes.classList.remove('scrolled');
+    topBox.forEach(box => box.classList.remove('scrolled'));
+    logo.style.pointerEvents = 'auto';
+    headerBox.dataset.isExpanded = 'true';
   }
 });
 
-
-const s2c2 = document.querySelector('#s2.s2c2');
-const circleForS2c2 = document.getElementById('circleForS2c2');
-const triForS2c2 = document.getElementById('triForS2c2');
-const linesForS2c2 = document.getElementById('linesForS2c2');
-
-window.addEventListener('scroll', function () {
-  if (window.scrollY > 720) {
-    // 스크롤 위치가 840px 이상일 때, 투명도와 위치를 원래대로 복귀
-    s2c2.style.opacity = '1';
-    s2c2.style.transform = 'translateX(-50%) translateY(0)'; // 좌우 정렬 유지하면서 위치 복귀
-
-
-    circleForS2c2.style.opacity = '1';
-    circleForS2c2.style.transform = 'translateX(0)';
-
-    triForS2c2.style.opacity = '1';
-    triForS2c2.style.transform = 'translateX(0)';
-
-    linesForS2c2.style.opacity = '1';
-    linesForS2c2.style.transform = 'translateX(0)';
-  } else {
-    // 스크롤 위치가 840px 미만일 때, 초기 설정으로 되돌림
-    s2c2.style.opacity = '0';
-    s2c2.style.transform = 'translateX(-50%) translateY(40px)'; // 초기 설정 위치로
-
-    circleForS2c2.style.opacity = '0';
-    circleForS2c2.style.transform = 'translateX(660px)';
-
-    triForS2c2.style.opacity = '0';
-    triForS2c2.style.transform = 'translateX(660px)';
-
-    linesForS2c2.style.opacity = '0';
-    linesForS2c2.style.transform = 'translateX(660px)';
+headerBox.addEventListener('click', function () {
+  if (this.classList.contains('scrolled')) {
+    this.classList.remove('scrolled');
+    topBoxes.classList.remove('scrolled');
+    topBox.forEach(box => box.classList.remove('scrolled'));
+    logo.style.pointerEvents = 'auto';
+    headerBox.dataset.isExpanded = 'true';
   }
 });
 
-const s2c3 = document.querySelector('#s2.s2c3');
-const recForS2c3 = document.getElementById('recForS2c3');
-const circleForS2c3 = document.getElementById('circleForS2c3');
-const linesForS2c3 = document.getElementById('linesForS2c3');
+// (4) IntersectionObserver (❗스크롤 이벤트 밖으로 빼줬다!)
+const circleForS3 = document.getElementById('circleForS3');
+const elementsToShow = document.querySelectorAll('#s3text, #viewAllProjects');
 
-window.addEventListener('scroll', function () {
-  if (window.scrollY > 1180) {
-    // 스크롤 위치가 1365px 이상일 때, 투명도와 위치를 원래대로 복귀
-    s2c3.style.opacity = '1';
-    s2c3.style.transform = 'translateX(-50%) translateY(0)'; // 좌우 정렬 유지하면서 위치 복귀
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      circleForS3.style.opacity = '1';
+      circleForS3.style.transform = 'translateX(-50%) translateY(0)';
+      elementsToShow.forEach(element => {
+        element.style.opacity = '1';
+        element.style.transform = 'translate(-50%, 0)';
+      });
+    } else {
+      circleForS3.style.opacity = '0';
+      circleForS3.style.transform = 'translateX(-50%) translateY(30px)';
+      elementsToShow.forEach(element => {
+        element.style.opacity = '0';
+        element.style.transform = 'translate(-50%, 30px)';
+      });
+    }
+  });
+}, { threshold: 0.2 });
 
-    recForS2c3.style.opacity = '1';
-    recForS2c3.style.transform = 'translateX(0)';
+observer.observe(document.getElementById('section2'));
 
-    circleForS2c3.style.opacity = '1';
-    circleForS2c3.style.transform = 'translateX(0)';
-
-    linesForS2c3.style.opacity = '1';
-    linesForS2c3.style.transform = 'translateX(0)';
-  } else {
-    // 스크롤 위치가 1365px 미만일 때, 초기 설정으로 되돌림
-    s2c3.style.opacity = '0';
-    s2c3.style.transform = 'translateX(-50%) translateY(40px)'; // 초기 설정 위치로
-
-    recForS2c3.style.opacity = '0';
-    recForS2c3.style.transform = 'translateX(-600px)';
-
-    circleForS2c3.style.opacity = '0';
-    circleForS2c3.style.transform = 'translateX(-600px)';
-
-    linesForS2c3.style.opacity = '0';
-    linesForS2c3.style.transform = 'translateX(-600px)';
+// (5) 모바일 br 제거
+function removeBrOnMobile() {
+  if (window.innerWidth <= 767) {
+    document.querySelectorAll('br').forEach(br => br.remove());
   }
+}
+window.addEventListener('DOMContentLoaded', removeBrOnMobile);
+window.addEventListener('resize', removeBrOnMobile);
+
+// (6) 지구 회전
+const earth = document.getElementById('earth');
+let rotation = 0;
+let baseSpeed = 0.005;
+let scrollSpeed = 0;
+
+function animateEarth() {
+  rotation += baseSpeed + scrollSpeed;
+  earth.style.transform = `translateX(-50%) rotate(${rotation}rad)`;
+  scrollSpeed *= 0.5; // 감속 (자연스럽게)
+  requestAnimationFrame(animateEarth);
+}
+
+let lastScrollY = window.scrollY;
+
+window.addEventListener('scroll', () => {
+  const currentScroll = window.scrollY;
+  const delta = currentScroll - lastScrollY;
+
+  if (delta > 0) {
+    // ✅ 스크롤 내릴 때 (시계 방향)
+    scrollSpeed += 0.002 * delta;
+  } else {
+    // ✅ 스크롤 올릴 때 (시계 반대 방향)
+    scrollSpeed += 0.002 * delta; // delta는 음수 → 반대 방향
+  }
+
+  lastScrollY = currentScroll;
+});
+
+animateEarth();
+
+
+
+// (1) 프로젝트 서클 - 카드, 텍스트 연결
+const container = document.getElementById('circleContainer');
+const cards = container.querySelectorAll('.circleCard');
+const titleEl = document.getElementById('projectTitle');
+const subtitleEl = document.getElementById('projectSubtitle');
+const projectCircle = document.getElementById('projectCircle');
+let activeIndex = 0;
+
+// ✅ 텍스트를 디졸브로 전환하는 함수
+const fadeOutInText = (title, subtitle) => {
+  titleEl.style.opacity = '0';
+  subtitleEl.style.opacity = '0';
+
+  setTimeout(() => {
+    titleEl.textContent = title;
+    subtitleEl.textContent = subtitle;
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        titleEl.style.opacity = '1';
+        subtitleEl.style.opacity = '1';
+      });
+    });
+  }, 400); // transition-duration 맞춰서
+};
+
+// ✅ 카드 위치 업데이트 함수
+const updatePositions = () => {
+  const total = cards.length;
+  const radius = 250;
+  const centerAngle = Math.PI / 2; // 12시 방향 기준
+
+  cards.forEach((card, i) => {
+    const angle = centerAngle + (2 * Math.PI * (i - activeIndex)) / total;
+    const x = radius * Math.cos(angle);
+    const y = radius * Math.sin(angle);
+
+    card.style.transform = `translate(calc(-50% + ${x}px), calc(-50% - ${y}px)) scale(${i === activeIndex ? 1.4 : 1})`;
+    card.style.opacity = (Math.abs(i - activeIndex) <= 2 || Math.abs(i - activeIndex) >= total - 2) ? 1 : 0.3;
+    card.style.zIndex = i === activeIndex ? 10 : 5;
+  });
+
+  const activeCard = cards[activeIndex];
+  fadeOutInText(activeCard.dataset.title || '', activeCard.dataset.subtitle || '');
+};
+
+// ✅ 카드 클릭 이벤트 등록
+cards.forEach((card, i) => {
+  card.addEventListener('click', () => {
+    if (i === activeIndex) {
+      // 클릭한 카드가 중앙(12시 방향) 카드면 링크로 이동
+      const link = card.dataset.link;
+      if (link) {
+        window.open(link, '_blank'); // 새 창에서 열고 싶으면 '_blank', 같은 창이면 '_self'
+      }
+    } else {
+      // 중앙 카드가 아니면 중앙으로 회전만
+      activeIndex = i;
+      updatePositions();
+    }
+  });
 });
 
 
+// ✅ 초기 위치 설정
+updatePositions();
+
+// (2) 프로젝트 섹션 배경색 스크롤 트리거
+const bgObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting && entry.boundingClientRect.top > 0) {
+      projectCircle.classList.remove('bg-active');
+    } else {
+      projectCircle.classList.add('bg-active');
+    }
+  });
+}, {
+  threshold: 0,
+  rootMargin: '0px'
+});
+
+bgObserver.observe(projectCircle);
 
 
 
-//애니메이션 추가
-// window.addEventListener('scroll', function () {
-//   console.log(window.scrollY); // 스크롤 위치 출력
-//   const headerBox = document.getElementById('headerBox');
-//   const topBoxes = document.querySelectorAll('.topBox');
-//   const logo = document.getElementById('logo');
-
-//   if (window.scrollY > 50) {
-//     headerBox.classList.add('scrolled');
-//     topBoxes.forEach(box => box.classList.add('scrolled'));
-//   } else {
-//     headerBox.classList.remove('scrolled');
-//     topBoxes.forEach(box => box.classList.remove('scrolled'));
-//   }
 
 
 
-// });
+const eyes = document.querySelectorAll('.eye');
+
+document.addEventListener('mousemove', (e) => {
+  eyes.forEach(eye => {
+    const pupil = eye.querySelector('.pupil');
+    const rect = eye.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+
+    const dx = e.clientX - centerX;
+    const dy = e.clientY - centerY;
+    const angle = Math.atan2(dy, dx);
+
+    const maxDistance = 15; // 눈동자가 움직일 최대 거리
+    const x = Math.cos(angle) * maxDistance;
+    const y = Math.sin(angle) * maxDistance;
+
+    pupil.style.transform = `translate(${x}px, ${y}px)`;
+  });
+});
 
 
 // const s2c4 = document.querySelector('#s2.s2c4');
-// const circleForS3 = document.getElementById('circleForS3');
+
 
 
 // window.addEventListener('scroll', function () {
-//   if (window.scrollY > 1590) {
+//   if (window.scrollY > 1000) {
 
 //     circleForS3.style.opacity = '1';
 //     circleForS3.style.transform = 'translateX(0%) translateY(0%)';
@@ -332,151 +393,3 @@ window.addEventListener('scroll', function () {
 // });
 
 
-
-//애니메이션 추가
-
-// HTML 요소에 대한 참조 변수를 설정
-const headerBox = document.getElementById('headerBox');
-const topBoxes = document.getElementById('topBoxes');
-const topBox = document.querySelectorAll('.topBox');
-const logo = document.getElementById('logo');
-
-// 스크롤 이벤트 리스너 추가
-window.addEventListener('scroll', function () {
-  // 스크롤 위치가 50px 이상이고, headerBox가 확대된 상태가 아닐 경우
-  if (window.scrollY > 50) {
-    // 확대된 상태가 아니면 축소 스타일 적용
-    if (!headerBox.dataset.isExpanded) {
-      headerBox.classList.add('scrolled');
-      topBoxes.classList.add('scrolled');
-      topBox.forEach(box => box.classList.add('scrolled'));
-      logo.style.pointerEvents = 'none';  // 로고 클릭 이벤트 비활성화
-    }
-  } else {
-    // 스크롤 위치가 50px 이하인 경우, 모든 스타일을 제거하고, 확대 상태로 설정
-    headerBox.classList.remove('scrolled');
-    topBoxes.classList.remove('scrolled');
-    topBox.forEach(box => box.classList.remove('scrolled'));
-    logo.style.pointerEvents = 'auto';  // 로고 클릭 이벤트 활성화
-    headerBox.dataset.isExpanded = 'true';  // 확대 상태를 true로 설정
-  }
-});
-
-// 클릭 이벤트 리스너 추가
-headerBox.addEventListener('click', function () {
-  // headerBox가 이미 축소된 상태인 경우
-  if (this.classList.contains('scrolled')) {
-    this.classList.remove('scrolled');
-    topBoxes.classList.remove('scrolled');
-    topBox.forEach(box => box.classList.remove('scrolled'));
-    logo.style.pointerEvents = 'auto';  // 로고 클릭 이벤트 활성화
-    headerBox.dataset.isExpanded = 'true';  // 확대 상태를 true로 설정
-  }
-});
-
-// 스크롤 이벤트에서 확대된 상태를 해제하고 다시 축소되도록 처리
-window.addEventListener('scroll', function () {
-  if (window.scrollY > 50 && headerBox.dataset.isExpanded === 'true') {
-    headerBox.classList.add('scrolled');
-    topBoxes.classList.add('scrolled');
-    topBox.forEach(box => box.classList.add('scrolled'));
-    logo.style.pointerEvents = 'none';  // 로고 클릭 이벤트 비활성화
-    headerBox.dataset.isExpanded = 'false';  // 확대 상태를 false로 재설정
-  }
-
-
-  // window.addEventListener('scroll', function () {
-  //   console.log(window.scrollY); // 스크롤 위치 출력
-  //   const headerBox = document.getElementById('headerBox');
-  //   const topBoxes = document.querySelectorAll('.topBox');
-  //   const logo = document.getElementById('logo');
-
-  //   if (window.scrollY > 50) {
-  //     headerBox.classList.add('scrolled');
-  //     topBoxes.forEach(box => box.classList.add('scrolled'));
-  //   } else {
-  //     headerBox.classList.remove('scrolled');
-  //     topBoxes.forEach(box => box.classList.remove('scrolled'));
-  //   }
-
-  // # 위치에 따른 #circleForS3 표시 로직
-  const circleForS3 = document.getElementById('circleForS3'); // SVG 요소 선택
-  const windowHeight = window.innerHeight;
-  const elementsToShow = document.querySelectorAll('#s3text, #viewAllProjects');
-
-  if (window.scrollY > 1600) {
-
-    circleForS3.style.opacity = '1';
-    circleForS3.style.transform = 'translateX(0%) translateY(0%)';
-    elementsToShow.forEach(element => {
-      element.style.opacity = '1'; // 투명도를 1로 변경하여 요소를 보이게 함
-      element.style.transform = 'translate(-50%, 0)';
-    });
-  } else {
-
-    circleForS3.style.opacity = '0';
-    circleForS3.style.transform = 'translateX(0%) translateY(100%)';
-    elementsToShow.forEach(element => {
-      element.style.opacity = '0'; // 투명도를 0으로 변경하여 요소를 숨김
-      element.style.transform = 'translate(-50%, 40px)';
-    });
-  }
-
-});
-
-//페이지 로드 시 main 투명도 조절
-document.addEventListener('DOMContentLoaded', function () {
-  // "boxes" 클래스를 가진 모든 요소를 선택합니다.
-  const boxes = document.querySelectorAll('.boxes'); // 클래스 선택자를 사용합니다.
-  boxes.forEach(el => {
-    el.style.opacity = 1;
-  });
-});
-
-//하단 버튼 위치 최대값 설정
-
-// document.addEventListener("DOMContentLoaded", function() {
-//   adjustTopPosition();
-//   window.addEventListener("resize", adjustTopPosition);
-// });
-
-// function adjustTopPosition() {
-//   var element = document.getElementById("viewAllProjects"); // 대상 요소
-//   var parent = document.querySelector('.s2c4'); // 부모 요소 선택
-//   if (!parent) {
-//     console.error('Parent element .s2c4 not found.');
-//     return;
-//   }
-
-//   var maxHeight = 500; // 최대 top 값 (픽셀 단위)
-//   var desiredTopPercentage = 0; // 원하는 top 위치 (%)
-
-//   // 부모 요소의 상대적 위치 계산 (문서 내 위치)
-//   var parentRect = parent.getBoundingClientRect();
-//   var parentTop = parentRect.top + window.scrollY; // 부모 요소의 문서 내 절대 위치
-
-//   // 원하는 top 위치를 픽셀로 계산
-//   var desiredTopPx = parent.offsetHeight * (desiredTopPercentage / 100) + parentTop;
-
-//   // 실제 top 값은 원하는 값과 최대 허용값 중 작은 것으로 설정
-//   // 뷰포트 높이를 고려하여 최대값 조정
-//   var finalTop = Math.min(desiredTopPx, maxHeight, window.innerHeight - element.offsetHeight);
-
-//   // 최종 계산된 top 값 적용
-//   element.style.top = finalTop + 'px';
-
-//   console.log("Final Top:", finalTop);
-// }
-
-
-function removeBrOnMobile() {
-  if (window.innerWidth <= 767) { // 👈 모바일 화면 너비 기준 (767px 이하)
-    document.querySelectorAll('br').forEach(br => br.remove());
-  }
-}
-
-// ✅ 페이지 로드 시 한 번 실행
-window.addEventListener('DOMContentLoaded', removeBrOnMobile);
-
-// ✅ 화면 크기 변경될 때 다시 확인 (예: 창 크기 조정)
-window.addEventListener('resize', removeBrOnMobile);

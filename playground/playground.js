@@ -65,6 +65,15 @@ function mousemove(e) {
       break
 
 
+    case 'main4':
+      if (stage === 'main4') return
+      scale = 2;
+      stage = 'main4'
+      console.log('main4')
+      break
+
+
+
 
     case 'bottomItem1':
       if (stage === 'bottomItem1') return
@@ -168,14 +177,281 @@ document.addEventListener('DOMContentLoaded', function () {
 
 //블랙박스 클릭시 다른 페이지로 이동
 
-// document.addEventListener('DOMContentLoaded', function() {
-//   var blackBox1 = document.getElementById('blackbox1'); // blackbox1의 ID를 가져옵니다.
 
-//   blackBox1.addEventListener('click', function() {
-//     window.location.href = '../work_Curva/work_Curva.html'; // 클릭 시 지정된 URL로 이동합니다.
-//   });
-// });
+document.addEventListener('DOMContentLoaded', function () {
+  var box1 = document.getElementById('box1');
+  var blackBox1 = document.getElementById('blackbox1');
 
+  if (window.innerWidth > 1024) { // 데스크톱 환경에서만 blackBox1에 이벤트 리스너를 추가
+    if (blackBox1) {
+      blackBox1.addEventListener('click', function () {
+        window.location.href = '../works/work_Curva/work_Curva.html';
+      });
+    }
+  } else { // 모바일 환경에서는 box1에 이벤트 리스너를 추가
+    if (box1) {
+      box1.addEventListener('click', function () {
+        window.location.href = '../works/work_Curva/work_Curva.html';
+      });
+    }
+  }
+});
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  var box2 = document.getElementById('box2');
+  var blackBox2 = document.getElementById('blackbox2');
+
+  if (window.innerWidth > 1024) {
+    if (blackBox2) {
+      blackBox2.addEventListener('click', function () {
+        window.location.href = '../works/work_With/work_With.html';
+      });
+    }
+  } else {
+    if (box2) {
+      box2.addEventListener('click', function () {
+        window.location.href = '../works/work_With/work_With.html';
+      });
+    }
+  }
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+  var box3 = document.getElementById('box3');
+  var blackBox3 = document.getElementById('blackbox3');
+
+  if (window.innerWidth > 1024) {
+    if (blackBox3) {
+      blackBox3.addEventListener('click', function () {
+        window.location.href = '../works/work_Nebula/work_Nebula.html';
+      });
+    }
+  } else {
+    if (box3) {
+      box3.addEventListener('click', function () {
+        window.location.href = '../works/work_Nebula/work_Nebula.html';
+      });
+    }
+  }
+});
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  var box4 = document.getElementById('box4');
+  var blackBox4 = document.getElementById('blackbox4');
+
+  if (window.innerWidth > 1024) {
+    if (blackBox4) {
+      blackBox4.addEventListener('click', function () {
+        window.location.href = '../works/work_Morse/work_Morse.html';
+      });
+    }
+  } else {
+    if (box4) {
+      box4.addEventListener('click', function () {
+        window.location.href = '../works/work_Morse/work_Morse.html';
+      });
+    }
+  }
+});
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  var box5 = document.getElementById('box5');
+  var blackBox5 = document.getElementById('blackbox5');
+
+  if (window.innerWidth > 1024) {
+    if (blackBox5) {
+      blackBox5.addEventListener('click', function () {
+        window.location.href = '../works/work_TheNewArchitecture/work_TheNewArchitecture.html';
+      });
+    }
+  } else {
+    if (box5) {
+      box5.addEventListener('click', function () {
+        window.location.href = '../works/work_TheNewArchitecture/work_TheNewArchitecture.html';
+      });
+    }
+  }
+});
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  var box6 = document.getElementById('box6');
+  var blackBox6 = document.getElementById('blackbox6');
+
+  if (window.innerWidth > 1024) {
+    if (blackBox6) {
+      blackBox6.addEventListener('click', function () {
+        window.location.href = '../works/work_AisleAndLens/work_AisleAndLens.html';
+      });
+    }
+  } else {
+    if (box6) {
+      box6.addEventListener('click', function () {
+        window.location.href = '../works/work_AisleAndLens/work_AisleAndLens.html';
+      });
+    }
+  }
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+  var box7 = document.getElementById('box7');
+  var blackBox7 = document.getElementById('blackbox7');
+
+  if (window.innerWidth > 1024) {
+    if (blackBox7) {
+      blackBox7.addEventListener('click', function () {
+        window.location.href = '../works/work_Beam/work_Beam.html';
+      });
+    }
+  } else {
+    if (box7) {
+      box7.addEventListener('click', function () {
+        window.location.href = '../works/work_Beam/work_Beam.html';
+      });
+    }
+  }
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+  var box8 = document.getElementById('box8');
+  var blackBox8 = document.getElementById('blackbox8');
+
+  if (window.innerWidth > 1024) {
+    if (blackBox8) {
+      blackBox8.addEventListener('click', function () {
+        window.location.href = '../works/work_Kaleidoscope/work_Kaleidoscope.html';
+      });
+    }
+  } else {
+    if (box8) {
+      box8.addEventListener('click', function () {
+        window.location.href = '../works/work_Kaleidoscope/work_Kaleidoscope.html';
+      });
+    }
+  }
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+  var box9 = document.getElementById('box9');
+  var blackBox9 = document.getElementById('blackbox9');
+
+  if (window.innerWidth > 1024) {
+    if (blackBox9) {
+      blackBox9.addEventListener('click', function () {
+        window.location.href = '../works/work_HangItAll/work_HangItAll.html';
+      });
+    }
+  } else {
+    if (box9) {
+      box9.addEventListener('click', function () {
+        window.location.href = '../works/work_HangItAll/work_HangItAll.html';
+      });
+    }
+  }
+});
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  var box10 = document.getElementById('box10');
+  var blackBox10 = document.getElementById('blackbox10');
+
+  if (window.innerWidth > 1024) {
+    if (blackBox10) {
+      blackBox10.addEventListener('click', function () {
+        window.location.href = '../works/work_Bodega/work_Bodega.html';
+      });
+    }
+  } else {
+    if (box10) {
+      box10.addEventListener('click', function () {
+        window.location.href = '../works/work_Bodega/work_Bodega.html';
+      });
+    }
+  }
+});
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  var box11 = document.getElementById('box11');
+  var blackBox11 = document.getElementById('blackbox11');
+
+  if (window.innerWidth > 1024) {
+    if (blackBox11) {
+      blackBox11.addEventListener('click', function () {
+        window.location.href = '../works/work_TypePlay/work_TypePlay.html';
+      });
+    }
+  } else {
+    if (box11) {
+      box11.addEventListener('click', function () {
+        window.location.href = '../works/work_TypePlay/work_TypePlay.html';
+      });
+    }
+  }
+})
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  var box12 = document.getElementById('box12');
+  var blackBox12 = document.getElementById('blackbox12');
+
+  if (window.innerWidth > 1024) {
+    if (blackBox12) {
+      blackBox12.addEventListener('click', function () {
+        window.location.href = '../works/work_AltiAir/work_AltiAir.html';
+      });
+    }
+  } else {
+    if (box12) {
+      box12.addEventListener('click', function () {
+        window.location.href = '../works/work_AltiAir/work_AltiAir.html';
+      });
+    }
+  }
+})
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  var box13 = document.getElementById('box13');
+  var blackBox13 = document.getElementById('blackbox13');
+
+  if (window.innerWidth > 1024) {
+    if (blackBox13) {
+      blackBox13.addEventListener('click', function () {
+        window.location.href = '../works/work_Heesoo/work_Heesoo.html';
+      });
+    }
+  } else {
+    if (box13) {
+      box13.addEventListener('click', function () {
+        window.location.href = '../works/work_Heesoo/work_Heesoo.html';
+      });
+    }
+  }
+})
+
+document.addEventListener('DOMContentLoaded', function () {
+  var box14 = document.getElementById('box14');
+  var blackBox14 = document.getElementById('blackbox14');
+
+  if (window.innerWidth > 1024) {
+    if (blackBox14) {
+      blackBox14.addEventListener('click', function () {
+        window.location.href = '../works/work_KineticPose/work_KineticPose.html';
+      });
+    }
+  } else {
+    if (box14) {
+      box14.addEventListener('click', function () {
+        window.location.href = '../works/work_KineticPose/work_KineticPose.html';
+      });
+    }
+  }
+})
 
 document.addEventListener('DOMContentLoaded', function () {
   var box15 = document.getElementById('box15');
@@ -188,6 +464,19 @@ document.addEventListener('DOMContentLoaded', function () {
         window.location.href = '../works/work_Verizon/work_Verizon.html';
       });
 
+      // ✅ 마우스가 올라가면 비디오 일시정지
+      // ✅ 마우스가 벗어나면 다시 재생
+      // blackBox15.addEventListener('mouseenter', function () {
+      //   if (video) {
+      //     video.pause();
+      //   }
+      // });
+
+      // blackBox15.addEventListener('mouseleave', function () {
+      //   if (video) {
+      //     video.play();
+      //   }
+      // });
     }
   } else {
     if (box15) {
@@ -209,7 +498,6 @@ document.addEventListener('DOMContentLoaded', function () {
       blackBox16.addEventListener('click', function () {
         window.location.href = '../works/work_BooksComeAlive/work_BooksComeAlive.html';
       });
-
     }
   } else {
     if (box16) {
@@ -240,285 +528,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 });
-
-
-
-
-
-document.addEventListener('DOMContentLoaded', function () {
-  var box1 = document.getElementById('box1');
-  var blackBox1 = document.getElementById('blackbox1');
-
-  if (window.innerWidth > 1024) { // 데스크톱 환경에서만 blackBox1에 이벤트 리스너를 추가
-    if (blackBox1) {
-      blackBox1.addEventListener('click', function () {
-        window.location.href = '../work_Curva/work_Curva.html';
-      });
-    }
-  } else { // 모바일 환경에서는 box1에 이벤트 리스너를 추가
-    if (box1) {
-      box1.addEventListener('click', function () {
-        window.location.href = '../work_Curva/work_Curva.html';
-      });
-    }
-  }
-});
-
-
-document.addEventListener('DOMContentLoaded', function () {
-  var box2 = document.getElementById('box2');
-  var blackBox2 = document.getElementById('blackbox2');
-
-  if (window.innerWidth > 1024) {
-    if (blackBox2) {
-      blackBox2.addEventListener('click', function () {
-        window.location.href = '../work_indivisual/work_With/work_With.html';
-      });
-    }
-  } else {
-    if (box2) {
-      box2.addEventListener('click', function () {
-        window.location.href = '../work_indivisual/work_With/work_With.html';
-      });
-    }
-  }
-});
-
-
-document.addEventListener('DOMContentLoaded', function () {
-  var box3 = document.getElementById('box3');
-  var blackBox3 = document.getElementById('blackbox3');
-
-  if (window.innerWidth > 1024) {
-    if (blackBox3) {
-      blackBox3.addEventListener('click', function () {
-        window.location.href = '../work_indivisual/work_Nebula/work_Nebula.html';
-      });
-    }
-  } else {
-    if (box3) {
-      box3.addEventListener('click', function () {
-        window.location.href = '../work_indivisual/work_Nebula/work_Nebula.html';
-      });
-    }
-  }
-});
-
-
-document.addEventListener('DOMContentLoaded', function () {
-  var box4 = document.getElementById('box4');
-  var blackBox4 = document.getElementById('blackbox4');
-
-  if (window.innerWidth > 1024) {
-    if (blackBox4) {
-      blackBox4.addEventListener('click', function () {
-        window.location.href = '../work_indivisual/work_Morse/work_Morse.html';
-      });
-    }
-  } else {
-    if (box4) {
-      box4.addEventListener('click', function () {
-        window.location.href = '../work_indivisual/work_Morse/work_Morse.html';
-      });
-    }
-  }
-});
-
-
-document.addEventListener('DOMContentLoaded', function () {
-  var box5 = document.getElementById('box5');
-  var blackBox5 = document.getElementById('blackbox5');
-
-  if (window.innerWidth > 1024) {
-    if (blackBox5) {
-      blackBox5.addEventListener('click', function () {
-        window.location.href = '../work_indivisual/work_TheNewArchitecture/work_TheNewArchitecture.html';
-      });
-    }
-  } else {
-    if (box5) {
-      box5.addEventListener('click', function () {
-        window.location.href = '../work_indivisual/work_TheNewArchitecture/work_TheNewArchitecture.html';
-      });
-    }
-  }
-});
-
-document.addEventListener('DOMContentLoaded', function () {
-  var box6 = document.getElementById('box6');
-  var blackBox6 = document.getElementById('blackbox6');
-
-  if (window.innerWidth > 1024) {
-    if (blackBox6) {
-      blackBox6.addEventListener('click', function () {
-        window.location.href = '../work_indivisual/work_AisleAndLens/work_AisleAndLens.html';
-      });
-    }
-  } else {
-    if (box6) {
-      box6.addEventListener('click', function () {
-        window.location.href = '../work_indivisual/work_AisleAndLens/work_AisleAndLens.html';
-      });
-    }
-  }
-});
-
-
-document.addEventListener('DOMContentLoaded', function () {
-  var box7 = document.getElementById('box7');
-  var blackBox7 = document.getElementById('blackbox7');
-
-  if (window.innerWidth > 1024) {
-    if (blackBox7) {
-      blackBox7.addEventListener('click', function () {
-        window.location.href = '../work_indivisual/work_Beam/work_Beam.html';
-      });
-    }
-  } else {
-    if (box7) {
-      box7.addEventListener('click', function () {
-        window.location.href = '../work_indivisual/work_Beam/work_Beam.html';
-      });
-    }
-  }
-});
-
-document.addEventListener('DOMContentLoaded', function () {
-  var box8 = document.getElementById('box8');
-  var blackBox8 = document.getElementById('blackbox8');
-
-  if (window.innerWidth > 1024) {
-    if (blackBox8) {
-      blackBox8.addEventListener('click', function () {
-        window.location.href = '../work_indivisual/work_Kaleidoscope/work_Kaleidoscope.html';
-      });
-    }
-  } else {
-    if (box8) {
-      box8.addEventListener('click', function () {
-        window.location.href = '../work_indivisual/work_Kaleidoscope/work_Kaleidoscope.html';
-      });
-    }
-  }
-});
-
-document.addEventListener('DOMContentLoaded', function () {
-  var box9 = document.getElementById('box9');
-  var blackBox9 = document.getElementById('blackbox9');
-
-  if (window.innerWidth > 1024) {
-    if (blackBox9) {
-      blackBox9.addEventListener('click', function () {
-        window.location.href = '../work_indivisual/work_HangItAll/work_HangItAll.html';
-      });
-    }
-  } else {
-    if (box9) {
-      box9.addEventListener('click', function () {
-        window.location.href = '../work_indivisual/work_HangItAll/work_HangItAll.html';
-      });
-    }
-  }
-});
-
-document.addEventListener('DOMContentLoaded', function () {
-  var box10 = document.getElementById('box10');
-  var blackBox10 = document.getElementById('blackbox10');
-
-  if (window.innerWidth > 1024) {
-    if (blackBox10) {
-      blackBox10.addEventListener('click', function () {
-        window.location.href = '../work_indivisual/work_Bodega/work_Bodega.html';
-      });
-    }
-  } else {
-    if (box10) {
-      box10.addEventListener('click', function () {
-        window.location.href = '../work_indivisual/work_Bodega/work_Bodega.html';
-      });
-    }
-  }
-});
-
-
-document.addEventListener('DOMContentLoaded', function () {
-  var box11 = document.getElementById('box11');
-  var blackBox11 = document.getElementById('blackbox11');
-
-  if (window.innerWidth > 1024) {
-    if (blackBox11) {
-      blackBox11.addEventListener('click', function () {
-        window.location.href = '../work_indivisual/work_TypePlay/work_TypePlay.html';
-      });
-    }
-  } else {
-    if (box11) {
-      box11.addEventListener('click', function () {
-        window.location.href = '../work_indivisual/work_TypePlay/work_TypePlay.html';
-      });
-    }
-  }
-})
-
-
-document.addEventListener('DOMContentLoaded', function () {
-  var box12 = document.getElementById('box12');
-  var blackBox12 = document.getElementById('blackbox12');
-
-  if (window.innerWidth > 1024) {
-    if (blackBox12) {
-      blackBox12.addEventListener('click', function () {
-        window.location.href = '../work_indivisual/work_AltiAir/work_AltiAir.html';
-      });
-    }
-  } else {
-    if (box12) {
-      box12.addEventListener('click', function () {
-        window.location.href = '../work_indivisual/work_AltiAir/work_AltiAir.html';
-      });
-    }
-  }
-})
-
-
-document.addEventListener('DOMContentLoaded', function () {
-  var box13 = document.getElementById('box13');
-  var blackBox13 = document.getElementById('blackbox13');
-
-  if (window.innerWidth > 1024) {
-    if (blackBox13) {
-      blackBox13.addEventListener('click', function () {
-        window.location.href = '../work_indivisual/work_Heesoo/work_Heesoo.html';
-      });
-    }
-  } else {
-    if (box13) {
-      box13.addEventListener('click', function () {
-        window.location.href = '../work_indivisual/work_Heesoo/work_Heesoo.html';
-      });
-    }
-  }
-})
-
-document.addEventListener('DOMContentLoaded', function () {
-  var box14 = document.getElementById('box14');
-  var blackBox14 = document.getElementById('blackbox14');
-
-  if (window.innerWidth > 1024) {
-    if (blackBox14) {
-      blackBox14.addEventListener('click', function () {
-        window.location.href = '../work_indivisual/work_KineticPose/work_KineticPose.html';
-      });
-    }
-  } else {
-    if (box14) {
-      box14.addEventListener('click', function () {
-        window.location.href = '../work_indivisual/work_KineticPose/work_KineticPose.html';
-      });
-    }
-  }
-})
-
 
 
 
@@ -583,137 +592,3 @@ window.addEventListener('resize', removeBrOnMobile);
 
 
 
-
-
-
-
-document.addEventListener('DOMContentLoaded', () => {
-  const mainPreviewWrapper = document.getElementById('mainPreviewWrapper');
-  const scrollContainer = document.getElementById('workPreviewScroll');
-
-  function setupThumbnailClicks() {
-    const thumbnails = document.querySelectorAll('.workThumbnail');
-    thumbnails.forEach(thumb => {
-      thumb.addEventListener('click', () => {
-        const type = thumb.getAttribute('data-type');
-        const src = thumb.getAttribute('data-src');
-        const link = thumb.getAttribute('data-link');
-        const title = thumb.getAttribute('data-title');
-        const subtitle = thumb.getAttribute('data-subtitle');
-
-        // 기존 메인 삭제
-        mainPreviewWrapper.innerHTML = '';
-
-        // 새로운 링크 생성
-        const newLink = document.createElement('a');
-        newLink.id = 'mainImageLink';
-        newLink.href = link;
-        newLink.target = '_blank';
-
-        const newPreview = document.createElement('div');
-        newPreview.id = 'mainPreview';
-
-        if (type === 'video') {
-          const video = document.createElement('video');
-          video.id = 'mainVideo';
-          video.setAttribute('autoplay', '');
-          video.setAttribute('loop', '');
-          video.setAttribute('muted', '');
-          video.setAttribute('playsinline', '');
-          video.innerHTML = `<source src="${src}" type="video/mp4">`;
-          video.className = 'mainMedia';
-          newPreview.appendChild(video);
-        } else {
-          const img = document.createElement('img');
-          img.src = src;
-          img.id = 'mainImage';
-          img.alt = title;
-          img.className = 'mainMedia';
-          newPreview.appendChild(img);
-        }
-
-        const blackbox = document.createElement('div');
-        blackbox.className = 'blackboxes';
-        blackbox.id = 'mainBlackbox';
-        blackbox.innerHTML = `
-          <p class="title" id="mainTitle">${title}</p>
-          <p class="subtitle" id="mainSubtitle">${subtitle}</p>
-        `;
-
-        newPreview.appendChild(blackbox);
-        newLink.appendChild(newPreview);
-        mainPreviewWrapper.appendChild(newLink);
-
-        newPreview.addEventListener('mouseenter', () => {
-          blackbox.classList.add('visible');
-        });
-        newPreview.addEventListener('mouseleave', () => {
-          blackbox.classList.remove('visible');
-        });
-
-        blackbox.addEventListener('click', (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          window.open(link, '_blank');
-        });
-      });
-    });
-  }
-
-  setupThumbnailClicks();
-
-  // ✅ 무한 스크롤을 더 자연스럽게
-  const scrollSpeed = 0.25;
-
-  // 스크롤 복제 여러번
-  const cloneCount = 5; // ★★★ 필요하면 더 늘릴 수도 있어
-  const originalContent = scrollContainer.innerHTML;
-  for (let i = 0; i < cloneCount; i++) {
-    scrollContainer.innerHTML += originalContent;
-  }
-
-  function autoScroll() {
-    scrollContainer.scrollLeft += scrollSpeed;
-
-    // ★★★ 자연스러운 무한스크롤
-    if (scrollContainer.scrollLeft >= scrollContainer.scrollWidth / 2) {
-      scrollContainer.scrollLeft = 0;
-    }
-
-    requestAnimationFrame(autoScroll);
-  }
-
-  autoScroll();
-
-  // 복제한 썸네일까지 클릭이벤트 다시 걸어주기
-  setTimeout(() => {
-    setupThumbnailClicks();
-  }, 500);
-});
-
-
-document.addEventListener('DOMContentLoaded', () => {
-  const videos = document.querySelectorAll('video[data-src]');
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const video = entry.target;
-        if (!video.querySelector('source')) {
-          const source = document.createElement('source');
-          source.src = video.dataset.src;
-          source.type = 'video/mp4';
-          video.appendChild(source);
-          video.load();
-        }
-      }
-    });
-  }, {
-    root: null,
-    threshold: 0.2
-  });
-
-  videos.forEach(video => {
-    observer.observe(video);
-  });
-});

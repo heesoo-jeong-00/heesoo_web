@@ -62,151 +62,155 @@
         <ul id="topBoxes">
           <li class="topBox" id="topBox1" data-cursor="top1"><a href="../about/about.html">About</a></li>
           <li class="topBox" id="topBox2" data-cursor="top2"><a href="../worksAll/worksAll.html">Works</a></li>
-          <li class="topBox" id="topBox3" data-cursor="top3"><a href="../files/Resume-Jeong_Heesoo.pdf">Resume</a></li>
+          <li class="topBox" id="topBox3" data-cursor="top3"><a href="../playground/playground.html">Playground</a></li>
         </ul>
       </div>
     </header>
 
     <main>
-      <div id="section1" data-cursor="main1">
+      <!-- 메인 큰 프리뷰 영역 -->
+      <div id="mainWorkDisplay">
+        <div id="mainPreviewWrapper">
+          <a id="mainImageLink" href="../works/work_Verizon/work_Verizon.html" target="_blank">
+            <div id="mainPreview">
+              <video autoplay loop muted playsinline id="mainVideo">
+                <source src="../files/verizon/verizon_1.mp4" type="video/mp4">
+              </video>
+              <div class="blackboxes" id="mainBlackbox">
+                <p class="title" id="mainTitle">Verizon</p>
+                <p class="subtitle" id="mainSubtitle">App design / UX design</p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
 
-        <div class="boxes" id="box15" data-cursor="main1">
-          <div class="blackboxes" id="blackbox15" data-cursor="main3">
-            <p class="title" id="title_box15">Verizon</p>
-            <p class="subtitle" id="subtitle_box15">App design / UX design</p>
-          </div>
-          <video autoplay loop muted playsinline class="bg-video" id="video_box15">
-            <source src="../files/verizon/verizon_1.mp4" type="video/mp4">
-            Oops, it looks like your browser can't play this video. Try using a different browser?
+      <!-- 하단 썸네일 스크롤 영역 -->
+      <div id="workPreviewScroll">
+
+        <!-- Verizon (Video) -->
+        <div class="workThumbnail" data-type="video" data-src="../files/verizon/verizon_1.mp4"
+          data-link="../works/work_Verizon/work_Verizon.html" data-title="Verizon"
+          data-subtitle="App design / UX design">
+          <video autoplay loop muted playsinline data-src="../files/verizon/verizon_1.mp4">
+            <!-- 초기에는 source 안 넣음 -->
           </video>
         </div>
 
-        <div class="boxes" id="box16" data-cursor="main1">
-          <div class="blackboxes" id="blackbox16" data-cursor="main3">
-            <p class="title" id="title_box16">Books Come Alive</p>
-            <p class="subtitle" id="subtitle_box16">App design / Interaction design</p>
-          </div>
-          <video autoplay loop muted playsinline class="bg-video" id="video_box16">
-            <source src="../files/book/Book_1.mp4" type="video/mp4">
-            Oops, it looks like your browser can't play this video. Try using a different browser?
+        <!-- Books Come Alive (Video) -->
+        <div class="workThumbnail" data-type="video" data-src="../files/book/Book_1.mp4"
+          data-link="../works/work_BooksComeAlive/work_BooksComeAlive.html" data-title="Books Come Alive"
+          data-subtitle="App design / Interaction design">
+          <video autoplay loop muted playsinline data-src="../files/book/Book_1.mp4">
+            <!-- 초기에는 source 안 넣음 -->
           </video>
         </div>
 
-        <div class="boxes" id="box17" data-cursor="main1">
-          <div class="blackboxes" id="blackbox17" data-cursor="main3">
-            <p class="title" id="title_box17">Podscribe</p>
-            <p class="subtitle" id="subtitle_box17">UX/UI design / Data visualization</p>
-          </div>
-          <!-- <video autoplay loop muted playsinline class="bg-video" id="video_box17">
-            <source src="../files/podscribe/podscribe_1.mp4" type="video/mp4">
-            Oops, it looks like your browser can't play this video. Try using a different browser?
-          </video> -->
+        <!-- Podscribe (Image) -->
+        <div class="workThumbnail" data-type="image" data-src="../files/podscribe/podscribe_hero_1.jpg"
+          data-link="../works/work_Podscribe/work_Podscribe.html" data-title="Podscribe"
+          data-subtitle="UX/UI design / Data visualization">
+          <img src="../files/podscribe/podscribe_hero_1.jpg" alt="Podscribe Thumbnail">
         </div>
 
-        <div class="boxes" id="box2" data-cursor="main1">
-          <div class="blackboxes" id="blackbox2" data-cursor="main3">
-            <p class="title" id="title_box2">With</p>
-            <p class="subtitle" id="subtitle_box2">App design</p>
-          </div>
+        <!-- With (Image) -->
+        <div class="workThumbnail" data-type="image" data-src="../files/with2-main.jpg"
+          data-link="../works/work_With/work_With.html" data-title="With" data-subtitle="App design">
+          <img src="../files/with2-main.jpg" alt="With Thumbnail">
         </div>
 
+        <!-- Curva (Image) -->
+        <!-- <div class="workThumbnail" data-type="image" data-src="../files/curva-main.jpg"
+          data-link="../works/work_Curva/work_Curva.html" data-title="Curva" data-subtitle="Branding / Typography">
+          <img src="../files/curva-main.jpg" alt="Curva Thumbnail">
+        </div> -->
 
-        <div class="boxes" id="box1" data-cursor="main1">
-          <div class="blackboxes" id="blackbox1" data-cursor="main3">
-            <p class="title" id="title_box1">Curva</p>
-            <p class="subtitle" id="subtitle_box1">Branding / Typography</p>
-          </div>
+        <!-- User Manual: Nebula (Image) -->
+        <div class="workThumbnail" data-type="image" data-src="../files/nebula-main.jpg"
+          data-link="../works/work_Nebula/work_Nebula.html" data-title="User Manual: Nebula"
+          data-subtitle="Interaction design">
+          <img src="../files/nebula-main.jpg" alt="Nebula Thumbnail">
         </div>
 
-        <div class="boxes" id="box3" data-cursor="main1">
-          <div class="blackboxes" id="blackbox3" data-cursor="main3">
-            <p class="title" id="title_box3">User Manual: Nebula</p>
-            <p class="subtitle" id="subtitle_box3">Interaction design</p>
-          </div>
-        </div>
-        <div class="boxes" id="box4" data-cursor="main1">
-          <div class="blackboxes" id="blackbox4" data-cursor="main3">
-            <p class="title" id="title_box4">The Morse</p>
-            <p class="subtitle" id="subtitle_box4">Custom type / Iconography</p>
-          </div>
-        </div>
-        <div class="boxes" id="box5" data-cursor="main1">
-          <div class="blackboxes" id="blackbox5" data-cursor="main3">
-            <p class="title" id="title_box5">The New Architecture</p>
-            <p class="subtitle" id="subtitle_box5">Editorial design</p>
-          </div>
-        </div>
+        <!-- The Morse (Image) -->
+        <!-- <div class="workThumbnail" data-type="image" data-src="../files/shinola2-main.jpg"
+          data-link="../works/work_Morse/work_Morse.html" data-title="The Morse"
+          data-subtitle="Custom type / Iconography">
+          <img src="../files/shinola2-main.jpg" alt="The Morse Thumbnail">
+        </div> -->
 
+        <!-- The New Architecture (Image) -->
+        <!-- <div class="workThumbnail" data-type="image" data-src="../files/bauhaus-main.jpg"
+          data-link="../works/work_TheNewArchitecture/work_TheNewArchitecture.html" data-title="The New Architecture"
+          data-subtitle="Editorial design">
+          <img src="../files/bauhaus-main.jpg" alt="The New Architecture Thumbnail">
+        </div> -->
 
-        <div class="boxes" id="box11" data-cursor="main1">
-          <div class="blackboxes" id="blackbox11" data-cursor="main3">
-            <p class="title" id="title_box11">Type Play: Interactive Design Lab</p>
-            <p class="subtitle" id="subtitle_box11">Creative coding / Interaction design</p>
-          </div>
+        <!-- Type Play: Interactive Design Lab (Image) -->
+        <div class="workThumbnail" data-type="image" data-src="../files/type/type-main-ss.jpg"
+          data-link="../works/work_TypePlay/work_TypePlay.html" data-title="Type Play: Interactive Design Lab"
+          data-subtitle="Creative coding / Interaction design">
+          <img src="../files/type/type-main-ss.jpg" alt="Type Play Thumbnail">
         </div>
 
-        <div class="boxes" id="box10" data-cursor="main1">
-          <div class="blackboxes" id="blackbox10" data-cursor="main3">
-            <p class="title" id="title_box10">Bodega</p>
-            <p class="subtitle" id="subtitle_box10">Branding</p>
-          </div>
+        <!-- Bodega (Image) -->
+        <!-- <div class="workThumbnail" data-type="image" data-src="../files/bodega/bodega1.jpg"
+          data-link="../works/work_Bodega/work_Bodega.html" data-title="Bodega" data-subtitle="Branding">
+          <img src="../files/bodega/bodega1.jpg" alt="Bodega Thumbnail">
+        </div> -->
+
+        <!-- AltiAir (Image) -->
+        <!-- <div class="workThumbnail" data-type="image" data-src="../files/AltiAir/AltiAir-main2.jpg"
+          data-link="../works/work_AltiAir/work_AltiAir.html" data-title="AltiAir"
+          data-subtitle="Branding / Packaging design">
+          <img src="../files/AltiAir/AltiAir-main2.jpg" alt="AltiAir Thumbnail">
+        </div> -->
+
+        <!-- Heesoo Portfolio Website (Image) -->
+        <div class="workThumbnail" data-type="image" data-src="../files/heesoo-main.jpg"
+          data-link="../works/work_Heesoo/work_Heesoo.html" data-title="Heesoo: Portfolio Website"
+          data-subtitle="Creative coding / Interaction design">
+          <img src="../files/heesoo-main.jpg" alt="Heesoo Thumbnail">
         </div>
 
+        <!-- Aisle&Lens (Image) -->
+        <!-- <div class="workThumbnail" data-type="image" data-src="../files/AL-main.jpg"
+          data-link="../works/work_AisleAndLens/work_AisleAndLens.html" data-title="Aisle&Lens"
+          data-subtitle="Branding / Logo design">
+          <img src="../files/AL-main.jpg" alt="Aisle&Lens Thumbnail">
+        </div> -->
 
-        <div class="boxes" id="box12" data-cursor="main1">
-          <div class="blackboxes" id="blackbox12" data-cursor="main3">
-            <p class="title" id="title_box12">AltiAir</p>
-            <p class="subtitle" id="subtitle_box12">Branding / Packaging design</p>
-          </div>
-        </div>
-        <div class="boxes" id="box13" data-cursor="main1">
-          <div class="blackboxes" id="blackbox13" data-cursor="main3">
-            <p class="title" id="title_box13">Heesoo: Portfolio Website</p>
-            <p class="subtitle" id="subtitle_box13">Creative coding / Interaction design</p>
-          </div>
-        </div>
+        <!-- Beam (Image) -->
+        <!-- <div class="workThumbnail" data-type="image" data-src="../files/beam-main.jpg"
+          data-link="../works/work_Beam/work_Beam.html" data-title="Beam" data-subtitle="Branding / Identity system">
+          <img src="../files/beam-main.jpg" alt="Beam Thumbnail">
+        </div> -->
 
+        <!-- Kaleidoscope: Music Visualizer (Image) -->
+        <!-- <div class="workThumbnail" data-type="image" data-src="../files/Flower2-main.jpg"
+          data-link="../works/work_Kaleidoscope/work_Kaleidoscope.html" data-title="Kaleidoscope: Music Visualizer"
+          data-subtitle="Creative coding">
+          <img src="../files/Flower2-main.jpg" alt="Kaleidoscope Thumbnail">
+        </div> -->
 
+        <!-- Hang-It-All (Image) -->
+        <!-- <div class="workThumbnail" data-type="image" data-src="../files/hangitall1-main.jpg"
+          data-link="../works/work_HangItAll/work_HangItAll.html" data-title="Hang-It-All" data-subtitle="Type design">
+          <img src="../files/hangitall1-main.jpg" alt="Hang-It-All Thumbnail">
+        </div> -->
 
-
-        <div class="boxes" id="box6" data-cursor="main1">
-          <div class="blackboxes" id="blackbox6" data-cursor="main3">
-            <p class="title" id="title_box6">Aisle&Lens</p>
-            <p class="subtitle" id="subtitle_box6">Branding / Logo design</p>
-          </div>
-        </div>
-        <div class="boxes" id="box7" data-cursor="main1">
-          <div class="blackboxes" id="blackbox7" data-cursor="main3">
-            <p class="title" id="title_box7">Beam</p>
-            <p class="subtitle" id="subtitle_box7">Branding / Identity system</p>
-          </div>
-        </div>
-
-        <div class="boxes" id="box8" data-cursor="main1">
-          <div class="blackboxes" id="blackbox8" data-cursor="main3">
-            <p class="title" id="title_box8">Kaleidoscope: Music Visualizer</p>
-            <p class="subtitle" id="subtitle_box8">Creative coding</p>
-          </div>
-        </div>
-        <div class="boxes" id="box9" data-cursor="main1">
-          <div class="blackboxes" id="blackbox9" data-cursor="main3">
-            <p class="title" id="title_box9">Hang-It-All</p>
-            <p class="subtitle" id="subtitle_box9">Type design</p>
-          </div>
+        <!-- Kinetic Pose (Image) -->
+        <div class="workThumbnail" data-type="image" data-src="../files/Kineticpose/KineticPose_main000.jpg"
+          data-link="../works/work_KineticPose/work_KineticPose.html" data-title="Kinetic Pose"
+          data-subtitle="Creative coding / Interaction design">
+          <img src="../files/Kineticpose/KineticPose_main000.jpg" alt="Kinetic Pose Thumbnail">
         </div>
 
-
-        <div class="boxes" id="box14" data-cursor="main1">
-          <div class="blackboxes" id="blackbox14" data-cursor="main3">
-            <p class="title" id="title_box14">Kinetic Pose</p>
-            <p class="subtitle" id="subtitle_box14">Creative coding / Interaction design</p>
-          </div>
-        </div>
 
       </div>
-      <!-- <div id="section2" data-cursor="main2"> </div> -->
-      <!-- <div id="section3" data-cursor="main3"> </div> -->
     </main>
+
+
 
     <footer data-cursor="main1">
       <div id="bottomLogo">Heesoo</div>

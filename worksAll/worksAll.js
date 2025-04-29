@@ -1,3 +1,4 @@
+// ------- 기존 유지: 커서 관련 --------
 const cursorParent = document.getElementById('mouse-cursor')
 const cursorChild = cursorParent.children[0]
 window.addEventListener('mousemove', mousemove)
@@ -7,6 +8,7 @@ window.addEventListener('mouseup', mouseup)
 let scale = 1;
 let cursorX = 0, cursorY = 0;
 let stage = '';
+
 function mousemove(e) {
   cursorX = e.pageX - cursorParent.offsetWidth / 2
   cursorY = e.pageY - cursorParent.offsetHeight / 2
@@ -15,549 +17,90 @@ function mousemove(e) {
 
   switch (e.target.getAttribute('data-cursor')) {
     case 'topcontainer':
-      if (stage === 'topcontainer') return
-      scale = 1;
-      stage = 'topcontainer'
-      console.log('topcontainer')
-      break
-
-
     case 'top1':
-      if (stage === 'top1') return
-      scale = 2;
-      stage = 'top1'
-      console.log('top1')
-      break
     case 'top2':
-      if (stage === 'top2') return
-      scale = 2;
-      stage = 'top2'
-      console.log('top2')
-      break
     case 'top3':
-      if (stage === 'top3') return
-      scale = 2;
-      stage = 'top3'
-      console.log('top3')
-      break
-
-
-
     case 'main1':
-      if (stage === 'main1') return
-      scale = 1;
-      stage = 'main1'
-      console.log('main1')
-      break
-
     case 'main2':
-      if (stage === 'main2') return
-      scale = 1;
-      stage = 'main2'
-      console.log('main2')
-      break
-
     case 'main3':
-      if (stage === 'main3') return
-      scale = 1;
-      stage = 'main3'
-      console.log('main3')
-      break
-
-
     case 'main4':
-      if (stage === 'main4') return
-      scale = 2;
-      stage = 'main4'
-      console.log('main4')
-      break
-
-
-
-
     case 'bottomItem1':
-      if (stage === 'bottomItem1') return
-      scale = 2;
-      stage = 'bottomItem1'
-      console.log('bottomItem1')
-      break
-
     case 'bottomItem2':
-      if (stage === 'bottomItem2') return
-      scale = 2;
-      stage = 'bottomItem2'
-      console.log('bottomItem2')
-      break
-
     case 'bottomItem3':
-      if (stage === 'bottomItem3') return
-      scale = 2;
-      stage = 'bottomItem3'
-      console.log('bottomItem3')
-      break
+      if (stage === e.target.getAttribute('data-cursor')) return;
+      stage = e.target.getAttribute('data-cursor');
+      scale = (['top1', 'top2', 'top3', 'main4', 'bottomItem1', 'bottomItem2', 'bottomItem3'].includes(stage)) ? 2 : 1;
+      break;
   }
-
-  cursorChild.style.setProperty('--cursor-scale', scale)
-
+  cursorChild.style.setProperty('--cursor-scale', scale);
 }
 
 function mousedown(e) {
-  scale *= 0.75
-  cursorChild.style.setProperty('--cursor-scale', scale)
+  scale *= 0.75;
+  cursorChild.style.setProperty('--cursor-scale', scale);
 }
 function mouseup(e) {
-  scale *= 1.25
-  cursorChild.style.setProperty('--cursor-scale', scale)
+  scale *= 1.25;
+  cursorChild.style.setProperty('--cursor-scale', scale);
 }
 
-
-
-//애니메이션 추가
-
-// HTML 요소에 대한 참조 변수를 설정
+// ------- 기존 유지: 스크롤 시 headerBox 축소 --------
 const headerBox = document.getElementById('headerBox');
 const topBoxes = document.getElementById('topBoxes');
 const topBox = document.querySelectorAll('.topBox');
 const logo = document.getElementById('logo');
 
-// 스크롤 이벤트 리스너 추가
 window.addEventListener('scroll', function () {
-  // 스크롤 위치가 50px 이상이고, headerBox가 확대된 상태가 아닐 경우
   if (window.scrollY > 50) {
-    // 확대된 상태가 아니면 축소 스타일 적용
     if (!headerBox.dataset.isExpanded) {
       headerBox.classList.add('scrolled');
       topBoxes.classList.add('scrolled');
       topBox.forEach(box => box.classList.add('scrolled'));
-      logo.style.pointerEvents = 'none';  // 로고 클릭 이벤트 비활성화
+      logo.style.pointerEvents = 'none';
     }
   } else {
-    // 스크롤 위치가 50px 이하인 경우, 모든 스타일을 제거하고, 확대 상태로 설정
     headerBox.classList.remove('scrolled');
     topBoxes.classList.remove('scrolled');
     topBox.forEach(box => box.classList.remove('scrolled'));
-    logo.style.pointerEvents = 'auto';  // 로고 클릭 이벤트 활성화
-    headerBox.dataset.isExpanded = 'true';  // 확대 상태를 true로 설정
+    logo.style.pointerEvents = 'auto';
+    headerBox.dataset.isExpanded = 'true';
   }
 });
 
-// 클릭 이벤트 리스너 추가
 headerBox.addEventListener('click', function () {
-  // headerBox가 이미 축소된 상태인 경우
   if (this.classList.contains('scrolled')) {
     this.classList.remove('scrolled');
     topBoxes.classList.remove('scrolled');
     topBox.forEach(box => box.classList.remove('scrolled'));
-    logo.style.pointerEvents = 'auto';  // 로고 클릭 이벤트 활성화
-    headerBox.dataset.isExpanded = 'true';  // 확대 상태를 true로 설정
+    logo.style.pointerEvents = 'auto';
+    headerBox.dataset.isExpanded = 'true';
   }
 });
 
-// 스크롤 이벤트에서 확대된 상태를 해제하고 다시 축소되도록 처리
 window.addEventListener('scroll', function () {
   if (window.scrollY > 50 && headerBox.dataset.isExpanded === 'true') {
     headerBox.classList.add('scrolled');
     topBoxes.classList.add('scrolled');
     topBox.forEach(box => box.classList.add('scrolled'));
-    logo.style.pointerEvents = 'none';  // 로고 클릭 이벤트 비활성화
-    headerBox.dataset.isExpanded = 'false';  // 확대 상태를 false로 재설정
+    logo.style.pointerEvents = 'none';
+    headerBox.dataset.isExpanded = 'false';
   }
 });
 
-//페이지 로드 시 main 투명도 조절
+// ------- 기존 유지: 페이지 로드 시 boxes 투명도 조정 --------
 document.addEventListener('DOMContentLoaded', function () {
-  // "boxes" 클래스를 가진 모든 요소를 선택합니다.
-  const boxes = document.querySelectorAll('.boxes'); // 클래스 선택자를 사용합니다.
+  const boxes = document.querySelectorAll('.boxes');
   boxes.forEach(el => {
     el.style.opacity = 1;
   });
 });
 
-
-
-//블랙박스 클릭시 다른 페이지로 이동
-
-
-document.addEventListener('DOMContentLoaded', function () {
-  var box1 = document.getElementById('box1');
-  var blackBox1 = document.getElementById('blackbox1');
-
-  if (window.innerWidth > 1024) { // 데스크톱 환경에서만 blackBox1에 이벤트 리스너를 추가
-    if (blackBox1) {
-      blackBox1.addEventListener('click', function () {
-        window.location.href = '../works/work_Curva/work_Curva.html';
-      });
-    }
-  } else { // 모바일 환경에서는 box1에 이벤트 리스너를 추가
-    if (box1) {
-      box1.addEventListener('click', function () {
-        window.location.href = '../works/work_Curva/work_Curva.html';
-      });
-    }
-  }
-});
-
-
-document.addEventListener('DOMContentLoaded', function () {
-  var box2 = document.getElementById('box2');
-  var blackBox2 = document.getElementById('blackbox2');
-
-  if (window.innerWidth > 1024) {
-    if (blackBox2) {
-      blackBox2.addEventListener('click', function () {
-        window.location.href = '../works/work_With/work_With.html';
-      });
-    }
-  } else {
-    if (box2) {
-      box2.addEventListener('click', function () {
-        window.location.href = '../works/work_With/work_With.html';
-      });
-    }
-  }
-});
-
-document.addEventListener('DOMContentLoaded', function () {
-  var box3 = document.getElementById('box3');
-  var blackBox3 = document.getElementById('blackbox3');
-
-  if (window.innerWidth > 1024) {
-    if (blackBox3) {
-      blackBox3.addEventListener('click', function () {
-        window.location.href = '../works/work_Nebula/work_Nebula.html';
-      });
-    }
-  } else {
-    if (box3) {
-      box3.addEventListener('click', function () {
-        window.location.href = '../works/work_Nebula/work_Nebula.html';
-      });
-    }
-  }
-});
-
-
-document.addEventListener('DOMContentLoaded', function () {
-  var box4 = document.getElementById('box4');
-  var blackBox4 = document.getElementById('blackbox4');
-
-  if (window.innerWidth > 1024) {
-    if (blackBox4) {
-      blackBox4.addEventListener('click', function () {
-        window.location.href = '../works/work_Morse/work_Morse.html';
-      });
-    }
-  } else {
-    if (box4) {
-      box4.addEventListener('click', function () {
-        window.location.href = '../works/work_Morse/work_Morse.html';
-      });
-    }
-  }
-});
-
-
-document.addEventListener('DOMContentLoaded', function () {
-  var box5 = document.getElementById('box5');
-  var blackBox5 = document.getElementById('blackbox5');
-
-  if (window.innerWidth > 1024) {
-    if (blackBox5) {
-      blackBox5.addEventListener('click', function () {
-        window.location.href = '../works/work_TheNewArchitecture/work_TheNewArchitecture.html';
-      });
-    }
-  } else {
-    if (box5) {
-      box5.addEventListener('click', function () {
-        window.location.href = '../works/work_TheNewArchitecture/work_TheNewArchitecture.html';
-      });
-    }
-  }
-});
-
-
-
-document.addEventListener('DOMContentLoaded', function () {
-  var box6 = document.getElementById('box6');
-  var blackBox6 = document.getElementById('blackbox6');
-
-  if (window.innerWidth > 1024) {
-    if (blackBox6) {
-      blackBox6.addEventListener('click', function () {
-        window.location.href = '../works/work_AisleAndLens/work_AisleAndLens.html';
-      });
-    }
-  } else {
-    if (box6) {
-      box6.addEventListener('click', function () {
-        window.location.href = '../works/work_AisleAndLens/work_AisleAndLens.html';
-      });
-    }
-  }
-});
-
-document.addEventListener('DOMContentLoaded', function () {
-  var box7 = document.getElementById('box7');
-  var blackBox7 = document.getElementById('blackbox7');
-
-  if (window.innerWidth > 1024) {
-    if (blackBox7) {
-      blackBox7.addEventListener('click', function () {
-        window.location.href = '../works/work_Beam/work_Beam.html';
-      });
-    }
-  } else {
-    if (box7) {
-      box7.addEventListener('click', function () {
-        window.location.href = '../works/work_Beam/work_Beam.html';
-      });
-    }
-  }
-});
-
-document.addEventListener('DOMContentLoaded', function () {
-  var box8 = document.getElementById('box8');
-  var blackBox8 = document.getElementById('blackbox8');
-
-  if (window.innerWidth > 1024) {
-    if (blackBox8) {
-      blackBox8.addEventListener('click', function () {
-        window.location.href = '../works/work_Kaleidoscope/work_Kaleidoscope.html';
-      });
-    }
-  } else {
-    if (box8) {
-      box8.addEventListener('click', function () {
-        window.location.href = '../works/work_Kaleidoscope/work_Kaleidoscope.html';
-      });
-    }
-  }
-});
-
-document.addEventListener('DOMContentLoaded', function () {
-  var box9 = document.getElementById('box9');
-  var blackBox9 = document.getElementById('blackbox9');
-
-  if (window.innerWidth > 1024) {
-    if (blackBox9) {
-      blackBox9.addEventListener('click', function () {
-        window.location.href = '../works/work_HangItAll/work_HangItAll.html';
-      });
-    }
-  } else {
-    if (box9) {
-      box9.addEventListener('click', function () {
-        window.location.href = '../works/work_HangItAll/work_HangItAll.html';
-      });
-    }
-  }
-});
-
-
-document.addEventListener('DOMContentLoaded', function () {
-  var box10 = document.getElementById('box10');
-  var blackBox10 = document.getElementById('blackbox10');
-
-  if (window.innerWidth > 1024) {
-    if (blackBox10) {
-      blackBox10.addEventListener('click', function () {
-        window.location.href = '../works/work_Bodega/work_Bodega.html';
-      });
-    }
-  } else {
-    if (box10) {
-      box10.addEventListener('click', function () {
-        window.location.href = '../works/work_Bodega/work_Bodega.html';
-      });
-    }
-  }
-});
-
-
-document.addEventListener('DOMContentLoaded', function () {
-  var box11 = document.getElementById('box11');
-  var blackBox11 = document.getElementById('blackbox11');
-
-  if (window.innerWidth > 1024) {
-    if (blackBox11) {
-      blackBox11.addEventListener('click', function () {
-        window.location.href = '../works/work_TypePlay/work_TypePlay.html';
-      });
-    }
-  } else {
-    if (box11) {
-      box11.addEventListener('click', function () {
-        window.location.href = '../works/work_TypePlay/work_TypePlay.html';
-      });
-    }
-  }
-})
-
-
-document.addEventListener('DOMContentLoaded', function () {
-  var box12 = document.getElementById('box12');
-  var blackBox12 = document.getElementById('blackbox12');
-
-  if (window.innerWidth > 1024) {
-    if (blackBox12) {
-      blackBox12.addEventListener('click', function () {
-        window.location.href = '../works/work_AltiAir/work_AltiAir.html';
-      });
-    }
-  } else {
-    if (box12) {
-      box12.addEventListener('click', function () {
-        window.location.href = '../works/work_AltiAir/work_AltiAir.html';
-      });
-    }
-  }
-})
-
-
-document.addEventListener('DOMContentLoaded', function () {
-  var box13 = document.getElementById('box13');
-  var blackBox13 = document.getElementById('blackbox13');
-
-  if (window.innerWidth > 1024) {
-    if (blackBox13) {
-      blackBox13.addEventListener('click', function () {
-        window.location.href = '../works/work_Heesoo/work_Heesoo.html';
-      });
-    }
-  } else {
-    if (box13) {
-      box13.addEventListener('click', function () {
-        window.location.href = '../works/work_Heesoo/work_Heesoo.html';
-      });
-    }
-  }
-})
-
-document.addEventListener('DOMContentLoaded', function () {
-  var box14 = document.getElementById('box14');
-  var blackBox14 = document.getElementById('blackbox14');
-
-  if (window.innerWidth > 1024) {
-    if (blackBox14) {
-      blackBox14.addEventListener('click', function () {
-        window.location.href = '../works/work_KineticPose/work_KineticPose.html';
-      });
-    }
-  } else {
-    if (box14) {
-      box14.addEventListener('click', function () {
-        window.location.href = '../works/work_KineticPose/work_KineticPose.html';
-      });
-    }
-  }
-})
-
-document.addEventListener('DOMContentLoaded', function () {
-  var box15 = document.getElementById('box15');
-  var blackBox15 = document.getElementById('blackbox15');
-  var video = document.getElementById('video_box15'); // 비디오 요소 가져오기
-
-  if (window.innerWidth > 1024) {
-    if (blackBox15) {
-      blackBox15.addEventListener('click', function () {
-        window.location.href = '../works/work_Verizon/work_Verizon.html';
-      });
-
-      // ✅ 마우스가 올라가면 비디오 일시정지
-      // ✅ 마우스가 벗어나면 다시 재생
-      // blackBox15.addEventListener('mouseenter', function () {
-      //   if (video) {
-      //     video.pause();
-      //   }
-      // });
-
-      // blackBox15.addEventListener('mouseleave', function () {
-      //   if (video) {
-      //     video.play();
-      //   }
-      // });
-    }
-  } else {
-    if (box15) {
-      box15.addEventListener('click', function () {
-        window.location.href = '../works/work_Verizon/work_Verizon.html';
-      });
-    }
-  }
-});
-
-
-document.addEventListener('DOMContentLoaded', function () {
-  var box16 = document.getElementById('box16');
-  var blackBox16 = document.getElementById('blackbox16');
-  var video = document.getElementById('video_box16'); // 비디오 요소 가져오기
-
-  if (window.innerWidth > 1024) {
-    if (blackBox16) {
-      blackBox16.addEventListener('click', function () {
-        window.location.href = '../works/work_BooksComeAlive/work_BooksComeAlive.html';
-      });
-    }
-  } else {
-    if (box16) {
-      box16.addEventListener('click', function () {
-        window.location.href = '../works/work_BooksComeAlive/work_BooksComeAlive.html';
-      });
-    }
-  }
-});
-
-
-document.addEventListener('DOMContentLoaded', function () {
-  var box17 = document.getElementById('box17');
-  var blackBox17 = document.getElementById('blackbox17');
-  var video = document.getElementById('video_box17'); // 비디오 요소 가져오기
-
-  if (window.innerWidth > 1024) {
-    if (blackBox17) {
-      blackBox17.addEventListener('click', function () {
-        window.location.href = '../works/work_Podscribe/work_Podscribe.html';
-      });
-    }
-  } else {
-    if (box17) {
-      box17.addEventListener('click', function () {
-        window.location.href = '../works/work_Podscribe/work_Podscribe.html';
-      });
-    }
-  }
-});
-
-
-
-
-const videos = [
-  document.getElementById('video_box15'),
-  document.getElementById('video_box16')
-];
-
-// 배속 조정 설정
-videos.forEach(video => {
-  if (video.getAttribute('id') === 'video_box15') {
-    video.playbackRate = 1.4;
-  } else if (video.getAttribute('id') === 'video_box16') {
-    video.playbackRate = 1.4;
-  }
-  else {
-    video.playbackRate = 1.0;
-  }
-});
-
-
-
-// 원래 <br> 태그의 위치를 저장하는 배열
+// ------- 기존 유지: <br> 태그 모바일에서 삭제 --------
 let storedBrs = [];
 
 function removeBrOnMobile() {
   if (window.innerWidth <= 767) {
     document.querySelectorAll('br').forEach((br, index) => {
-      // <br>의 부모와 다음 요소를 저장
       storedBrs.push({ parent: br.parentNode, nextSibling: br.nextSibling });
       br.remove();
     });
@@ -578,17 +121,142 @@ function restoreBrOnDesktop() {
         }
       }
     });
-    // 저장된 배열 초기화 (중복 추가 방지)
     storedBrs = [];
   }
 }
 
-// ✅ 페이지 로드 시 한 번 실행
 window.addEventListener('DOMContentLoaded', removeBrOnMobile);
-
-// ✅ 화면 크기 변경될 때 다시 확인
 window.addEventListener('resize', removeBrOnMobile);
 
+//
+
+document.addEventListener('DOMContentLoaded', () => {
+  const mainPreviewWrapper = document.getElementById('mainPreviewWrapper');
+  const scrollContainer = document.getElementById('workPreviewScroll');
+
+  function setupThumbnailClicks() {
+    const thumbnails = document.querySelectorAll('.workThumbnail');
+    thumbnails.forEach(thumb => {
+      thumb.addEventListener('click', () => {
+        const type = thumb.getAttribute('data-type');
+        const src = thumb.getAttribute('data-src');
+        const link = thumb.getAttribute('data-link');
+        const title = thumb.getAttribute('data-title');
+        const subtitle = thumb.getAttribute('data-subtitle');
+
+        // 기존 메인 삭제
+        mainPreviewWrapper.innerHTML = '';
+
+        // 새로운 링크 생성
+        const newLink = document.createElement('a');
+        newLink.id = 'mainImageLink';
+        newLink.href = link;
+        newLink.target = '_blank';
+
+        const newPreview = document.createElement('div');
+        newPreview.id = 'mainPreview';
+
+        if (type === 'video') {
+          const video = document.createElement('video');
+          video.id = 'mainVideo';
+          video.setAttribute('autoplay', '');
+          video.setAttribute('loop', '');
+          video.setAttribute('muted', '');
+          video.setAttribute('playsinline', '');
+          video.innerHTML = `<source src="${src}" type="video/mp4">`;
+          video.className = 'mainMedia';
+          newPreview.appendChild(video);
+        } else {
+          const img = document.createElement('img');
+          img.src = src;
+          img.id = 'mainImage';
+          img.alt = title;
+          img.className = 'mainMedia';
+          newPreview.appendChild(img);
+        }
+
+        const blackbox = document.createElement('div');
+        blackbox.className = 'blackboxes';
+        blackbox.id = 'mainBlackbox';
+        blackbox.innerHTML = `
+          <p class="title" id="mainTitle">${title}</p>
+          <p class="subtitle" id="mainSubtitle">${subtitle}</p>
+        `;
+
+        newPreview.appendChild(blackbox);
+        newLink.appendChild(newPreview);
+        mainPreviewWrapper.appendChild(newLink);
+
+        newPreview.addEventListener('mouseenter', () => {
+          blackbox.classList.add('visible');
+        });
+        newPreview.addEventListener('mouseleave', () => {
+          blackbox.classList.remove('visible');
+        });
+
+        blackbox.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          window.open(link, '_blank');
+        });
+      });
+    });
+  }
+
+  setupThumbnailClicks();
+
+  // ✅ 무한 스크롤을 더 자연스럽게
+  const scrollSpeed = 0.25;
+
+  // 스크롤 복제 여러번
+  const cloneCount = 5; // ★★★ 필요하면 더 늘릴 수도 있어
+  const originalContent = scrollContainer.innerHTML;
+  for (let i = 0; i < cloneCount; i++) {
+    scrollContainer.innerHTML += originalContent;
+  }
+
+  function autoScroll() {
+    scrollContainer.scrollLeft += scrollSpeed;
+
+    // ★★★ 자연스러운 무한스크롤
+    if (scrollContainer.scrollLeft >= scrollContainer.scrollWidth / 2) {
+      scrollContainer.scrollLeft = 0;
+    }
+
+    requestAnimationFrame(autoScroll);
+  }
+
+  autoScroll();
+
+  // 복제한 썸네일까지 클릭이벤트 다시 걸어주기
+  setTimeout(() => {
+    setupThumbnailClicks();
+  }, 500);
+});
 
 
+document.addEventListener('DOMContentLoaded', () => {
+  const videos = document.querySelectorAll('video[data-src]');
 
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const video = entry.target;
+        if (!video.querySelector('source')) {
+          const source = document.createElement('source');
+          source.src = video.dataset.src;
+          source.type = 'video/mp4';
+          video.appendChild(source);
+          video.load();
+        }
+      }
+    });
+  }, {
+    root: null,
+    threshold: 0.2
+  });
+
+  videos.forEach(video => {
+    observer.observe(video);
+  });
+});

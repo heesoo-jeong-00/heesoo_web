@@ -169,167 +169,313 @@ header {
 }
 
 
-#topBox2 {
+#topBox3 {
   font-weight: 625;
 }
 
 
 /* main */
 
-/* 전체 메인 구조 */
 main {
+  width: 100vw;
+  height: auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  width: 100%;
-  margin-top: -10px;
-  /* ✅ header쪽으로 main 끌어올림 */
-}
-
-#mainWorkDisplay {
-  width: 96vw;
-  height: 72vh;
-  overflow: hidden;
-  border-radius: 20px;
-  /* margin-top: 30px; */
-}
-
-#mainPreviewWrapper {
-  width: 100%;
-  height: 100%;
-}
-
-#mainPreview {
-  width: 100%;
-  height: 100%;
+  /* margin: 0px;
+  padding: 0px; */
+  /* top: 96px; */
+  /* flex-wrap: nowrap; */
   position: relative;
+  /* z-index: 1; */
+  /* border:black solid 2px; */
 }
 
-#mainVideo,
-#mainImage {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 20px;
-  display: block;
-  /* ✅ */
-  margin: 0 auto;
-  /* ✅ */
+.boxes {
+  opacity: 0;
+  transition: opacity 0.7s ease-in-out;
+
 }
 
 
-#mainBlackbox {
+
+
+/* section1 */
+
+#section1 {
+  /* width: 100%; */
+  height: auto;
+  position: relative;
+  /* background-color: rgb(255, 255, 255); */
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: flex-start;
+  /* border: rgb(255, 0, 0) solid 1px; */
+  margin: 0vw 2vw;
+}
+
+.boxes {
+  position: relative;
+  height: 35vw;
+  /* border: rgb(0, 0, 255) solid 1px; */
+  /* background-color: #fff59d; */
+  border-radius: 3vw;
+  /* margin: 0px 16px 36px 16px; */
+  margin: 0vw 1vw 2vw 1vw;
+}
+
+.blackboxes {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  /* ✅ 메인프리뷰와 똑같이 */
   height: 100%;
-  /* ✅ 메인프리뷰와 똑같이 */
-  background: rgba(0, 0, 0, 0.4);
-  /* ✅ 검정 투명 배경 */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  padding: 2.4vw;
+  /* font-style: normal; */
+  background-color: rgba(0, 0, 0, 0.6);
   opacity: 0;
-  /* 기본 숨김 */
-  transition: opacity 0.3s ease;
-  border-radius: 20px;
-  /* ✅ 메인프리뷰랑 통일 */
-  cursor: pointer;
-}
-
-#mainImageLink:hover #mainBlackbox {
-  opacity: 1;
-  /* ✅ 호버하면 블랙박스 보이게 */
-}
-
-#mainBlackbox .title {
-  font-family: "Nunito", sans-serif;
-  font-size: 32px;
-  font-weight: 600;
-  color: white;
-  margin-bottom: -5px;
-}
-
-#mainBlackbox .subtitle {
-  font-family: "Nunito", sans-serif;
-  font-size: 18px;
-  font-weight: 400;
-  color: white;
-}
-
-
-
-#mainTitle {
-  font-family: "Nunito", sans-serif;
-  font-size: 32px;
-  font-weight: 700;
-}
-
-#mainSubtitle {
-  font-family: "Nunito", sans-serif;
-  font-size: 18px;
-  font-weight: 400;
-  margin-top: 5px;
-}
-
-/* 하단 썸네일 스크롤 */
-#workPreviewScroll {
-  margin-top: 0.8vh;
-  /* 메인 큰 프리뷰와 간격 */
-  margin-bottom: 0.7vh;
-  /* 하단 footer와 간격 */
-  width: 100vw;
-  /* 하단 썸네일 영역은 전체 100% */
+  transition: all 0.3s ease-in-out;
+  /* border: rgb(0, 0, 255) solid 1px; */
+  /* margin: 0px 16px 36px 16px; */
 
   display: flex;
-  overflow-x: auto;
-  gap: 1.2vw;
-  padding: 2.2vh 0;
-  /* 위아래 썸네일 자체 여백 */
-  scrollbar-width: none;
-  /* Firefox용 스크롤바 없애기 */
+  /* flex 컨테이너로 설정 */
+  /* flex-wrap: wrap; */
+  flex-direction: column;
+  justify-content: left;
+  /* 가로 방향으로 중앙 정렬 */
+  align-items: start;
+  /* 세로 방향으로 중앙 정렬 */
+  text-align: left;
+  /* 텍스트를 중앙으로 정렬 */
+  border-radius: 3vw;
+
+  z-index: 1;
+  /* ✅ 텍스트 뒤에서 항상 보이도록 */
 }
 
-#workPreviewScroll::-webkit-scrollbar {
-  display: none;
-  /* Chrome, Safari용 스크롤바 없애기 */
+
+.boxes:hover .blackboxes {
+  opacity: 1;
 }
 
 
-.workThumbnail {
-  flex: 0 0 auto;
-  width: 14.5vw;
-  height: 12vh;
-  margin: 0;
-  border-radius: 0.7vw;
-  overflow: hidden;
-  cursor: pointer;
+
+
+.title {
+  font-size: 2.1vw;
+  margin-bottom: -0.08vw;
+  color: white;
+
+  /* font-family: "Jura", sans-serif;
+  font-weight: 500;
+  font-style: normal; */
+
+  font-family: "Nunito", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+
+  font-weight: 350;
+
+
 }
 
-.workThumbnail img,
-.workThumbnail video {
+.subtitle {
+  font-size: 1.1vw;
+  color: rgb(210, 210, 210);
+
+
+  font-family: "Nunito", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+
+  font-weight: 300;
+
+}
+
+
+
+
+
+.bg-video {
+  position: absolute;
+  top: 0;
+  /* 기존 transform을 제거하고 top, left를 조정 */
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 12px;
+  /* ✅ 기존 contain 대신 cover 사용 (잘리지 않게) */
+  z-index: 0;
+  /* ✅ 텍스트 뒤에서 항상 보이도록 */
+  /* background-color: black; */
+  opacity: 1;
+  /* ✅ 항상 보이게 설정 */
+  transition: opacity 0.3s ease-in-out;
+  /* ✅ 부드럽게 전환 */
 }
 
-.workThumbnail video {
-  display: block;
-  /* ✅ 블록 요소로 명시 */
-  margin: auto;
-  /* ✅ 가운데 정렬 */
-}
-
-.workThumbnail:hover {
-  transform: scale(1.05);
-  transition: transform 0.3s ease;
+#video_box15 {
+  scale: 1.25;
 }
 
 
+
+#box15 {
+  position: relative;
+  width: calc(50vw - 5vw);
+  /* 필요에 따라 높이 조정 */
+  overflow: hidden;
+  border: rgb(238, 238, 238) solid 2px;
+}
+
+#box16 {
+  position: relative;
+  width: calc(50vw - 5vw);
+  /* 필요에 따라 높이 조정 */
+  overflow: hidden;
+}
+
+#box17 {
+  position: relative;
+  width: calc(100vw - 8vw);
+  /* 필요에 따라 높이 조정 */
+  overflow: hidden;
+
+  background-image: url(../files/podscribe/podscribe_hero_1.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  /* background-size: contain; */
+  background-size: cover;
+}
+
+
+
+#box1 {
+  /* width: calc(75vw - 5vw); */
+  width: calc(100vw - 8vw);
+  background-image: url(../files/curva-main.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  /* background-size: contain; */
+  background-size: cover;
+
+}
+
+#box2 {
+  width: calc(25vw - 5vw);
+  background-image: url(../files/with2-main.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  /* background-size: contain; */
+  background-size: cover;
+}
+
+#box3 {
+  width: calc(100vw - 8vw);
+  background-image: url(../files/nebula-main.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+#box4 {
+  width: calc(50vw - 5vw);
+  background-image: url(../files/shinola2-main.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  /* background-size: contain; */
+  background-size: cover;
+}
+
+#box5 {
+  width: calc(50vw - 5vw);
+  background-image: url(../files/bauhaus-main.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  /* background-size: contain; */
+  background-size: cover;
+}
+
+#box14 {
+  width: calc(100vw - 8vw);
+  background-image: url(../files/Kineticpose/KineticPose_main000.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+#box10 {
+  width: calc(25vw - 5vw);
+  background-image: url(../files/bodega/bodega1.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+#box11 {
+  width: calc(75vw - 5vw);
+  background-image: url(../files/type/type-main-ss.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+#box12 {
+  width: calc(50vw - 5vw);
+  background-image: url(../files/AltiAir/AltiAir-main2.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  /* background-size: contain; */
+  background-size: cover;
+}
+
+#box13 {
+  width: calc(50vw - 5vw);
+  background-image: url(../files/heesoo-main.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  /* background-size: contain; */
+  background-size: 130%;
+}
+
+#box6 {
+  width: calc(25vw - 5vw);
+  background-image: url(../files/AL-main.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  /* background-size: contain; */
+  background-size: cover;
+}
+
+#box7 {
+  width: calc(75vw - 5vw);
+  background-image: url(../files/beam-main.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  /* background-size: contain; */
+  background-size: cover;
+}
+
+#box8 {
+  width: calc(50vw - 5vw);
+  background-image: url(../files/Flower2-main.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  /* background-size: contain; */
+  background-size: cover;
+}
+
+#box9 {
+  width: calc(50vw - 5vw);
+  background-image: url(../files/hangitall1-main.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  /* background-size: contain; */
+  background-size: cover;
+}
 
 
 
