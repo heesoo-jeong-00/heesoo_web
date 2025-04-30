@@ -206,7 +206,7 @@ cards.forEach((card, i) => {
       // 클릭한 카드가 중앙(12시 방향) 카드면 링크로 이동
       const link = card.dataset.link;
       if (link) {
-        window.open(link, '_blank'); // 새 창에서 열고 싶으면 '_blank', 같은 창이면 '_self'
+        window.open(link, '_self'); // 새 창에서 열고 싶으면 '_blank', 같은 창이면 '_self'
       }
     } else {
       // 중앙 카드가 아니면 중앙으로 회전만
@@ -260,4 +260,13 @@ document.addEventListener('mousemove', (e) => {
 
     pupil.style.transform = `translate(${x}px, ${y}px)`;
   });
+});
+
+
+window.addEventListener('beforeunload', () => {
+  window.scrollTo(0, 0);
+});
+window.addEventListener('DOMContentLoaded', () => {
+  window.scrollTo(0, 0);
+  window.history.scrollRestoration = 'manual';
 });

@@ -238,6 +238,7 @@ main {
   border-radius: 20px;
   /* ✅ 메인프리뷰랑 통일 */
   cursor: pointer;
+
 }
 
 #mainImageLink:hover #mainBlackbox {
@@ -251,6 +252,8 @@ main {
   font-weight: 600;
   color: white;
   margin-bottom: -5px;
+
+  
 }
 
 #mainBlackbox .subtitle {
@@ -258,6 +261,7 @@ main {
   font-size: 18px;
   font-weight: 400;
   color: white;
+
 }
 
 
@@ -266,6 +270,7 @@ main {
   font-family: "Nunito", sans-serif;
   font-size: 32px;
   font-weight: 700;
+  z-index: 1;
 }
 
 #mainSubtitle {
@@ -273,6 +278,7 @@ main {
   font-size: 18px;
   font-weight: 400;
   margin-top: 5px;
+  z-index: 1; 
 }
 
 /* 하단 썸네일 스크롤 */

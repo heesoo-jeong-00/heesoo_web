@@ -131,7 +131,7 @@ header {
   align-items: center;
   justify-content: space-around;
   /* margin: 10px 20px 10px 12px; */
-  margin: 10px 0px 9.2px 14px;
+  margin: 10px 0px 9.2px 4px;
   width: auto;
   /* border:rgb(255, 0, 0) solid 1px; */
 }
@@ -168,7 +168,7 @@ header {
 
 
 
-#topBox2 {
+#topBox3 {
   font-weight: 625;
 }
 
@@ -237,6 +237,7 @@ main {
   border-radius: 20px;
   /* ✅ 메인프리뷰랑 통일 */
   cursor: pointer;
+  /* z-index: -1; */
 }
 
 #mainImageLink:hover #mainBlackbox {
@@ -265,6 +266,7 @@ main {
   font-family: "Nunito", sans-serif;
   font-size: 32px;
   font-weight: 700;
+  z-index: 1;
 }
 
 #mainSubtitle {
@@ -272,6 +274,7 @@ main {
   font-size: 18px;
   font-weight: 400;
   margin-top: 5px;
+  z-index: 1;
 }
 
 /* 하단 썸네일 스크롤 */

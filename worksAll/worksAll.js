@@ -151,7 +151,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const newLink = document.createElement('a');
         newLink.id = 'mainImageLink';
         newLink.href = link;
-        newLink.target = '_blank';
+        // newLink.target = '_blank';
+        newLink.target = '_self';
 
         const newPreview = document.createElement('div');
         newPreview.id = 'mainPreview';
@@ -197,7 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
         blackbox.addEventListener('click', (e) => {
           e.preventDefault();
           e.stopPropagation();
-          window.open(link, '_blank');
+          window.location.href = link;
         });
       });
     });

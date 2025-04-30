@@ -125,7 +125,7 @@ header {
   align-items: center;
   justify-content: space-around;
   /* margin: 10px 20px 10px 12px; */
-  margin: 10px 0px 9.2px 14px;
+  margin: 10px 0px 9.2px 4px;
   width: auto;
   /* border:rgb(255, 0, 0) solid 1px; */
 }
@@ -210,8 +210,12 @@ main {
   align-items: center;
   justify-content: flex-start;
   margin-top: 60%;
-  padding-top:10%;
+  padding-top: 10%;
+
+  transform: translateY(40px);
+  transition: opacity 1.8s ease, transform 0.8s ease;
 }
+
 
 .gradient-mask {
   position: absolute;
@@ -226,14 +230,9 @@ main {
 
 
 
-#projectCircle.bg-active {
-  background-color: #ffffff;
-  /* ✅ 원하는 배경색 */
-  transition: background-color 1.2s ease;
-}
-
 
 #circleWrapper {
+
   position: relative;
   top: 0px;
   width: 100%;
@@ -249,10 +248,10 @@ main {
 
 
 #circleContainer {
+  border: 1px solid rgba(0, 255, 8, 0.4);
   position: relative;
   width: 200vw;
   height: 200vw;
-  display: flex;
   align-items: center;
   justify-content: center;
   overflow: visible;
@@ -320,7 +319,7 @@ main {
   font-family: "Nunito", sans-serif;
   font-weight: 300;
   font-size: 18px;
-  margin-top:2%;
+  margin-top: 2%;
   color: #000000;
 }
 
@@ -331,10 +330,10 @@ main {
   /* ✅ 시간 늘려줘야해 */
   will-change: opacity;
   /* border: 1px solid rgba(255, 0, 0, 0.4); */
-  width: auto; 
+  width: auto;
 
   padding: 0%;
-  margin:0%;
+  margin: 0%;
 }
 
 
@@ -353,7 +352,7 @@ main {
 #s2.s2c4 {
   /* border:rgb(255, 0, 0) solid 1px; */
   top: -15vw;
-  padding-top:5vw;
+  padding-top: 5vw;
   position: relative;
   min-height: 100vh;
   display: flex;
@@ -484,8 +483,10 @@ main {
   left: 52%;
   transform: translateX(-52%) translateY(40px);
   scale: 1.05;
-  opacity: 1;  /* ✅ 반드시 1로 */
-  z-index: 5;  /* ✅ 다른 요소 위로 오도록 적절한 값 */
+  opacity: 1;
+  /* ✅ 반드시 1로 */
+  z-index: 5;
+  /* ✅ 다른 요소 위로 오도록 적절한 값 */
   width: 300vw;
   height: 135vw;
 
@@ -674,3 +675,63 @@ footer {
 
 
 /* 애니메이션 추가 */
+
+@media screen and (max-width: 767px) and (orientation: landscape) {
+  #earth {
+
+    width: 30vw;
+  }
+
+  #circleContainer {
+    top: -10vh;
+    height: 400vw;
+    width: 600vw;
+  }
+
+  #circleWrapper {
+    position: relative;
+    top: 10%;
+
+  }
+
+  #projectCircle {
+    /* opacity:0; */
+    height: 114vh;
+    padding-top: 25%;
+    width: 120vw;
+  }
+
+  .circleCard {
+    width: 24vw;
+    height: 24vw;
+    top: 400%;
+  }
+
+  .gradient-mask {
+    top: 92vh;
+    height: 23vh;
+  }
+
+  #projectInfo {
+    position: absolute;
+    top: 38%;
+    z-index: 2;
+  }
+
+  #section2 {
+    height: 80vh;
+    padding-top: 10vh;
+  }
+
+  #s2.s2c4 {
+    /* border:rgb(255, 0, 0) solid 1px; */
+    top: 0vw;
+    z-index: 1;
+  }
+
+
+  #viewAllProjects {
+    top: 20%;
+    z-index: 1;
+  }
+}
