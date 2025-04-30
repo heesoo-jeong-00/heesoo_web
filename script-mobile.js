@@ -201,17 +201,17 @@ const observer = new IntersectionObserver((entries) => {
         element.style.transform = 'translate(-50%, 0)';
       });
     } else {
-      circleForS3.style.opacity = '0';
+      circleForS3.style.opacity = '1';
       circleForS3.style.transform = 'translateX(-50%) translateY(30px)';
       elementsToShow.forEach(element => {
-        element.style.opacity = '0';
+        element.style.opacity = '1';
         element.style.transform = 'translate(-50%, 30px)';
       });
     }
   });
 }, { threshold: 0.2 });
 
-observer.observe(document.getElementById('section2'));
+observer.observe(document.getElementById('s2'));
 
 // (5) 모바일 br 제거
 function removeBrOnMobile() {
@@ -285,7 +285,7 @@ const fadeOutInText = (title, subtitle) => {
 // ✅ 카드 위치 업데이트 함수
 const updatePositions = () => {
   const total = cards.length;
-  const radius = 250;
+  const radius = 290;
   const centerAngle = Math.PI / 2; // 12시 방향 기준
 
   cards.forEach((card, i) => {
@@ -365,31 +365,5 @@ document.addEventListener('mousemove', (e) => {
   });
 });
 
-
-// const s2c4 = document.querySelector('#s2.s2c4');
-
-
-
-// window.addEventListener('scroll', function () {
-//   if (window.scrollY > 1000) {
-
-//     circleForS3.style.opacity = '1';
-//     circleForS3.style.transform = 'translateX(0%) translateY(0%)';
-
-//     s2c4.style.opacity = '1';
-//     s2c4.style.transform = 'translateX(0%) translateY(0%)'; // 좌우 정렬 유지하면서 위치 복귀
-
-
-
-//   } else {
-//     // 스크롤 위치가 840px 미만일 때, 초기 설정으로 되돌림
-
-//     circleForS3.style.opacity = '0';
-//     circleForS3.style.transform = 'translateX(0%) translateY(100%)';
-
-//     s2c4.style.opacity = '0';
-//     s2c4.style.transform = 'translateX(-50%) translateY(40px)'; // 초기 설정 위치로
-//   }
-// });
 
 

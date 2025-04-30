@@ -170,12 +170,13 @@ main {
 
 
 
+
 #earth {
   position: absolute;
   top: 65vh;
   left: 50%;
   transform: translateX(-50%) rotate(0deg);
-  width: 40vw;
+  width: 60vw;
   /* 크기 조절하고 싶으면 여기 수정 */
   height: auto;
   pointer-events: none;
@@ -198,16 +199,18 @@ main {
 }
 
 #projectCircle {
+  /* border: 1px solid rgba(255, 0, 0, 0.4); */
   position: relative;
   /* ✅ 반드시 있어야 .gradient-mask 가 bottom 0에 붙음 */
   overflow: hidden;
   width: 100vw;
-  height: 68vh;
+  height: 64vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  margin-top: 38vh;
+  margin-top: 60%;
+  padding-top:10%;
 }
 
 .gradient-mask {
@@ -215,7 +218,7 @@ main {
   top: 60vh;
   left: 0;
   width: 100%;
-  height: 10vh;
+  height: 4vh;
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #ffffff);
   pointer-events: none;
   z-index: 20;
@@ -254,7 +257,7 @@ main {
   justify-content: center;
   overflow: visible;
   z-index: 0;
-  top: -30vh;
+  top: -35vh;
 }
 
 
@@ -262,8 +265,8 @@ main {
   position: absolute;
   top: 100%;
   left: 50%;
-  width: 34vw;
-  height: 34vw;
+  width: 38vw;
+  height: 38vw;
   transform: translate(-50%, -50%);
   transition: all 0.6s ease, opacity 0.8s ease;
   /* ✅ opacity도 부드럽게 */
@@ -289,12 +292,17 @@ main {
 
 #projectInfo {
   position: absolute;
-  top: 10%;
+  top: 5%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
   z-index: 0;
   pointer-events: none;
+  padding: 0%;
+  padding-top: 1%;
+  /* border: 1px solid rgba(255, 0, 0, 0.4); */
+
+  width: 100%;
 }
 
 
@@ -302,15 +310,17 @@ main {
 #projectTitle {
   font-family: "Nunito", sans-serif;
   font-weight: 450;
-  font-size: 32px;
+  font-size: 28px;
   margin-bottom: -2px;
+  line-height: 1.1;
   color: #000000;
 }
 
 #projectSubtitle {
   font-family: "Nunito", sans-serif;
   font-weight: 300;
-  font-size: 20px;
+  font-size: 18px;
+  margin-top:2%;
   color: #000000;
 }
 
@@ -320,14 +330,19 @@ main {
   transition: opacity 0.4s ease-in-out;
   /* ✅ 시간 늘려줘야해 */
   will-change: opacity;
+  /* border: 1px solid rgba(255, 0, 0, 0.4); */
+  width: auto; 
+
+  padding: 0%;
+  margin:0%;
 }
 
 
 #section2 {
   width: 100%;
-  height: 62vh;
+  height: 40vh;
   position: relative;
-  overflow: hidden;
+  /* overflow: hidden; */
   /* border:rgb(255, 0, 0) solid 1px; */
 }
 
@@ -336,6 +351,9 @@ main {
 
 
 #s2.s2c4 {
+  /* border:rgb(255, 0, 0) solid 1px; */
+  top: -15vw;
+  padding-top:5vw;
   position: relative;
   min-height: 100vh;
   display: flex;
@@ -345,22 +363,6 @@ main {
 }
 
 
-#circleForS3 {
-  position: absolute;
-  top: 0%;
-  left: 50%;
-  transform: translateX(-50%);
-  opacity: 0;
-  width: 200vw;
-  height: 135vw;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
-  transition: opacity 1.5s ease;
-  transition: transform 1.5s ease;
-}
 
 /* 
 .eye {
@@ -419,7 +421,7 @@ main {
 }
 
 #s3text {
-  top: 10%;
+  top: 0%;
   /* ✅ 25% 지점에 배치 */
   font-weight: 200;
   color: black;
@@ -433,7 +435,7 @@ main {
 }
 
 #viewAllProjects {
-  top: 20%;
+  top: 10%;
   /* ✅ 버튼은 더 아래 */
   background-color: white;
   color: black;
@@ -476,21 +478,25 @@ main {
 
 
 
-
-
-
-
 #circleForS3 {
-  scale: 1.05;
   position: absolute;
-  top: 30vh;
+  top: 10vh;
   left: 52%;
-  transform: translateX(-52%) translateY(40px); /* ✨ 수정 */
-  opacity: 0;
+  transform: translateX(-52%) translateY(40px);
+  scale: 1.05;
+  opacity: 1;  /* ✅ 반드시 1로 */
+  z-index: 5;  /* ✅ 다른 요소 위로 오도록 적절한 값 */
+  width: 300vw;
+  height: 135vw;
+
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
   transition: opacity 1.4s ease, transform 0.8s ease;
-  overflow: hidden;
-  z-index: 0;
 }
+
 
 /* footer */
 

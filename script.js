@@ -179,7 +179,10 @@ const fadeOutInText = (title, subtitle) => {
 // ✅ 카드 위치 업데이트 함수
 const updatePositions = () => {
   const total = cards.length;
-  const radius = 600;
+  
+  // ✅ 화면 너비 기준으로 radius 결정
+  const radius = window.innerWidth <= 1200 ? 500 : 700;
+
   const centerAngle = Math.PI / 2; // 12시 방향 기준
 
   cards.forEach((card, i) => {

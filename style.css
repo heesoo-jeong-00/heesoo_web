@@ -182,7 +182,7 @@ main {
   position: relative;
 }
 
-
+/* 
 
 #earth {
   position: absolute;
@@ -190,22 +190,22 @@ main {
   left: 50%;
   transform: translateX(-50%) rotate(0deg);
   width: 20vw;
-  /* 크기 조절하고 싶으면 여기 수정 */
+
   height: auto;
   pointer-events: none;
   z-index: 1;
-  /* 필요시 조정 */
+
 }
 
 #circleHeading {
   font-family: "Nunito", sans-serif;
   font-weight: 350;
   font-size: 32px;
-  margin-top: 0vh; /* ✅ 화면 위쪽에서 여유 있게 */
+  margin-top: 0vh;
   margin-bottom: 2vh;
   color: #000000;
   text-align: center;
-  /* z-index: -1; */
+
   position: relative;
   padding-top: 2vh;
 }
@@ -213,32 +213,21 @@ main {
 
 
 #projectCircle {
-  position: relative; /* ✅ 반드시 있어야 .gradient-mask 가 bottom 0에 붙음 */
+  position: relative; 
   overflow: hidden;
   width: 100vw;
-  height: 90vh;
+  height: 80vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  margin-top: 40vh;
-}
-
-.gradient-mask {
-  position: absolute;
-  top: 80vh; /* 화면 전체의 하단 10% 지점 */
-  left: 0;
-  width: 100%;
-  height: 10vh;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #ffffff);
-  pointer-events: none;
-  z-index: 20;
+  margin-top: 30vh;
 }
 
 
 
 #projectCircle.bg-active {
-  background-color: #ffffff; /* ✅ 원하는 배경색 */
+  background-color: #ffffff; 
   transition: background-color 1.2s ease;
 }
 
@@ -252,7 +241,7 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding-top: 100vh; /* ✅ circleContainer는 아래로 내려오게 */
+  padding-top: 100vh; 
   box-sizing: border-box;
 }
 
@@ -269,21 +258,6 @@ main {
 }
 
 
-.circleCard {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 18vw;
-  height: 18vw;
-  transform: translate(-50%, -50%);
-  transition: all 0.6s ease, opacity 0.8s ease; /* ✅ opacity도 부드럽게 */
-
-  border-radius: 1.4vw;
-  overflow: hidden;
-  box-shadow: 0vw 0.5vw 0.8vw -0.05vw rgba(15, 147, 255, 0.25);
-  cursor: pointer;
-
-}
 
 
 
@@ -326,17 +300,18 @@ main {
 #projectTitle,
 #projectSubtitle {
   opacity: 1;
-  transition: opacity 0.4s ease-in-out; /* ✅ 시간 늘려줘야해 */
+  transition: opacity 0.4s ease-in-out; 
   will-change: opacity;
-}
+}*/
 
 
 #section2 {
   width: 100%;
-  height: 62vh;
+  height: 66vh;
   position: relative;
   overflow: hidden;
-  /* border:rgb(255, 0, 0) solid 1px; */
+  padding-top: 10vh;
+
 }
 
 /* section3 */
@@ -345,7 +320,7 @@ main {
 
 #s2.s2c4 {
   position: relative;
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -355,12 +330,12 @@ main {
 
 #circleForS3 {
   position: absolute;
-  top: 0%;
+  top: 20%;
   left: 50%;
   transform: translateX(-50%);
   opacity: 0;
-  width: 135vw;
-  height: 135vw;
+  width: 200%;
+  height: 200%;
   z-index: 1;
   display: flex;
   align-items: center;
@@ -369,6 +344,7 @@ main {
   transition: opacity 1.5s ease;
   transition: transform 1.5s ease;
 }
+
 /* 
 .eye {
   position: absolute;
@@ -515,12 +491,6 @@ footer {
 }
 
 
-@media only screen and (min-device-width: 768px) and (max-device-width: 1200px) {
-  footer {
-    border-top: black solid 1px;
-  }
-}
-
 
 /* 마우스 인터렉션 */
 
@@ -664,10 +634,10 @@ footer {
 
 #earth {
   position: absolute;
-  top: 65vh;
+  top: 70vh;
   left: 50%;
   transform: translateX(-50%) rotate(0deg);
-  width: 20vw;
+  width: 25vw;
   /* 크기 조절하고 싶으면 여기 수정 */
   height: auto;
   pointer-events: none;
@@ -679,7 +649,8 @@ footer {
   font-family: "Nunito", sans-serif;
   font-weight: 350;
   font-size: 32px;
-  margin-top: 0vh; /* ✅ 화면 위쪽에서 여유 있게 */
+  margin-top: 0vh;
+  /* ✅ 화면 위쪽에서 여유 있게 */
   margin-bottom: 2vh;
   color: #000000;
   text-align: center;
@@ -689,23 +660,26 @@ footer {
 }
 
 #projectCircle {
-  position: relative; /* ✅ 반드시 있어야 .gradient-mask 가 bottom 0에 붙음 */
+  position: relative;
+  /* ✅ 반드시 있어야 .gradient-mask 가 bottom 0에 붙음 */
   overflow: hidden;
   width: 100vw;
-  height: 90vh;
+  height: 80vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  margin-top: 40vh;
+  margin-top: 45vh;
+  /* padding-top: 5vh; */
 }
 
 .gradient-mask {
   position: absolute;
-  top: 80vh; /* 화면 전체의 하단 10% 지점 */
+  top: 85%;
+  /* 화면 전체의 하단 10% 지점 */
   left: 0;
   width: 100%;
-  height: 10vh;
+  height: 15%;
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #ffffff);
   pointer-events: none;
   z-index: 20;
@@ -714,21 +688,23 @@ footer {
 
 
 #projectCircle.bg-active {
-  background-color: #ffffff; /* ✅ 원하는 배경색 */
+  background-color: #ffffff;
+  /* ✅ 원하는 배경색 */
   transition: background-color 1.2s ease;
 }
 
 
 #circleWrapper {
   position: relative;
-  top: 0px;
+  top: 15%;
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding-top: 100vh; /* ✅ circleContainer는 아래로 내려오게 */
+  padding-top: 100vh;
+  /* ✅ circleContainer는 아래로 내려오게 */
   box-sizing: border-box;
 }
 
@@ -741,7 +717,7 @@ footer {
   align-items: center;
   justify-content: center;
   overflow: visible;
-    z-index: 0;
+  z-index: 0;
 }
 
 
@@ -749,10 +725,11 @@ footer {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 18vw;
-  height: 18vw;
+  width: 20vw;
+  height: 20vw;
   transform: translate(-50%, -50%);
-  transition: all 0.6s ease, opacity 0.8s ease; /* ✅ opacity도 부드럽게 */
+  transition: all 0.6s ease, opacity 0.8s ease;
+  /* ✅ opacity도 부드럽게 */
 
   border-radius: 1.4vw;
   overflow: hidden;
@@ -765,8 +742,8 @@ footer {
 
 
 
-
-.circleCard img, .circleCard video {
+.circleCard img,
+.circleCard video {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -774,7 +751,7 @@ footer {
 
 #projectInfo {
   position: absolute;
-  top: 60%;
+  top: 55%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
@@ -802,6 +779,61 @@ footer {
 #projectTitle,
 #projectSubtitle {
   opacity: 1;
-  transition: opacity 0.4s ease-in-out; /* ✅ 시간 늘려줘야해 */
+  transition: opacity 0.4s ease-in-out;
+  /* ✅ 시간 늘려줘야해 */
   will-change: opacity;
+}
+
+
+
+
+
+@media only screen and (min-width: 769px) and (max-width: 1200px) {
+  footer {
+    border-top: black solid 1px;
+  }
+
+  #earth {
+    width: 50%;
+  }
+
+  #projectCircle {
+    margin-top: -15vh;
+    height: 100vh;
+  }
+
+  #projectInfo {
+    position: absolute;
+    top: 77%;
+  }
+
+  .circleCard {
+    width: 30vw;
+    height: 30vw;
+    top: 0%;
+
+  }
+
+  .gradient-mask {
+
+    top: 94%;
+    height: 6%;
+  }
+
+  #section2 {
+    width: 100%;
+    height: auto;
+  }
+
+  #circleForS3 {
+    top: 50%;
+  }
+
+  #s2.s2c4 {
+    position: relative;
+    height: 35vh;
+  }
+
+  #viewAllProjects {margin-top:2.5vh;}
+
 }
