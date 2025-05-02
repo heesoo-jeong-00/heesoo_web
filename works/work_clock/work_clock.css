@@ -354,6 +354,7 @@ img {
 
 
 
+
 #captions {
   display: flex;
   flex-direction: row;
@@ -426,6 +427,20 @@ img {
   padding: 0;
   margin-bottom: 0.7vw;
   border-radius: 3vw;
+}
+
+
+/* section3 안의 video 스타일 */
+#section3 video {
+  width:92%;
+  height: auto;
+  display: block;
+  border-radius: 16px;
+  /* 원하면 둥근 모서리 */
+  margin-bottom: 5%;
+  /* 아래 이미지들과 간격 */
+  border: rgb(137, 137, 137) solid 1px;
+  margin-top: 5%;
 }
 
 
