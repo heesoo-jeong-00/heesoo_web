@@ -235,19 +235,32 @@ window.addEventListener('resize', removeBrOnMobile);
   };
   showTexts(false);
 
-  // 1) 원: 섹션 상단이 뷰포트에 꽤 이르면 바로 트리거
-  //    rootMargin: 아래쪽을 크게 잘라서(예: -70%) 더 일찍 isIntersecting 되도록
-  const ioCircle = new IntersectionObserver(([entry]) => {
-    const on = entry.isIntersecting;
-    circle.style.transform = on
-      ? 'translateX(-50%) translateY(0)'
-      : 'translateX(-50%) translateY(30px)';
-  }, {
-    root: null,
-    rootMargin: '0px 0px -90% 0px', // 더 일찍 뜨게. (느리면 -60%~-50%로, 너무 이르면 -80%로)
-    threshold: 0
-  });
-  ioCircle.observe(section);
+
+
+// 1) 원: 섹션이 화면에 보이면 1초 뒤에 등장
+let circleTimer = null;
+
+const ioCircle = new IntersectionObserver(([entry]) => {
+  if (entry.isIntersecting) {
+    // 보이면 타이머 시작
+    if (!circleTimer) {
+      circleTimer = setTimeout(() => {
+        circle.style.transform = 'translateX(-50%) translateY(0)';
+      }, 2000); // 1000ms = 1초 뒤
+    }
+  } else {
+    // 안 보이면 초기화 + 다시 내려가기
+    clearTimeout(circleTimer);
+    circleTimer = null;
+    circle.style.transform = 'translateX(-50%) translateY(80px)';
+  }
+}, {
+  root: null,
+  threshold: 0.1 // 10%만 보여도 "보임"으로 간주
+});
+
+ioCircle.observe(section);
+
 
   // 2) 텍스트: 가시율 히스테리시스 (올라오면 인, 내려가면 아웃)
   const SHOW_AT = 0.2; // 2% 이상 보이면 인

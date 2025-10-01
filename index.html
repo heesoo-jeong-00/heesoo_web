@@ -176,10 +176,11 @@
 
 
         <div id="s2" class="s2c4">
-          <svg data-cursor="detail" id="circleForS3" width="1688" height="1688" viewBox="0 0 1688 1688" fill="none"
-            xmlns="http://www.w3.org/2000/svg">
+          <!-- 섹션2 안 -->
+          <svg id="circleForS3" class="circle-out" width="1688" height="1688" viewBox="0 0 1688 1688">
             <circle cx="844" cy="844" r="844" fill="#75BDFF" />
           </svg>
+
 
 
           <!-- <div class="eye" id="eye-left">
@@ -241,7 +242,7 @@
         document.body.appendChild(s);
       });
     }
-  
+
     if (window.innerWidth <= 767) {
       // ✅ 1) section1(가벼움) 먼저 로드 → 화면에 즉시 노출
       loadScript('section1-mobile.js').then(() => {
@@ -256,7 +257,7 @@
       loadScript('section1.js').then(() => loadScript('script.js'));
     }
   </script>
-  
+
   <!-- <script src="sketch.js"></script> -->
 
 
