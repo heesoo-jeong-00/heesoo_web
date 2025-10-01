@@ -79,85 +79,98 @@
         </ul>
       </div>
     </header>
-
+    <script>
+      (function () {
+        var h = document.getElementById('header')?.offsetHeight || 96;
+        document.documentElement.style.setProperty('--header-h', h + 'px');
+      })();
+    </script>
     <main>
-      <div id="earthContainer">
-        <img id="earth" src="files/myWork.png" alt="Take a peek at my work!">
-      </div>
 
       <div id="section1" data-cursor="main1">
-        <!-- <div id="sec1text">
-          <p>Hello, World!<br>This is Heesoo,<br>a creative designer.</p>
 
-        </div> -->
       </div>
 
-      <section id="projectCircle">
-        <!-- <h2 id="circleHeading">Take a Peek at My Work!</h2> -->
-        <div id="circleWrapper">
-
-          <div id="circleContainer">
-            <!-- Verizon -->
-            <div class="circleCard" data-title="Verizon" data-subtitle="App design / UX design"
-              data-link="works/work_Verizon/work_Verizon.html">
-              <video autoplay loop muted playsinline>
-                <source src="../files/verizon/verizon_1.mp4" type="video/mp4">
-              </video>
-            </div>
-
-            <!-- Books Come Alive -->
-            <div class="circleCard" data-title="Books Come Alive" data-subtitle="App design / Interaction design"
-              data-link="works/work_BooksComeAlive/work_BooksComeAlive.html">
-              <video autoplay loop muted playsinline>
-                <source src="../files/book/Book_1.mp4" type="video/mp4">
-              </video>
-            </div>
-
-            <!-- Podscribe -->
-            <div class="circleCard" data-title="Podscribe" data-subtitle="UX/UI design / Data visualization"
-              data-link="../works/work_Podscribe/work_Podscribe.html">
-              <img src="../files/podscribe/podscribe_hero_1.jpg" alt="Podscribe">
-            </div>
-
-            <!-- User Manual: Nebula -->
-            <div class="circleCard" data-title="User Manual: Nebula" data-subtitle="Interaction design"
-              data-link="../works/work_Nebula/work_Nebula.html">
-              <img src="../files/nebula-main.jpg" alt="Nebula">
-            </div>
-
-            <!-- Bodega -->
-            <div class="circleCard" data-title="Bodega" data-subtitle="Branding"
-              data-link="../works/work_Bodega/work_Bodega.html">
-              <img src="../files/bodega/bodega1.jpg" alt="Bodega">
-            </div>
-
-            <!-- Aisle&Lens -->
-            <div class="circleCard" data-title="Aisle&Lens" data-subtitle="Logo Design"
-              data-link="../works/work_AisleAndLens/work_AisleAndLens.html">
-              <img src="../files/AL-main.jpg" alt="Aisle&Lens">
-            </div>
-
-            <!-- Beam -->
-            <div class="circleCard" data-title="Beam" data-subtitle="Branding / Identity"
-              data-link="../works/work_Beam/work_Beam.html">
-              <img src="../files/beam-main.jpg" alt="Beam">
-            </div>
-
-            <!-- Kaleidoscope -->
-            <div class="circleCard" data-title="Kaleidoscope" data-subtitle="Creative coding"
-              data-link="../works/work_Kaleidoscope/work_Kaleidoscope.html">
-              <img src="../files/Flower2-main.jpg" alt="Kaleidoscope">
-            </div>
-          </div>
+      <div id="section12" data-cursor="main1">
+        <p class="floating-text">Scroll down to check out my latest projects.</p>
+      </div>
 
 
-          <div id="projectInfo">
-            <h2 id="projectTitle"></h2>
-            <p id="projectSubtitle"></p>
-          </div>
+      <div id="workPreviewScroll" data-cursor="main1">
+
+        <!-- Verizon (Video) -->
+        <div class="workThumbnail" data-type="video" data-src="../files/verizon/verizon_1.mp4"
+          data-link="../works/work_Verizon/work_Verizon.html" data-title="Verizon"
+          data-subtitle="App design / UX design">
+          <video autoplay loop muted playsinline data-src="../files/verizon/verizon_1.mp4">
+            <!-- 초기에는 source 안 넣음 -->
+          </video>
         </div>
-        <div class="gradient-mask"></div>
-      </section>
+
+        <!-- Books Come Alive (Video) -->
+        <div class="workThumbnail" data-type="video" data-src="../files/book/Book_1.mp4"
+          data-link="../works/work_BooksComeAlive/work_BooksComeAlive.html" data-title="Books Come Alive"
+          data-subtitle="App design / Interaction design">
+          <video autoplay loop muted playsinline data-src="../files/book/Book_1.mp4">
+            <!-- 초기에는 source 안 넣음 -->
+          </video>
+        </div>
+
+        <!-- Podscribe (Image) -->
+        <div class="workThumbnail" data-type="image" data-src="../files/podscribe/podscribe_hero_1.jpg"
+          data-link="../works/work_Podscribe/work_Podscribe.html" data-title="Podscribe"
+          data-subtitle="UX/UI design / Data visualization">
+          <img src="../files/podscribe/podscribe_hero_1.jpg" alt="Podscribe Thumbnail">
+        </div>
+
+        <!-- With (Image) -->
+        <div class="workThumbnail" data-type="image" data-src="../files/with2-main.jpg"
+          data-link="../works/work_With/work_With.html" data-title="With" data-subtitle="App design">
+          <img src="../files/with2-main.jpg" alt="With Thumbnail">
+        </div>
+
+
+
+        <!-- User Manual: Nebula (Image) -->
+        <div class="workThumbnail" data-type="image" data-src="../files/nebula-main.jpg"
+          data-link="../works/work_Nebula/work_Nebula.html" data-title="User Manual: Nebula"
+          data-subtitle="Interaction design">
+          <img src="../files/nebula-main.jpg" alt="Nebula Thumbnail">
+        </div>
+
+
+        <!-- Type Play: Interactive Design Lab (Image) -->
+        <!-- <div class="workThumbnail" data-type="image" data-src="../files/type/type-main-ss.jpg"
+          data-link="../works/work_TypePlay/work_TypePlay.html" data-title="Type Play: Interactive Design Lab"
+          data-subtitle="Creative coding / Interaction design">
+          <img src="../files/type/type-main-ss.jpg" alt="Type Play Thumbnail">
+        </div>
+ -->
+
+        <div class="workThumbnail" data-type="image" data-src="../files/clock/clock00.jpg"
+          data-link="../works/work_clock/work_clock.html" data-title="Apple Clock App" data-subtitle="UX/UI design">
+          <img src="../files/clock/clock00.jpg" alt="Type Play Thumbnail">
+        </div>
+
+
+
+
+        <!-- Heesoo Portfolio Website (Image) -->
+        <div class="workThumbnail" data-type="image" data-src="../files/heesoo-main.jpg"
+          data-link="../works/work_Heesoo/work_Heesoo.html" data-title="Heesoo: Portfolio Website"
+          data-subtitle="Creative coding / Interaction design">
+          <img src="../files/heesoo-main.jpg" alt="Heesoo Thumbnail">
+        </div>
+
+        <!-- Kinetic Pose (Image) -->
+        <!-- <div class="workThumbnail" data-type="image" data-src="../files/Kineticpose/KineticPose_main000.jpg"
+          data-link="../works/work_KineticPose/work_KineticPose.html" data-title="Kinetic Pose"
+          data-subtitle="Creative coding / Interaction design">
+          <img src="../files/Kineticpose/KineticPose_main000.jpg" alt="Kinetic Pose Thumbnail">
+        </div> -->
+
+
+      </div>
 
       <div id="section2" class="s2a1" data-cursor="main2">
 
@@ -169,17 +182,17 @@
           </svg>
 
 
-          <div class="eye" id="eye-left">
+          <!-- <div class="eye" id="eye-left">
             <div class="pupil"></div>
           </div>
           <div class="eye" id="eye-right">
             <div class="pupil"></div>
           </div>
-
+ -->
 
           <p id="s3text">
-            <span class="mobile-break">Are you interested</span>
-            <span class="mobile-break">in working with me?</span>
+            <span class="mobile-break">Are you interested in</span>
+            <span class="mobile-break">working with me?</span>
           </p>
 
           <button id="viewAllProjects" data-cursor="pro4">
@@ -238,6 +251,8 @@
     }
   </script>
   <!-- <script src="sketch.js"></script> -->
+
+
 </body>
 
 </html>

@@ -57,57 +57,14 @@ function mousemove(e) {
       console.log('main2')
       break
 
-    // case 's2c4Data':
-    //   if (stage === 's2c4Data') return
-    //   scale = 1;
-    //   stage = 's2c4Data'
-    //   console.log('s2c4Data')
-    //   break
-
-
-    case 'detail':
-      if (stage === 'detail') return
+    case 'main3':
+      if (stage === 'main3') return
       scale = 1;
-      stage = 'detail'
-      console.log('detaila')
+      stage = 'main3'
+      console.log('main3')
       break
 
 
-    case 'pro1':
-      if (stage === 'pro1') return
-      scale = 2;
-      stage = 'pro1'
-      console.log('pro1')
-      break
-
-    case 'pro2':
-      if (stage === 'pro2') return
-      scale = 2;
-      stage = 'pro2'
-      console.log('pro2')
-      break
-
-    case 'pro3':
-      if (stage === 'pro3') return
-      scale = 2;
-      stage = 'pro3'
-      console.log('pro3')
-      break
-
-    case 'pro4':
-      if (stage === 'pro4') return
-      scale = 2;
-      stage = 'pro4'
-      console.log('pro4')
-      break
-
-
-    // case 'footerData':
-    //   if (stage === 'footerData') return
-    //   scale = 1;
-    //   stage = 'footerData'
-    //   console.log('footerData')
-    //   break
 
     case 'bottomItem1':
       if (stage === 'bottomItem1') return
@@ -145,6 +102,71 @@ function mouseup(e) {
 }
 
 
+
+//애니메이션 추가
+
+// HTML 요소에 대한 참조 변수를 설정
+const headerBox = document.getElementById('headerBox');
+const topBoxes = document.getElementById('topBoxes');
+const topBox = document.querySelectorAll('.topBox');
+const logo = document.getElementById('logo');
+
+// 스크롤 이벤트 리스너 추가
+window.addEventListener('scroll', function () {
+  // 스크롤 위치가 50px 이상이고, headerBox가 확대된 상태가 아닐 경우
+  if (window.scrollY > 50) {
+    // 확대된 상태가 아니면 축소 스타일 적용
+    if (!headerBox.dataset.isExpanded) {
+      headerBox.classList.add('scrolled');
+      topBoxes.classList.add('scrolled');
+      topBox.forEach(box => box.classList.add('scrolled'));
+      logo.style.pointerEvents = 'none';  // 로고 클릭 이벤트 비활성화
+    }
+  } else {
+    // 스크롤 위치가 50px 이하인 경우, 모든 스타일을 제거하고, 확대 상태로 설정
+    headerBox.classList.remove('scrolled');
+    topBoxes.classList.remove('scrolled');
+    topBox.forEach(box => box.classList.remove('scrolled'));
+    logo.style.pointerEvents = 'auto';  // 로고 클릭 이벤트 활성화
+    headerBox.dataset.isExpanded = 'true';  // 확대 상태를 true로 설정
+  }
+});
+
+// 클릭 이벤트 리스너 추가
+headerBox.addEventListener('click', function () {
+  // headerBox가 이미 축소된 상태인 경우
+  if (this.classList.contains('scrolled')) {
+    this.classList.remove('scrolled');
+    topBoxes.classList.remove('scrolled');
+    topBox.forEach(box => box.classList.remove('scrolled'));
+    logo.style.pointerEvents = 'auto';  // 로고 클릭 이벤트 활성화
+    headerBox.dataset.isExpanded = 'true';  // 확대 상태를 true로 설정
+  }
+});
+
+// 스크롤 이벤트에서 확대된 상태를 해제하고 다시 축소되도록 처리
+window.addEventListener('scroll', function () {
+  if (window.scrollY > 50 && headerBox.dataset.isExpanded === 'true') {
+    headerBox.classList.add('scrolled');
+    topBoxes.classList.add('scrolled');
+    topBox.forEach(box => box.classList.add('scrolled'));
+    logo.style.pointerEvents = 'none';  // 로고 클릭 이벤트 비활성화
+    headerBox.dataset.isExpanded = 'false';  // 확대 상태를 false로 재설정
+  }
+});
+
+//페이지 로드 시 main 투명도 조절
+document.addEventListener('DOMContentLoaded', function () {
+  // "boxes" 클래스를 가진 모든 요소를 선택합니다.
+  const boxes = document.querySelectorAll('.boxes'); // 클래스 선택자를 사용합니다.
+  boxes.forEach(el => {
+    el.style.opacity = 1;
+  });
+});
+
+
+
+
 // (2) 서클 관련 scale 조정
 document.getElementById('circleForS3').addEventListener('mouseover', () => {
   scale = 1;
@@ -154,38 +176,7 @@ document.getElementById('viewAllProjects').addEventListener('mouseover', (event)
   event.stopPropagation();
 });
 
-// (3) 헤더 축소/확대
-const headerBox = document.getElementById('headerBox');
-const topBoxes = document.getElementById('topBoxes');
-const topBox = document.querySelectorAll('.topBox');
-const logo = document.getElementById('logo');
 
-window.addEventListener('scroll', function () {
-  if (window.scrollY > 50) {
-    if (!headerBox.dataset.isExpanded) {
-      headerBox.classList.add('scrolled');
-      topBoxes.classList.add('scrolled');
-      topBox.forEach(box => box.classList.add('scrolled'));
-      logo.style.pointerEvents = 'none';
-    }
-  } else {
-    headerBox.classList.remove('scrolled');
-    topBoxes.classList.remove('scrolled');
-    topBox.forEach(box => box.classList.remove('scrolled'));
-    logo.style.pointerEvents = 'auto';
-    headerBox.dataset.isExpanded = 'true';
-  }
-});
-
-headerBox.addEventListener('click', function () {
-  if (this.classList.contains('scrolled')) {
-    this.classList.remove('scrolled');
-    topBoxes.classList.remove('scrolled');
-    topBox.forEach(box => box.classList.remove('scrolled'));
-    logo.style.pointerEvents = 'auto';
-    headerBox.dataset.isExpanded = 'true';
-  }
-});
 
 // (4) IntersectionObserver (❗스크롤 이벤트 밖으로 빼줬다!)
 const circleForS3 = document.getElementById('circleForS3');
@@ -222,160 +213,604 @@ function removeBrOnMobile() {
 window.addEventListener('DOMContentLoaded', removeBrOnMobile);
 window.addEventListener('resize', removeBrOnMobile);
 
-// (6) 지구 회전
-const earth = document.getElementById('earth');
-let rotation = 0;
-let baseSpeed = 0.005;
-let scrollSpeed = 0;
 
-function animateEarth() {
-  rotation += baseSpeed + scrollSpeed;
-  earth.style.transform = `translateX(-50%) rotate(${rotation}rad)`;
-  scrollSpeed *= 0.5; // 감속 (자연스럽게)
-  requestAnimationFrame(animateEarth);
-}
 
-let lastScrollY = window.scrollY;
+
+
+/* #s2 기준 원/텍스트 페이드(기존 유지) */
+
+/* #s2 기준 원/텍스트 페이드 (개선판) */
+(function () {
+  const circle = document.getElementById('circleForS3');
+  const section = document.getElementById('s2');
+  const texts = document.querySelectorAll('#s3text, #viewAllProjects');
+  if (!circle || !section || !texts.length) return;
+
+  // 초기 텍스트 상태(아래 살짝 + 투명)
+  const showTexts = (on) => {
+    texts.forEach(el => {
+      el.style.opacity = on ? '1' : '0';
+      el.style.transform = on ? 'translate(-50%, 0)' : 'translate(-50%, 12px)';
+    });
+  };
+  showTexts(false);
+
+  // 1) 원: 섹션 상단이 뷰포트에 꽤 이르면 바로 트리거
+  //    rootMargin: 아래쪽을 크게 잘라서(예: -70%) 더 일찍 isIntersecting 되도록
+  const ioCircle = new IntersectionObserver(([entry]) => {
+    const on = entry.isIntersecting;
+    circle.style.transform = on
+      ? 'translateX(-50%) translateY(0)'
+      : 'translateX(-50%) translateY(30px)';
+  }, {
+    root: null,
+    rootMargin: '0px 0px -70% 0px', // 더 일찍 뜨게. (느리면 -60%~-50%로, 너무 이르면 -80%로)
+    threshold: 0
+  });
+  ioCircle.observe(section);
+
+  // 2) 텍스트: 가시율 히스테리시스 (올라오면 인, 내려가면 아웃)
+  const SHOW_AT = 0.03; // 2% 이상 보이면 인
+  const HIDE_AT = 0.03; // 1% 이하로 줄면 아웃
+  let shown = false;
+
+  const ioText = new IntersectionObserver(([entry]) => {
+    const r = entry.intersectionRatio || 0;
+    if (!shown && r >= SHOW_AT) { shown = true;  showTexts(true);  }
+    else if (shown && r <= HIDE_AT) { shown = false; showTexts(false); }
+  }, {
+    root: null,
+    threshold: [0, 0.01, 0.02, 1]
+  });
+  ioText.observe(section);
+
+  // iOS/Safari 폴백: IO가 불안정할 때 대비
+  let ticking = false;
+  const fallback = () => {
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+    const r  = section.getBoundingClientRect();
+    const visible = Math.max(0, Math.min(r.bottom, vh) - Math.max(r.top, 0));
+    const ratio   = visible / Math.min(vh, Math.max(1, r.height));
+    if (!shown && ratio >= SHOW_AT) { shown = true;  showTexts(true);  }
+    else if (shown && ratio <= HIDE_AT) { shown = false; showTexts(false); }
+    ticking = false;
+  };
+  const onScrollResize = () => { if (!ticking) { ticking = true; requestAnimationFrame(fallback); } };
+  window.addEventListener('scroll', onScrollResize, { passive: true });
+  window.addEventListener('resize', onScrollResize, { passive: true });
+  requestAnimationFrame(fallback);
+})();
+
+
+
+
+
+
+
+
+
+
+/* 모바일에서 <br> 제거(요청 유지) */
+(function () {
+  function removeBrOnMobile() { if (window.innerWidth <= 767) document.querySelectorAll('br').forEach(br => br.remove()); }
+  window.addEventListener('DOMContentLoaded', removeBrOnMobile);
+  window.addEventListener('resize', removeBrOnMobile);
+})();
+
+
+
+
+
+/* ===========================================
+   모바일 전용: 중앙 스냅 캐러셀 + 양방향 무한 이어붙이기
+   (세로 스크롤 시 깜빡임 방지: width 변화에만 반응)
+   =========================================== */
+(function () {
+  const isMobile = window.matchMedia('(hover: none), (pointer: coarse), (max-width: 767px)').matches;
+  if (!isMobile) return;
+
+  const container = document.getElementById('workPreviewScroll');
+  const circle = document.getElementById('circleForS3');
+  const fadeTexts = document.querySelectorAll('#s3text, #viewAllProjects');
+  if (!container) return;
+
+  /* ---------- 트랙 래핑(없으면 생성) ---------- */
+  if (!container.querySelector('.scroll-track')) {
+    const kids = Array.from(container.children);
+    const trackEl = document.createElement('div');
+    trackEl.className = 'scroll-track';
+    kids.forEach(n => trackEl.appendChild(n));
+    container.appendChild(trackEl);
+  }
+  const track = container.querySelector('.scroll-track');
+
+  /* ---------- 비디오 하이드레이션 ---------- */
+  function hydrateVideos(root) {
+    const vids = (root || track).querySelectorAll('video');
+    vids.forEach(v => {
+      const ds = v.getAttribute('data-src') || v.closest('.workThumbnail')?.getAttribute('data-src');
+      if (!v.getAttribute('src') && ds) v.setAttribute('src', ds);
+      v.muted = true; v.setAttribute('muted', ''); v.setAttribute('playsinline', '');
+      if (!v.getAttribute('preload')) v.setAttribute('preload', 'metadata');
+      v.play?.().catch(() => { });
+    });
+  }
+  hydrateVideos(track);
+
+  /* ---------- 캡션 주입 ---------- */
+  function hydrateCaptions(root) {
+    (root || track).querySelectorAll('.workThumbnail').forEach(card => {
+      const title = card.dataset.title || '';
+      const sub = card.dataset.subtitle || '';
+      if (!card.querySelector('.thumb-caption')) {
+        const cap = document.createElement('div');
+        cap.className = 'thumb-caption';
+        cap.innerHTML = `<strong class="thumb-title">${title}</strong><div class="thumb-sub">${sub}</div>`;
+        card.appendChild(cap);
+      }
+    });
+  }
+  hydrateCaptions(track);
+
+  /* ---------- 캡션 높이만큼 바닥 여유 ---------- */
+  function reserveCaptionSpace() {
+    const travel = 16, spare = 16;
+    let maxH = 0;
+    container.querySelectorAll('.thumb-caption').forEach(el => {
+      const h = Math.max(el.offsetHeight || 0, el.scrollHeight || 0);
+      if (h > maxH) maxH = h;
+    });
+    if (maxH < 24) maxH = 24;
+    const need = Math.round(maxH + travel + spare);
+    container.style.setProperty('--caption-reserve', need + 'px');
+  }
+  reserveCaptionSpace();
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(reserveCaptionSpace).catch(() => { });
+  }
+
+  /* ---------- 세트 측정/복제 (양방향 무한) ---------- */
+  const ORIGINAL_COUNT = track.children.length;
+  const templateHTML = Array.from(track.children).slice(0, ORIGINAL_COUNT).map(n => n.outerHTML).join('');
+
+  function getGapPx() {
+    const cs = getComputedStyle(track);
+    const g = cs.gap || cs.columnGap || '0px';
+    const n = parseFloat(g);
+    return Number.isFinite(n) ? n : 0;
+  }
+
+  let oneSetWidth = 0;
+  function measureOneSetWidth() {
+    const gap = getGapPx();
+    const firstSet = Array.from(track.children).slice(0, ORIGINAL_COUNT);
+    if (!firstSet.length) return;
+    let sum = 0;
+    firstSet.forEach((el, i) => {
+      sum += el.offsetWidth || el.getBoundingClientRect().width;
+      if (i < firstSet.length - 1) sum += gap;
+    });
+    oneSetWidth = Math.round(sum);
+  }
+
+  function appendSetOnce() {
+    const tmp = document.createElement('div');
+    tmp.innerHTML = templateHTML;
+    const frag = document.createDocumentFragment();
+    while (tmp.firstChild) frag.appendChild(tmp.firstChild);
+    track.appendChild(frag);
+    hydrateVideos(track); hydrateCaptions(track);
+    requestAnimationFrame(updateCenteredCard);
+  }
+
+  function prependSetOnce() {
+    const tmp = document.createElement('div');
+    tmp.innerHTML = templateHTML;
+    const frag = document.createDocumentFragment();
+    while (tmp.firstChild) frag.appendChild(tmp.firstChild);
+    track.insertBefore(frag, track.firstChild);
+
+    container.classList.add('snap-off');       // 스냅/스무스 잠깐 OFF
+    if (oneSetWidth) container.scrollLeft += oneSetWidth;
+    requestAnimationFrame(() => container.classList.remove('snap-off'));
+
+    hydrateVideos(track); hydrateCaptions(track);
+    requestAnimationFrame(updateCenteredCard);
+  }
+
+  function centerCardAt(index) {
+    const cards = track.children;
+    const card = cards[index];
+    if (!card) return;
+    const target = card.offsetLeft - (container.clientWidth - card.offsetWidth) / 2;
+    container.scrollLeft = Math.max(0, Math.round(target));
+    updateCenteredCard();
+  }
+
+  // 초기: 앞/뒤 1세트씩 + 가운데 세트 첫 카드 중앙
+  container.classList.add('snap-off');
+  requestAnimationFrame(() => {
+    measureOneSetWidth();
+    prependSetOnce();
+    appendSetOnce();
+    centerCardAt(ORIGINAL_COUNT);
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => container.classList.remove('snap-off'));
+    });
+  });
+
+  // 끝/처음 근처에서 동적 추가
+  let guard = false;
+  function checkEnds() {
+    if (guard) return;
+    guard = true;
+    requestAnimationFrame(() => {
+      measureOneSetWidth();
+      const remainRight = container.scrollWidth - (container.scrollLeft + container.clientWidth);
+      const remainLeft = container.scrollLeft;
+      const threshold = Math.max(container.clientWidth * 1.2, oneSetWidth * 0.6);
+      if (remainRight < threshold) appendSetOnce();
+      if (remainLeft < threshold) prependSetOnce();
+      guard = false;
+    });
+  }
+
+  /* ---------- 중앙 카드 판별(가로 스크롤에서만) ---------- */
+  let lastLeft = container.scrollLeft;
+  let currentCenter = null;
+  const CENTER_HYST = 8; // px
+
+  function updateCenteredCard() {
+    const cards = track.querySelectorAll('.workThumbnail');
+    if (!cards.length) return;
+    const vpLeft = container.getBoundingClientRect().left;
+    const vpCenterX = vpLeft + container.clientWidth / 2;
+
+    let curDist = Infinity;
+    if (currentCenter && currentCenter.isConnected) {
+      const cr = currentCenter.getBoundingClientRect();
+      curDist = Math.abs((cr.left + cr.width / 2) - vpCenterX);
+    }
+
+    let best = null, bestDist = Infinity;
+    cards.forEach(card => {
+      const r = card.getBoundingClientRect();
+      const d = Math.abs((r.left + r.width / 2) - vpCenterX);
+      if (d < bestDist) { best = card; bestDist = d; }
+    });
+
+    if (best && (best !== currentCenter) && (bestDist + CENTER_HYST < curDist)) {
+      cards.forEach(c => c.classList.remove('is-center'));
+      best.classList.add('is-center');
+      currentCenter = best;
+    }
+  }
+
+  // 가로 스크롤 변화시에만 동작 (세로 스크롤로 인한 깜빡임 차단)
+  container.addEventListener('scroll', () => {
+    const left = container.scrollLeft;
+    if (left !== lastLeft) {
+      lastLeft = left;
+      updateCenteredCard();
+      checkEnds();
+    }
+  }, { passive: true });
+
+  /* ---------- 폭(width) 변화에만 반응하도록 처리 ---------- */
+  let lastVW = document.documentElement.clientWidth;
+  let lastCW = container.clientWidth;
+
+  function onWidthChangeOnly(cb) {
+    return () => {
+      const vw = document.documentElement.clientWidth;
+      const cw = container.clientWidth;
+      // 폭이 실제로 바뀐 경우에만 실행(주소창 높이변화 등은 무시)
+      if (Math.abs(vw - lastVW) > 1 || Math.abs(cw - lastCW) > 1) {
+        lastVW = vw; lastCW = cw;
+        requestAnimationFrame(cb);
+      }
+    };
+  }
+
+  // 폭 변경(가로 회전 등)일 때만 재계산/재중앙
+  window.addEventListener('resize', onWidthChangeOnly(() => {
+    updateCenteredCard();
+    checkEnds();
+    recenterToNearest();
+  }), { passive: true });
+
+  // iOS에서 visualViewport 높이 요동은 무시, 폭 변화에만 반응
+  if (window.visualViewport) {
+    let lastVVW = window.visualViewport.width;
+    window.visualViewport.addEventListener('resize', () => {
+      const w = window.visualViewport.width;
+      if (Math.abs(w - lastVVW) > 1) {
+        lastVVW = w;
+        requestAnimationFrame(() => {
+          updateCenteredCard();
+          checkEnds();
+          recenterToNearest();
+        });
+      }
+    }, { passive: true });
+  }
+
+  // 명시적으로 방향 전환 시 살짝 늦춰 재중앙
+  window.addEventListener('orientationchange', () => {
+    setTimeout(() => {
+      updateCenteredCard();
+      checkEnds();
+      recenterToNearest();
+    }, 120);
+  }, { passive: true });
+
+  /* ---------- 리소스 로드 후 미세 재중앙 ---------- */
+  function recenterToNearest() {
+    const cards = track.querySelectorAll('.workThumbnail');
+    if (!cards.length) return;
+    const vpLeft = container.getBoundingClientRect().left;
+    const vpCenter = vpLeft + container.clientWidth / 2;
+    let best = null, bestDelta = Infinity;
+    cards.forEach(card => {
+      const r = card.getBoundingClientRect();
+      const cx = r.left + r.width / 2;
+      const d = Math.abs(cx - vpCenter);
+      if (d < bestDelta) { bestDelta = d; best = card; }
+    });
+    if (!best) return;
+    const target = best.offsetLeft - (container.clientWidth - best.offsetWidth) / 2;
+    container.classList.add('snap-off');
+    requestAnimationFrame(() => {
+      container.scrollLeft = Math.round(target);
+      updateCenteredCard();
+      requestAnimationFrame(() => container.classList.remove('snap-off'));
+    });
+  }
+
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(() => requestAnimationFrame(recenterToNearest));
+  }
+  Array.from(track.querySelectorAll('img')).forEach(img => {
+    if (!img.complete) img.addEventListener('load', () => requestAnimationFrame(recenterToNearest), { once: true });
+  });
+
+  /* ---------- 클릭 네비: 중앙 카드일 때만 ---------- */
+/* 모바일 전용: 카드 한 번 탭 → 즉시 링크로 이동 */
+(() => {
+  const isMobile = window.matchMedia('(hover: none), (pointer: coarse), (max-width: 767px)').matches;
+  if (!isMobile) return;
+
+  const track =
+    document.querySelector('#workPreviewScroll .scroll-track') ||
+    document.getElementById('workPreviewScroll');
+  if (!track) return;
+
+  const TAP_SLOP = 10;   // 손가락 흔들림 허용 오차(px)
+  const TAP_TIME = 350;  // 탭으로 인정할 최대 시간(ms)
+  let sx = 0, sy = 0, st = 0, moved = false;
+
+  track.addEventListener('touchstart', (e) => {
+    const t = e.targetTouches[0] || e.changedTouches[0];
+    sx = t.clientX; sy = t.clientY; st = Date.now(); moved = false;
+  }, { passive: true });
+
+  track.addEventListener('touchmove', (e) => {
+    const t = e.targetTouches[0] || e.changedTouches[0];
+    if (Math.abs(t.clientX - sx) > TAP_SLOP || Math.abs(t.clientY - sy) > TAP_SLOP) moved = true;
+  }, { passive: true });
+
+  track.addEventListener('touchend', (e) => {
+    const dt = Date.now() - st;
+    if (moved || dt > TAP_TIME) return;
+
+    const card = e.target.closest('.workThumbnail');
+    if (!card) return;
+
+    // 중앙 카드일 때만 이동하려면 아래 한 줄 주석 해제
+    // if (!card.classList.contains('is-center')) return;
+
+    const link = card.dataset.link;
+    if (!link) return;
+
+    if (e.cancelable) e.preventDefault(); // 유령 click 방지
+    window.location.href = link;          // ✅ 한 번 탭으로 즉시 이동
+  }, { passive: false });
+})();
+
+  /* ---------- 보이는 카드만 video play/pause ---------- */
+  const ioPlay = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      const v = e.target.querySelector('video'); if (!v) return;
+      if (e.isIntersecting) v.play?.().catch(() => { });
+      else v.pause?.();
+    });
+  }, { root: container, threshold: 0.5 });
+  track.querySelectorAll('.workThumbnail').forEach(el => ioPlay.observe(el));
+
+  /* ---------- 컨테이너 리빌: 1회만(opacity만 변경) ---------- */
+  (function revealOnce() {
+    container.classList.add('reveal-hidden');
+    const io = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        container.classList.remove('reveal-hidden');
+        container.classList.add('reveal-in');
+        io.disconnect();
+      }
+    }, { threshold: [0, 0.25, 0.5, 0.75, 1] });
+    io.observe(container);
+  })();
+
+  /* ---------- Section2: 원 슬라이드 + 텍스트 페이드 ---------- */
+
+// Circle + Text 등장 트리거(마커 + 스크롤 폴백)
+(function () {
+  const circle = document.getElementById('circleForS3');
+  const texts  = document.querySelectorAll('#s3text, #viewAllProjects');
+  if (!circle || !texts.length) return;
+
+  // 섹션 추적: circle의 가장 가까운 섹션/컨테이너
+  const section =
+    circle.closest('#s2, #section2, section') ||
+    document.getElementById('s2') ||
+    document.getElementById('section2') ||
+    circle.parentElement;
+
+  if (!section) return;
+
+  // 섹션 position 보장(마커 absolute 배치를 위해)
+  const secPos = getComputedStyle(section).position;
+  if (secPos === 'static') section.style.position = 'relative';
+
+  // ★ 트리거 위치(뷰포트 기준): 섹션 상단에서 25vh 지점이 화면에 닿으면 show
+  const SHOW_VH = 75; // 더 일찍 뜨게 하려면 숫자 ↓(예: 10), 늦게 하려면 ↑(예: 40)
+
+  // 숨김/보임 구현(클래스 토글만)
+  const show = () => {
+    circle.classList.add('circle-in');
+    circle.classList.remove('circle-out');
+    texts.forEach(el => el.classList.add('visible'));
+  };
+  const hide = () => {
+    circle.classList.remove('circle-in');
+    circle.classList.add('circle-out');
+    texts.forEach(el => el.classList.remove('visible'));
+  };
+
+  // 초기 상태(아래대기/숨김)
+  hide();
+
+  // 섹션 안에 보이지 않는 마커 생성(관찰 대상)
+  let marker = section.querySelector('#s3-trigger');
+  if (!marker) {
+    marker = document.createElement('div');
+    marker.id = 's3-trigger';
+    marker.setAttribute('aria-hidden', 'true');
+    marker.style.cssText = [
+      'position:absolute',
+      'left:0', 'right:0',
+      `top:${SHOW_VH}vh`,  // 뷰포트 기준 오프셋
+      'height:1px',
+      'pointer-events:none',
+      'opacity:0'
+    ].join(';');
+    section.appendChild(marker);
+  }
+
+  // IntersectionObserver: 마커가 화면에 들어오면 등장, 벗어나면 숨김
+  const io = new IntersectionObserver(([entry]) => {
+    entry.isIntersecting ? show() : hide();
+  }, {
+    root: null,
+    threshold: 0,         // 한 픽셀만 닿아도 트리거
+    rootMargin: '0px'     // 오프셋은 마커의 top에서 조절
+  });
+  io.observe(marker);
+
+  // ------- 폴백(언제나 동작 보장) -------
+  let ticking = false;
+  function fallbackCheck() {
+    const r = section.getBoundingClientRect();
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+
+    // 섹션 상단에서 SHOW_VH 만큼 내려온 지점의 화면 좌표
+    const triggerY = r.top + (vh * (SHOW_VH / 100));
+
+    // 그 지점이 화면 내부에 있고 섹션이 보이는 중이면 show, 아니면 hide
+    const inView = (triggerY < vh) && (r.bottom > 0);
+    inView ? show() : hide();
+
+    ticking = false;
+  }
+
+  const onScrollResize = () => {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(fallbackCheck);
+    }
+  };
+
+  window.addEventListener('scroll', onScrollResize, { passive: true });
+  window.addEventListener('resize', onScrollResize, { passive: true });
+  requestAnimationFrame(fallbackCheck); // 초기 1회 강제 체크
+})();
+
+
+  /* ---------- 모바일: <br> 제거 ---------- */
+  (function removeBrOnMobile() {
+    document.querySelectorAll('br').forEach(br => br.remove());
+  })();
+
+})();
+
+
+
 
 window.addEventListener('scroll', () => {
-  const currentScroll = window.scrollY;
-  const delta = currentScroll - lastScrollY;
+  const text = document.querySelector('#section12 .floating-text');
+  const rect = text.getBoundingClientRect();
+  const windowHeight = window.innerHeight;
 
-  if (delta > 0) {
-    // ✅ 스크롤 내릴 때 (시계 방향)
-    scrollSpeed += 0.002 * delta;
+  // 글자 중심 Y값
+  const textCenter = rect.top + rect.height / 1.8;
+
+  // 화면 중앙 위치
+  const midScreen = windowHeight / 1.8;
+
+  if (textCenter >= midScreen) {
+    text.style.opacity = 1; // 중앙 아래에서는 완전 보임
   } else {
-    // ✅ 스크롤 올릴 때 (시계 반대 방향)
-    scrollSpeed += 0.002 * delta; // delta는 음수 → 반대 방향
+    // 중앙보다 위로 올라갈수록 1→0 으로 서서히 줄어듦
+    const distance = midScreen - textCenter;
+    const fadeRange = 120; // 150px 범위 동안 점점 사라짐
+    let opacity = 1 - distance / fadeRange;
+    if (opacity < 0) opacity = 0;
+    text.style.opacity = opacity;
   }
-
-  lastScrollY = currentScroll;
 });
 
-animateEarth();
 
 
 
-// (1) 프로젝트 서클 - 카드, 텍스트 연결
-const container = document.getElementById('circleContainer');
-const cards = container.querySelectorAll('.circleCard');
-const titleEl = document.getElementById('projectTitle');
-const subtitleEl = document.getElementById('projectSubtitle');
-const projectCircle = document.getElementById('projectCircle');
-let activeIndex = 0;
 
-// ✅ 텍스트를 디졸브로 전환하는 함수
-const fadeOutInText = (title, subtitle) => {
-  titleEl.style.opacity = '0';
-  subtitleEl.style.opacity = '0';
 
-  setTimeout(() => {
-    titleEl.textContent = title;
-    subtitleEl.textContent = subtitle;
 
+
+
+
+(() => {
+  const svg = document.getElementById('circleForS3');
+  if (!svg) return;
+  const disk = svg.querySelector('circle');
+  if (!disk) return;
+
+  // 파(블루) → 빨(레드) → 노(옐로) 순환
+  const ORDER = ['#75BDFF', '#FF5721', '#FFD600'];
+
+  // 현재 색 기준 다음 색 반환(목록에 없으면 파란색부터 시작)
+  const nextInOrder = (cur) => {
+    const i = ORDER.findIndex(c => c.toLowerCase() === (cur || '').toLowerCase());
+    return ORDER[(i >= 0 ? i + 1 : 0) % ORDER.length];
+  };
+
+  // SVG에서도 매 클릭마다 확실히 재생되는 '들썩' 애니메이션
+  const bump = () => {
+    disk.style.animation = 'none';                 // 리셋
+    void disk.getBoundingClientRect().width;       // reflow (SVG-safe)
     requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        titleEl.style.opacity = '1';
-        subtitleEl.style.opacity = '1';
-      });
+      disk.style.animation = 'circle-bump 280ms cubic-bezier(.16,1,.3,1)';
     });
-  }, 400); // transition-duration 맞춰서
-};
+  };
+  disk.addEventListener('animationend', () => { disk.style.animation = ''; });
 
-// ✅ 카드 위치 업데이트 함수
-const updatePositions = () => {
-  const total = cards.length;
+  // 초기 fill이 없으면 파란색으로 세팅(순서 시작점 고정)
+  if (!disk.getAttribute('fill')) disk.setAttribute('fill', ORDER[0]);
 
-  // ✅ 반지름 조건 분기
-  let radius;
-  const isMobile = window.innerWidth <= 767;
-  const isLandscape = window.innerWidth > window.innerHeight;
-
-  if (isMobile && isLandscape) {
-    radius = 400; // 모바일 가로
-  } else {
-    radius = 290; // 기본값
-  }
-
-  const centerAngle = Math.PI / 2; // 12시 방향 기준
-
-  cards.forEach((card, i) => {
-    const angle = centerAngle + (2 * Math.PI * (i - activeIndex)) / total;
-    const x = radius * Math.cos(angle);
-    const y = radius * Math.sin(angle);
-
-    card.style.transform = `translate(calc(-50% + ${x}px), calc(-50% - ${y}px)) scale(${i === activeIndex ? 1.4 : 1})`;
-    card.style.opacity = (Math.abs(i - activeIndex) <= 2 || Math.abs(i - activeIndex) >= total - 2) ? 1 : 0.3;
-    card.style.zIndex = i === activeIndex ? 10 : 5;
+  svg.addEventListener('click', () => {
+    const current = disk.getAttribute('fill');
+    disk.setAttribute('fill', nextInOrder(current));  // 파→빨→노→파...
+    bump();                                           // 클릭마다 들썩!
   });
-
-  const activeCard = cards[activeIndex];
-  fadeOutInText(activeCard.dataset.title || '', activeCard.dataset.subtitle || '');
-};
-
-
-// ✅ 카드 클릭 이벤트 등록
-cards.forEach((card, i) => {
-  card.addEventListener('click', () => {
-    if (i === activeIndex) {
-      // 클릭한 카드가 중앙(12시 방향) 카드면 링크로 이동
-      const link = card.dataset.link;
-      if (link) {
-        window.open(link, '_self'); // 새 창에서 열고 싶으면 '_blank', 같은 창이면 '_self'
-      }
-    } else {
-      // 중앙 카드가 아니면 중앙으로 회전만
-      activeIndex = i;
-      updatePositions();
-    }
-  });
-});
-
-
-// ✅ 초기 위치 설정
-updatePositions();
-
-// (2) 프로젝트 섹션 배경색 스크롤 트리거
-const bgObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (!entry.isIntersecting && entry.boundingClientRect.top > 0) {
-      projectCircle.classList.remove('bg-active');
-    } else {
-      projectCircle.classList.add('bg-active');
-    }
-  });
-}, {
-  threshold: 0,
-  rootMargin: '0px'
-});
-
-bgObserver.observe(projectCircle);
-
-
-
-
-
-
-const eyes = document.querySelectorAll('.eye');
-
-document.addEventListener('mousemove', (e) => {
-  eyes.forEach(eye => {
-    const pupil = eye.querySelector('.pupil');
-    const rect = eye.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-
-    const dx = e.clientX - centerX;
-    const dy = e.clientY - centerY;
-    const angle = Math.atan2(dy, dx);
-
-    const maxDistance = 15; // 눈동자가 움직일 최대 거리
-    const x = Math.cos(angle) * maxDistance;
-    const y = Math.sin(angle) * maxDistance;
-
-    pupil.style.transform = `translate(${x}px, ${y}px)`;
-  });
-});
+})();
 
 
 
@@ -384,25 +819,3 @@ document.addEventListener('mousemove', (e) => {
 
 
 
-
-
-
-
-
-
-
-
-// 스크롤 위치 강제 초기화
-window.history.scrollRestoration = 'manual';
-
-window.addEventListener('DOMContentLoaded', () => {
-  setTimeout(() => window.scrollTo(0, 0), 0); // 짧은 지연 줘야 모바일에서 동작
-});
-
-window.addEventListener('load', () => {
-  setTimeout(() => window.scrollTo(0, 0), 0); // 이미지·폰트 로딩 이후에도 처리
-});
-
-window.addEventListener('beforeunload', () => {
-  window.scrollTo(0, 0);
-});

@@ -39,6 +39,9 @@ function mouseup() {
   cursorChild.style.setProperty('--cursor-scale', scale);
 }
 
+
+
+
 // (2) 서클 관련 scale 조정
 document.getElementById('circleForS3').addEventListener('mouseover', () => {
   scale = 1;
@@ -81,192 +84,386 @@ headerBox.addEventListener('click', function () {
   }
 });
 
-// (4) IntersectionObserver (❗스크롤 이벤트 밖으로 빼줬다!)
-const circleForS3 = document.getElementById('circleForS3');
-const elementsToShow = document.querySelectorAll('#s3text, #viewAllProjects');
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      circleForS3.style.opacity = '1';
-      circleForS3.style.transform = 'translateX(-50%) translateY(0)';
-      elementsToShow.forEach(element => {
-        element.style.opacity = '1';
-        element.style.transform = 'translate(-50%, 0)';
-      });
-    } else {
-      circleForS3.style.opacity = '0';
-      circleForS3.style.transform = 'translateX(-50%) translateY(30px)';
-      elementsToShow.forEach(element => {
-        element.style.opacity = '0';
-        element.style.transform = 'translate(-50%, 30px)';
-      });
-    }
+
+
+
+
+// circleForS3: 중앙 밴드에서 슬라이드, 텍스트: #section2가 10% 보이면 살짝 위로 페이드인
+(() => {
+  const circle   = document.getElementById('circleForS3');
+  const section2 = document.getElementById('section2');
+  const texts    = document.querySelectorAll('#s3text, #viewAllProjects');
+  if (!circle || !section2 || !texts.length) return;
+
+  // 텍스트 초기 상태(아래로 12px)
+  texts.forEach(el => {
+    if (!el.style.transition) el.style.transition = 'opacity 900ms ease, transform 700ms ease';
+    el.style.opacity   = '0';
+    el.style.transform = 'translate(-50%, 50px)';
   });
-}, { threshold: 0.2 });
 
-observer.observe(document.getElementById('section2'));
+  // 원 보여주기/숨기기
+  const setCircle = (on) => {
+    circle.style.opacity   = on ? '1' : '0';
+    circle.style.transform = on
+      ? 'translateX(-50%) translateY(0)'
+      : 'translateX(-50%) translateY(100px)';
+  };
 
-// (5) 모바일 br 제거
-function removeBrOnMobile() {
-  if (window.innerWidth <= 767) {
-    document.querySelectorAll('br').forEach(br => br.remove());
-  }
-}
-window.addEventListener('DOMContentLoaded', removeBrOnMobile);
-window.addEventListener('resize', removeBrOnMobile);
+  // 텍스트 보여주기/숨기기 (살짝 올라오며)
+  const setTexts = (on) => {
+    texts.forEach(el => {
+      el.style.opacity   = on ? '1' : '0';
+      el.style.transform = on ? 'translate(-50%, 0)' : 'translate(-50%, 12px)';
+    });
+  };
 
-// (6) 지구 회전
-const earth = document.getElementById('earth');
-let rotation = 0;
-let baseSpeed = 0.005;
-let scrollSpeed = 0;
+  // 1) 원: 뷰포트 중앙 밴드(위/아래 10% 잘라낸 영역)에서만 on
+  new IntersectionObserver((entries) => {
+    setCircle(entries[0].isIntersecting);
+  }, {
+    root: null,
+    rootMargin: '-5% 0px -5% 0px',
+    threshold: 0
+  }).observe(circle);
 
-function animateEarth() {
-  rotation += baseSpeed + scrollSpeed;
-  earth.style.transform = `translateX(-50%) rotate(${rotation}rad)`;
-  scrollSpeed *= 0.5; // 감속 (자연스럽게)
-  requestAnimationFrame(animateEarth);
-}
+// 2) 텍스트: #section2가 아주 살짝만 보여도(≈2%) 등장, 1% 이하로 떨어지면 숨김
+(() => {
+  const SHOW_AT = 0.02; // 2%
+  const HIDE_AT = 0.02; // 1% (히스테리시스)
+  let shown = false;
 
-let lastScrollY = window.scrollY;
+  new IntersectionObserver(([entry]) => {
+    const r = entry.intersectionRatio || 0;
+    if (!shown && r >= SHOW_AT) {
+      shown = true;
+      setTexts(true);
+    } else if (shown && r <= HIDE_AT) {
+      shown = false;
+      setTexts(false);
+    }
+  }, {
+    root: null,
+    threshold: [0, 0.01, 0.02, 1]
+  }).observe(section2);
+})();
+
+})();
+
+
+
+
+
 
 window.addEventListener('scroll', () => {
-  const currentScroll = window.scrollY;
-  const delta = currentScroll - lastScrollY;
+  const text = document.querySelector('#section12 .floating-text');
+  const rect = text.getBoundingClientRect();
+  const windowHeight = window.innerHeight;
 
-  if (delta > 0) {
-    // ✅ 스크롤 내릴 때 (시계 방향)
-    scrollSpeed += 0.002 * delta;
+  // 글자 중심 Y값
+  const textCenter = rect.top + rect.height / 2;
+
+  // 화면 중앙 위치
+  const midScreen = windowHeight / 2;
+
+  if (textCenter >= midScreen) {
+    text.style.opacity = 1; // 중앙 아래에서는 완전 보임
   } else {
-    // ✅ 스크롤 올릴 때 (시계 반대 방향)
-    scrollSpeed += 0.002 * delta; // delta는 음수 → 반대 방향
+    // 중앙보다 위로 올라갈수록 1→0 으로 서서히 줄어듦
+    const distance = midScreen - textCenter;
+    const fadeRange = 150; // 150px 범위 동안 점점 사라짐
+    let opacity = 1 - distance / fadeRange;
+    if (opacity < 0) opacity = 0;
+    text.style.opacity = opacity;
   }
-
-  lastScrollY = currentScroll;
 });
 
-animateEarth();
 
 
 
-// (1) 프로젝트 서클 - 카드, 텍스트 연결
-const container = document.getElementById('circleContainer');
-const cards = container.querySelectorAll('.circleCard');
-const titleEl = document.getElementById('projectTitle');
-const subtitleEl = document.getElementById('projectSubtitle');
-const projectCircle = document.getElementById('projectCircle');
-let activeIndex = 0;
 
-// ✅ 텍스트를 디졸브로 전환하는 함수
-const fadeOutInText = (title, subtitle) => {
-  titleEl.style.opacity = '0';
-  subtitleEl.style.opacity = '0';
 
-  setTimeout(() => {
-    titleEl.textContent = title;
-    subtitleEl.textContent = subtitle;
+(function () {
+  const container = document.getElementById('workPreviewScroll');
+  if (!container) return;
 
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        titleEl.style.opacity = '1';
-        subtitleEl.style.opacity = '1';
-      });
+  /* ---------- 1) 트랙 구성 & 복제 ---------- */
+  const originals = Array.from(container.children);
+  if (!originals.length) return;
+
+  const track = document.createElement('div');
+  track.className = 'scroll-track';
+  const frag1 = document.createDocumentFragment();
+  originals.forEach(n => frag1.appendChild(n));
+  const frag2 = document.createDocumentFragment();
+  originals.forEach(n => frag2.appendChild(n.cloneNode(true)));
+  track.appendChild(frag1);
+  track.appendChild(frag2);
+  container.appendChild(track);
+
+  /* ---------- 2) 비디오 하이드레이션 ---------- */
+  function hydrateVideos(root) {
+    const vids = (root || track).querySelectorAll('video');
+    vids.forEach(v => {
+      const ds = v.getAttribute('data-src') || v.closest('.workThumbnail')?.getAttribute('data-src');
+      if (!v.getAttribute('src') && ds) v.setAttribute('src', ds);
+      v.muted = true; v.setAttribute('muted', '');
+      v.setAttribute('playsinline', '');
+      if (!v.getAttribute('preload')) v.setAttribute('preload', 'metadata');
+      v.play?.().catch(() => {});
     });
-  }, 400); // transition-duration 맞춰서
-};
+  }
+  hydrateVideos(track);
 
-// ✅ 카드 위치 업데이트 함수
-const updatePositions = () => {
-  const total = cards.length;
-  
-  // ✅ 화면 너비 기준으로 radius 결정
-  const radius = window.innerWidth <= 1200 ? 500 : 700;
-
-  const centerAngle = Math.PI / 2; // 12시 방향 기준
-
-  cards.forEach((card, i) => {
-    const angle = centerAngle + (2 * Math.PI * (i - activeIndex)) / total;
-    const x = radius * Math.cos(angle);
-    const y = radius * Math.sin(angle);
-
-    card.style.transform = `translate(calc(-50% + ${x}px), calc(-50% - ${y}px)) scale(${i === activeIndex ? 1.4 : 1})`;
-    card.style.opacity = (Math.abs(i - activeIndex) <= 2 || Math.abs(i - activeIndex) >= total - 2) ? 1 : 0.3;
-    card.style.zIndex = i === activeIndex ? 10 : 5;
-  });
-
-  const activeCard = cards[activeIndex];
-  fadeOutInText(activeCard.dataset.title || '', activeCard.dataset.subtitle || '');
-};
-
-// ✅ 카드 클릭 이벤트 등록
-cards.forEach((card, i) => {
-  card.addEventListener('click', () => {
-    if (i === activeIndex) {
-      // 클릭한 카드가 중앙(12시 방향) 카드면 링크로 이동
+  /* ---------- 3) 캡션 주입 & 내비/터치 ---------- */
+  function hydrateCaptions(root) {
+    (root || track).querySelectorAll('.workThumbnail').forEach(card => {
+      const title = card.dataset.title || '';
+      const sub   = card.dataset.subtitle || '';
+      if (!card.querySelector('.thumb-caption')) {
+        const cap = document.createElement('div');
+        cap.className = 'thumb-caption';
+        cap.innerHTML = `<strong class="thumb-title">${title}</strong><div class="thumb-sub">${sub}</div>`;
+        card.appendChild(cap);
+      }
       const link = card.dataset.link;
       if (link) {
-        window.open(link, '_self'); // 새 창에서 열고 싶으면 '_blank', 같은 창이면 '_self'
+        card.style.cursor = 'pointer';
+        card.setAttribute('role','link');
+        card.setAttribute('tabindex','0');
+        card.addEventListener('click', () => { window.location.href = link; });
+        card.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); window.location.href = link; }
+        });
+        // 터치: 첫 탭은 올림, 두 번째 탭은 이동
+        let touchedOnce = false;
+        card.addEventListener('touchend', (e) => {
+          if (!touchedOnce) { card.classList.add('is-active'); touchedOnce = true; setTimeout(()=>touchedOnce=false,1200); e.preventDefault(); }
+          else { window.location.href = link; }
+        }, { passive:false });
+        card.addEventListener('mouseleave', () => card.classList.remove('is-active'));
       }
-    } else {
-      // 중앙 카드가 아니면 중앙으로 회전만
-      activeIndex = i;
-      updatePositions();
+    });
+  }
+  hydrateCaptions(track);
+
+  /* ---------- 4) 세트 수 보강 & 측정 ---------- */
+  function getGapPx() {
+    const cs = getComputedStyle(track);
+    const g = cs.gap || cs.columnGap || '0px';
+    const n = parseFloat(g);
+    return Number.isFinite(n) ? n : 0;
+  }
+  let oneSetWidth = 0;
+  function measureOneSetWidth() {
+    const gap = getGapPx();
+    const firstRect = track.children[0].getBoundingClientRect();
+    const lastRect  = track.children[originals.length - 1].getBoundingClientRect();
+    const trackRect = track.getBoundingClientRect();
+    const left  = firstRect.left - trackRect.left;
+    const right = lastRect.right - trackRect.left;
+    oneSetWidth = Math.round((right - left) + gap);
+    if (container.scrollLeft === 0 && oneSetWidth > 0) container.scrollLeft = 1;
+  }
+  function appendCloneSet() {
+    const f = document.createDocumentFragment();
+    originals.forEach(n => f.appendChild(n.cloneNode(true)));
+    track.appendChild(f);
+    hydrateVideos(track);
+    hydrateCaptions(track);
+    reserveCaptionSpace(); // 새 캡션 높이 반영
+  }
+  function ensureEnoughSets() {
+    measureOneSetWidth();
+    if (!oneSetWidth) return;
+    while (track.children.length / originals.length < 3) appendCloneSet();
+    while (track.scrollWidth < container.clientWidth * 2 &&
+           track.children.length / originals.length < 10) appendCloneSet();
+  }
+  ensureEnoughSets();
+
+  /* ---------- 5) 자동 스크롤 + 래핑 ---------- */
+  let autoOn = true;
+  let lastT = performance.now();
+  const SPEED = (window.innerWidth <= 767) ? 170 : 240; // px/s
+
+  function wrapSeamless() {
+    const W = oneSetWidth || 1;
+    let r = container.scrollLeft % W;
+    if (r < 0) r += W;
+    const base = Math.floor(container.scrollLeft / W) * W;
+    const target = base + r;
+    if (Math.abs(target - container.scrollLeft) > 0.5) {
+      container.scrollLeft = Math.round(target);
     }
-  });
-});
-
-
-// ✅ 초기 위치 설정
-updatePositions();
-
-// (2) 프로젝트 섹션 배경색 스크롤 트리거
-const bgObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (!entry.isIntersecting && entry.boundingClientRect.top > 0) {
-      projectCircle.classList.remove('bg-active');
-    } else {
-      projectCircle.classList.add('bg-active');
+    if (container.scrollLeft >= W * 2) container.scrollLeft -= W;
+  }
+  function tick(now) {
+    const dt = (now - lastT) / 1500;
+    lastT = now;
+    if (autoOn && oneSetWidth > 0) {
+      container.scrollLeft += SPEED * dt;
+      wrapSeamless();
     }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(t => { lastT = t; tick(t); });
+
+  /* ---------- 6) 입력(휠/드래그) ---------- */
+  let resumeTimer = null;
+  function pauseAuto() {
+    autoOn = false;
+    if (resumeTimer) clearTimeout(resumeTimer);
+    resumeTimer = setTimeout(() => (autoOn = true), 1000);
+  }
+  container.addEventListener('wheel', (e) => {
+    if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+      if (e.cancelable) e.preventDefault();
+      container.scrollLeft += e.deltaX;
+      wrapSeamless();
+      pauseAuto();
+    }
+  }, { passive:false });
+
+  let isDown=false, startX=0, startY=0, startLeft=0, lock=null;
+  container.addEventListener('mousedown', (e) => {
+    isDown = true; lock = null; pauseAuto();
+    startX = e.clientX; startY = e.clientY; startLeft = container.scrollLeft;
+    container.classList.add('is-dragging');
   });
-}, {
-  threshold: 0,
-  rootMargin: '0px'
-});
-
-bgObserver.observe(projectCircle);
-
-
-
-
-
-
-const eyes = document.querySelectorAll('.eye');
-
-document.addEventListener('mousemove', (e) => {
-  eyes.forEach(eye => {
-    const pupil = eye.querySelector('.pupil');
-    const rect = eye.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-
-    const dx = e.clientX - centerX;
-    const dy = e.clientY - centerY;
-    const angle = Math.atan2(dy, dx);
-
-    const maxDistance = 15; // 눈동자가 움직일 최대 거리
-    const x = Math.cos(angle) * maxDistance;
-    const y = Math.sin(angle) * maxDistance;
-
-    pupil.style.transform = `translate(${x}px, ${y}px)`;
+  window.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    const dx = e.clientX - startX;
+    const dy = e.clientY - startY;
+    if (!lock) {
+      if (Math.abs(dx) > 6 && Math.abs(dx) > Math.abs(dy)) lock = 'x';
+      else if (Math.abs(dy) > 6 && Math.abs(dy) > Math.abs(dx)) lock = 'y';
+    }
+    if (lock === 'x') { e.preventDefault(); container.scrollLeft = startLeft - dx; wrapSeamless(); }
+    else if (lock === 'y') { isDown = false; container.classList.remove('is-dragging'); }
   });
-});
+  window.addEventListener('mouseup', () => {
+    if (!isDown) return;
+    isDown = false; lock = null;
+    container.classList.remove('is-dragging');
+    pauseAuto();
+  });
+
+  /* ---------- 7) 캡션 높이만큼 바닥 여유 동적 확보 ---------- */
+  function reserveCaptionSpace() {
+    const travel = 16, spare = 16;
+    let maxH = 0;
+    container.querySelectorAll('.thumb-caption').forEach(el => {
+      const h = Math.max(el.offsetHeight || 0, el.scrollHeight || 0);
+      if (h > maxH) maxH = h;
+    });
+    if (maxH < 24) maxH = 24;
+    const need = Math.round(maxH + travel + spare);
+    container.style.setProperty('--caption-reserve', need + 'px');
+  }
+  reserveCaptionSpace();
+  window.addEventListener('resize', () => setTimeout(reserveCaptionSpace, 60), { passive:true });
+  if (document.fonts && document.fonts.ready) { document.fonts.ready.then(reserveCaptionSpace).catch(()=>{}); }
+
+  /* ---------- 8) 가시 카드만 play/pause ---------- */
+  const ioPlay = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      const v = e.target.querySelector('video'); if (!v) return;
+      if (e.isIntersecting) v.play?.().catch(()=>{});
+      else v.pause?.();
+    });
+  }, { root: container, threshold: 0.2 });
+  track.querySelectorAll('.workThumbnail').forEach(el => ioPlay.observe(el));
+
+  
+  /* ---------- 9) 경계 깜빡임 방지: '가장 가까운 카드'만 활성 ---------- */
+  (function activateNearestCardOnHover() {
+    let raf = null;
+    let current = null;
+    let lastX = 0;
+
+    function pick(clientX) {
+      const cards = track.querySelectorAll('.workThumbnail');
+      if (!cards.length) return;
+
+      let best = null, bestDist = Infinity;
+      cards.forEach(card => {
+        const r = card.getBoundingClientRect();
+        const cx = r.left + r.width / 2;          // 카드 중심 X
+        const d  = Math.abs(cx - clientX);
+        if (d < bestDist) { best = card; bestDist = d; }
+      });
+
+      if (best && best !== current) {
+        current?.classList.remove('is-active');
+        current = best;
+        current.classList.add('is-active');
+      }
+    }
+
+    container.addEventListener('mousemove', (e) => {
+      lastX = e.clientX;
+      if (raf) return;
+      raf = requestAnimationFrame(() => { pick(lastX); raf = null; });
+    }, { passive: true });
+
+    container.addEventListener('mouseenter', (e) => { pick(e.clientX); }, { passive: true });
+    container.addEventListener('mouseleave', () => {
+      current?.classList.remove('is-active');
+      current = null;
+    }, { passive: true });
+  })();
+})();
 
 
-window.addEventListener('beforeunload', () => {
-  window.scrollTo(0, 0);
-});
-window.addEventListener('DOMContentLoaded', () => {
-  window.scrollTo(0, 0);
-  window.history.scrollRestoration = 'manual';
-});
+
+
+
+
+
+
+
+
+(() => {
+  const svg = document.getElementById('circleForS3');
+  if (!svg) return;
+  const disk = svg.querySelector('circle');
+  if (!disk) return;
+
+  // 파(블루) → 빨(레드) → 노(옐로) 순환
+  const ORDER = ['#75BDFF', '#FF5721', '#FFD600'];
+
+  // 현재 색 기준 다음 색 반환(목록에 없으면 파란색부터 시작)
+  const nextInOrder = (cur) => {
+    const i = ORDER.findIndex(c => c.toLowerCase() === (cur || '').toLowerCase());
+    return ORDER[(i >= 0 ? i + 1 : 0) % ORDER.length];
+  };
+
+  // SVG에서도 매 클릭마다 확실히 재생되는 '들썩' 애니메이션
+  const bump = () => {
+    disk.style.animation = 'none';                 // 리셋
+    void disk.getBoundingClientRect().width;       // reflow (SVG-safe)
+    requestAnimationFrame(() => {
+      disk.style.animation = 'circle-bump 280ms cubic-bezier(.16,1,.3,1)';
+    });
+  };
+  disk.addEventListener('animationend', () => { disk.style.animation = ''; });
+
+  // 초기 fill이 없으면 파란색으로 세팅(순서 시작점 고정)
+  if (!disk.getAttribute('fill')) disk.setAttribute('fill', ORDER[0]);
+
+  svg.addEventListener('click', () => {
+    const current = disk.getAttribute('fill');
+    disk.setAttribute('fill', nextInOrder(current));  // 파→빨→노→파...
+    bump();                                           // 클릭마다 들썩!
+  });
+})();
+
+
+
+
+
+
+
+

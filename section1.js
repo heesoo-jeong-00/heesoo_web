@@ -1,5 +1,5 @@
 let fullText = `Hi :) I'm Heesoo,
-a product designer based in NYC.
+a product designer based in Bay Area.
     
 I'm passionate about connecting
 with diverse users through equitable design.`;

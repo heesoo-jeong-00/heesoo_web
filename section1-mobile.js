@@ -1,5 +1,5 @@
 let fullText = `Hi :) I'm Heesoo,
-a product designer based in NYC.
+a product designer based in Bay Area.
     
 I'm passionate about
 connecting with diverse users
@@ -23,7 +23,7 @@ function resetSketch() {
   if (windowWidth <= 370) {
     fullText = `Hi :) I'm Heesoo,
 a product designer
-based in NYC.
+based in Bay Area.
 
 I'm passionate about
 connecting with
@@ -31,7 +31,7 @@ diverse users through
 equitable design.`;
   } else {
     fullText = `Hi :) I'm Heesoo, a product
-designer based in NYC.
+designer based in Bay Area.
     
 I'm passionate about
 connecting with diverse users

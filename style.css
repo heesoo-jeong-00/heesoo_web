@@ -1,3 +1,10 @@
+/* 데스크톱/모바일 공통으로 헤더 높이만큼 빼서 1스크린 예약 */
+#section1 {
+  /* min-height: calc(100vh - var(--header-h, 96px)); */
+  height: 78vh;
+  /* border: 1px solid rgb(0, 204, 255); */
+}
+
 @font-face {
   font-family: 'Lineal';
   src: url('../files/fonts/LinealVF.woff2') format('woff2');
@@ -182,107 +189,7 @@ main {
   position: relative;
 }
 
-/* 
-
-#earth {
-  position: absolute;
-  top: 65vh;
-  left: 50%;
-  transform: translateX(-50%) rotate(0deg);
-  width: 20vw;
-
-  height: auto;
-  pointer-events: none;
-  z-index: 1;
-
-}
-
-#circleHeading {
-  font-family: "Nunito", sans-serif;
-  font-weight: 350;
-  font-size: 32px;
-  margin-top: 0vh;
-  margin-bottom: 2vh;
-  color: #000000;
-  text-align: center;
-
-  position: relative;
-  padding-top: 2vh;
-}
-
-
-
-#projectCircle {
-  position: relative; 
-  overflow: hidden;
-  width: 100vw;
-  height: 80vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  margin-top: 30vh;
-}
-
-
-
-#projectCircle.bg-active {
-  background-color: #ffffff; 
-  transition: background-color 1.2s ease;
-}
-
-
-#circleWrapper {
-  position: relative;
-  top: 0px;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding-top: 100vh; 
-  box-sizing: border-box;
-}
-
-
-#circleContainer {
-  position: relative;
-  width: 100vw;
-  height: 100vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: visible;
-    z-index: 0;
-}
-
-
-
-
-
-
-
-
-.circleCard img, .circleCard video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-#projectInfo {
-  position: absolute;
-  top: 60%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  z-index: 0;
-  pointer-events: none;
-}
-
-
-
-#projectTitle {
+/*#projectTitle {
   font-family: "Nunito", sans-serif;
   font-weight: 450;
   font-size: 32px;
@@ -307,7 +214,7 @@ main {
 
 #section2 {
   width: 100%;
-  height: 66vh;
+  height: 50vh;
   position: relative;
   overflow: hidden;
   padding-top: 10vh;
@@ -320,17 +227,18 @@ main {
 
 #s2.s2c4 {
   position: relative;
-  height: 100vh;
+  height: 80vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  /* border: rgb(0, 255, 128) solid 1px; */
 }
 
 
 #circleForS3 {
   position: absolute;
-  top: 20%;
+  top: 30%;
   left: 50%;
   transform: translateX(-50%);
   opacity: 0;
@@ -344,6 +252,27 @@ main {
   transition: opacity 1.5s ease;
   transition: transform 1.5s ease;
 }
+
+/* circleForS3: 위치만 애니메이션 (페이드 X) */
+#circleForS3 {
+  opacity: 1 !important;
+  /* 기존 opacity 0 규칙 무력화 */
+  transition: transform 600ms cubic-bezier(.16, 1, .3, 1) !important;
+  will-change: transform;
+  transform: translateX(-50%) translateY(0);
+  /* 기본 위치 */
+}
+
+/* 화면 아래에서 대기(초기/숨김) */
+#circleForS3.circle-out-down {
+  transform: translateX(-50%) translateY(500px) !important;
+}
+
+/* 화면 안(보이는 상태) */
+#circleForS3.circle-in {
+  transform: translateX(-50%) translateY(0) !important;
+}
+
 
 /* 
 .eye {
@@ -386,6 +315,45 @@ main {
 
 
 
+/* circleForS3: 클릭 '톡' 애니메이션 + 색 전환 (교체용) */
+#circleForS3 {
+  pointer-events: auto;
+  /* 클릭 가능 */
+  overflow: visible;
+  /* 들썩일 때 잘리지 않게 */
+}
+
+#circleForS3 circle {
+  transform-origin: 50% 50%;
+  transition: fill 160ms ease;
+  will-change: transform, fill;
+}
+
+#circleForS3 circle.bump {
+  animation: circle-bump 280ms cubic-bezier(.16, 1, .3, 1);
+}
+
+@keyframes circle-bump {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+
+  /* 들썩 */
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* (모바일에서도 혹시 pointer-events가 막혀있다면 강제 해제) */
+@media (max-width: 767px) {
+  #circleForS3 {
+    pointer-events: auto !important;
+  }
+}
 
 
 
@@ -396,13 +364,13 @@ main {
   transform: translateX(-50%) translateY(0px);
   /* ✅ 기본 살짝 아래 */
   opacity: 0;
-  transition: opacity 1.2s ease, transform 0.8s ease;
+  transition: opacity 900ms ease, transform 700ms ease;
   z-index: 10;
   /* ✅ svg보다 위로 */
 }
 
 #s3text {
-  top: 10%;
+  top: 0%;
   /* ✅ 25% 지점에 배치 */
   font-size: 32px;
   font-family: "Prompt", sans-serif;
@@ -411,7 +379,7 @@ main {
 }
 
 #viewAllProjects {
-  top: 18%;
+  top: 10%;
   /* ✅ 버튼은 더 아래 */
   background-color: white;
   color: black;
@@ -605,160 +573,6 @@ footer {
 }
 
 
-/* 애니메이션 추가 */
-
-
-
-
-/* 
-
-#earthContainer {
-  position: absolute;
-  top: 550px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 450px; 
-  height: 450px;
-  pointer-events: none;
-  z-index: 1;
-} */
-
-/* #earth {
-  width: 100%;
-  height: 100%;
-  transform-origin: center center;
-
-} */
-
-
-
-#earth {
-  position: absolute;
-  top: 70vh;
-  left: 50%;
-  transform: translateX(-50%) rotate(0deg);
-  width: 25vw;
-  /* 크기 조절하고 싶으면 여기 수정 */
-  height: auto;
-  pointer-events: none;
-  z-index: 1;
-  /* 필요시 조정 */
-}
-
-#circleHeading {
-  font-family: "Nunito", sans-serif;
-  font-weight: 350;
-  font-size: 32px;
-  margin-top: 0vh;
-  /* ✅ 화면 위쪽에서 여유 있게 */
-  margin-bottom: 2vh;
-  color: #000000;
-  text-align: center;
-  /* z-index: -1; */
-  position: relative;
-  padding-top: 2vh;
-}
-
-#projectCircle {
-  position: relative;
-  /* ✅ 반드시 있어야 .gradient-mask 가 bottom 0에 붙음 */
-  overflow: hidden;
-  width: 100vw;
-  height: 80vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  margin-top: 45vh;
-  /* padding-top: 5vh; */
-}
-
-.gradient-mask {
-  position: absolute;
-  top: 85%;
-  /* 화면 전체의 하단 10% 지점 */
-  left: 0;
-  width: 100%;
-  height: 15%;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #ffffff);
-  pointer-events: none;
-  z-index: 20;
-}
-
-
-
-#projectCircle.bg-active {
-  background-color: #ffffff;
-  /* ✅ 원하는 배경색 */
-  transition: background-color 1.2s ease;
-}
-
-
-#circleWrapper {
-  position: relative;
-  top: 15%;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding-top: 100vh;
-  /* ✅ circleContainer는 아래로 내려오게 */
-  box-sizing: border-box;
-}
-
-
-#circleContainer {
-  position: relative;
-  width: 100vw;
-  height: 100vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: visible;
-  z-index: 0;
-}
-
-
-.circleCard {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 20vw;
-  height: 20vw;
-  transform: translate(-50%, -50%);
-  transition: all 0.6s ease, opacity 0.8s ease;
-  /* ✅ opacity도 부드럽게 */
-
-  border-radius: 1.4vw;
-  overflow: hidden;
-  box-shadow: 0vw 0.5vw 0.8vw -0.05vw rgba(15, 147, 255, 0.25);
-  cursor: pointer;
-
-}
-
-
-
-
-
-.circleCard img,
-.circleCard video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-#projectInfo {
-  position: absolute;
-  top: 55%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  z-index: 0;
-  pointer-events: none;
-}
-
 
 
 #projectTitle {
@@ -780,7 +594,6 @@ footer {
 #projectSubtitle {
   opacity: 1;
   transition: opacity 0.4s ease-in-out;
-  /* ✅ 시간 늘려줘야해 */
   will-change: opacity;
 }
 
@@ -834,6 +647,332 @@ footer {
     height: 35vh;
   }
 
-  #viewAllProjects {margin-top:2.5vh;}
+  #viewAllProjects {
+    margin-top: 2.5vh;
+  }
 
+
+}
+
+
+
+
+#section12 {
+  display: flex;
+  justify-content: center;
+  /* 가로 중앙 정렬 */
+  align-items: center;
+  /* 세로 중앙 정렬 */
+  height: 10vh;
+  /* 화면 전체 높이 */
+  text-align: center;
+}
+
+.floating-text {
+  /* font-family: "Nunito", serif; */
+  font-family: "Jura", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 800;
+  font-style: normal;
+  color: #8a8a8a;
+  font-size: 1rem;
+
+  /* 원하는 색으로 변경 */
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.floating-text.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.workThumbnail {
+  margin: 0 !important;
+}
+
+/* ========== 카드 세트: 스크롤 진입 페이드/리프트 ========== */
+#workPreviewScroll {
+  will-change: transform, opacity;
+  transition: transform 420ms ease, opacity 420ms ease;
+}
+
+/* 기본: 숨김(아래로 살짝) */
+#workPreviewScroll.reveal-hidden {
+  opacity: 0;
+  transform: translateY(30px);
+  pointer-events: none;
+  /* 숨김 중엔 인터랙션 막기(원하면 제거 가능) */
+}
+
+/* 노출: 보임(원위치) */
+#workPreviewScroll.reveal-in {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* 모션 최소화 환경 배려 */
+@media (prefers-reduced-motion: reduce) {
+  #workPreviewScroll {
+    transition: none;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+/* 트랙 (두 세트를 이어붙여서 -50%만큼 이동) */
+
+
+/* 개별 썸네일이 한 줄 고정으로 흘러가도록 */
+#workPreviewScroll .workThumbnail {
+  flex: 0 0 auto;
+}
+
+/* 2배 콘텐츠를 -50%만큼 이동하면 완전 무한 루프 */
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* 접근성: 모션 줄이기 */
+@media (prefers-reduced-motion: reduce) {
+  #workPreviewScroll .scroll-track {
+    animation: none;
+  }
+}
+
+
+
+/* ================================
+   하단 썸네일: 무한 스크롤 + 수동 스크롤
+   - JS가 scrollLeft로 자동 이동
+   - 사용자는 휠/드래그로 좌우 스크롤 가능
+   - 스크롤바는 감춤
+   ================================= */
+
+/* 컨테이너 */
+#workPreviewScroll {
+  left: 0;
+  position: relative;
+  width: 100vw;
+  overflow-x: auto;
+  overflow-y: visible !important;
+  /* ← 핵심: 캡션이 카드 아래로 나올 수 있게 */
+  padding: 8vh 0 0 0;
+  margin: 0;
+  -webkit-overflow-scrolling: touch;
+  cursor: grab;
+
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  /* 컨테이너 자체의 세로 스크롤은 막음 */
+  touch-action: auto;
+  /* ← pan-x 제거: 수직 제스처는 페이지가 처리 */
+  overscroll-behavior-y: auto;
+  /* ← contain 제거: 페이지로 체인 허용 */
+  /* 캡션 공간 (필요시 조정) */
+
+}
+
+
+/* 스크롤바 감추기 */
+#workPreviewScroll::-webkit-scrollbar {
+  display: none;
+}
+
+#workPreviewScroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+/* 트랙 (아이템 2세트를 JS로 붙임) */
+#workPreviewScroll .scroll-track {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  gap: 24px;
+  /* ★ JS의 GAP(24)과 동일 유지 */
+  will-change: transform;
+  /* 성능 힌트 */
+}
+
+/* 드래그 중 커서 */
+#workPreviewScroll.is-dragging {
+  cursor: grabbing;
+}
+
+/* 개별 썸네일 카드 */
+.workThumbnail {
+  flex: 0 0 auto;
+  width: 30vw;
+  height: 55vh;
+  margin: 0;
+  border-radius: 0.8vw;
+  overflow: hidden;
+  cursor: pointer;
+
+}
+
+/* 미디어 채우기 */
+.workThumbnail img,
+.workThumbnail video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.workThumbnail video {
+  display: block;
+  margin: auto;
+}
+
+/* 기존에 있던 overflow: hidden 제거/덮어쓰기 */
+.workThumbnail {
+  position: relative;
+  overflow: visible;
+  /* ← 핵심 */
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.workThumbnail:hover {
+  transform: translateY(-50px);
+  box-shadow: 0vw 0.2vw 0.5vw -0.05vw rgba(15, 147, 255, 0.25);
+  z-index: 2;
+  /* 다른 카드 위로 */
+}
+
+/* 캡션이 카드 바로 아래에 나타나도록 */
+.workThumbnail .thumb-caption {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  padding: 8px 2px;
+  opacity: 0;
+  transform: translateY(1px);
+  transition: opacity 180ms ease, transform 180ms ease;
+  pointer-events: none;
+}
+
+.workThumbnail:hover .thumb-caption {
+  opacity: 1;
+  transform: translateY(-8px);
+  /* 살짝 위로 끌어올림 */
+}
+
+
+/* 접근성: 모션 최소화일 때 자동 스크롤을 JS에서만 제어(여기선 별도 애니메이션 없음) */
+@media (prefers-reduced-motion: reduce) {
+  /* 필요 시 추가 */
+}
+
+
+/* 카드: 캡션이 박스 밖으로 나올 수 있게 */
+#workPreviewScroll .workThumbnail {
+  position: relative;
+  overflow: visible !important;
+  /* ← 꼭 보장 */
+  transition: transform 220ms ease, box-shadow 220ms ease;
+  z-index: 0;
+}
+
+#workPreviewScroll .workThumbnail:hover,
+#workPreviewScroll .workThumbnail.is-active {
+  transform: translateY(-60px);
+  /* -50px은 너무 큼 → -12~-16px 권장 */
+  /* box-shadow: 0 14px 32px rgba(247, 239, 0, 0.18); */
+  z-index: 3;
+  /* 인접 카드 위로 */
+}
+
+/* 기본: 살짝 아래(16px) + 투명 */
+#workPreviewScroll .workThumbnail .thumb-caption {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  padding: 24px 2px 0 2px;
+  opacity: 0;
+  transform: translateY(8px);
+  /* ↓ 내려가며 숨김 (길게) */
+  transition:
+    opacity 220ms ease-in,
+    transform 260ms ease-in 40ms;
+  /* 아웃은 살짝 지연 */
+  pointer-events: none;
+  color: #0c0c0c;
+  line-height: 1.25;
+  z-index: 4;
+  will-change: opacity, transform;
+}
+
+/* 호버/활성: 위로 올라오며 인 */
+#workPreviewScroll .workThumbnail:hover .thumb-caption,
+#workPreviewScroll .workThumbnail.cap-hover .thumb-caption,
+/* ← 터치용 클래스도 허용 */
+#workPreviewScroll .workThumbnail.is-active .thumb-caption {
+  opacity: 1;
+  transform: translateY(0);
+  /* ↑ 올라오며 인 */
+  transition:
+    opacity 220ms ease-out,
+    transform 280ms cubic-bezier(.16, 1, .3, 1);
+}
+
+/* 캡션 이동 중 잘리지 않도록 바닥 여유 공간 확보 */
+#workPreviewScroll {
+  /* 기본 여유값(폴백): 필요시 80~140px 사이로 취향 조절 */
+  --caption-reserve: 96px;
+  padding-bottom: var(--caption-reserve) !important;
+}
+
+
+
+
+/* 살짝 키운 캡션 타이포 */
+#workPreviewScroll .thumb-title {
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
+  font-size: clamp(15px, 1.25vw, 20px);
+  /* ⬆︎ min +1px, vw/ max 소폭 증가 */
+  display: block;
+
+}
+
+#workPreviewScroll .thumb-sub {
+  font-family: "Nunito", sans-serif;
+  font-weight: 400;
+  opacity: .85;
+  /* 가독성 살짝 업 */
+  margin-top: 2px;
+  font-size: clamp(13px, 1.1vw, 17px);
+  /* ⬆︎ min +1px, vw/ max 소폭 증가 */
+  color: rgb(63, 63, 63);
 }
