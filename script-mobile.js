@@ -244,14 +244,14 @@ window.addEventListener('resize', removeBrOnMobile);
       : 'translateX(-50%) translateY(30px)';
   }, {
     root: null,
-    rootMargin: '0px 0px -70% 0px', // 더 일찍 뜨게. (느리면 -60%~-50%로, 너무 이르면 -80%로)
+    rootMargin: '0px 0px -90% 0px', // 더 일찍 뜨게. (느리면 -60%~-50%로, 너무 이르면 -80%로)
     threshold: 0
   });
   ioCircle.observe(section);
 
   // 2) 텍스트: 가시율 히스테리시스 (올라오면 인, 내려가면 아웃)
-  const SHOW_AT = 0.03; // 2% 이상 보이면 인
-  const HIDE_AT = 0.03; // 1% 이하로 줄면 아웃
+  const SHOW_AT = 0.2; // 2% 이상 보이면 인
+  const HIDE_AT = 0.2; // 1% 이하로 줄면 아웃
   let shown = false;
 
   const ioText = new IntersectionObserver(([entry]) => {
@@ -260,7 +260,7 @@ window.addEventListener('resize', removeBrOnMobile);
     else if (shown && r <= HIDE_AT) { shown = false; showTexts(false); }
   }, {
     root: null,
-    threshold: [0, 0.01, 0.02, 1]
+    threshold: [0, 0.2, 0.2, 1]
   });
   ioText.observe(section);
 

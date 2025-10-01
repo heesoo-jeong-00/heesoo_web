@@ -231,25 +231,32 @@
   </div>
 
   <script>
-    // 화면 너비를 기준으로 조건부로 스크립트 로드
-    function loadScript(scriptPath) {
-      const script = document.createElement('script');
-      script.src = scriptPath;
-      document.body.appendChild(script);
+    // 약속(Promise) 기반 스크립트 로더
+    function loadScript(src) {
+      return new Promise((resolve, reject) => {
+        const s = document.createElement('script');
+        s.src = src;
+        s.onload = resolve;
+        s.onerror = reject;
+        document.body.appendChild(s);
+      });
     }
-
+  
     if (window.innerWidth <= 767) {
-      // 모바일 버전 스크립트 로드
-      loadScript('script-mobile.js');
-      loadScript('section1-mobile.js');
+      // ✅ 1) section1(가벼움) 먼저 로드 → 화면에 즉시 노출
+      loadScript('section1-mobile.js').then(() => {
+        // ✅ 2) 나머지 무거운 초기화(script-mobile.js)는 페인트 이후로 미룸
+        const defer = window.requestIdleCallback
+          ? (fn) => requestIdleCallback(fn, { timeout: 1200 })
+          : (fn) => setTimeout(fn, 200);
+        defer(() => loadScript('script-mobile.js'));
+      });
     } else {
-      // 기본 웹 버전 스크립트 로드
-      loadScript('script.js');
-      loadScript('section1.js');
-
-      // 다른 필요한 스크립트가 있다면 여기에 추가
+      // 데스크톱은 기존 순서 유지(필요시 동일 전략 적용 가능)
+      loadScript('section1.js').then(() => loadScript('script.js'));
     }
   </script>
+  
   <!-- <script src="sketch.js"></script> -->
 
 
