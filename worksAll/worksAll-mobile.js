@@ -662,33 +662,69 @@ document.addEventListener('DOMContentLoaded', () => {
 
   setupThumbnailClicks();
 
-  // ✅ 무한 스크롤을 더 자연스럽게
-  const scrollSpeed = 0.25;
+// === 무한 스크롤/속도 제어 (교체 영역 시작) ===
 
-  // 스크롤 복제 여러번
-  const cloneCount = 5; // ★★★ 필요하면 더 늘릴 수도 있어
-  const originalContent = scrollContainer.innerHTML;
+// 콘텐츠 복제: 중복 실행 방지
+if (!scrollContainer.dataset.cloned) {
+  const cloneCount = 5; // 필요시 조절
+  const original = scrollContainer.innerHTML;
   for (let i = 0; i < cloneCount; i++) {
-    scrollContainer.innerHTML += originalContent;
+    scrollContainer.insertAdjacentHTML('beforeend', original);
+  }
+  scrollContainer.dataset.cloned = '1';
+
+  // 복제된 썸네일에도 클릭 이벤트 다시 바인딩 (지연 없이 즉시)
+  setupThumbnailClicks();
+}
+
+// 초당 픽셀 단위로 속도 제어 (값 크게 = 더 빠름)
+let SCROLL_PX_PER_SEC = 80; // ★ 여기 숫자로 속도 조절
+
+// 런타임에서 콘솔로 즉시 변경 가능: setPreviewScrollSpeed(숫자)
+window.setPreviewScrollSpeed = (pxPerSec) => {
+  SCROLL_PX_PER_SEC = +pxPerSec || 0;
+};
+
+// 단일 rAF 루프 보장
+if (scrollContainer.__rafId) cancelAnimationFrame(scrollContainer.__rafId);
+
+let lastTs = performance.now();
+function autoScroll(ts = performance.now()) {
+  const dt = (ts - lastTs) / 1000; // 지난 시간(초)
+  lastTs = ts;
+
+  // 사용자가 최근에 스크롤하면 잠깐 쉬어주기 (선택)
+  if (performance.now() < (scrollContainer.__pauseUntil || 0)) {
+    scrollContainer.__rafId = requestAnimationFrame(autoScroll);
+    return;
   }
 
-  function autoScroll() {
-    scrollContainer.scrollLeft += scrollSpeed;
+  scrollContainer.scrollLeft += SCROLL_PX_PER_SEC * dt;
 
-    // ★★★ 자연스러운 무한스크롤
-    if (scrollContainer.scrollLeft >= scrollContainer.scrollWidth / 2) {
-      scrollContainer.scrollLeft = 0;
-    }
-
-    requestAnimationFrame(autoScroll);
+  // 자연스러운 무한 루프: 절반 지점에서 리셋
+  const resetAt = scrollContainer.scrollWidth / 2;
+  if (scrollContainer.scrollLeft >= resetAt) {
+    scrollContainer.scrollLeft = 0;
   }
 
-  autoScroll();
+  scrollContainer.__rafId = requestAnimationFrame(autoScroll);
+}
+autoScroll();
 
-  // 복제한 썸네일까지 클릭이벤트 다시 걸어주기
-  setTimeout(() => {
-    setupThumbnailClicks();
-  }, 500);
+// 사용자가 스크롤/터치하면 0.8초 일시정지 (선택)
+['wheel', 'touchstart', 'mousedown', 'touchmove'].forEach(ev => {
+  scrollContainer.addEventListener(ev, () => {
+    scrollContainer.__pauseUntil = performance.now() + 800;
+  }, { passive: true });
+});
+
+// OS ‘감속 모션’ 설정 존중 (선택)
+if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  window.setPreviewScrollSpeed(0);
+}
+
+// === 무한 스크롤/속도 제어 (교체 영역 끝) ===
+
 });
 
 

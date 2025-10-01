@@ -1,57 +1,50 @@
-// (1) 커서 관련
-const cursorParent = document.getElementById('mouse-cursor');
-const cursorChild = cursorParent.children[0];
-window.addEventListener('mousemove', mousemove);
-window.addEventListener('mousedown', mousedown);
-window.addEventListener('mouseup', mouseup);
+// ------- 기존 유지: 커서 관련 --------
+const cursorParent = document.getElementById('mouse-cursor')
+const cursorChild = cursorParent.children[0]
+window.addEventListener('mousemove', mousemove)
+window.addEventListener('mousedown', mousedown)
+window.addEventListener('mouseup', mouseup)
 
 let scale = 1;
 let cursorX = 0, cursorY = 0;
 let stage = '';
 
 function mousemove(e) {
-  cursorX = e.pageX - cursorParent.offsetWidth / 2;
-  cursorY = e.pageY - cursorParent.offsetHeight / 2;
-  cursorParent.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0)`;
+  cursorX = e.pageX - cursorParent.offsetWidth / 2
+  cursorY = e.pageY - cursorParent.offsetHeight / 2
+  cursorParent.style.transform =
+    `translate3d(${cursorX}px, ${cursorY}px, 0)`
 
   switch (e.target.getAttribute('data-cursor')) {
-    case 'topcontainer': if (stage !== 'topcontainer') { scale = 1; stage = 'topcontainer'; } break;
-    case 'top1': case 'top2': case 'top3':
-    case 'pro1': case 'pro2': case 'pro3': case 'pro4':
-    case 'bottomItem1': case 'bottomItem2': case 'bottomItem3':
-      if (stage !== e.target.getAttribute('data-cursor')) { scale = 2; stage = e.target.getAttribute('data-cursor'); }
-      break;
-    case 'main1': case 'main2': case 'detail':
-      if (stage !== e.target.getAttribute('data-cursor')) { scale = 1; stage = e.target.getAttribute('data-cursor'); }
+    case 'topcontainer':
+    case 'top1':
+    case 'top2':
+    case 'top3':
+    case 'main1':
+    case 'main2':
+    case 'main3':
+    case 'main4':
+    case 'bottomItem1':
+    case 'bottomItem2':
+    case 'bottomItem3':
+      if (stage === e.target.getAttribute('data-cursor')) return;
+      stage = e.target.getAttribute('data-cursor');
+      scale = (['top1', 'top2', 'top3', 'main4', 'bottomItem1', 'bottomItem2', 'bottomItem3'].includes(stage)) ? 2 : 1;
       break;
   }
-
   cursorChild.style.setProperty('--cursor-scale', scale);
 }
 
-function mousedown() {
+function mousedown(e) {
   scale *= 0.75;
   cursorChild.style.setProperty('--cursor-scale', scale);
 }
-
-function mouseup() {
+function mouseup(e) {
   scale *= 1.25;
   cursorChild.style.setProperty('--cursor-scale', scale);
 }
 
-
-
-
-// (2) 서클 관련 scale 조정
-document.getElementById('circleForS3').addEventListener('mouseover', () => {
-  scale = 1;
-});
-document.getElementById('viewAllProjects').addEventListener('mouseover', (event) => {
-  scale = 2;
-  event.stopPropagation();
-});
-
-// (3) 헤더 축소/확대
+// ------- 기존 유지: 스크롤 시 headerBox 축소 --------
 const headerBox = document.getElementById('headerBox');
 const topBoxes = document.getElementById('topBoxes');
 const topBox = document.querySelectorAll('.topBox');
@@ -84,6 +77,15 @@ headerBox.addEventListener('click', function () {
   }
 });
 
+window.addEventListener('scroll', function () {
+  if (window.scrollY > 50 && headerBox.dataset.isExpanded === 'true') {
+    headerBox.classList.add('scrolled');
+    topBoxes.classList.add('scrolled');
+    topBox.forEach(box => box.classList.add('scrolled'));
+    logo.style.pointerEvents = 'none';
+    headerBox.dataset.isExpanded = 'false';
+  }
+});
 
 
 
@@ -131,7 +133,7 @@ headerBox.addEventListener('click', function () {
 // 2) 텍스트: #section2가 아주 살짝만 보여도(≈2%) 등장, 1% 이하로 떨어지면 숨김
 (() => {
   const SHOW_AT = 0.02; // 2%
-  const HIDE_AT = 0.02; // 1% (히스테리시스)
+  const HIDE_AT = 0.01; // 1% (히스테리시스)
   let shown = false;
 
   new IntersectionObserver(([entry]) => {
@@ -466,4 +468,44 @@ window.addEventListener('scroll', () => {
 
 
 
+
+
+
+
+
+
+
+(() => {
+  const container = document.getElementById('workPreviewScroll');
+  if (!container) return;
+
+  // 데스크톱(웹)에서만 동작
+  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
+  // 세트 타겟: 트랙이 있으면 트랙, 없으면 컨테이너 자체
+  const target = container.querySelector('.scroll-track') || container;
+
+  // 초기 상태: 아래 대기(불투명 0)
+  target.classList.add('set-reveal');
+
+  // 컨테이너가 화면에 10% 이상 보이면 ↑페이드인, 미만이면 ↓페이드아웃
+  const io = new IntersectionObserver(([entry]) => {
+    const show = entry.isIntersecting && entry.intersectionRatio >= 0.40;
+    target.classList.toggle('is-in', show);
+  }, {
+    root: null,
+    threshold: [0, 0.40, 0.41, 1] // 10% 경계에서 토글
+  });
+
+  io.observe(container);
+
+  // 첫 로드 시 강제 1회 체크(브라우저 IO 타이밍 편차 대비)
+  requestAnimationFrame(() => {
+    const r  = container.getBoundingClientRect();
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+    const visible = Math.max(0, Math.min(r.bottom, vh) - Math.max(r.top, 0));
+    const ratio   = visible / Math.min(vh, Math.max(1, r.height));
+    target.classList.toggle('is-in', ratio >= 0.10);
+  });
+})();
 

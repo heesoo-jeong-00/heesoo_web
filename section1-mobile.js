@@ -49,7 +49,13 @@ through equitable design.`;
   canvas.parent('section1');
 
   textFont('Jura');
-  textSize(23.5);
+
+  // ✅ 변경: 반응형 폰트 크기 (767 이상에서 크게)
+  //  - <=767px: 23.5 (원래값)
+  //  - 768~1023px: 28
+  //  - >=1024px: 32
+  textSize(windowWidth >= 1024 ? 32 : (windowWidth >= 768 ? 28 : 23.5));
+
   textAlign(CENTER, CENTER);
   lines = fullText.split('\n');
   index = 0; // 인덱스를 다시 0으로 초기화
@@ -132,4 +138,3 @@ window.addEventListener('DOMContentLoaded', removeBrOnMobile);
 
 // ✅ 화면 크기 변경될 때 다시 확인 (예: 창 크기 조정)
 window.addEventListener('resize', removeBrOnMobile);
-

@@ -361,10 +361,10 @@ main {
 #viewAllProjects {
   position: absolute;
   left: 50%;
-  transform: translateX(-50%) translateY(0px);
+  transform: translateX(-50%) translateY(100px);
   /* ✅ 기본 살짝 아래 */
   opacity: 0;
-  transition: opacity 900ms ease, transform 700ms ease;
+  transition: opacity 900ms ease, transform 900ms ease;
   z-index: 10;
   /* ✅ svg보다 위로 */
 }
@@ -675,7 +675,7 @@ footer {
   font-style: normal;
   font-weight: 800;
   font-style: normal;
-  color: #8a8a8a;
+  color: #68acec;
   font-size: 1rem;
 
   /* 원하는 색으로 변경 */
@@ -976,3 +976,35 @@ footer {
   /* ⬆︎ min +1px, vw/ max 소폭 증가 */
   color: rgb(63, 63, 63);
 }
+
+
+
+
+
+
+
+
+
+
+
+/* =========================
+   Desktop only (hover: hover & pointer: fine)
+   카드세트 전체 리빌 (세트 단위로 위/아래 + 페이드)
+   ========================= */
+   @media (hover: hover) and (pointer: fine) {
+
+    /* 세트(컨테이너 or 트랙)에만 붙일 클래스 */
+    .set-reveal {
+      opacity: 0;
+      transform: translateY(10vh);        /* ↓ 아래 대기 */
+      transition: transform 480ms ease, opacity 800ms ease;
+      will-change: transform, opacity;
+    }
+    .set-reveal.is-in {
+      opacity: 1;
+      transform: translateY(0);           /* ↑ 올라와서 고정 */
+    }
+  
+
+  }
+  

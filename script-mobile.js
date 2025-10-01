@@ -179,30 +179,30 @@ document.getElementById('viewAllProjects').addEventListener('mouseover', (event)
 
 
 // (4) IntersectionObserver (❗스크롤 이벤트 밖으로 빼줬다!)
-const circleForS3 = document.getElementById('circleForS3');
-const elementsToShow = document.querySelectorAll('#s3text, #viewAllProjects');
+// const circleForS3 = document.getElementById('circleForS3');
+// const elementsToShow = document.querySelectorAll('#s3text, #viewAllProjects');
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      circleForS3.style.opacity = '1';
-      circleForS3.style.transform = 'translateX(-50%) translateY(0)';
-      elementsToShow.forEach(element => {
-        element.style.opacity = '1';
-        element.style.transform = 'translate(-50%, 0)';
-      });
-    } else {
-      circleForS3.style.opacity = '1';
-      circleForS3.style.transform = 'translateX(-50%) translateY(30px)';
-      elementsToShow.forEach(element => {
-        element.style.opacity = '1';
-        element.style.transform = 'translate(-50%, 30px)';
-      });
-    }
-  });
-}, { threshold: 0.2 });
+// const observer = new IntersectionObserver((entries) => {
+//   entries.forEach(entry => {
+//     if (entry.isIntersecting) {
+//       circleForS3.style.opacity = '1';
+//       circleForS3.style.transform = 'translateX(-50%) translateY(0)';
+//       elementsToShow.forEach(element => {
+//         element.style.opacity = '1';
+//         element.style.transform = 'translate(-50%, 0)';
+//       });
+//     } else {
+//       circleForS3.style.opacity = '1';
+//       circleForS3.style.transform = 'translateX(-50%) translateY(30px)';
+//       elementsToShow.forEach(element => {
+//         element.style.opacity = '1';
+//         element.style.transform = 'translate(-50%, 30px)';
+//       });
+//     }
+//   });
+// }, { threshold: 0.2 });
 
-observer.observe(document.getElementById('s2'));
+// observer.observe(document.getElementById('s2'));
 
 // (5) 모바일 br 제거
 function removeBrOnMobile() {
@@ -237,29 +237,29 @@ window.addEventListener('resize', removeBrOnMobile);
 
 
 
-// 1) 원: 섹션이 화면에 보이면 1초 뒤에 등장
-let circleTimer = null;
+  // 1) 원: 섹션이 화면에 보이면 1초 뒤에 등장
+  let circleTimer = null;
 
-const ioCircle = new IntersectionObserver(([entry]) => {
-  if (entry.isIntersecting) {
-    // 보이면 타이머 시작
-    if (!circleTimer) {
-      circleTimer = setTimeout(() => {
-        circle.style.transform = 'translateX(-50%) translateY(0)';
-      }, 2000); // 1000ms = 1초 뒤
+  const ioCircle = new IntersectionObserver(([entry]) => {
+    if (entry.isIntersecting) {
+      // 보이면 타이머 시작
+      if (!circleTimer) {
+        circleTimer = setTimeout(() => {
+          circle.style.transform = 'translateX(-50%) translateY(0)';
+        }, 300); // 10ms = 1초 뒤
+      }
+    } else {
+      // 안 보이면 초기화 + 다시 내려가기
+      clearTimeout(circleTimer);
+      circleTimer = null;
+      circle.style.transform = 'translateX(-50%) translateY(80px)';
     }
-  } else {
-    // 안 보이면 초기화 + 다시 내려가기
-    clearTimeout(circleTimer);
-    circleTimer = null;
-    circle.style.transform = 'translateX(-50%) translateY(80px)';
-  }
-}, {
-  root: null,
-  threshold: 0.1 // 10%만 보여도 "보임"으로 간주
-});
+  }, {
+    root: null,
+    threshold: 0.01 // 10%만 보여도 "보임"으로 간주
+  });
 
-ioCircle.observe(section);
+  ioCircle.observe(section);
 
 
   // 2) 텍스트: 가시율 히스테리시스 (올라오면 인, 내려가면 아웃)
@@ -269,7 +269,7 @@ ioCircle.observe(section);
 
   const ioText = new IntersectionObserver(([entry]) => {
     const r = entry.intersectionRatio || 0;
-    if (!shown && r >= SHOW_AT) { shown = true;  showTexts(true);  }
+    if (!shown && r >= SHOW_AT) { shown = true; showTexts(true); }
     else if (shown && r <= HIDE_AT) { shown = false; showTexts(false); }
   }, {
     root: null,
@@ -281,10 +281,10 @@ ioCircle.observe(section);
   let ticking = false;
   const fallback = () => {
     const vh = window.innerHeight || document.documentElement.clientHeight;
-    const r  = section.getBoundingClientRect();
+    const r = section.getBoundingClientRect();
     const visible = Math.max(0, Math.min(r.bottom, vh) - Math.max(r.top, 0));
-    const ratio   = visible / Math.min(vh, Math.max(1, r.height));
-    if (!shown && ratio >= SHOW_AT) { shown = true;  showTexts(true);  }
+    const ratio = visible / Math.min(vh, Math.max(1, r.height));
+    if (!shown && ratio >= SHOW_AT) { shown = true; showTexts(true); }
     else if (shown && ratio <= HIDE_AT) { shown = false; showTexts(false); }
     ticking = false;
   };
@@ -319,7 +319,8 @@ ioCircle.observe(section);
    (세로 스크롤 시 깜빡임 방지: width 변화에만 반응)
    =========================================== */
 (function () {
-  const isMobile = window.matchMedia('(hover: none), (pointer: coarse), (max-width: 767px)').matches;
+  const isMobile = window.matchMedia('(hover: none) and (pointer: coarse)').matches
+    || window.matchMedia('(max-width: 1024px)').matches;
   if (!isMobile) return;
 
   const container = document.getElementById('workPreviewScroll');
@@ -588,47 +589,48 @@ ioCircle.observe(section);
   });
 
   /* ---------- 클릭 네비: 중앙 카드일 때만 ---------- */
-/* 모바일 전용: 카드 한 번 탭 → 즉시 링크로 이동 */
-(() => {
-  const isMobile = window.matchMedia('(hover: none), (pointer: coarse), (max-width: 767px)').matches;
-  if (!isMobile) return;
+  /* 모바일 전용: 카드 한 번 탭 → 즉시 링크로 이동 */
+  (() => {
+    const isMobile = window.matchMedia('(hover: none) and (pointer: coarse)').matches
+      || window.matchMedia('(max-width: 1024px)').matches;
+    if (!isMobile) return;
 
-  const track =
-    document.querySelector('#workPreviewScroll .scroll-track') ||
-    document.getElementById('workPreviewScroll');
-  if (!track) return;
+    const track =
+      document.querySelector('#workPreviewScroll .scroll-track') ||
+      document.getElementById('workPreviewScroll');
+    if (!track) return;
 
-  const TAP_SLOP = 10;   // 손가락 흔들림 허용 오차(px)
-  const TAP_TIME = 350;  // 탭으로 인정할 최대 시간(ms)
-  let sx = 0, sy = 0, st = 0, moved = false;
+    const TAP_SLOP = 10;   // 손가락 흔들림 허용 오차(px)
+    const TAP_TIME = 350;  // 탭으로 인정할 최대 시간(ms)
+    let sx = 0, sy = 0, st = 0, moved = false;
 
-  track.addEventListener('touchstart', (e) => {
-    const t = e.targetTouches[0] || e.changedTouches[0];
-    sx = t.clientX; sy = t.clientY; st = Date.now(); moved = false;
-  }, { passive: true });
+    track.addEventListener('touchstart', (e) => {
+      const t = e.targetTouches[0] || e.changedTouches[0];
+      sx = t.clientX; sy = t.clientY; st = Date.now(); moved = false;
+    }, { passive: true });
 
-  track.addEventListener('touchmove', (e) => {
-    const t = e.targetTouches[0] || e.changedTouches[0];
-    if (Math.abs(t.clientX - sx) > TAP_SLOP || Math.abs(t.clientY - sy) > TAP_SLOP) moved = true;
-  }, { passive: true });
+    track.addEventListener('touchmove', (e) => {
+      const t = e.targetTouches[0] || e.changedTouches[0];
+      if (Math.abs(t.clientX - sx) > TAP_SLOP || Math.abs(t.clientY - sy) > TAP_SLOP) moved = true;
+    }, { passive: true });
 
-  track.addEventListener('touchend', (e) => {
-    const dt = Date.now() - st;
-    if (moved || dt > TAP_TIME) return;
+    track.addEventListener('touchend', (e) => {
+      const dt = Date.now() - st;
+      if (moved || dt > TAP_TIME) return;
 
-    const card = e.target.closest('.workThumbnail');
-    if (!card) return;
+      const card = e.target.closest('.workThumbnail');
+      if (!card) return;
 
-    // 중앙 카드일 때만 이동하려면 아래 한 줄 주석 해제
-    // if (!card.classList.contains('is-center')) return;
+      // 중앙 카드일 때만 이동하려면 아래 한 줄 주석 해제
+      // if (!card.classList.contains('is-center')) return;
 
-    const link = card.dataset.link;
-    if (!link) return;
+      const link = card.dataset.link;
+      if (!link) return;
 
-    if (e.cancelable) e.preventDefault(); // 유령 click 방지
-    window.location.href = link;          // ✅ 한 번 탭으로 즉시 이동
-  }, { passive: false });
-})();
+      if (e.cancelable) e.preventDefault(); // 유령 click 방지
+      window.location.href = link;          // ✅ 한 번 탭으로 즉시 이동
+    }, { passive: false });
+  })();
 
   /* ---------- 보이는 카드만 video play/pause ---------- */
   const ioPlay = new IntersectionObserver(entries => {
@@ -655,97 +657,97 @@ ioCircle.observe(section);
 
   /* ---------- Section2: 원 슬라이드 + 텍스트 페이드 ---------- */
 
-// Circle + Text 등장 트리거(마커 + 스크롤 폴백)
-(function () {
-  const circle = document.getElementById('circleForS3');
-  const texts  = document.querySelectorAll('#s3text, #viewAllProjects');
-  if (!circle || !texts.length) return;
+  // Circle + Text 등장 트리거(마커 + 스크롤 폴백)
+  (function () {
+    const circle = document.getElementById('circleForS3');
+    const texts = document.querySelectorAll('#s3text, #viewAllProjects');
+    if (!circle || !texts.length) return;
 
-  // 섹션 추적: circle의 가장 가까운 섹션/컨테이너
-  const section =
-    circle.closest('#s2, #section2, section') ||
-    document.getElementById('s2') ||
-    document.getElementById('section2') ||
-    circle.parentElement;
+    // 섹션 추적: circle의 가장 가까운 섹션/컨테이너
+    const section =
+      circle.closest('#s2, #section2, section') ||
+      document.getElementById('s2') ||
+      document.getElementById('section2') ||
+      circle.parentElement;
 
-  if (!section) return;
+    if (!section) return;
 
-  // 섹션 position 보장(마커 absolute 배치를 위해)
-  const secPos = getComputedStyle(section).position;
-  if (secPos === 'static') section.style.position = 'relative';
+    // 섹션 position 보장(마커 absolute 배치를 위해)
+    const secPos = getComputedStyle(section).position;
+    if (secPos === 'static') section.style.position = 'relative';
 
-  // ★ 트리거 위치(뷰포트 기준): 섹션 상단에서 25vh 지점이 화면에 닿으면 show
-  const SHOW_VH = 75; // 더 일찍 뜨게 하려면 숫자 ↓(예: 10), 늦게 하려면 ↑(예: 40)
+    // ★ 트리거 위치(뷰포트 기준): 섹션 상단에서 25vh 지점이 화면에 닿으면 show
+    const SHOW_VH = 95; // 더 일찍 뜨게 하려면 숫자 ↓(예: 10), 늦게 하려면 ↑(예: 40)
 
-  // 숨김/보임 구현(클래스 토글만)
-  const show = () => {
-    circle.classList.add('circle-in');
-    circle.classList.remove('circle-out');
-    texts.forEach(el => el.classList.add('visible'));
-  };
-  const hide = () => {
-    circle.classList.remove('circle-in');
-    circle.classList.add('circle-out');
-    texts.forEach(el => el.classList.remove('visible'));
-  };
+    // 숨김/보임 구현(클래스 토글만)
+    const show = () => {
+      circle.classList.add('circle-in');
+      circle.classList.remove('circle-out');
+      texts.forEach(el => el.classList.add('visible'));
+    };
+    const hide = () => {
+      circle.classList.remove('circle-in');
+      circle.classList.add('circle-out');
+      texts.forEach(el => el.classList.remove('visible'));
+    };
 
-  // 초기 상태(아래대기/숨김)
-  hide();
+    // 초기 상태(아래대기/숨김)
+    hide();
 
-  // 섹션 안에 보이지 않는 마커 생성(관찰 대상)
-  let marker = section.querySelector('#s3-trigger');
-  if (!marker) {
-    marker = document.createElement('div');
-    marker.id = 's3-trigger';
-    marker.setAttribute('aria-hidden', 'true');
-    marker.style.cssText = [
-      'position:absolute',
-      'left:0', 'right:0',
-      `top:${SHOW_VH}vh`,  // 뷰포트 기준 오프셋
-      'height:1px',
-      'pointer-events:none',
-      'opacity:0'
-    ].join(';');
-    section.appendChild(marker);
-  }
-
-  // IntersectionObserver: 마커가 화면에 들어오면 등장, 벗어나면 숨김
-  const io = new IntersectionObserver(([entry]) => {
-    entry.isIntersecting ? show() : hide();
-  }, {
-    root: null,
-    threshold: 0,         // 한 픽셀만 닿아도 트리거
-    rootMargin: '0px'     // 오프셋은 마커의 top에서 조절
-  });
-  io.observe(marker);
-
-  // ------- 폴백(언제나 동작 보장) -------
-  let ticking = false;
-  function fallbackCheck() {
-    const r = section.getBoundingClientRect();
-    const vh = window.innerHeight || document.documentElement.clientHeight;
-
-    // 섹션 상단에서 SHOW_VH 만큼 내려온 지점의 화면 좌표
-    const triggerY = r.top + (vh * (SHOW_VH / 100));
-
-    // 그 지점이 화면 내부에 있고 섹션이 보이는 중이면 show, 아니면 hide
-    const inView = (triggerY < vh) && (r.bottom > 0);
-    inView ? show() : hide();
-
-    ticking = false;
-  }
-
-  const onScrollResize = () => {
-    if (!ticking) {
-      ticking = true;
-      requestAnimationFrame(fallbackCheck);
+    // 섹션 안에 보이지 않는 마커 생성(관찰 대상)
+    let marker = section.querySelector('#s3-trigger');
+    if (!marker) {
+      marker = document.createElement('div');
+      marker.id = 's3-trigger';
+      marker.setAttribute('aria-hidden', 'true');
+      marker.style.cssText = [
+        'position:absolute',
+        'left:0', 'right:0',
+        `top:${SHOW_VH}vh`,  // 뷰포트 기준 오프셋
+        'height:1px',
+        'pointer-events:none',
+        'opacity:0'
+      ].join(';');
+      section.appendChild(marker);
     }
-  };
 
-  window.addEventListener('scroll', onScrollResize, { passive: true });
-  window.addEventListener('resize', onScrollResize, { passive: true });
-  requestAnimationFrame(fallbackCheck); // 초기 1회 강제 체크
-})();
+    // IntersectionObserver: 마커가 화면에 들어오면 등장, 벗어나면 숨김
+    const io = new IntersectionObserver(([entry]) => {
+      entry.isIntersecting ? show() : hide();
+    }, {
+      root: null,
+      threshold: 0,         // 한 픽셀만 닿아도 트리거
+      rootMargin: '0px'     // 오프셋은 마커의 top에서 조절
+    });
+    io.observe(marker);
+
+    // ------- 폴백(언제나 동작 보장) -------
+    let ticking = false;
+    function fallbackCheck() {
+      const r = section.getBoundingClientRect();
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+
+      // 섹션 상단에서 SHOW_VH 만큼 내려온 지점의 화면 좌표
+      const triggerY = r.top + (vh * (SHOW_VH / 100));
+
+      // 그 지점이 화면 내부에 있고 섹션이 보이는 중이면 show, 아니면 hide
+      const inView = (triggerY < vh) && (r.bottom > 0);
+      inView ? show() : hide();
+
+      ticking = false;
+    }
+
+    const onScrollResize = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(fallbackCheck);
+      }
+    };
+
+    window.addEventListener('scroll', onScrollResize, { passive: true });
+    window.addEventListener('resize', onScrollResize, { passive: true });
+    requestAnimationFrame(fallbackCheck); // 초기 1회 강제 체크
+  })();
 
 
   /* ---------- 모바일: <br> 제거 ---------- */
@@ -831,4 +833,88 @@ window.addEventListener('scroll', () => {
 
 
 
+
+
+
+(() => {
+  const container = document.getElementById('workPreviewScroll');
+  if (!container) return;
+
+  // 트랙(있으면 그걸 쓰고, 없으면 컨테이너 자체)
+  const track = container.querySelector('.scroll-track') || container;
+
+  // 초기 상태: 숨김 쪽으로
+  track.classList.remove('set-in');
+
+  // 세트(컨테이너)가 뷰포트에 10% 이상 보이면 set-in, 아니면 제거
+  const io = new IntersectionObserver(([entry]) => {
+    const show = entry.isIntersecting && entry.intersectionRatio >= 0.10;
+    track.classList.toggle('set-in', show);
+  }, {
+    root: null,                  // 화면 기준
+    threshold: [0, 0.40, 0.41, 1]// 10% 경계에서 토글
+  });
+
+  io.observe(container);
+
+  // 첫 로드 즉시 1회 강제 체크(브라우저 IO 타이밍 편차 대비)
+  requestAnimationFrame(() => {
+    const r = container.getBoundingClientRect();
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+    const visible = Math.max(0, Math.min(r.bottom, vh) - Math.max(r.top, 0));
+    const ratio = visible / Math.min(vh, Math.max(1, r.height));
+    track.classList.toggle('set-in', ratio >= 0.10);
+  });
+})();
+
+
+
+
+
+
+
+
+(() => {
+  // 태블릿 세로에서만 동작
+  const mq = '(hover: none) and (pointer: coarse) and (min-width: 768px) and (orientation: portrait)';
+  if (!window.matchMedia(mq).matches) return;
+
+  const container = document.getElementById('workPreviewScroll');
+  if (!container) return;
+
+  // 대상: 트랙이 있으면 트랙, 없으면 컨테이너 자체
+  const target = container.querySelector('.scroll-track') || container;
+
+  // 초기 상태: 아래 대기(불투명 0)
+  target.classList.add('tp-reveal');
+
+  // 10% 이상 보이면 인, 미만이면 아웃
+  const io = new IntersectionObserver(([entry]) => {
+    const show = entry.isIntersecting && entry.intersectionRatio >= 0.50;
+    target.classList.toggle('is-in', show);
+  }, {
+    root: null,
+    threshold: [0, 0.50, 0.51, 1]
+  });
+  io.observe(container);
+
+  // iOS Safari 폴백(스크롤/리사이즈 때 수동 계산)
+  let ticking = false;
+  const fallback = () => {
+    const r  = container.getBoundingClientRect();
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+    const visible = Math.max(0, Math.min(r.bottom, vh) - Math.max(r.top, 0));
+    const ratio   = visible / Math.min(vh, Math.max(1, r.height));
+    target.classList.toggle('is-in', ratio >= 0.50);
+    ticking = false;
+  };
+  const onSR = () => { if (!ticking) { ticking = true; requestAnimationFrame(fallback); } };
+
+  window.addEventListener('scroll', onSR,  { passive: true });
+  window.addEventListener('resize', onSR,  { passive: true });
+  window.addEventListener('orientationchange', () => setTimeout(fallback, 120), { passive: true });
+
+  // 첫 로드 강제 1회 체크
+  requestAnimationFrame(fallback);
+})();
 

@@ -3,7 +3,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
 
   <link rel="icon" type="image/png" href="/files/logo.png">
   <link rel="apple-touch-icon" href="/files/logo.png">
@@ -17,7 +18,8 @@
   <!-- <link rel="stylesheet" href="style.css" media="(max-width: 1600px)"> -->
   <link rel="stylesheet" href="style.css">
 
-  <link rel="stylesheet" href="style-mobile.css" media="(max-width: 767px)">
+  <!-- 태블릿/모바일 통합 로딩 조건 -->
+  <link rel="stylesheet" href="style-mobile.css" media="(hover: none) and (pointer: coarse), (max-width: 1024px)">
 
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -98,6 +100,13 @@
 
       <div id="workPreviewScroll" data-cursor="main1">
 
+        <div class="workThumbnail" data-type="image" data-src="../files/clock/clock00.jpg"
+          data-link="../works/work_clock/work_clock.html" data-title="Apple Clock App" data-subtitle="UX/UI design">
+          <img src="../files/clock/clock00.jpg" alt="Type Play Thumbnail">
+        </div>
+
+
+
         <!-- Verizon (Video) -->
         <div class="workThumbnail" data-type="video" data-src="../files/verizon/verizon_1.mp4"
           data-link="../works/work_Verizon/work_Verizon.html" data-title="Verizon"
@@ -123,11 +132,6 @@
           <img src="../files/podscribe/podscribe_hero_1.jpg" alt="Podscribe Thumbnail">
         </div>
 
-        <!-- With (Image) -->
-        <div class="workThumbnail" data-type="image" data-src="../files/with2-main.jpg"
-          data-link="../works/work_With/work_With.html" data-title="With" data-subtitle="App design">
-          <img src="../files/with2-main.jpg" alt="With Thumbnail">
-        </div>
 
 
 
@@ -139,6 +143,12 @@
         </div>
 
 
+        <!-- With (Image) -->
+        <div class="workThumbnail" data-type="image" data-src="../files/with2-main.jpg"
+          data-link="../works/work_With/work_With.html" data-title="With" data-subtitle="App design">
+          <img src="../files/with2-main.jpg" alt="With Thumbnail">
+        </div>
+
         <!-- Type Play: Interactive Design Lab (Image) -->
         <!-- <div class="workThumbnail" data-type="image" data-src="../files/type/type-main-ss.jpg"
           data-link="../works/work_TypePlay/work_TypePlay.html" data-title="Type Play: Interactive Design Lab"
@@ -147,20 +157,16 @@
         </div>
  -->
 
-        <div class="workThumbnail" data-type="image" data-src="../files/clock/clock00.jpg"
-          data-link="../works/work_clock/work_clock.html" data-title="Apple Clock App" data-subtitle="UX/UI design">
-          <img src="../files/clock/clock00.jpg" alt="Type Play Thumbnail">
-        </div>
 
 
 
 
         <!-- Heesoo Portfolio Website (Image) -->
-        <div class="workThumbnail" data-type="image" data-src="../files/heesoo-main.jpg"
+        <!-- <div class="workThumbnail" data-type="image" data-src="../files/heesoo-main.jpg"
           data-link="../works/work_Heesoo/work_Heesoo.html" data-title="Heesoo: Portfolio Website"
           data-subtitle="Creative coding / Interaction design">
           <img src="../files/heesoo-main.jpg" alt="Heesoo Thumbnail">
-        </div>
+        </div> -->
 
         <!-- Kinetic Pose (Image) -->
         <!-- <div class="workThumbnail" data-type="image" data-src="../files/Kineticpose/KineticPose_main000.jpg"
@@ -217,7 +223,7 @@
 
         <li class="bottomBox"><a href="files/Resume-Jeong_Heesoo.pdf" class="b" id="b2"
             data-cursor="bottomItem2">resume</a></li>
-        <li class="bottomBox"><a href="mailto: heesooj1012@gmail.com" class="b" id="b1"
+        <li class="bottomBox"><a href="mailto:heesooj1012@gmail.com" class="b" id="b1"
             data-cursor="bottomItem1">email</a></li>
         <li class="bottomBox"><a href="https://www.linkedin.com/in/heesoojeong/" class="b" id="b3"
             data-cursor="bottomItem3">linkedIn</a></li>
@@ -232,7 +238,6 @@
   </div>
 
   <script>
-    // 약속(Promise) 기반 스크립트 로더
     function loadScript(src) {
       return new Promise((resolve, reject) => {
         const s = document.createElement('script');
@@ -243,17 +248,21 @@
       });
     }
 
-    if (window.innerWidth <= 767) {
-      // ✅ 1) section1(가벼움) 먼저 로드 → 화면에 즉시 노출
+    // ✅ 태블릿/모바일 감지: 터치 디바이스면 폭과 무관하게 모바일 스크립트
+    const isTabletOrMobile = window.matchMedia(
+      '(hover: none) and (pointer: coarse)'
+    ).matches
+      // 데스크톱에서도 창을 1024px 이하로 줄였을 때는 모바일 스크립트로 테스트 가능
+      || window.matchMedia('(max-width: 1024px)').matches;
+
+    if (isTabletOrMobile) {
       loadScript('section1-mobile.js').then(() => {
-        // ✅ 2) 나머지 무거운 초기화(script-mobile.js)는 페인트 이후로 미룸
         const defer = window.requestIdleCallback
           ? (fn) => requestIdleCallback(fn, { timeout: 1200 })
           : (fn) => setTimeout(fn, 200);
         defer(() => loadScript('script-mobile.js'));
       });
     } else {
-      // 데스크톱은 기존 순서 유지(필요시 동일 전략 적용 가능)
       loadScript('section1.js').then(() => loadScript('script.js'));
     }
   </script>

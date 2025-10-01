@@ -1,30 +1,50 @@
-/* 데스크톱/모바일 공통으로 헤더 높이만큼 빼서 1스크린 예약 */
+/* =========================
+   Global / Base
+   ========================= */
 
+/* 1스크린 예약 */
 #section1 {
   /* min-height: calc(100vh - var(--header-h, 96px)); */
-  height: 65.6vh;
-  /* border: 1px solid rgb(0, 204, 255); */
+  height: 68vh;
+
+
 }
 
 
-/* general */
+/* 모바일(<=767px): px 고정 */
+@media (max-width: 767px) {
+  #section12 {
+    height: 140px;
+    /* 고정 높이(px) */
+    margin-top: 12px;
+    /* 위 마진(px) */
+  }
+}
+
+/* 태블릿(터치, 768px 이상): px 고정 — iPad 11 가로 포함 */
+@media (hover: none) and (pointer: coarse) and (min-width: 768px) {
+  #section1 {
+    /* min-height: calc(100vh - var(--header-h, 96px)); */
+    height: 72vh;
+  }
+}
+
+
+/* Fonts */
 @font-face {
   font-family: 'Lineal';
   src: url('../files/fonts/LinealVF.woff2') format('woff2');
 }
 
-
+/* Reset-ish */
 * {
-  top: 0px;
-  left: 0px;
-  margin: 0px;
-  padding: 0px;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
   text-decoration: none;
-  /* font-family: "Inter", sans-serif;
-  font-style: normal; */
   text-align: center;
-  /* z-index: 0; */
   max-width: 100vw;
   cursor: none;
 }
@@ -38,11 +58,9 @@ a {
   color: inherit;
 }
 
-
 body {
   background-color: white;
 }
-
 
 #entireMainPage {
   width: 1fr;
@@ -51,8 +69,6 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  /* padding: auto; */
-  /* height: 2000px; */
 }
 
 header {
@@ -61,28 +77,20 @@ header {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  /* position: fixed; */
   position: relative;
   justify-content: center;
   align-items: center;
-  /* left: 50%;
-  transform: translateX(-50%); */
-  top: 0px;
+  top: 0;
   z-index: 10;
-  /* border: 1px solid rgb(17, 255, 0); */
-  /* scale: 0.8; */
 }
 
 #headerBox {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* position: absolute; */
-  /* top: 48px; */
   position: fixed;
   top: 26px;
   left: 50%;
-  /* transform: translateX(-50%) translateY(-50%); */
   transform: translateX(-50%);
   width: 316px;
   height: 42px;
@@ -90,26 +98,17 @@ header {
   border: 1px solid rgba(191, 191, 191, 0.4);
   box-shadow: 0px 14px 26px -7px rgba(15, 147, 255, 0.4);
   border-radius: 30px;
-
-  /* padding: 0px; */
   z-index: 10;
-  /* 필요한 경우 z-index 유지 */
   transition: width 0.3s ease-out;
-  /* scale: 0.8; */
 }
 
 #headerBox.scrolled {
   display: flex;
   justify-content: center;
   width: 105px;
-  /* width: 120px; */
-  /* 또는 다른 적절한 값 */
-  /* padding: 0px 0px 0px 13px; */
-  /* margin: 0 auto; */
   left: 50%;
   transform: translateX(-50%);
   position: fixed;
-  /* 또는 absolute, 상황에 따라 다름 */
   top: 26px;
 }
 
@@ -124,7 +123,7 @@ header {
 }
 
 #topBoxes.scrolled {
-  margin: 10px 0px;
+  margin: 10px 0;
 }
 
 #topBoxes {
@@ -133,26 +132,20 @@ header {
   flex-wrap: nowrap;
   align-items: center;
   justify-content: space-around;
-  /* margin: 10px 20px 10px 12px; */
-  margin: 10px 0px 9.2px 4px;
+  margin: 10px 0 9.2px 4px;
   width: auto;
-  /* border:rgb(255, 0, 0) solid 1px; */
 }
 
 .topBox {
   font-size: 14.5px;
-
-
   color: #484848;
   flex-grow: 1;
   text-align: center;
-  /* margin: 0px 4px 0px 2px; */
-  margin: 0px;
-  padding: 0px 0px 0px 20px;
+  margin: 0;
+  padding: 0 0 0 20px;
   flex: 1;
   opacity: 1;
   transition: opacity 0.5s ease-in 0.1s, transform 0.1s ease-in;
-  /* border:rgb(30, 0, 255) solid 1px; */
 }
 
 #logo {
@@ -160,16 +153,10 @@ header {
   margin-bottom: -0.1px;
   font-weight: 640;
   color: black;
-  text-decoration: none;
   text-align: center;
-  /* margin: 10px 0px 10px 20px;
-  padding: 2px 0px; */
-  /* transition: transform 0.8s ease-in 0.4s; */
-  /* border:rgb(255, 0, 0) solid 1px; */
 }
 
 main {
-
   width: 100%;
   height: auto;
   display: flex;
@@ -177,10 +164,7 @@ main {
   position: relative;
 }
 
-
-
 #s2.s2c4 {
-  /* border:rgb(255, 0, 0) solid 1px; */
   top: -15vw;
   padding-top: 5vw;
   position: relative;
@@ -191,114 +175,110 @@ main {
   justify-content: center;
 }
 
+/* =========================
+   S3 Text / Button (단일 원천)
+   ========================= */
+:root {
+  --cap-gap: 16px;
+  /* carousel gap 공용 변수 */
+  --s3-base-top: 32vh;
+  /* (데스크톱) 텍스트 상단 기준 - vh */
+  --s3-gap: 22px;
+  /* (데스크톱) 텍스트-버튼 간격 - px */
+}
 
-
-
-
-
+/* 기본 상태: 중앙 X, 살짝 아래에서 페이드-업 */
 #s3text,
 #viewAllProjects {
   position: absolute;
   left: 50%;
-  transform: translateX(-50%) translateY(0px);
-  /* ✅ 기본 살짝 아래 */
   opacity: 0;
-  transition: opacity 1.2s ease, transform 0.8s ease;
+  transform: translate(-50%, 150px);
+  transition: opacity 800ms ease, transform 600ms cubic-bezier(.16, 1, .3, 1);
   z-index: 10;
-  /* ✅ svg보다 위로 */
-  padding-top: 20%;
+  /* 기본 레이어 */
 }
 
+/* 위아래 물리적 순서 + 겹침 보장 */
 #s3text {
+  top: var(--s3-base-top);
+  z-index: 11;
+  /* 버튼보다 항상 위 레이어 */
   width: 100%;
-  top: 0%;
-  /* ✅ 25% 지점에 배치 */
   font-weight: 200;
   color: black;
   font-size: 21px;
-
   font-family: "Prompt", sans-serif;
-  font-weight: 200;
   font-style: normal;
   line-height: 1.25;
-
 }
 
 #viewAllProjects {
-  position: relative;
-  top: 20%;
-  /* ✅ 버튼은 더 아래 */
+  top: calc(var(--s3-base-top) + var(--s3-gap));
   background-color: white;
   color: black;
-  border-radius: 30px;
-  font-size: 16px;
-
   border: 1.5px solid black;
-
   border-radius: 30px;
-  z-index: 10;
   font-size: 18px;
   text-align: center;
   font-family: "Prompt", sans-serif;
   font-weight: 300;
-  font-style: normal;
   padding: 3px 18px;
 }
 
-
-
-
-.visible {
+/* 등장 상태 */
+#s3text.visible,
+#viewAllProjects.visible {
   opacity: 1;
-  transform: translateX(-50%) translateY(0);
+  transform: translate(-50%, 0);
 }
 
+/* 버튼은 살짝 늦게 */
+#viewAllProjects.visible {
+  transition-delay: 90ms;
+}
 
+.visible {
+  /* 안전용 공통 클래스 */
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* mobile-break */
 .mobile-break {
   display: inline;
 }
 
-@media (max-width: 768px) {
+@media (hover: none) and (pointer: coarse),
+(max-width: 1024px) {
   .mobile-break {
     display: block;
   }
 }
 
-
-
-
-
-
-
-/* footer */
-
+/* =========================
+   Footer
+   ========================= */
 footer {
-
-
   width: 100vw;
   background-color: white;
   border-top: black solid 0.95px;
   position: relative;
-  bottom: 0px;
+  bottom: 0;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: center;
   justify-content: space-between;
-  margin: 0px;
-  /* border-radius: */
-  /* border: rgb(255, 0, 212) solid 1px; */
+  margin: 0;
 }
 
 #bottomLogo {
   font-size: 15.3px;
   font-weight: 630;
-  font-style: normal;
-
   text-align: center;
   margin-left: 30px;
   margin-bottom: -1px;
-  /* border: rgb(0, 159, 37) solid 1px; */
 }
 
 #bottomBoxes {
@@ -307,174 +287,182 @@ footer {
   flex-wrap: nowrap;
   justify-content: space-between;
   font-size: 14.8px;
-
   font-weight: 350;
-  font-style: normal;
-
-
   text-align: center;
   align-items: center;
   padding: 0;
   margin-right: 30px;
   margin-bottom: -1px;
-  /* border: rgb(0, 76, 207) solid 1px; */
 }
 
 .bottomBox {
-  /* margin: 0px 10px; */
-  margin: 0px 0px 0px 24px;
-  /* border: rgb(207, 0, 7) solid 1px; */
+  margin: 0 0 0 24px;
   align-items: center;
   width: auto;
 }
 
-
-
-
-
+/* Hovers */
 .topBox:hover {
   transition: scale 0.2s ease-in-out;
   transform: scale(1.2);
-  /* font-size: 20px;
-  font-weight: 600; */
-  /* padding: 5px; */
 }
 
 #bottomBoxes li a {
   display: inline-block;
   transition: transform 0.2s ease-in-out;
-  /* padding: 2px 0;  */
 }
 
 #bottomBoxes li a:hover {
-  /* font-size: 18px;
-  font-weight: 600;
-  padding: 0px 0;  */
   transition: all 0.2s ease-in-out;
   transform: scale(1.3);
-  /* 원하는 크기로 조정 */
 }
-
 
 #viewAllProjects:hover {
   transition: all 0.2s ease-in-out;
   background-color: black;
   color: white;
-  /* transform: scale(1.2); */
 }
 
-
-#project1:hover {
-  transition: all 0.2s ease-in-out;
-  background-color: black;
-  color: white;
-  /* transform: scale(1.2); */
-}
-
-#project2:hover {
-  transition: all 0.2s ease-in-out;
-  background-color: black;
-  color: white;
-  /* transform: scale(1.2); */
-}
-
+#project1:hover,
+#project2:hover,
 #project3:hover {
   transition: all 0.2s ease-in-out;
-
   background-color: black;
   color: white;
-  /* transform: scale(1.2); */
 }
 
-
-/* 애니메이션 추가 */
-
-
-
+/* Floating hint */
 .floating-text {
   padding-top: 20px;
-  /* font-family: "Nunito", serif; */
   font-family: "Jura", serif;
   font-optical-sizing: auto;
-  font-style: normal;
   font-weight: 800;
-  font-style: normal;
   color: #7b7b7b;
   font-size: 14px;
-  /* 원하는 색으로 변경 */
   animation: float 3s ease-in-out infinite;
 }
 
-
-
-
-/* ===== 공통: 스냅/스무스 임시 OFF용 ===== */
+/* =========================
+   Carousel: states & helpers
+   ========================= */
 #workPreviewScroll.snap-off {
   scroll-snap-type: none !important;
   scroll-behavior: auto !important;
 }
 
-/* ====== 모바일 전용(터치/좁은 화면) ====== */
-:root {
-  --cap-gap: 16px;
+/* =========================
+   Section 2: Circle
+   ========================= */
+#circleForS3 {
+  position: absolute;
+  top: 28%;
+  left: 50%;
+  transform: translateX(-50%) translateY(1000px);
+  /* 기본 대기 */
+  height: 50vh;
+  opacity: 1;
+  pointer-events: auto;
+  overflow: visible;
+  will-change: transform;
+  transition: transform 1200ms cubic-bezier(.16, 1, .3, 1);
+  z-index: 1;
 }
 
-@media (hover: none),
-(pointer: coarse),
-(max-width: 767px) {
+#circleForS3.circle-in {
+  transform: translateX(-50%) translateY(0);
+}
+
+#circleForS3.circle-out {
+  transform: translateX(-50%) translateY(1000px);
+}
+
+#circleForS3 circle {
+  transform-origin: 50% 50%;
+  transition: fill 160ms ease;
+  will-change: transform, fill;
+}
+
+#circleForS3 circle.bump {
+  animation: circle-bump 280ms cubic-bezier(.16, 1, .3, 1);
+}
+
+@keyframes circle-bump {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+
+  /* 들썩 */
+  100% {
+    transform: translateY(0);
+  }
+}
+
+
+
+
+
+
+/* =========================
+   Touch / Tablet (Mobile-style) 공통
+   - 터치 디바이스 or 폭 <= 1024px
+   ========================= */
+@media (hover: none) and (pointer: coarse),
+(max-width: 1024px) {
 
   /* 커스텀 커서 숨김 */
   #mouse-cursor {
     display: none !important;
   }
 
-  /* 안내 텍스트 색 */
+  /* 안내 텍스트 색 변화 */
   #section12 .floating-text {
-    color: #8a8a8a;
+    color: #68acec;
   }
 
-  /* 썸네일 스트립: 중앙 정렬 패딩 + 스크롤 스냅 */
+  /* Carousel Container (모바일/태블릿 공통 기본값) */
   #workPreviewScroll {
     position: relative;
     width: 100vw;
     margin: 0;
 
-    /* 위: 8vh / 좌우: 카드 폭 기준 중앙 패딩 / 아래: 캡션 여유(동적 var) */
+    /* 위: 8vh / 좌우: 카드 폭 기준 중앙 패딩 / 아래: 캡션 여유 */
     padding: 8vh calc((100vw - 78vw) / 2) var(--caption-reserve, 96px);
+    /* 스냅 기준 중앙 보정 (Safari에서 중요) */
+    scroll-padding-inline: calc((100vw - 78vw) / 2);
 
     overflow-x: auto !important;
     overflow-y: hidden !important;
-    /* 컨테이너는 세로 스크롤 금지 → 페이지가 처리 */
     -webkit-overflow-scrolling: touch;
-
-    /* ⬇️ 세로 제스처는 페이지로, 가로는 컨테이너 네이티브 스크롤 */
     touch-action: auto;
     overscroll-behavior-y: auto;
     overscroll-behavior-x: contain;
 
-    /* 핵심: 자연스런 밀려오기 + 정확히 중앙 스냅(네이티브) */
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
+
+    /* 리빌(깜빡임 방지: opacity만) */
+    transition: opacity 300ms ease;
 
     /* 스크롤바 숨김 */
     scrollbar-width: none;
     -ms-overflow-style: none;
+    cursor: grab;
+    user-select: none;
   }
 
   #workPreviewScroll::-webkit-scrollbar {
     display: none;
   }
 
-  /* 리빌(깜빡임 방지: opacity만) */
-  #workPreviewScroll.reveal-hidden {
-    opacity: 0;
+  #workPreviewScroll.is-dragging {
+    cursor: grabbing;
   }
 
-  #workPreviewScroll.reveal-in {
-    opacity: 1;
-  }
-
-  /* 트랙 */
+  /* Track */
   #workPreviewScroll .scroll-track {
     display: flex;
     flex-wrap: nowrap;
@@ -484,213 +472,22 @@ footer {
     will-change: transform;
   }
 
-  /* 카드 */
+  /* Card (모바일 기본 크기) */
   #workPreviewScroll .workThumbnail {
     position: relative;
     flex: 0 0 auto;
     width: 78vw;
-    /* 카드 폭(양옆 패딩과 짝) */
-    height: 48vh;
+    height: 58vh;
     border-radius: 12px;
     overflow: visible !important;
     transition: transform 200ms ease, box-shadow 200ms ease;
     z-index: 0;
-
-    /* 스냅 포인트(센터) */
     scroll-snap-align: center;
     scroll-snap-stop: always;
-  }
-
-  /* 미디어 */
-  #workPreviewScroll .workThumbnail img,
-  #workPreviewScroll .workThumbnail video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 12px;
-    display: block;
-  }
-
-  /* 데스크톱 :hover 무효 */
-  #workPreviewScroll .workThumbnail:hover {
-    transform: none !important;
-    box-shadow: none !important;
-  }
-
-  #workPreviewScroll .workThumbnail:hover .thumb-caption {
-    opacity: 0 !important;
-    transform: translateY(8px) !important;
-  }
-
-  /* 캡션 기본은 숨김 */
-  #workPreviewScroll .workThumbnail .thumb-caption {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    padding: 20px 2px 0 2px;
-    opacity: 0;
-    transform: translateY(8px);
-    pointer-events: none;
-    line-height: 1.28;
-    z-index: 4;
-    transition: opacity 200ms ease, transform 260ms cubic-bezier(.16, 1, .3, 1);
-    color: #0c0c0c;
-  }
-
-  /* 중앙 카드만 리프트 + 캡션 표시 */
-  #workPreviewScroll .workThumbnail.is-center {
-    transform: translateY(-14px);
-    z-index: 3;
-    box-shadow: 0px 3px 6px 0px rgba(15, 147, 255, 0.25);
-  }
-
-  #workPreviewScroll .workThumbnail.is-center .thumb-caption {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
-  }
-
-  /* 캡션 타이포(모바일) */
-  #workPreviewScroll .thumb-title {
-    font-family: "Nunito", sans-serif;
-    font-weight: 600;
-    font-size: clamp(16px, 4.6vw, 20px);
-    display: block;
-  }
-
-  #workPreviewScroll .thumb-sub {
-    font-family: "Nunito", sans-serif;
-    font-weight: 400;
-    opacity: .85;
-    margin-top: 2px;
-    font-size: clamp(13px, 3.8vw, 17px);
-    color: #3f3f3f;
-  }
-
-
-
-
-  #s3text,
-  #viewAllProjects {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%) translateY(0);
-    opacity: 0;
-    transition: opacity 900ms ease, transform 700ms ease;
-    z-index: 10;
-  }
-
-  .visible {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-  }
-
-  /* 드래그 UX 커서(모바일에선 의미 적지만 유지) */
-  #workPreviewScroll {
-    cursor: grab;
-    user-select: none;
-  }
-
-  #workPreviewScroll.is-dragging {
-    cursor: grabbing;
-  }
-}
-
-
-/* ===== 공통: 스냅/스무스 임시 OFF용 ===== */
-#workPreviewScroll.snap-off {
-  scroll-snap-type: none !important;
-  scroll-behavior: auto !important;
-}
-
-/* ====== 모바일 전용(터치/좁은 화면) ====== */
-:root {
-  --cap-gap: 16px;
-}
-
-@media (hover: none),
-(pointer: coarse),
-(max-width: 767px) {
-
-  /* 커스텀 커서 숨김 */
-  #mouse-cursor {
-    display: none !important;
-  }
-
-  /* 썸네일 스트립: 중앙 정렬 패딩 + 스크롤 스냅 */
-  #workPreviewScroll {
-    position: relative;
-    width: 100vw;
-    margin: 0;
-    padding: 8vh calc((100vw - 78vw) / 2) var(--caption-reserve, 96px);
-
-    overflow-x: auto !important;
-    overflow-y: hidden !important;
-    /* 세로는 페이지가 처리 */
-    -webkit-overflow-scrolling: touch;
-
-    /* 세로 제스처는 페이지로, 가로는 네이티브 스와이프 */
-    touch-action: auto;
-    overscroll-behavior-y: auto;
-    overscroll-behavior-x: contain;
-
-    /* 자연스러운 스냅 */
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-
-    /* 리빌(깜빡임 방지: opacity만) */
-    transition: opacity 300ms ease;
-  }
-
-  /* 스크롤바 숨김 */
-  #workPreviewScroll::-webkit-scrollbar {
-    display: none;
-  }
-
-  #workPreviewScroll {
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-
-  /* 리빌 상태 */
-  #workPreviewScroll.reveal-hidden {
-    opacity: 0;
-  }
-
-  #workPreviewScroll.reveal-in {
-    opacity: 1;
-  }
-
-  /* 트랙 */
-  #workPreviewScroll .scroll-track {
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: stretch;
-    gap: 16px;
-    will-change: transform;
-  }
-
-  /* 카드 */
-  #workPreviewScroll .workThumbnail {
-    position: relative;
-    flex: 0 0 auto;
-    width: 78vw;
-    height: 48vh;
-    border-radius: 12px;
-    overflow: visible !important;
-    transition: transform 200ms ease, box-shadow 200ms ease;
-    z-index: 0;
-
-    /* 스냅 포인트(센터) */
-    scroll-snap-align: center;
-    scroll-snap-stop: always;
-
-    /* 깜빡임 방지 힌트 */
     will-change: transform;
     backface-visibility: hidden;
   }
 
-  /* 미디어 */
   #workPreviewScroll .workThumbnail img,
   #workPreviewScroll .workThumbnail video {
     width: 100%;
@@ -700,7 +497,7 @@ footer {
     display: block;
   }
 
-  /* 데스크톱 :hover 무효 */
+  /* Hover 무효화 */
   #workPreviewScroll .workThumbnail:hover {
     transform: none !important;
     box-shadow: none !important;
@@ -711,7 +508,7 @@ footer {
     transform: translateY(8px) !important;
   }
 
-  /* 캡션 기본은 숨김 */
+  /* Caption (기본 숨김) */
   #workPreviewScroll .workThumbnail .thumb-caption {
     position: absolute;
     top: 100%;
@@ -727,19 +524,20 @@ footer {
     color: #0c0c0c;
   }
 
-  /* 중앙 카드만 리프트 + 캡션 표시 */
-  #workPreviewScroll .workThumbnail.is-center {
-    transform: translateY(-14px);
-    z-index: 3;
-    box-shadow: 0px 3px 6px 0px rgba(15, 147, 255, 0.25);
-  }
+/* 중앙 카드 강조 (drop-in replacement) */
+#workPreviewScroll .workThumbnail.is-center {
+  /* 리빌 이동량과 겹치지 않게 합산: 없으면 0으로 처리되어 -14px만 적용 */
+ 
+  z-index: 3;
+  box-shadow: 0px 3px 6px 0px rgba(15, 147, 255, 0.25);
+}
 
-  #workPreviewScroll .workThumbnail.is-center .thumb-caption {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
-  }
+#workPreviewScroll .workThumbnail.is-center .thumb-caption {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
 
-  /* 캡션 타이포(모바일) */
+  /* Caption type */
   #workPreviewScroll .thumb-title {
     font-family: "Nunito", sans-serif;
     font-weight: 600;
@@ -756,38 +554,116 @@ footer {
     color: #3f3f3f;
   }
 
-#section2 {
-  width: 100%;
-  height: 35vh;
-  position: relative;
-  overflow: hidden;
-  padding-top: 2vh;
+  /* Section2 기본 높이 (모바일/태블릿 공통 기본값) */
+  #section2 {
+    width: 100%;
+    height: 40vh;
+    position: relative;
+    overflow: hidden;
+    padding-top: 2vh;
+  }
 
+  /* 클릭 보장 */
+  #circleForS3 {
+    pointer-events: auto !important;
+  }
 }
 
-  #s3text,
+/* === 모바일(<=767px): s3 위치 px 고정 + 폰트/서클 튜닝 === */
+@media (max-width: 767px) {
+  :root {
+    --s3-top-fixed: 15vh;
+    /* 텍스트 상단 기준(px) */
+    --s3-gap-fixed: 75px;
+    /* 텍스트-버튼 간격(px) */
+  }
+
+  #s3text {
+    top: var(--s3-top-fixed);
+    font-size: 22px;
+    line-height: 1.3;
+  }
+
   #viewAllProjects {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%) translateY(0);
-    opacity: 0;
-    transition: opacity 900ms ease, transform 700ms ease;
-    z-index: 10;
+    top: calc(var(--s3-top-fixed) + var(--s3-gap-fixed));
+    font-size: 16px;
   }
 
-  .visible {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
+  #circleForS3 {
+    top: 2%;
+    height: 120vh;
+    /* 필요 시 px로 */
+  }
+}
+
+/* === 태블릿(터치 디바이스, 768px 이상): s3 위치/폰트/서클/카드/섹션2/섹션12 오버라이드 ===
+     * iPad 11 가로(1194px) 포함, 데스크톱(마우스)은 제외 */
+@media (hover: none) and (pointer: coarse) and (min-width: 768px) {
+
+  /* s3 텍스트/버튼 간격 px 고정 */
+  :root {
+    --s3-top-fixed: 19vw;
+    /* 텍스트 상단 기준(px) */
+    --s3-gap-fixed: 70px;
+    /* 텍스트-버튼 간격(px) */
+
+    /* 태블릿 카드 사이즈/간격 */
+    --tab-card-w: 60vw;
+    --tab-card-h: 60vh;
+    --tab-gap: 18px;
   }
 
-  /* 드래그 UX 커서(모바일에선 큰 의미 없지만 유지) */
+  /* s3 텍스트/버튼 */
+  #s3text {
+    top: var(--s3-top-fixed);
+    font-size: 28px;
+    line-height: 1.32;
+  }
+
+  #viewAllProjects {
+    top: calc(var(--s3-top-fixed) + var(--s3-gap-fixed));
+    font-size: 18px;
+  }
+
+  /* 원(circle) 위치/크기 */
+  #circleForS3 {
+    top: 28vw;
+    height: 170vh;
+    /* 너무 크면 44~60vh 권장 */
+  }
+
+  /* 태블릿 카드 크기/간격 + 중앙 패딩 재계산 */
   #workPreviewScroll {
-    cursor: grab;
-    user-select: none;
+    padding: 8vh calc((100vw - var(--tab-card-w)) / 2) var(--caption-reserve, 96px);
+    scroll-padding-inline: calc((100vw - var(--tab-card-w)) / 2);
   }
 
-  #workPreviewScroll.is-dragging {
-    cursor: grabbing;
+  #workPreviewScroll .scroll-track {
+    gap: var(--tab-gap);
+  }
+
+  #workPreviewScroll .workThumbnail {
+    width: var(--tab-card-w);
+    height: var(--tab-card-h);
+    border-radius: 14px;
+  }
+
+  #workPreviewScroll .workThumbnail img,
+  #workPreviewScroll .workThumbnail video {
+    border-radius: inherit;
+  }
+
+  /* Section 2 높이(태블릿에서 별도 튜닝) */
+  #section2 {
+    height: clamp(300px, 50vh, 800px);
+    /* 최소 300px, 보통 45vh, 최대 500px */
+    padding-top: 0vh;
+  }
+
+  /* Section12 안내 텍스트 */
+  #section12 .floating-text {
+    font-size: 18px;
+    line-height: 1.35;
   }
 }
 
@@ -796,61 +672,212 @@ footer {
 
 
 /* ================================
-   Section2: 원 슬라이드 + 텍스트 페이드
+   Section1 / Section12 height map
+   - 기본(=데스크톱) + 모바일 + 태블릿(세로/가로)
+   - 필요하면 숫자만 바로 바꿔 쓰면 됨
    ================================ */
-   #circleForS3 {
-    position: absolute;
-    top: 28%;
-    left: 50%;
-    transform: translateX(-50%) translateY(1000px); /* 기본: 아래 대기 */
-    height: 50vh;
-    opacity: 1;                 /* 페이드는 고정, 위치만 전환 */
-    pointer-events: auto;       /* 클릭 가능 */
-    overflow: visible;          /* 들썩일 때 잘리지 않게 */
-    will-change: transform;     /* 성능 힌트 */
-    transition: transform 600ms cubic-bezier(.16,1,.3,1);
-    z-index: 1;
+
+/* 0) Desktop (기본) */
+:root {
+  --sec1-h: 65.6vh;
+  /* 기존 데스크톱 값 유지 */
+  --sec12-h: 10vh;
+  /* 안내 영역 높이 */
+  --sec12-mt: 24px;
+  /* 안내 영역 위 마진 */
+}
+
+/* 공통 적용 지점 */
+#section1 {
+  height: var(--sec1-h);
+}
+
+#section12 {
+  height: var(--sec12-h);
+  margin-top: var(--sec12-mt);
+  /* 필요 시 중앙 정렬
+  display:flex; align-items:center; justify-content:center;
+  */
+  /* border: rgb(255, 0, 212) solid 1px; */
+}
+
+/* 1) Mobile (≤ 767px) */
+@media (max-width: 767px) {
+  :root {
+    --sec1-h: 59vh;
+    /* 모바일에서 주소창 변화에 강한 dvh 권장 */
+    --sec12-h: 22vh;
+    --sec12-mt: 1vh;
   }
-  
-  /* 상태 클래스 */
-  #circleForS3.circle-in  { transform: translateX(-50%) translateY(0); }
-  #circleForS3.circle-out { transform: translateX(-50%) translateY(1000px); }
-  
-  /* 텍스트 */
-  #s3text, #viewAllProjects {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%) translateY(20px);
-    opacity: 0;
-    transition: opacity 1000ms ease, transform 800ms cubic-bezier(.16,1,.3,1);
-    z-index: 10;
+}
+
+/* 2) Tablet Portrait (터치 & 폭 ≥ 768px & 세로) */
+@media (hover: none) and (pointer: coarse) and (min-width: 768px) and (orientation: portrait) {
+  :root {
+    --sec1-h: 73vh;
+    /* 세로는 여유 있으니 조금 크게 */
+    --sec12-h: 10vh;
+    --sec12-mt: 1vh;
   }
-  #s3text.visible, #viewAllProjects.visible {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
+}
+
+/* 3) Tablet Landscape (터치 & 폭 ≥ 768px & 가로) */
+@media (hover: none) and (pointer: coarse) and (min-width: 768px) and (orientation: landscape) {
+  :root {
+    --sec1-h: 59vh;
+    /* 가로는 세로 공간이 적으니 낮춤 */
+    --sec12-h: 24vh;
+    --sec12-mt: 1vh;
   }
-  
-  /* ================================
-     Circle 클릭 '톡' 애니메이션 + 색 전환
-     ================================ */
-  #circleForS3 circle {
-    transform-origin: 50% 50%;
-    transition: fill 160ms ease;
-    will-change: transform, fill;
+}
+
+/* (선택) 데스크톱이지만 화면이 낮은 경우를 위한 보호 장치
+   예: 노트북 작은 해상도에서 너무 작아 보일 때 */
+@media (min-width: 1025px) and (max-height: 700px) {
+  :root {
+    --sec1-h: 58vh;
+    --sec12-h: 18vh;
   }
-  
-  #circleForS3 circle.bump {
-    animation: circle-bump 280ms cubic-bezier(.16, 1, .3, 1);
+}
+
+
+
+
+
+
+
+/* 기본: 한 줄 */
+.mobile-break {
+  display: inline;
+}
+
+/* 폰(<=767px)에서만 두 줄로 쪼개기 */
+@media (max-width: 767px) {
+  .mobile-break {
+    display: block;
   }
-  
-  @keyframes circle-bump {
-    0%   { transform: translateY(0); }
-    50%  { transform: translateY(-12px); } /* 들썩 */
-    100% { transform: translateY(0); }
+}
+
+/* 태블릿(터치 디바이스 & 폭 ≥ 768px): 다시 한 줄로 고정 */
+@media (hover: none) and (pointer: coarse) and (min-width: 768px) {
+  .mobile-break {
+    display: inline;
   }
+
+  #s3text {
+    white-space: nowrap;
+  }
+
+  /* 줄바꿈 방지 */
+}
+
+
+
+/* =========================================
+   Tablet: tighten s3text ↔ viewAllProjects gap
+   (터치 디바이스 & 폭 ≥ 768px)
+   ========================================= */
+@media (hover: none) and (pointer: coarse) and (min-width: 768px) {
+  :root {
+    /* 예: 70px → 38px로 축소 */
+    --s3-gap-fixed: 38px;
+  }
+}
+
+
+
+/* === Tablet Portrait(세로) only: circle 위치/크기 === */
+@media (hover: none) and (pointer: coarse) and (min-width: 768px) and (orientation: portrait) {
+  #circleForS3 {
+    top: 20vw;
+    /* 세로에서 화면 비율에 맞춘 위쪽 위치 */
+    height: 100vh;
+    /* 세로에서 크게 보이도록 */
+  }
+}
+
+
+/* === Tablet Portrait(세로) 전용 === */
+@media (hover: none) and (pointer: coarse) and (min-width: 768px) and (orientation: portrait) {
+  #section2 {
+    height: clamp(360px, 34vh, 880px);
+    /* 세로는 조금 더 높게 */
+    padding-top: 8vh;
+    /* 상단 여백 살짝 줄임 */
+  }
+}
+
+
+
+
+
+
+/* 트랙(세트) 기본값: 아래에서 살짝 + 반투명 */
+#workPreviewScroll .scroll-track{
+  --reveal-y: 16px;   /* 세트가 안 보일 때 아래로 */
+  --reveal-op: .1;   /* 세트가 안 보일 때 카드 반투명 */
+}
+
+/* 세트 안의 모든 카드: transform/opacity는 트랙 변수만 사용 */
+#workPreviewScroll .workThumbnail{
+  transform: translateY(var(--reveal-y));
+  opacity: var(--reveal-op);
+  transition: transform 480ms ease, opacity 480ms ease;
+}
+
+/* 세트가 화면에 10% 이상 보일 때(아래 JS가 토글) */
+#workPreviewScroll .scroll-track.set-in{
+  --reveal-y: 0px;  /* 위로 올라와 고정 */
+  --reveal-op: 1;   /* 완전 불투명 */
+}
+
+/* 중앙 카드 리프트(기존 유지) */
+#workPreviewScroll .workThumbnail.is-center{
+  transform: translateY(calc(var(--reveal-y) - 5vh)); /* 리프트를 합산 */
+  z-index: 3;
+  box-shadow: 0px 3px 6px 0px rgba(15, 147, 255, 0.25);
+}
+
+/* 중앙 카드 캡션 노출(기존 유지) */
+#workPreviewScroll .workThumbnail.is-center .thumb-caption{
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+
+
+
+
+
+
+
+
+
+/* =========================
+   Tablet Portrait only
+   - 카드세트 전체 리빌 (세트 단위로 위/아래 + 페이드)
+   - 모바일용 reveal-* 과 transform 충돌 방지
+   ========================= */
+   @media (hover: none) and (pointer: coarse) and (min-width: 768px) and (orientation: portrait) {
+
+    /* 모바일용 1회 리빌 스타일이 있으면 무력화(충돌 방지) */
+    #workPreviewScroll.reveal-hidden,
+    #workPreviewScroll.reveal-in {
+      opacity: 1 !important;
+      transform: none !important;
+      pointer-events: auto !important;
+    }
   
-  /* 모바일에서도 클릭 보장 */
-  @media (max-width: 767px) {
-    #circleForS3 { pointer-events: auto !important; }
+    /* 세트(트랙 또는 컨테이너)에 붙일 전용 클래스 */
+    .tp-reveal {
+      opacity: 0;
+      transform: translate3d(0, 4vh, 0);   /* ↓ 아래 대기 */
+      transition: transform 600ms ease, opacity 600ms ease;
+      will-change: transform, opacity;
+    }
+    .tp-reveal.is-in {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);      /* ↑ 올라와 고정 */
+    }
   }
   

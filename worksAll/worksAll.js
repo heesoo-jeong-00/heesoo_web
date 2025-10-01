@@ -206,33 +206,63 @@ document.addEventListener('DOMContentLoaded', () => {
 
   setupThumbnailClicks();
 
-  // ✅ 무한 스크롤을 더 자연스럽게
-  const scrollSpeed = 0.25;
+// === 무한 스크롤/속도 제어 (교체 영역 시작) ===
 
-  // 스크롤 복제 여러번
-  const cloneCount = 5; // ★★★ 필요하면 더 늘릴 수도 있어
-  const originalContent = scrollContainer.innerHTML;
+// 콘텐츠 복제: 중복 실행 방지
+if (!scrollContainer.dataset.cloned) {
+  const cloneCount = 5; // 필요시 조절
+  const original = scrollContainer.innerHTML;
   for (let i = 0; i < cloneCount; i++) {
-    scrollContainer.innerHTML += originalContent;
+    scrollContainer.insertAdjacentHTML('beforeend', original);
+  }
+  scrollContainer.dataset.cloned = '1';
+
+  // 복제된 썸네일에도 클릭 이벤트 다시 바인딩
+  // (setTimeout 대신 즉시 실행)
+  setupThumbnailClicks();
+}
+
+// 초당 픽셀 단위로 속도 제어
+let SCROLL_PX_PER_SEC = 60; // ★ 여기 숫자로 속도 조절(크게=빠름)
+
+// 런타임에서 콘솔로 변경 가능: setPreviewScrollSpeed(120)
+window.setPreviewScrollSpeed = (pxPerSec) => {
+  SCROLL_PX_PER_SEC = +pxPerSec || 0;
+};
+
+// 단일 rAF 루프 보장
+if (scrollContainer.__rafId) cancelAnimationFrame(scrollContainer.__rafId);
+
+let lastTs = performance.now();
+function autoScroll(ts = performance.now()) {
+  const dt = (ts - lastTs) / 1000; // 지난 시간(초)
+  lastTs = ts;
+
+  scrollContainer.scrollLeft += SCROLL_PX_PER_SEC * dt;
+
+  // 자연스러운 무한 루프: 절반 지점에서 리셋
+  const resetAt = scrollContainer.scrollWidth / 2;
+  if (scrollContainer.scrollLeft >= resetAt) {
+    scrollContainer.scrollLeft = 0;
   }
 
-  function autoScroll() {
-    scrollContainer.scrollLeft += scrollSpeed;
+  scrollContainer.__rafId = requestAnimationFrame(autoScroll);
+}
+autoScroll();
 
-    // ★★★ 자연스러운 무한스크롤
-    if (scrollContainer.scrollLeft >= scrollContainer.scrollWidth / 2) {
-      scrollContainer.scrollLeft = 0;
-    }
+// (선택) 사용자가 스크롤하면 잠깐 개입 여지 주기
+let pauseUntil = 0;
+['wheel', 'touchstart', 'mousedown'].forEach(ev => {
+  scrollContainer.addEventListener(ev, () => {
+    pauseUntil = performance.now() + 800; // 0.8s
+  }, { passive: true });
+});
 
-    requestAnimationFrame(autoScroll);
-  }
+// rAF 내에 간단히 반영하고 싶다면 위 autoScroll 내부에 아래 2줄을 추가해도 됨:
+// if (performance.now() < pauseUntil) return requestAnimationFrame(autoScroll);
 
-  autoScroll();
+// === 무한 스크롤/속도 제어 (교체 영역 끝) ===
 
-  // 복제한 썸네일까지 클릭이벤트 다시 걸어주기
-  setTimeout(() => {
-    setupThumbnailClicks();
-  }, 500);
 });
 
 
