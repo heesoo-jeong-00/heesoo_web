@@ -253,7 +253,7 @@ main {
   color: white;
   margin-bottom: -5px;
 
-  
+
 }
 
 #mainBlackbox .subtitle {
@@ -278,7 +278,7 @@ main {
   font-size: 18px;
   font-weight: 400;
   margin-top: 5px;
-  z-index: 1; 
+  z-index: 1;
 }
 
 /* 하단 썸네일 스크롤 */
@@ -483,3 +483,59 @@ footer {
 
 
 /* 애니메이션 추가 */
+
+
+
+
+
+
+/* 1) 썸네일 컨테이너는 넘침을 자르고, 보기 비율을 보장 */
+.workThumbnail {
+  position: relative;
+  overflow: hidden;
+
+}
+
+/* 2) 비디오는 컨테이너를 꽉 채움 */
+.workThumbnail video.video-fit {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover !important;
+  /* 우선순위 확보 */
+}
+
+/* 3) 데스크톱: 상단 쪽으로 살짝 치우친 앵커 (위쪽을 더 보여줌) */
+.workThumbnail video.crop-desktop-topBias {
+  object-position: 50% 10% !important;
+  /* 필요시 20~40%로 미세 조정 */
+}
+
+/* 4) 모바일: 상단 기준(=아래가 잘림) */
+@media (max-width: 1024px) {
+  .workThumbnail video.m-crop-top {
+    object-position: 50% 60% !important;
+  }
+}
+
+#mainPreview #mainVideo {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: 50% 30% !important;
+  /* 데스크톱 기준 */
+}
+
+@media (max-width: 1024px) {
+  #mainPreview #mainVideo {
+    object-position: 50% 100% !important;
+  }
+}
+
+#mainPreview {
+  position: relative !important;
+  overflow: hidden !important;
+
+}

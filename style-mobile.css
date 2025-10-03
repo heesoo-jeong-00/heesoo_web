@@ -853,31 +853,81 @@ footer {
 
 
 
-/* =========================
-   Tablet Portrait only
-   - 카드세트 전체 리빌 (세트 단위로 위/아래 + 페이드)
-   - 모바일용 reveal-* 과 transform 충돌 방지
-   ========================= */
-   @media (hover: none) and (pointer: coarse) and (min-width: 768px) and (orientation: portrait) {
+/* 공통 기준값(리프트/캡션 간격) — 필요 시 숫자만 조정 */
+#workPreviewScroll {
+  --lift-y: 60px;          /* 카드 hover 리프트값 (다른 카드와 동일) */
+  --cap-gap: 24px;         /* 캡션 상단 여백 (다른 카드와 동일) */
+  --thumb-radius: 12px;    /* 미디어 모서리 반경 (다른 카드와 동일) */
+}
 
-    /* 모바일용 1회 리빌 스타일이 있으면 무력화(충돌 방지) */
-    #workPreviewScroll.reveal-hidden,
-    #workPreviewScroll.reveal-in {
-      opacity: 1 !important;
-      transform: none !important;
-      pointer-events: auto !important;
-    }
-  
-    /* 세트(트랙 또는 컨테이너)에 붙일 전용 클래스 */
-    .tp-reveal {
-      opacity: 0;
-      transform: translate3d(0, 4vh, 0);   /* ↓ 아래 대기 */
-      transition: transform 600ms ease, opacity 600ms ease;
-      will-change: transform, opacity;
-    }
-    .tp-reveal.is-in {
-      opacity: 1;
-      transform: translate3d(0, 0, 0);      /* ↑ 올라와 고정 */
-    }
-  }
-  
+/* Ink AI 컨테이너: 다른 카드와 동일하게 overflow:visible */
+#workPreviewScroll .workThumbnail[data-title="Ink AI"] {
+  position: relative !important;
+  overflow: visible !important;
+  transition: transform 220ms ease, box-shadow 220ms ease !important;
+  will-change: transform;
+}
+
+/* 비디오만 잘라서 확대 (프레임은 여백/패딩 0, radius만 동일) */
+#workPreviewScroll .workThumbnail[data-title="Ink AI"] .thumb-frame.ink-clip {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0; margin: 0;       /* ✅ 불필요 여백 제거 */
+  border: 0;
+  overflow: hidden;            /* ✅ 비디오 클리핑은 여기서만 */
+  border-radius: var(--thumb-radius);
+  line-height: 0;              /* ✅ 미세한 인라인 간격 방지 */
+}
+
+/* 비디오(미디어) 스케일 — 다른 카드와 같은 채움 규칙 */
+#workPreviewScroll .workThumbnail[data-title="Ink AI"] .ink-video-scale {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  display: block;
+  object-fit: cover;
+
+  /* ⬇️ 아래쪽을 기준으로 스케일 (아래는 그대로, 위가 잘림) */
+  transform-origin: bottom center !important;
+  transform: scale(1.2) !important;
+  transition: transform .4s ease;
+
+  /* object-position은 보정용(원하면 유지/조절) */
+  object-position: 50% 100% !important; /* 바닥 쪽에 포커스 */
+  z-index: 0;
+}
+
+/* 카드 hover 리프트 — 다른 카드와 동일 수치 사용 */
+#workPreviewScroll .workThumbnail[data-title="Ink AI"]:hover {
+  transform: translateY(calc(var(--lift-y) * -1)) !important;
+  z-index: 3;
+  box-shadow: 0px 3px 6px 0px rgba(15, 147, 255, 0.25);
+}
+
+/* 캡션 위치/여백 — 다른 카드 규칙과 동일하게 맞춤 */
+#workPreviewScroll .workThumbnail[data-title="Ink AI"] .thumb-caption {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  padding: 20px 2px 0 2px;
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  line-height: 1.28;
+  z-index: 4;
+  transition: opacity 200ms ease, transform 260ms cubic-bezier(.16, 1, .3, 1);
+  color: #0c0c0c;                          /* 비디오(z=0) 위로 */
+}
+
+/* 캡션 hover 인 애니메이션 — 다른 카드와 동일 */
+#workPreviewScroll .workThumbnail[data-title="Ink AI"]:hover .thumb-caption,
+#workPreviewScroll .workThumbnail[data-title="Ink AI"].cap-hover .thumb-caption,
+#workPreviewScroll .workThumbnail[data-title="Ink AI"].is-active .thumb-caption {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 220ms ease-out, transform 280ms cubic-bezier(.16, 1, .3, 1);
+}
+

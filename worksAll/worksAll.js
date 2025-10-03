@@ -158,15 +158,74 @@ document.addEventListener('DOMContentLoaded', () => {
         newPreview.id = 'mainPreview';
 
         if (type === 'video') {
+          // [A] 모바일/세로 판별(안전)
+          const isMobilePortrait = () => {
+            const mqPortrait = window.matchMedia('(orientation: portrait)').matches;
+            const mqNarrow = window.matchMedia('(max-width: 1024px)').matches;
+            const ratio = window.innerHeight > window.innerWidth;
+            return (mqPortrait && mqNarrow) || ratio;
+          };
+
+          // [B] 썸네일 DIV에서 소스 가져오기 (없으면 기존 src 폴백)
+          const srcMobile =
+            thumb.getAttribute('data-src-mobile') ||
+            thumb.querySelector('video')?.dataset.srcMobile || '';
+
+          const srcDesktop =
+            thumb.getAttribute('data-src-desktop') ||
+            thumb.getAttribute('data-src') ||                  // 다른 카드 호환
+            thumb.querySelector('video')?.dataset.srcDesktop ||
+            src || '';
+
+          const mobileMode = isMobilePortrait();
+          const chosen = (mobileMode && srcMobile) ? srcMobile : srcDesktop;
+
+          // 디버그 로그 (콘솔에서 바로 확인)
+          console.log('[MAIN PREVIEW]', {
+            mobileMode,
+            srcMobile,
+            srcDesktop,
+            chosen
+          });
+
+          // [C] 메인 비디오 생성 (iOS 호환: <source> 대신 video.src)
           const video = document.createElement('video');
           video.id = 'mainVideo';
-          video.setAttribute('autoplay', '');
-          video.setAttribute('loop', '');
-          video.setAttribute('muted', '');
-          video.setAttribute('playsinline', '');
-          video.innerHTML = `<source src="${src}" type="video/mp4">`;
+          video.autoplay = true;
+          video.loop = true;
+          video.muted = true;
+          video.playsInline = true;
           video.className = 'mainMedia';
+
+          // 회전/리사이즈 대응 위해 경로 저장
+          if (srcMobile) video.dataset.srcMobile = srcMobile;
+          if (srcDesktop) video.dataset.srcDesktop = srcDesktop;
+
+          // 핵심: 직접 src 지정
+          video.src = chosen;
+          video.load();
+          video.play?.().catch(() => { });
+
           newPreview.appendChild(video);
+
+          // [D] 방향/리사이즈 시 메인 비디오 소스 자동 갱신
+          const refreshMainVideo = () => {
+            const v = document.getElementById('mainVideo');
+            if (!v) return;
+            const next = (isMobilePortrait() && v.dataset.srcMobile)
+              ? v.dataset.srcMobile
+              : (v.dataset.srcDesktop || v.dataset.srcMobile || '');
+            const nextAbs = next ? new URL(next, location.href).href : '';
+            if (nextAbs && v.src !== nextAbs) {
+              console.log('[MAIN PREVIEW] refresh →', next);
+              v.removeAttribute('src');
+              v.src = next;
+              v.load();
+              v.play?.().catch(() => { });
+            }
+          };
+          window.addEventListener('resize', refreshMainVideo, { passive: true });
+          window.addEventListener('orientationchange', refreshMainVideo);
         } else {
           const img = document.createElement('img');
           img.src = src;
@@ -175,6 +234,8 @@ document.addEventListener('DOMContentLoaded', () => {
           img.className = 'mainMedia';
           newPreview.appendChild(img);
         }
+
+
 
         const blackbox = document.createElement('div');
         blackbox.className = 'blackboxes';
@@ -206,88 +267,163 @@ document.addEventListener('DOMContentLoaded', () => {
 
   setupThumbnailClicks();
 
-// === 무한 스크롤/속도 제어 (교체 영역 시작) ===
+  // === 무한 스크롤/속도 제어 (교체 영역 시작) ===
 
-// 콘텐츠 복제: 중복 실행 방지
-if (!scrollContainer.dataset.cloned) {
-  const cloneCount = 5; // 필요시 조절
-  const original = scrollContainer.innerHTML;
-  for (let i = 0; i < cloneCount; i++) {
-    scrollContainer.insertAdjacentHTML('beforeend', original);
-  }
-  scrollContainer.dataset.cloned = '1';
+  // 콘텐츠 복제: 중복 실행 방지
+  if (!scrollContainer.dataset.cloned) {
+    const cloneCount = 5; // 필요시 조절
+    const original = scrollContainer.innerHTML;
+    for (let i = 0; i < cloneCount; i++) {
+      scrollContainer.insertAdjacentHTML('beforeend', original);
+    }
+    scrollContainer.dataset.cloned = '1';
 
-  // 복제된 썸네일에도 클릭 이벤트 다시 바인딩
-  // (setTimeout 대신 즉시 실행)
-  setupThumbnailClicks();
-}
-
-// 초당 픽셀 단위로 속도 제어
-let SCROLL_PX_PER_SEC = 60; // ★ 여기 숫자로 속도 조절(크게=빠름)
-
-// 런타임에서 콘솔로 변경 가능: setPreviewScrollSpeed(120)
-window.setPreviewScrollSpeed = (pxPerSec) => {
-  SCROLL_PX_PER_SEC = +pxPerSec || 0;
-};
-
-// 단일 rAF 루프 보장
-if (scrollContainer.__rafId) cancelAnimationFrame(scrollContainer.__rafId);
-
-let lastTs = performance.now();
-function autoScroll(ts = performance.now()) {
-  const dt = (ts - lastTs) / 1000; // 지난 시간(초)
-  lastTs = ts;
-
-  scrollContainer.scrollLeft += SCROLL_PX_PER_SEC * dt;
-
-  // 자연스러운 무한 루프: 절반 지점에서 리셋
-  const resetAt = scrollContainer.scrollWidth / 2;
-  if (scrollContainer.scrollLeft >= resetAt) {
-    scrollContainer.scrollLeft = 0;
+    // 복제된 썸네일에도 클릭 이벤트 다시 바인딩
+    // (setTimeout 대신 즉시 실행)
+    setupThumbnailClicks();
   }
 
-  scrollContainer.__rafId = requestAnimationFrame(autoScroll);
-}
-autoScroll();
+  // 초당 픽셀 단위로 속도 제어
+  let SCROLL_PX_PER_SEC = 60; // ★ 여기 숫자로 속도 조절(크게=빠름)
 
-// (선택) 사용자가 스크롤하면 잠깐 개입 여지 주기
-let pauseUntil = 0;
-['wheel', 'touchstart', 'mousedown'].forEach(ev => {
-  scrollContainer.addEventListener(ev, () => {
-    pauseUntil = performance.now() + 800; // 0.8s
-  }, { passive: true });
+  // 런타임에서 콘솔로 변경 가능: setPreviewScrollSpeed(120)
+  window.setPreviewScrollSpeed = (pxPerSec) => {
+    SCROLL_PX_PER_SEC = +pxPerSec || 0;
+  };
+
+  // 단일 rAF 루프 보장
+  if (scrollContainer.__rafId) cancelAnimationFrame(scrollContainer.__rafId);
+
+  let lastTs = performance.now();
+  function autoScroll(ts = performance.now()) {
+    const dt = (ts - lastTs) / 1000; // 지난 시간(초)
+    lastTs = ts;
+
+    scrollContainer.scrollLeft += SCROLL_PX_PER_SEC * dt;
+
+    // 자연스러운 무한 루프: 절반 지점에서 리셋
+    const resetAt = scrollContainer.scrollWidth / 2;
+    if (scrollContainer.scrollLeft >= resetAt) {
+      scrollContainer.scrollLeft = 0;
+    }
+
+    scrollContainer.__rafId = requestAnimationFrame(autoScroll);
+  }
+  autoScroll();
+
+  // (선택) 사용자가 스크롤하면 잠깐 개입 여지 주기
+  let pauseUntil = 0;
+  ['wheel', 'touchstart', 'mousedown'].forEach(ev => {
+    scrollContainer.addEventListener(ev, () => {
+      pauseUntil = performance.now() + 800; // 0.8s
+    }, { passive: true });
+  });
+
+  // rAF 내에 간단히 반영하고 싶다면 위 autoScroll 내부에 아래 2줄을 추가해도 됨:
+  // if (performance.now() < pauseUntil) return requestAnimationFrame(autoScroll);
+
+  // === 무한 스크롤/속도 제어 (교체 영역 끝) ===
+
 });
 
-// rAF 내에 간단히 반영하고 싶다면 위 autoScroll 내부에 아래 2줄을 추가해도 됨:
-// if (performance.now() < pauseUntil) return requestAnimationFrame(autoScroll);
 
-// === 무한 스크롤/속도 제어 (교체 영역 끝) ===
+// document.addEventListener('DOMContentLoaded', () => {
+//   const videos = document.querySelectorAll('video[data-src]');
 
-});
+//   const observer = new IntersectionObserver(entries => {
+//     entries.forEach(entry => {
+//       if (entry.isIntersecting) {
+//         const video = entry.target;
+//         if (!video.querySelector('source')) {
+//           const source = document.createElement('source');
+//           source.src = video.dataset.src;
+//           source.type = 'video/mp4';
+//           video.appendChild(source);
+//           video.load();
+//         }
+//       }
+//     });
+//   }, {
+//     root: null,
+//     threshold: 0.2
+//   });
+
+//   videos.forEach(video => {
+//     observer.observe(video);
+//   });
+// });
 
 
+
+// ------- 영상 지연 로드 (예외 카드 지원) -------
 document.addEventListener('DOMContentLoaded', () => {
-  const videos = document.querySelectorAll('video[data-src]');
+  const videos = document.querySelectorAll('video[data-src], video[data-src-mobile], video[data-src-desktop]');
+
+  const isMobilePortrait = () => {
+    const mqPortrait = window.matchMedia('(orientation: portrait)').matches;
+    const mqNarrow = window.matchMedia('(max-width: 1024px)').matches;
+    const ratio = window.innerHeight > window.innerWidth; // 폴백
+    return (mqPortrait && mqNarrow) || ratio;
+  };
+
+
+  function pickSrc(video) {
+    // 예외 카드: data-src-mobile/desktop이 있으면 분기
+    const desktop = video.dataset.srcDesktop;
+    const mobile = video.dataset.srcMobile;
+
+    if (desktop || mobile) {
+      // 둘 중 하나라도 있으면, 모바일/세로에서 mobile 우선
+      if (mobile && isMobilePortrait()) return mobile;
+      if (desktop) return desktop;
+    }
+    // 기본 카드: 기존 data-src 사용
+    return video.dataset.src;
+  }
 
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const video = entry.target;
-        if (!video.querySelector('source')) {
-          const source = document.createElement('source');
-          source.src = video.dataset.src;
-          source.type = 'video/mp4';
-          video.appendChild(source);
-          video.load();
-        }
+      if (!entry.isIntersecting) return;
+      const video = entry.target;
+
+      if (!video.querySelector('source')) {
+        const chosen = pickSrc(video);
+        if (!chosen) return;
+
+        const source = document.createElement('source');
+        source.src = chosen;
+        source.type = 'video/mp4';
+        video.appendChild(source);
+        video.load();
+
+        // 자동재생 보장(가능한 경우)
+        const p = video.play?.();
+        if (p && typeof p.then === 'function') p.catch(() => { });
       }
     });
-  }, {
-    root: null,
-    threshold: 0.2
-  });
+  }, { root: null, threshold: 0.2 });
 
-  videos.forEach(video => {
-    observer.observe(video);
-  });
+  videos.forEach(video => observer.observe(video));
+
+  // 방향/리사이즈 시 '예외 카드'만 소스 갱신 (선택 사항)
+  function refreshExceptionalVideos() {
+    document.querySelectorAll('video[data-src-mobile], video[data-src-desktop]').forEach(video => {
+      const current = video.querySelector('source')?.src || '';
+      const next = new URL(pickSrc(video), location.href).href;
+      if (current !== next) {
+        video.innerHTML = '';
+        const s = document.createElement('source');
+        s.src = next;
+        s.type = 'video/mp4';
+        video.appendChild(s);
+        video.load();
+        const p = video.play?.();
+        if (p && typeof p.then === 'function') p.catch(() => { });
+      }
+    });
+  }
+
+  window.addEventListener('resize', refreshExceptionalVideos);
+  window.addEventListener('orientationchange', refreshExceptionalVideos);
 });
+

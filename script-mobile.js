@@ -263,8 +263,8 @@ window.addEventListener('resize', removeBrOnMobile);
 
 
   // 2) 텍스트: 가시율 히스테리시스 (올라오면 인, 내려가면 아웃)
-  const SHOW_AT = 0.2; // 2% 이상 보이면 인
-  const HIDE_AT = 0.2; // 1% 이하로 줄면 아웃
+  const SHOW_AT = 0.2; 
+  const HIDE_AT = 0.2; 
   let shown = false;
 
   const ioText = new IntersectionObserver(([entry]) => {
