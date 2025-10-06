@@ -1,91 +1,91 @@
 // ------- 기존 유지: 커서 관련 --------
-const cursorParent = document.getElementById('mouse-cursor')
-const cursorChild = cursorParent.children[0]
-window.addEventListener('mousemove', mousemove)
-window.addEventListener('mousedown', mousedown)
-window.addEventListener('mouseup', mouseup)
+// const cursorParent = document.getElementById('mouse-cursor')
+// const cursorChild = cursorParent.children[0]
+// window.addEventListener('mousemove', mousemove)
+// window.addEventListener('mousedown', mousedown)
+// window.addEventListener('mouseup', mouseup)
 
-let scale = 1;
-let cursorX = 0, cursorY = 0;
-let stage = '';
+// let scale = 1;
+// let cursorX = 0, cursorY = 0;
+// let stage = '';
 
-function mousemove(e) {
-  cursorX = e.pageX - cursorParent.offsetWidth / 2
-  cursorY = e.pageY - cursorParent.offsetHeight / 2
-  cursorParent.style.transform =
-    `translate3d(${cursorX}px, ${cursorY}px, 0)`
+// function mousemove(e) {
+//   cursorX = e.pageX - cursorParent.offsetWidth / 2
+//   cursorY = e.pageY - cursorParent.offsetHeight / 2
+//   cursorParent.style.transform =
+//     `translate3d(${cursorX}px, ${cursorY}px, 0)`
 
-  switch (e.target.getAttribute('data-cursor')) {
-    case 'topcontainer':
-    case 'top1':
-    case 'top2':
-    case 'top3':
-    case 'main1':
-    case 'main2':
-    case 'main3':
-    case 'main4':
-    case 'bottomItem1':
-    case 'bottomItem2':
-    case 'bottomItem3':
-      if (stage === e.target.getAttribute('data-cursor')) return;
-      stage = e.target.getAttribute('data-cursor');
-      scale = (['top1', 'top2', 'top3', 'main4', 'bottomItem1', 'bottomItem2', 'bottomItem3'].includes(stage)) ? 2 : 1;
-      break;
-  }
-  cursorChild.style.setProperty('--cursor-scale', scale);
-}
+//   switch (e.target.getAttribute('data-cursor')) {
+//     case 'topcontainer':
+//     case 'top1':
+//     case 'top2':
+//     case 'top3':
+//     case 'main1':
+//     case 'main2':
+//     case 'main3':
+//     case 'main4':
+//     case 'bottomItem1':
+//     case 'bottomItem2':
+//     case 'bottomItem3':
+//       if (stage === e.target.getAttribute('data-cursor')) return;
+//       stage = e.target.getAttribute('data-cursor');
+//       scale = (['top1', 'top2', 'top3', 'main4', 'bottomItem1', 'bottomItem2', 'bottomItem3'].includes(stage)) ? 2 : 1;
+//       break;
+//   }
+//   cursorChild.style.setProperty('--cursor-scale', scale);
+// }
 
-function mousedown(e) {
-  scale *= 0.75;
-  cursorChild.style.setProperty('--cursor-scale', scale);
-}
-function mouseup(e) {
-  scale *= 1.25;
-  cursorChild.style.setProperty('--cursor-scale', scale);
-}
+// function mousedown(e) {
+//   scale *= 0.75;
+//   cursorChild.style.setProperty('--cursor-scale', scale);
+// }
+// function mouseup(e) {
+//   scale *= 1.25;
+//   cursorChild.style.setProperty('--cursor-scale', scale);
+// }
 
 // ------- 기존 유지: 스크롤 시 headerBox 축소 --------
-const headerBox = document.getElementById('headerBox');
-const topBoxes = document.getElementById('topBoxes');
-const topBox = document.querySelectorAll('.topBox');
-const logo = document.getElementById('logo');
+// const headerBox = document.getElementById('headerBox');
+// const topBoxes = document.getElementById('topBoxes');
+// const topBox = document.querySelectorAll('.topBox');
+// const logo = document.getElementById('logo');
 
-window.addEventListener('scroll', function () {
-  if (window.scrollY > 50) {
-    if (!headerBox.dataset.isExpanded) {
-      headerBox.classList.add('scrolled');
-      topBoxes.classList.add('scrolled');
-      topBox.forEach(box => box.classList.add('scrolled'));
-      logo.style.pointerEvents = 'none';
-    }
-  } else {
-    headerBox.classList.remove('scrolled');
-    topBoxes.classList.remove('scrolled');
-    topBox.forEach(box => box.classList.remove('scrolled'));
-    logo.style.pointerEvents = 'auto';
-    headerBox.dataset.isExpanded = 'true';
-  }
-});
+// window.addEventListener('scroll', function () {
+//   if (window.scrollY > 50) {
+//     if (!headerBox.dataset.isExpanded) {
+//       headerBox.classList.add('scrolled');
+//       topBoxes.classList.add('scrolled');
+//       topBox.forEach(box => box.classList.add('scrolled'));
+//       logo.style.pointerEvents = 'none';
+//     }
+//   } else {
+//     headerBox.classList.remove('scrolled');
+//     topBoxes.classList.remove('scrolled');
+//     topBox.forEach(box => box.classList.remove('scrolled'));
+//     logo.style.pointerEvents = 'auto';
+//     headerBox.dataset.isExpanded = 'true';
+//   }
+// });
 
-headerBox.addEventListener('click', function () {
-  if (this.classList.contains('scrolled')) {
-    this.classList.remove('scrolled');
-    topBoxes.classList.remove('scrolled');
-    topBox.forEach(box => box.classList.remove('scrolled'));
-    logo.style.pointerEvents = 'auto';
-    headerBox.dataset.isExpanded = 'true';
-  }
-});
+// headerBox.addEventListener('click', function () {
+//   if (this.classList.contains('scrolled')) {
+//     this.classList.remove('scrolled');
+//     topBoxes.classList.remove('scrolled');
+//     topBox.forEach(box => box.classList.remove('scrolled'));
+//     logo.style.pointerEvents = 'auto';
+//     headerBox.dataset.isExpanded = 'true';
+//   }
+// });
 
-window.addEventListener('scroll', function () {
-  if (window.scrollY > 50 && headerBox.dataset.isExpanded === 'true') {
-    headerBox.classList.add('scrolled');
-    topBoxes.classList.add('scrolled');
-    topBox.forEach(box => box.classList.add('scrolled'));
-    logo.style.pointerEvents = 'none';
-    headerBox.dataset.isExpanded = 'false';
-  }
-});
+// window.addEventListener('scroll', function () {
+//   if (window.scrollY > 50 && headerBox.dataset.isExpanded === 'true') {
+//     headerBox.classList.add('scrolled');
+//     topBoxes.classList.add('scrolled');
+//     topBox.forEach(box => box.classList.add('scrolled'));
+//     logo.style.pointerEvents = 'none';
+//     headerBox.dataset.isExpanded = 'false';
+//   }
+// });
 
 
 
