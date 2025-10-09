@@ -40,15 +40,13 @@
 <body data-cursor="maincontainer">
 
   <div id="entireMainPage">
-    <header data-cursor="topcontainer">
-      <div id="headerBox">
-        <nav id="logo"><a href="../index.html">
-            Heesoo
-          </a></nav>
+    <header id="header">
+      <div id="headerBox" role="button" aria-expanded="true" tabindex="0">
+        <nav id="logo"><a href="../index.html">Heesoo</a></nav>
         <ul id="topBoxes">
-          <li class="topBox" id="topBox1" data-cursor="top1"><a href="../about/about.html">About</a></li>
-          <li class="topBox" id="topBox2" data-cursor="top2"><a href="../worksAll/worksAll.html">Works</a></li>
-          <li class="topBox" id="topBox3" data-cursor="top3"><a href="../playground/playground.html">Playground</a></li>
+          <li class="topBox" id="topBox1"><a href="../about/about.html">About</a></li>
+          <li class="topBox" id="topBox2"><a href="../uxui/uxui.html">UX/UI</a></li>
+          <li class="topBox" id="topBox3"><a href="../creative/creative.html">Creative</a></li>
         </ul>
       </div>
     </header>
@@ -121,11 +119,11 @@
     if (window.innerWidth <= 767) {
       // 모바일 버전 스크립트 로드
       loadScript('scriptAbout-mobile.js');
-      loadScript('matter2-mobile.js');
+      // loadScript('matter2-mobile.js');
     } else {
       // 기본 웹 버전 스크립트 로드
       loadScript('scriptAbout.js');
-      loadScript('matter2.js');
+      // loadScript('matter2.js');
 
       // 다른 필요한 스크립트가 있다면 여기에 추가
     }

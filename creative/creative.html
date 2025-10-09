@@ -11,10 +11,10 @@
 
 
   <!-- 모든 디바이스를 위한 기본 스타일 -->
-  <link rel="stylesheet" href="playground.css">
+  <link rel="stylesheet" href="creative.css">
 
 
-  <link rel="stylesheet" href="playground-mobile.css" media="(max-width: 767px)">
+  <link rel="stylesheet" href="creative-mobile.css" media="(max-width: 767px)">
 
 
 
@@ -54,15 +54,13 @@
 <body data-cursor="maincontainer">
 
   <div id="entireMainPage">
-    <header data-cursor="topcontainer">
-      <div id="headerBox">
-        <nav id="logo"><a href="../index.html">
-            Heesoo
-          </a></nav>
+    <header id="header">
+      <div id="headerBox" role="button" aria-expanded="true" tabindex="0">
+        <nav id="logo"><a href="../index.html">Heesoo</a></nav>
         <ul id="topBoxes">
-          <li class="topBox" id="topBox1" data-cursor="top1"><a href="../about/about.html">About</a></li>
-          <li class="topBox" id="topBox2" data-cursor="top2"><a href="../worksAll/worksAll.html">Works</a></li>
-          <li class="topBox" id="topBox3" data-cursor="top3"><a href="../playground/playground.html">Playground</a></li>
+          <li class="topBox" id="topBox1"><a href="../about/about.html">About</a></li>
+          <li class="topBox" id="topBox2"><a href="../uxui/uxui.html">UX/UI</a></li>
+          <li class="topBox" id="topBox3"><a href="../creative/creative.html">Creative</a></li>
         </ul>
       </div>
     </header>
@@ -135,19 +133,13 @@
         </div>
 
 
-        <div class="boxes" id="box11" data-cursor="main1">
+        <!-- <div class="boxes" id="box11" data-cursor="main1">
           <div class="blackboxes" id="blackbox11" data-cursor="main3">
             <p class="title" id="title_box11">Type Play: Interactive Design Lab</p>
             <p class="subtitle" id="subtitle_box11">Creative coding / Interaction design</p>
           </div>
-        </div>
+        </div> -->
 
-        <div class="boxes" id="box10" data-cursor="main1">
-          <div class="blackboxes" id="blackbox10" data-cursor="main3">
-            <p class="title" id="title_box10">Bodega</p>
-            <p class="subtitle" id="subtitle_box10">Branding</p>
-          </div>
-        </div>
 
         <div class="boxes" id="box14" data-cursor="main1">
           <div class="blackboxes" id="blackbox14" data-cursor="main3">
@@ -163,14 +155,19 @@
             <p class="subtitle" id="subtitle_box12">Branding / Packaging design</p>
           </div>
         </div>
-        <div class="boxes" id="box13" data-cursor="main1">
+        <!-- <div class="boxes" id="box13" data-cursor="main1">
           <div class="blackboxes" id="blackbox13" data-cursor="main3">
             <p class="title" id="title_box13">Heesoo: Portfolio Website</p>
             <p class="subtitle" id="subtitle_box13">Creative coding / Interaction design</p>
           </div>
+        </div> -->
+
+        <div class="boxes" id="box10" data-cursor="main1">
+          <div class="blackboxes" id="blackbox10" data-cursor="main3">
+            <p class="title" id="title_box10">Bodega</p>
+            <p class="subtitle" id="subtitle_box10">Branding</p>
+          </div>
         </div>
-
-
 
 
         <div class="boxes" id="box6" data-cursor="main1">
@@ -244,7 +241,7 @@
       // 다른 필요한 스크립트가 있다면 여기에 추가
     }
   </script> -->
-  <script src="playground.js"></script>
+  <script src="creative.js"></script>
 
 </body>
 

@@ -1,47 +1,25 @@
-/* general */
-
-html,
-body {
-  overflow: hidden;
-}
-
-
+/* ===== reset-ish ===== */
 * {
-  top: 0px;
-  left: 0px;
-  margin: 0px;
-  padding: 0px;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
   text-decoration: none;
-
   text-align: center;
-  /* z-index: 0; */
   max-width: 100vw;
   /* cursor: none; */
 }
-
-ul {
-  list-style: none;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-
+ul { list-style: none; }
+a { color: inherit; text-decoration: none; }
+body { background: #fff; }
 
 #entireMainPage {
   width: 1fr;
   height: auto;
-  /* background-color: white; */
+  background: #fff;
   display: flex;
-  flex-direction: column;
   flex-wrap: wrap;
-  /* align-items: flex-start; */
-  /* padding: auto; */
-  /* height: 2000px; */
-  /* overflow: hidden; */
 }
 
 /* header */
@@ -63,44 +41,29 @@ header {
 #headerBox {
   display: flex;
   justify-content: center;
-
   align-items: center;
-
   position: fixed;
   top: 28px;
   left: 50%;
   transform: translateX(-50%);
   width: 360px;
-
   height: 44px;
-
   background-color: white;
   opacity: 96%;
   border: 1px solid rgba(191, 191, 191, 0.4);
-  /* box-shadow: 0px 13px 26px -5px rgba(15, 147, 255, 0.4); */
   border-radius: 30px;
-
   z-index: 10;
-  /* 필요한 경우 z-index 유지 */
   transition: width 0.3s ease-out;
-  /* 사이즈 조정 애니메이션 유지 */
-
-
   box-shadow: 0vw 0.5vw 0.8vw -0.05vw rgba(15, 147, 255, 0.25);
-  /* top: 1.5vw;
-  width: 23vw; */
-
 }
 
 #headerBox.scrolled {
   display: flex;
   justify-content: center;
-  width: 120px;
-  /* 또는 다른 적절한 값 */
+  width: 100px; /* 필요 시 조정 */
   left: 50%;
   transform: translateX(-50%);
   position: fixed;
-  /* 또는 absolute, 상황에 따라 다름 */
   top: 28px;
 }
 
@@ -108,15 +71,10 @@ header {
   opacity: 0;
   visibility: hidden;
   position: absolute;
-  /* Remove the boxes from the normal document flow */
   width: 0;
-  /* Eliminate the width */
   height: 0;
-  /* Eliminate the height */
   overflow: hidden;
-  /* Make sure no content spills out */
   transition: visibility 0s 0.7s, opacity 0.7s ease, width 0s 0.7s, height 0s 0.7s;
-  /* Transition for a smooth disappearance */
 }
 
 #topBoxes.scrolled {
@@ -131,60 +89,49 @@ header {
   justify-content: space-around;
   margin: 10px 0px 8.5px 12px;
   width: auto;
-  /* border:rgb(255, 0, 0) solid 1px; */
 }
 
 .topBox {
   font-size: 16.5px;
   font-family: "Nunito", serif;
   font-optical-sizing: auto;
-  font-style: normal;
   font-weight: 400;
   font-style: normal;
-
   color: #484848;
   flex-grow: 1;
   text-align: center;
   margin: 0px 0px;
-  padding: 0px 0px 0px 24px;
+  padding: 0 0 0 24px;
   flex: 1;
   opacity: 1;
   transition: opacity 0.5s ease-in 0.1s, transform 0.1s ease-in;
-  /* border:rgb(51, 0, 255) solid 1px; */
 }
 
 #logo {
   font-size: 21px;
   margin-bottom: -1px;
-  /* font-family: "Prompt", sans-serif; */
   font-family: "Nunito", serif;
   font-optical-sizing: auto;
-
   font-weight: 600;
   font-style: normal;
-
   color: black;
   text-decoration: none;
   text-align: left;
   transition: transform 0.8s ease-in 0.4s;
-  /* border:rgb(0, 255, 128) solid 1px; */
 }
 
-/* ✅ 강조 대상: topBox1 */
-#topBox1 {
+/* ✅ 강조 대상: topBox2 */
+#topBox2 {
   font-weight: 625;
 }
 
 .boxes { cursor: pointer; }
 
 /* 축소 상태에서는 hover 확대 비활성화 */
-#headerBox.scrolled .topBox {
-  transform: none !important;
-  transition: none !important;   /* 깜빡임 방지 */
-}
-
+#headerBox.scrolled .topBox,
 #headerBox.scrolled .topBox:hover {
-  transform: none !important;     /* hover 확대 제거 */
+  transform: none !important;
+  transition: none !important;
 }
 
 #headerBox.scrolled { cursor: pointer; }
@@ -194,27 +141,27 @@ header {
 /* 축소 상태 topBoxes를 컨테이너 중앙 정렬 */
 #topBoxes.scrolled {
   display: flex;
-  justify-content: center;    /* ✅ 수평 중앙 */
+  justify-content: center;    /* 수평 중앙 */
   align-items: center;         /* 수직 정렬 안정화 */
   width: 100%;
-  margin: 10px 0 8.5px 0;      /* ✅ 좌우 마진 제거해서 딱 중앙 */
+  margin: 11px 0 8.5px 0;      /* 좌우 마진 0으로 중앙 유지 */
 }
 
 /* 축소 상태에선 flex 확장 제거 (늘어나며 좌표 밀림 방지) */
 #headerBox.scrolled .topBox {
-  flex: 0 0 auto;              /* ✅ flex:1 제거 */
+  flex: 0 0 auto;              /* flex:1 제거 */
   padding: 0;                  /* 패딩이 중앙 위치를 미는 것 방지 */
 }
 
-/* ✅ topBox1만 표시 + 완전 중앙 */
-#headerBox.scrolled #topBox1 {
+/* ✅ topBox2만 표시 + 완전 중앙 */
+#headerBox.scrolled #topBox2 {
   opacity: 1 !important;
   visibility: visible !important;
   position: static !important;
   width: auto !important;
   height: auto !important;
   overflow: visible !important;
-  margin: 0 auto;              /* ✅ 요소 자체를 가운데로 */
+  margin: 0 auto;              /* 요소 자체 가운데 */
   text-align: center;          /* 텍스트도 가운데 */
 }
 
@@ -224,109 +171,104 @@ header {
 }
 
 
-
-
-/* main (p5js) */
-#entireMainPage {
-  position: relative;
-  /* 포지셔닝 컨텍스트 설정 */
-  height: 100vh;
-}
-
-#entireMainPage canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  /* 다른 요소들이 캔버스 위에 오도록 설정 */
-}
-
-
-/* main */
-
-#aboutContainer {
-  display: flex;
-  flex-direction: row;
-
-  justify-content: center;
-  align-items: center;
-
-
-  position: relative;
-  width: 100%;
-  /* height: 90vh; */
-  height: calc(100vh - 160px);
-  text-align: center;
-  /* 
-  font-family: "Prompt", sans-serif;
-  font-weight: 300;
-  font-style: normal;
-  line-height: 1.25; */
-
-  font-family: "Nunito", serif;
-  font-optical-sizing: auto;
-  font-weight: 340;
-  font-style: normal;
-  /* line-height: 1.25; */
-
-  color: black;
-  /* border: 1px rgb(255, 0, 0) solid; */
-}
-
-
-
-
-.texts {
-  white-space: normal;
-  /* 줄바꿈을 정상적으로 처리하도록 설정합니다 */
-  word-wrap: break-word;
-  font-size: 20px;
-
-  width: 100%;
-  text-align: center;
-  /* 텍스트 중앙 정렬 */
-  margin-bottom: 1em;
-  /* 문단 사이에 바닥 간격을 추가합니다 */
-}
-
-
-#textContents {
-  white-space: nowrap;
-  width: 70%;
-  max-width: 760px;
-  /* 적당한 최대 너비 설정 */
-  margin: 0 auto;
-  /* 좌우 자동 마진으로 중앙 정렬 */
-  text-align: center;
-  /* 텍스트를 중앙으로 정렬합니다 */
-  opacity: 0;
-  padding: 0;
-  transform: translateY(80px);
-  transition: opacity 0.7s ease-out, transform 0.4s ease-out;
-  /* border: 1px rgb(255, 0, 0) solid; */
-
+/* ===== main grid (Playground 스타일) ===== */
+main {
+  width: 100vw;
   display: flex;
   flex-direction: column;
-
+  position: relative;
+}
+#section1 {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
+  align-content: flex-start;
+  margin: 0 2vw;
 }
 
-#textContents.visible {
-  opacity: 1;
-  transform: translateY(0);
+.boxes {
+  position: relative;
+  height: 35vw;
+  border-radius: 3vw;
+  margin: 0 1vw 2vw 1vw;
+  opacity: 0;
+  transition: opacity .7s ease-in-out;
 }
 
+.blackboxes {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  padding: 2.4vw;
+  background: rgba(0,0,0,.6);
+  opacity: 0; transition: all .3s ease-in-out;
+  display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start;
+  text-align: left; border-radius: 3vw; z-index: 1;
+}
+.boxes:hover .blackboxes { opacity: 1; }
 
-#colorBold1 {
-  color: #3586FF;
-  font-weight: 500;
+.title {
+  font-family: "Nunito", serif;
+  font-weight: 350;
+  font-size: 2.1vw;
+  color: #fff;
+  margin-bottom: -0.08vw;
+}
+.subtitle {
+  font-family: "Nunito", serif;
+  font-weight: 300;
+  font-size: 1.1vw;
+  color: rgb(210,210,210);
 }
 
-#colorBold2 {
-  color: #FF3D00;
-  font-weight: 500;
+/* 비디오 카드 공통 */
+.bg-video {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  z-index: 0; opacity: 1;
+  transition: opacity .3s ease-in-out;
 }
+
+/* ===== 카드 사이즈 배치 (2열/1열 혼합) ===== */
+#box15 { width: calc(25vw - 5vw);}
+#box16 {  width: calc(75vw  - 5vw);}
+#box17 { width: calc(50vw  - 5vw); }
+#box2  {width: calc(40vw  - 5vw); }
+#box3  { width: calc(60vw  - 5vw); }
+#box11 { width: calc(50vw  - 5vw); }
+#box18 {width: calc(50vw  - 5vw); }
+#box13 { width: calc(50vw  - 5vw);}
+/* #box14 { width: calc(100vw - 8vw); } */
+
+/* ===== 개별 카드 배경 이미지 ===== */
+#box17 { /* Podscribe */
+  background: url(../files/podscribe/podscribe_hero_1.jpg) center/cover no-repeat;
+}
+#box2 { /* With */
+  background: url(../files/with2-main.jpg) center/cover no-repeat;
+}
+#box3 { /* Nebula */
+  background: url(../files/nebula-main.jpg) center/cover no-repeat;
+}
+#box11 { /* Type Play */
+  background: url(../files/type/type-main-ss.jpg) center/cover no-repeat;
+}
+#box18 { /* Apple Clock */
+  background: url(../files/clock/clock00.jpg) center/cover no-repeat;
+}
+#box13 { /* Heesoo portfolio */
+  background: url(../files/heesoo-main.jpg) center/130% no-repeat;
+}
+#box14 { /* Kinetic Pose */
+  background: url(../files/Kineticpose/KineticPose_main000.jpg) center/cover no-repeat;
+}
+
+/* 비디오 미세 스케일 (옵션) */
+#video_box15 { scale: 1.25; }
+
+
 
 /* footer */
 
@@ -388,11 +330,20 @@ footer {
 }
 
 
-
-
 @media only screen and (min-device-width: 768px) and (max-device-width: 1200px) {
   footer {
     border-top: black solid 1px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .blackboxes {
+    pointer-events: none;
+    display: none;
+  }
+
+  .boxes:hover .blackboxes {
+    opacity: 0;
   }
 }
 
@@ -408,13 +359,11 @@ footer {
   pointer-events: none;
   z-index: 50;
   color: #000000;
-  opacity: 0;
   mix-blend-mode: difference;
 }
 
-
 #mouse-cursor>div {
-  opacity: 0;
+
   position: relative;
   width: 30px;
   height: 30px;
@@ -434,7 +383,7 @@ footer {
 #mouse-cursor>div::after {
   content: attr(data-name);
   position: absolute;
-  /* color: #000000; */
+  /* color: #fff; */
   transform: scale(0.45);
   white-space: nowrap;
 }
@@ -464,43 +413,19 @@ footer {
 }
 
 
-#viewAllProjects:hover {
-  transition: all 0.2s ease-in-out;
-  background-color: black;
-  color: white;
-  /* transform: scale(1.2); */
-}
-
-
-#project1:hover {
-  transition: all 0.2s ease-in-out;
-  background-color: black;
-  color: white;
-  /* transform: scale(1.2); */
-}
-
-#project2:hover {
-  transition: all 0.2s ease-in-out;
-  background-color: black;
-  color: white;
-  /* transform: scale(1.2); */
-}
-
-#project3:hover {
-  transition: all 0.2s ease-in-out;
-
-  background-color: black;
-  color: white;
-  /* transform: scale(1.2); */
-}
-
-.topBox:hover {
-  transition: all 0.2s ease-in-out;
-
-  /* background-color: black; */
-
-  /* transform: scale(1.2); */
-}
-
-
 /* 애니메이션 추가 */
+
+
+
+
+
+/* 부모 카드가 자식을 잘라내도록 */
+.boxes {
+  border-radius: 3vw;   /* 이미 있음 */
+  overflow: hidden;     /* ← 이게 핵심 */
+}
+
+/* 절대배치된 비디오도 둥근 모서리를 따르게 */
+.bg-video {
+  border-radius: inherit;
+}
